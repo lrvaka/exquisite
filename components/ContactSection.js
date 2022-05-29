@@ -22,7 +22,7 @@ const ContactSection = () => (
 
     <Box px="4" pt="20" pb="10" pos="relative">
       <SectionHeading color="brand.500" pb="10">
-        Let's build together
+        Let&apos;s build together
       </SectionHeading>
       <Stack spacing={12} pos="relative" zIndex="2" pb="14">
         <FormControl isRequired>

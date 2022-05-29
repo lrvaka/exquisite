@@ -30,7 +30,7 @@ const AboutUsSection = () => (
       </Box>
       <Flex flexDir="column" maxW="80vw">
         <SectionParagraph pb="9">
-          Whether you're an architect, designer, developer or flooring
+          Whether you&apos;re an architect, designer, developer or flooring
           contractor, Exquisite Wood Floors offers you a solution designed to
           perfectly match the style, requirements and budget of your project.
         </SectionParagraph>
