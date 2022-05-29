@@ -60,7 +60,6 @@ const SlideShowSection = () => {
         pos="relative"
         ref={sliderRef}
         className="keen-slider"
-        boxShadow="inset 0px 0px 102px -18px #000000"
       >
         {slides.map((slide) => (
           <Box className="keen-slider__slide" key={slide} h="15rem">
