@@ -84,7 +84,6 @@ export default function Home() {
         overflowY: "hidden",
       }}
       pos="relative"
-      data-scroll-container
     >
       <Head>
         <title>Exquisite Wood Floors</title>
