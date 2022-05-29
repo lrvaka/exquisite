@@ -17,6 +17,9 @@ import Marquee from "react-fast-marquee"
 import SlideShowSection from "../components/SlideshowSection"
 import { SectionHeading, SectionParagraph } from "../components/SectionText"
 import ContactSection from "../components/ContactSection"
+import Parallax from "../components/Parallax"
+import HeroSection from "../components/HeroSection"
+import AboutUsSection from "../components/AboutUsSection"
 
 const grainAnimation = keyframes`
   0%, 100% { transform:translate(0, 0); }
@@ -33,53 +36,6 @@ const grainAnimation = keyframes`
 
 const animation = `${grainAnimation} 8s steps(10) infinite`
 
-const HeroTitle = () => (
-  <Box
-    top="50%"
-    left="50%"
-    width="90vw"
-    transform="translate(-50%,-50%)"
-    textAlign="center"
-    pos="absolute"
-  >
-    <Heading
-      display="inline-block"
-      as="h1"
-      color="brand.100"
-      fontSize="3.5rem"
-      fontWeight="900"
-      lineHeight="100%"
-    >
-      We make living spaces Exquisite
-    </Heading>
-  </Box>
-)
-
-const HeroSection = () => (
-  <Box pos="relative">
-    <HeroTitle />
-
-    <Grid
-      minH="97.5vh"
-      templateRows="repeat(15, 1fr)"
-      templateColumns="repeat(15, 1fr)"
-    >
-      <Box
-        w="100%"
-        h="100%"
-        pos="relative"
-        gridRow="11 / 15"
-        gridColumn="5 / 16"
-      >
-        <NextImage src="/images/hero-1.webp" layout="fill" objectFit="cover" />
-      </Box>
-      <Box w="100%" h="100%" pos="relative" gridRow=" 3 / 5" gridColumn="2 / 9">
-        <NextImage src="/images/hero-2.jpg" layout="fill" objectFit="cover" />
-      </Box>
-    </Grid>
-  </Box>
-)
-
 const MarqueeSection = () => (
   <Marquee gradient={false}>
     <Heading
@@ -88,67 +44,11 @@ const MarqueeSection = () => (
       fontSize="5rem"
       mr="3rem"
       opacity="0.25"
+      overflowY="hidden"
     >
       EXQUISITE WOOD FLOORS
     </Heading>
   </Marquee>
-)
-
-const AboutUsSection = () => (
-  <>
-    <Box px="4" py="20">
-      <SectionHeading pb="10">
-        Accomplished <br /> flooring expertise
-      </SectionHeading>
-      <Flex flexDir="column" maxW="80vw">
-        <SectionParagraph pb="9">
-          Whether you're an architect, designer, developer or flooring
-          contractor, Exquisite Wood Floors offers you a solution designed to
-          perfectly match the style, requirements and budget of your project.
-        </SectionParagraph>
-        <SectionParagraph pb="8">
-          Every member of the Exquisite Wood Floors team is a wooden floor
-          expert with extensive knowledge of their sector and years of flooring
-          experience, delivering projects across all markets to the highest of
-          standards, ensuring unique, durable floors of quality.
-        </SectionParagraph>
-        <Flex
-          as="button"
-          textAlign="left"
-          fontWeight="700"
-          color="brand.200"
-          gap="4"
-          w="max-content"
-        >
-          <Box>Connect with us</Box>
-          <Box alignSelf="center">
-            <SVGArrow />
-          </Box>
-        </Flex>
-      </Flex>
-    </Box>
-    <Grid
-      minH="300px"
-      templateRows="repeat(4, 1fr)"
-      templateColumns="repeat(25, 1fr)"
-    >
-      <Box
-        w="100%"
-        h="100%"
-        pos="relative"
-        gridRow="4 / 5"
-        gridColumn="20 / 26"
-      >
-        <NextImage src="/images/about-1.png" layout="fill" objectFit="cover" />
-      </Box>
-      <Box w="100%" h="100%" pos="relative" gridRow="1 / 5" gridColumn="8 / 19">
-        <NextImage src="/images/about-2.png" layout="fill" objectFit="cover" />
-      </Box>
-      <Box w="100%" h="100%" pos="relative" gridRow="1 / 2" gridColumn="1 / 7">
-        <NextImage src="/images/about.png" layout="fill" objectFit="cover" />
-      </Box>
-    </Grid>
-  </>
 )
 
 const MessageSection = () => (
@@ -170,7 +70,6 @@ const MessageSection = () => (
 export default function Home() {
   return (
     <Box
-      overflowX="hidden"
       _before={{
         animation: animation,
         backgroundImage: "url(/images/noise.png)",
@@ -181,8 +80,11 @@ export default function Home() {
         position: "fixed",
         top: "-110%",
         width: "300%",
+        zIndex: "-10",
+        overflowY: "hidden",
       }}
       pos="relative"
+      data-scroll-container
     >
       <Head>
         <title>Exquisite Wood Floors</title>

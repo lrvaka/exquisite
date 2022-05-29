@@ -6,20 +6,34 @@ import { motion, isValidMotionProp } from "framer-motion"
 import { SectionHeading, SectionParagraph } from "./SectionText"
 import slides from "./slides"
 import NextImage from "next/image"
+import { AnimatedHeading } from "./SectionText"
+import ChakraBox from "./ChakraBox"
 
-const ChakraBox = chakra(motion.div, {
-  /**
-   * Allow motion props and the children prop to be forwarded.
-   * All other chakra props not matching the motion props will still be forwarded.
-   */
-  shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
-})
+const variants = {
+  initial: {
+    y: 25,
+    scale: 0.99,
+    opacity: 0,
+    clipPath: "inset(100% 0 0 0)",
+  },
+  animate: {
+    y: 0,
+    scale: 1,
+    opacity: 1,
+    clipPath: "inset(0% 0% 0% 0%)",
+    transition: {
+      clipPath: { type: "spring", damping: 50 },
+      duration: 1,
+    },
+  },
+}
 
 const animation = { duration: 22000, easing: (t) => t }
 
 const SlideShowSection = () => {
   const [sliderRef] = useKeenSlider({
     loop: true,
+    renderMode: "performance",
     mode: "free",
     created(s) {
       s.moveToIdx(11, true, animation)
@@ -37,19 +51,31 @@ const SlideShowSection = () => {
   })
   return (
     <Box bgColor="brand.500" pos="relative">
-      <Box ref={sliderRef} className="keen-slider">
+      <ChakraBox
+        variants={variants}
+        viewport={{ once: true }}
+        initial="initial"
+        whileInView="animate"
+        overflow="hidden"
+        pos="relative"
+        ref={sliderRef}
+        className="keen-slider"
+        boxShadow="inset 0px 0px 102px -18px #000000"
+      >
         {slides.map((slide) => (
           <Box className="keen-slider__slide" key={slide} h="15rem">
             <NextImage layout="fill" objectFit="cover" src={slide} />
           </Box>
         ))}
-      </Box>
+      </ChakraBox>
 
       <Box px="4" py="20">
-        <SectionHeading pb="10">
-          Fitting floors for residential, commercial, development, hospitality &
-          domestic projects
-        </SectionHeading>
+        <Box as="h2" pb="10">
+          <AnimatedHeading custom={0} title="Fitting&nbsp;floors&nbsp;for" />
+          <AnimatedHeading custom={0} title="residential,&nbsp;commercial," />
+          <AnimatedHeading custom={0} title="development,&nbsp;hospitality" />
+          <AnimatedHeading custom={0} title="&&nbsp;domestic&nbsp;projects" />
+        </Box>
         <Flex flexDir="column" maxW="80vw">
           <SectionParagraph pb="9">
             We are proud of the work we do, and our clients are more than
