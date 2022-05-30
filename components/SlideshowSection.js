@@ -66,7 +66,7 @@ const SlideShowSection = (props) => {
 
     console.log(albumPosts)
     console.log(carouselPosts)
-  }, [])
+  }, [carouselPosts, props.posts])
 
   const [sliderRef] = useKeenSlider({
     loop: true,
