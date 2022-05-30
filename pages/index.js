@@ -67,7 +67,7 @@ const MessageSection = () => (
   </Flex>
 )
 
-export default function Home() {
+export default function Home(props) {
   return (
     <Box
       _before={{
@@ -95,7 +95,7 @@ export default function Home() {
       <MarqueeSection />
       <AboutUsSection />
       <MessageSection />
-      <SlideShowSection />
+      <SlideShowSection posts={props.posts} />
       <ContactSection />
     </Box>
   )
@@ -104,13 +104,13 @@ export default function Home() {
 export async function getStaticProps() {
   // fetch data from an API
   const res = await fetch(
-    "https://graph.instagram.com/me/media?fields=id,caption&access_token=***REMOVED***"
+    "https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url&access_token=***REMOVED***"
   )
-  console.log(res)
+
   const posts = await res.json()
-  console.log(posts)
+
   return {
-    props: {},
+    props: { posts: posts },
     revalidate: 1,
   }
 }

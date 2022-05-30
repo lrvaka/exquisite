@@ -32,6 +32,42 @@ const variants = {
 const animation = { duration: 22000, easing: (t) => t }
 
 const SlideShowSection = (props) => {
+  const [carouselPosts, setCarouselPosts] = useState([])
+  const [isFetched, setIsFetched] = useState(false)
+
+  useEffect(() => {
+    console.log(props.posts)
+
+    const albumPosts = props.posts.data.filter(
+      (e) => e.media_type === "CAROUSEL_ALBUM"
+    )
+
+    async function fetchAlbums() {
+      await Promise.all(
+        albumPosts.map(async (item) => {
+          try {
+            console.log(item.id)
+            const res = await fetch(
+              `https://graph.instagram.com/${item.id}/children?fields=id,media_url&access_token=***REMOVED***`
+            )
+            const carouselPost = await res.json()
+            console.log(carouselPost)
+
+            setCarouselPosts([...carouselPosts, carouselPost])
+          } catch (err) {
+            console.log(err)
+          }
+        })
+      )
+      setIsFetched(true)
+    }
+
+    fetchAlbums()
+
+    console.log(albumPosts)
+    console.log(carouselPosts)
+  }, [])
+
   const [sliderRef] = useKeenSlider({
     loop: true,
     renderMode: "performance",
@@ -63,11 +99,19 @@ const SlideShowSection = (props) => {
         ref={sliderRef}
         className="keen-slider"
       >
-        {slides.map((slide) => (
-          <Box className="keen-slider__slide" key={slide} h="15rem">
-            <NextImage layout="fill" objectFit="cover" src={slide} />
-          </Box>
-        ))}
+        {isFetched
+          ? carouselPosts.map((e) =>
+              e.data.map((slide) => (
+                <Box className="keen-slider__slide" key={slide.id} h="15rem">
+                  <NextImage
+                    layout="fill"
+                    objectFit="cover"
+                    src={`/api/imageProxy?imageUrl=${slide.media_url}`}
+                  />
+                </Box>
+              ))
+            )
+          : null}
       </ChakraBox>
 
       <Box px="4" py="20">
