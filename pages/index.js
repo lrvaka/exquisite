@@ -100,3 +100,17 @@ export default function Home() {
     </Box>
   )
 }
+
+export async function getStaticProps() {
+  // fetch data from an API
+  const res = await fetch(
+    "https://graph.instagram.com/me/media?fields=id,caption&access_token=***REMOVED***"
+  )
+  console.log(res)
+  const posts = await res.json()
+  console.log(posts)
+  return {
+    props: {},
+    revalidate: 1,
+  }
+}

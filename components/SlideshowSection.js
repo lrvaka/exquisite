@@ -8,6 +8,7 @@ import slides from "./slides"
 import NextImage from "next/image"
 import { AnimatedHeading } from "./SectionText"
 import ChakraBox from "./ChakraBox"
+import BackdropExample from "./SlideModal"
 
 const variants = {
   initial: {
@@ -30,7 +31,7 @@ const variants = {
 
 const animation = { duration: 22000, easing: (t) => t }
 
-const SlideShowSection = () => {
+const SlideShowSection = (props) => {
   const [sliderRef] = useKeenSlider({
     loop: true,
     renderMode: "performance",
@@ -51,6 +52,7 @@ const SlideShowSection = () => {
   })
   return (
     <Box bgColor="brand.500" pos="relative">
+      <BackdropExample />
       <ChakraBox
         variants={variants}
         viewport={{ once: true }}
