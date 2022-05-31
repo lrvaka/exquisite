@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+
 import { Box } from "@chakra-ui/react"
 import { forwardRef } from "react"
 

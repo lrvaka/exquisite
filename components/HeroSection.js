@@ -109,10 +109,9 @@ const HeroSection = () => {
     // Target any descendant with the class of .box - no matter how far down the descendant tree. Uses el.current.querySelectorAll() internally
     gsap.fromTo(
       q("#parallax-box"),
-      { autoAlpha: 0, clipPath: "inset(100% 0 0 0)" },
+      { clipPath: "inset(100% 0% 0% 0%)" },
       {
-        autoAlpha: 1,
-        clipPath: "inset(0% 0 0 0)",
+        clipPath: "inset(0% 0% 0% 0%)",
         duration: 2,
         stagger: 2,
       }
