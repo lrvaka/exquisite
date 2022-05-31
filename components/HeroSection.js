@@ -133,8 +133,9 @@ const HeroSection = () => {
         templateRows="repeat(15, 1fr)"
         templateColumns="repeat(15, 1fr)"
       >
-        <ParallaxBox
+        <Box
           id="parallax-box"
+          data-speed="2"
           w="100%"
           h="100%"
           pos="relative"
@@ -142,8 +143,9 @@ const HeroSection = () => {
           gridColumn={["2 / 9", "2 / 6"]}
         >
           <NextImage src="/images/hero-2.jpg" layout="fill" objectFit="cover" />
-        </ParallaxBox>
-        <ParallaxBox
+        </Box>
+        <Box
+          data-speed="0"
           id="parallax-box"
           w="100%"
           h="100%"
@@ -156,7 +158,7 @@ const HeroSection = () => {
             layout="fill"
             objectFit="cover"
           />
-        </ParallaxBox>
+        </Box>
 
         {/* <Parallax
         w="100%"
