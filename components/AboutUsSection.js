@@ -4,6 +4,8 @@ import { Box, Flex, Grid, Container } from "@chakra-ui/react"
 import SVGArrow from "./SVGArrow"
 import Parallax from "./Parallax"
 import ChakraBox from "./ChakraBox"
+import { useContext } from "react"
+import ScrollerContext from "../store/gsap-context"
 import { AnimatedHeading } from "../components/SectionText"
 
 const images = {
@@ -21,147 +23,163 @@ const images = {
   }),
 }
 
-const AboutUsSection = () => (
-  <>
-    <Container maxW="container.xl" px="4" py="20" pb={["20", "20", "20", "40"]}>
-      <Box as="h2" pb="10">
-        <AnimatedHeading custom={0} title="Accomplished" />
-        <AnimatedHeading custom={0} title="flooring &nbsp; expertise" />
-      </Box>
-      <Flex
-        w="100%"
-        pb="8"
-        gap={["0", "0", "0", "24"]}
-        flexDir={["column", "column", "column", "row"]}
-        maxW={["80vw", "80vw", "80vw", "none"]}
+const AboutUsSection = () => {
+  const { smoother } = useContext(ScrollerContext)
+  return (
+    <>
+      <Container
+        maxW="container.xl"
+        px="4"
+        py="20"
+        pb={["20", "20", "20", "40"]}
       >
-        <SectionParagraph pb="9" w={["100%", "100%", "100%", "50%"]}>
-          Whether you&apos;re an architect, designer, developer or flooring
-          contractor, Exquisite Wood Floors offers you a solution designed to
-          perfectly match the style, requirements and budget of your project.
-        </SectionParagraph>
-        <SectionParagraph w={["100%", "100%", "100%", "50%"]}>
-          Every member of the Exquisite Wood Floors team is a wooden floor
-          expert with extensive knowledge of their sector and years of flooring
-          experience, delivering projects across all markets to the highest of
-          standards, ensuring unique, durable floors of quality.
-        </SectionParagraph>
-      </Flex>
-      <Flex
-        as="button"
-        textAlign="left"
-        fontWeight="700"
-        color="brand.200"
-        w="max-content"
-      >
-        <Flex as="a" href="#contact" gap="4">
-          <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>
-            Connect with us
-          </Box>
-          <Box alignSelf="center">
-            <SVGArrow fill="#cdcda6" />
-          </Box>
+        <Box as="h2" pb="10">
+          <AnimatedHeading custom={0} title="Accomplished" />
+          <AnimatedHeading custom={0} title="flooring &nbsp; expertise" />
+        </Box>
+        <Flex
+          w="100%"
+          pb="8"
+          gap={["0", "0", "0", "24"]}
+          flexDir={["column", "column", "column", "row"]}
+          maxW={["80vw", "80vw", "80vw", "none"]}
+        >
+          <SectionParagraph pb="9" w={["100%", "100%", "100%", "50%"]}>
+            Whether you&apos;re an architect, designer, developer or flooring
+            contractor, Exquisite Wood Floors offers you a solution designed to
+            perfectly match the style, requirements and budget of your project.
+          </SectionParagraph>
+          <SectionParagraph w={["100%", "100%", "100%", "50%"]}>
+            Every member of the Exquisite Wood Floors team is a wooden floor
+            expert with extensive knowledge of their sector and years of
+            flooring experience, delivering projects across all markets to the
+            highest of standards, ensuring unique, durable floors of quality.
+          </SectionParagraph>
         </Flex>
-      </Flex>
-    </Container>
-    <Grid
-      minH={["300px", "400px", "500px", "800px"]}
-      templateRows="repeat(4, 1fr)"
-      templateColumns="repeat(25, 1fr)"
-      maxW="1440px"
-      m="0 auto"
-    >
-      <ChakraBox
-        variants={images}
-        custom={0}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        w="100%"
-        h="100%"
-        pos="relative"
-        gridRow={["4 / 5", "4 / 5", "4 / 5", "3 / 5"]}
-        gridColumn="20 / 26"
-        overflow="hidden"
-        boxShadow="inset 0px 0px 42px -18px #000000"
+        <Flex
+          as="button"
+          textAlign="left"
+          fontWeight="700"
+          color="brand.200"
+          w="max-content"
+        >
+          {smoother ? (
+            <Flex
+              as="button"
+              onClick={() => {
+                smoother.scrollTo("#contact", true, "center center")
+              }}
+              gap="4"
+            >
+              <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>
+                Connect with us
+              </Box>
+              <Box alignSelf="center">
+                <SVGArrow fill="#cdcda6" />
+              </Box>
+            </Flex>
+          ) : null}
+        </Flex>
+      </Container>
+      <Grid
+        minH={["300px", "400px", "500px", "800px"]}
+        templateRows="repeat(4, 1fr)"
+        templateColumns="repeat(25, 1fr)"
+        maxW="1440px"
+        m="0 auto"
       >
-        <Parallax
-          pos="absolute"
-          zIndex="-1"
+        <ChakraBox
+          variants={images}
+          custom={0}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
           w="100%"
           h="100%"
-          offset={25}
-          growth={2}
+          pos="relative"
+          gridRow={["4 / 5", "4 / 5", "4 / 5", "3 / 5"]}
+          gridColumn="20 / 26"
+          overflow="hidden"
+          boxShadow="inset 0px 0px 42px -18px #000000"
         >
-          <NextImage
-            src="/images/about-1.png"
-            layout="fill"
-            objectPosition="right top"
-          />
-        </Parallax>
-      </ChakraBox>
-      <ChakraBox
-        variants={images}
-        custom={1}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        w="100%"
-        h="100%"
-        pos="relative"
-        gridRow="1 / 5"
-        gridColumn="8 / 19"
-        overflow="hidden"
-        boxShadow="inset 0px 0px 42px -18px #000000"
-      >
-        <Parallax
-          pos="absolute"
-          zIndex="-1"
+          <Parallax
+            pos="absolute"
+            zIndex="-1"
+            w="100%"
+            h="100%"
+            offset={25}
+            growth={2}
+          >
+            <NextImage
+              src="/images/about-1.png"
+              layout="fill"
+              objectPosition="right top"
+            />
+          </Parallax>
+        </ChakraBox>
+        <ChakraBox
+          variants={images}
+          custom={1}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
           w="100%"
           h="100%"
-          offset={25}
-          growth={2}
+          pos="relative"
+          gridRow="1 / 5"
+          gridColumn="8 / 19"
+          overflow="hidden"
+          boxShadow="inset 0px 0px 42px -18px #000000"
         >
-          <NextImage
-            src="/images/about-2.jpg"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="60% %"
-          />
-        </Parallax>
-      </ChakraBox>
-      <ChakraBox
-        variants={images}
-        custom={2}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        w="100%"
-        h="100%"
-        pos="relative"
-        gridRow={["1 / 2", "1 / 2", "1 / 2", "1 / 3"]}
-        gridColumn="1 / 7"
-        overflow="hidden"
-        boxShadow="inset 0px 0px 42px -18px #000000"
-      >
-        <Parallax
-          pos="absolute"
+          <Parallax
+            pos="absolute"
+            zIndex="-1"
+            w="100%"
+            h="100%"
+            offset={25}
+            growth={2}
+          >
+            <NextImage
+              src="/images/about-2.jpg"
+              layout="fill"
+              objectFit="cover"
+              objectPosition="60% %"
+            />
+          </Parallax>
+        </ChakraBox>
+        <ChakraBox
+          variants={images}
+          custom={2}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
           w="100%"
           h="100%"
-          zIndex="-1"
-          offset={25}
-          growth={2}
+          pos="relative"
+          gridRow={["1 / 2", "1 / 2", "1 / 2", "1 / 3"]}
+          gridColumn="1 / 7"
+          overflow="hidden"
+          boxShadow="inset 0px 0px 42px -18px #000000"
         >
-          <NextImage
-            src="/images/about.jpg"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="right top"
-          />
-        </Parallax>
-      </ChakraBox>
-    </Grid>
-  </>
-)
+          <Parallax
+            pos="absolute"
+            w="100%"
+            h="100%"
+            zIndex="-1"
+            offset={25}
+            growth={2}
+          >
+            <NextImage
+              src="/images/about.jpg"
+              layout="fill"
+              objectFit="cover"
+              objectPosition="right top"
+            />
+          </Parallax>
+        </ChakraBox>
+      </Grid>
+    </>
+  )
+}
 
 export default AboutUsSection
