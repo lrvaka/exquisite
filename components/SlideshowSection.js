@@ -1,7 +1,7 @@
 import { Flex, Box, Heading, chakra, Container } from "@chakra-ui/react"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, useContext } from "react"
 import { motion, isValidMotionProp } from "framer-motion"
 import { SectionHeading, SectionParagraph } from "./SectionText"
 import slides from "./slides"
@@ -9,6 +9,7 @@ import NextImage from "next/image"
 import { AnimatedHeading } from "./SectionText"
 import ChakraBox from "./ChakraBox"
 import ImageModal from "./SlideModal"
+import ScrollerContext from "../store/gsap-context"
 
 const variants = {
   initial: {
@@ -32,6 +33,15 @@ const variants = {
 const animation = { duration: 20000, easing: (t) => t }
 
 const SlideShowSection = (props) => {
+  const { smoother } = useContext(ScrollerContext)
+
+  useEffect(() => {
+    if (smoother) {
+    console.log(smoother)
+      // smoother.onUpdate((self) => console.log("velocity:", self.getVelocity()))
+    }
+  }, [smoother])
+
   const [sliderRef] = useKeenSlider({
     loop: true,
     renderMode: "performance",
@@ -96,7 +106,11 @@ const SlideShowSection = (props) => {
                 title="&&nbsp;domestic&nbsp;projects"
               />
             </Box>
-            <Flex pr={["none", "none", "none", "50px"]} flexDir="column" maxW={["80vw", "80vw", "80vw"]}>
+            <Flex
+              pr={["none", "none", "none", "50px"]}
+              flexDir="column"
+              maxW={["80vw", "80vw", "80vw"]}
+            >
               <SectionParagraph pb="9">
                 We are proud of the work we do, and our clients are more than
                 delighted. We owe our success to our deep knowledge base of wood

@@ -63,23 +63,17 @@ const AboutUsSection = () => {
           fontWeight="700"
           color="brand.200"
           w="max-content"
+          onClick={() => {
+            smoother.scrollTo("#contact", true, "center center")
+          }}
+          gap="4"
         >
-          {smoother ? (
-            <Flex
-              as="button"
-              onClick={() => {
-                smoother.scrollTo("#contact", true, "center center")
-              }}
-              gap="4"
-            >
-              <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>
-                Connect with us
-              </Box>
-              <Box alignSelf="center">
-                <SVGArrow fill="#cdcda6" />
-              </Box>
-            </Flex>
-          ) : null}
+          <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>
+            Connect with us
+          </Box>
+          <Box alignSelf="center">
+            <SVGArrow fill="#cdcda6" />
+          </Box>
         </Flex>
       </Container>
       <Grid
@@ -103,7 +97,14 @@ const AboutUsSection = () => {
           overflow="hidden"
           boxShadow="inset 0px 0px 42px -18px #000000"
         >
-          <Box data-speed="auto" pos="absolute" zIndex="-1" w="100%" h="160%" id="parallax-image">
+          <Box
+            data-speed="auto"
+            pos="absolute"
+            zIndex="-1"
+            w="100%"
+            h="160%"
+            id="parallax-image"
+          >
             <NextImage src="/images/about-1.png" layout="fill" />
           </Box>
           {/* <Parallax
@@ -135,7 +136,14 @@ const AboutUsSection = () => {
           overflow="hidden"
           boxShadow="inset 0px 0px 42px -18px #000000"
         >
-          <Box data-speed="auto" pos="absolute" zIndex="-1" w="100%" h="160%" id="parallax-image">
+          <Box
+            data-speed="auto"
+            pos="absolute"
+            zIndex="-1"
+            w="100%"
+            h="160%"
+            id="parallax-image"
+          >
             <NextImage
               src="/images/about-2.jpg"
               layout="fill"
@@ -172,7 +180,14 @@ const AboutUsSection = () => {
           overflow="hidden"
           boxShadow="inset 0px 0px 42px -18px #000000"
         >
-          <Box data-speed="auto" pos="absolute" w="100%" h="160%" zIndex="-1" id="parallax-image">
+          <Box
+            data-speed="auto"
+            pos="absolute"
+            w="100%"
+            h="160%"
+            zIndex="-1"
+            id="parallax-image"
+          >
             <NextImage
               src="/images/about.jpg"
               layout="fill"
