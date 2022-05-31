@@ -3,6 +3,9 @@ import NextImage from "next/image"
 import { motion } from "framer-motion"
 import ChakraBox from "./ChakraBox"
 import Parallax from "./Parallax"
+import ParallaxBox from "./ParallaxBox"
+import { useRef, useEffect } from "react"
+import gsap from "gsap"
 
 const images = {
   initial: { y: 25, scale: 0.75, opacity: 0, clipPath: "inset(100% 0 0 0)" },
@@ -62,7 +65,7 @@ const AnimatedLetters = ({ title, custom = 0, ...props }) => (
         key={i}
         as={motion.span}
         color="brand.100"
-        fontSize={["3.5rem", "5rem", "6rem" ]}
+        fontSize={["3.5rem", "5rem", "6rem"]}
         fontWeight="900"
         lineHeight="100%"
         variants={letterAni}
@@ -98,16 +101,60 @@ const HeroTitle = () => (
   </Box>
 )
 
-const HeroSection = () => (
-  <Box pos="relative">
-    <HeroTitle />
+const HeroSection = () => {
+  const el = useRef()
+  const q = gsap.utils.selector(el)
 
-    <Grid
-      minH="97.5vh"
-      templateRows="repeat(15, 1fr)"
-      templateColumns="repeat(15, 1fr)"
-    >
-      <Parallax
+  useEffect(() => {
+    // Target any descendant with the class of .box - no matter how far down the descendant tree. Uses el.current.querySelectorAll() internally
+    gsap.fromTo(
+      q("#parallax-box"),
+      { autoAlpha: 0, clipPath: "inset(100% 0 0 0)" },
+      {
+        autoAlpha: 1,
+        clipPath: "inset(0% 0 0 0)",
+        duration: 2,
+        stagger: 2,
+      }
+    )
+  }, [])
+
+  return (
+    <Box pos="relative">
+      <HeroTitle />
+
+      <Grid
+        ref={el}
+        minH="97.5vh"
+        templateRows="repeat(15, 1fr)"
+        templateColumns="repeat(15, 1fr)"
+      >
+        <ParallaxBox
+          id="parallax-box"
+          w="100%"
+          h="100%"
+          pos="relative"
+          gridRow={["4 / 6", "4 / 7"]}
+          gridColumn={["2 / 9", "2 / 6"]}
+        >
+          <NextImage src="/images/hero-2.jpg" layout="fill" objectFit="cover" />
+        </ParallaxBox>
+        <ParallaxBox
+          id="parallax-box"
+          w="100%"
+          h="100%"
+          pos="relative"
+          gridRow={["11 / 15", "10 / 15"]}
+          gridColumn={["5 / 16", "11 / 16"]}
+        >
+          <NextImage
+            src="/images/hero-1.webp"
+            layout="fill"
+            objectFit="cover"
+          />
+        </ParallaxBox>
+
+        {/* <Parallax
         w="100%"
         h="100%"
         pos="relative"
@@ -134,9 +181,10 @@ const HeroSection = () => (
         offset={75}
       >
         <NextImage src="/images/hero-2.jpg" layout="fill" objectFit="cover" />
-      </Parallax>
-    </Grid>
-  </Box>
-)
+      </Parallax> */}
+      </Grid>
+    </Box>
+  )
+}
 
 export default HeroSection
