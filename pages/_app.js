@@ -12,7 +12,7 @@ if (typeof window !== "undefined") {
 }
 
 function MyApp({ Component, pageProps }) {
-  const [smoother, setSmoother] = useState()
+  const [smoother, setSmoother] = useState(null)
 
   useEffect(() => {
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger)

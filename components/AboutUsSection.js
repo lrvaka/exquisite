@@ -4,7 +4,7 @@ import { Box, Flex, Grid, Container } from "@chakra-ui/react"
 import SVGArrow from "./SVGArrow"
 import Parallax from "./Parallax"
 import ChakraBox from "./ChakraBox"
-import { useContext } from "react"
+import { useContext, useEffect, useLayoutEffect } from "react"
 import ScrollerContext from "../store/gsap-context"
 import { AnimatedHeading } from "../components/SectionText"
 
@@ -25,6 +25,7 @@ const images = {
 
 const AboutUsSection = () => {
   const { smoother } = useContext(ScrollerContext)
+
   return (
     <>
       <Container
@@ -102,7 +103,10 @@ const AboutUsSection = () => {
           overflow="hidden"
           boxShadow="inset 0px 0px 42px -18px #000000"
         >
-          <Parallax
+          <Box data-speed="auto" pos="absolute" zIndex="-1" w="100%" h="160%" id="parallax-image">
+            <NextImage src="/images/about-1.png" layout="fill" />
+          </Box>
+          {/* <Parallax
             pos="absolute"
             zIndex="-1"
             w="100%"
@@ -115,7 +119,7 @@ const AboutUsSection = () => {
               layout="fill"
               objectPosition="right top"
             />
-          </Parallax>
+          </Parallax> */}
         </ChakraBox>
         <ChakraBox
           variants={images}
@@ -131,7 +135,14 @@ const AboutUsSection = () => {
           overflow="hidden"
           boxShadow="inset 0px 0px 42px -18px #000000"
         >
-          <Parallax
+          <Box data-speed="auto" pos="absolute" zIndex="-1" w="100%" h="160%" id="parallax-image">
+            <NextImage
+              src="/images/about-2.jpg"
+              layout="fill"
+              objectFit="cover"
+            />
+          </Box>
+          {/* <Parallax
             pos="absolute"
             zIndex="-1"
             w="100%"
@@ -145,7 +156,7 @@ const AboutUsSection = () => {
               objectFit="cover"
               objectPosition="60% %"
             />
-          </Parallax>
+          </Parallax> */}
         </ChakraBox>
         <ChakraBox
           variants={images}
@@ -161,7 +172,14 @@ const AboutUsSection = () => {
           overflow="hidden"
           boxShadow="inset 0px 0px 42px -18px #000000"
         >
-          <Parallax
+          <Box data-speed="auto" pos="absolute" w="100%" h="160%" zIndex="-1" id="parallax-image">
+            <NextImage
+              src="/images/about.jpg"
+              layout="fill"
+              objectFit="cover"
+            />
+          </Box>
+          {/* <Parallax
             pos="absolute"
             w="100%"
             h="100%"
@@ -175,7 +193,7 @@ const AboutUsSection = () => {
               objectFit="cover"
               objectPosition="right top"
             />
-          </Parallax>
+          </Parallax> */}
         </ChakraBox>
       </Grid>
     </>
