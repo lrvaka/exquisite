@@ -1,5 +1,5 @@
 import { createContext } from "react"
 
-const ScrollerContext = createContext()
+const ScrollerContext = createContext({})
 
 export default ScrollerContext
