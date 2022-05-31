@@ -96,7 +96,7 @@ const SlideShowSection = (props) => {
                 title="&&nbsp;domestic&nbsp;projects"
               />
             </Box>
-            <Flex flexDir="column" maxW="80vw">
+            <Flex pr={["none", "none", "none", "50px"]} flexDir="column" maxW={["80vw", "80vw", "80vw"]}>
               <SectionParagraph pb="9">
                 We are proud of the work we do, and our clients are more than
                 delighted. We owe our success to our deep knowledge base of wood

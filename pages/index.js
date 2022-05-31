@@ -57,6 +57,7 @@ const MessageSection = () => <MessageSectionAnimation />
 export default function Home(props) {
   return (
     <Box
+      id="smooth-content"
       _before={{
         animation: animation,
         backgroundImage: "url(/images/noise.png)",
