@@ -8,11 +8,12 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
-  Text
+  Text,
+  Box,
 } from "@chakra-ui/react"
 import { useState } from "react"
 
-export default function BackdropExample() {
+export default function ImageModal({ children, title }) {
   const OverlayOne = () => (
     <ModalOverlay
       bg="blackAlpha.300"
@@ -34,30 +35,22 @@ export default function BackdropExample() {
 
   return (
     <>
-      <Button
-        onClick={() => {
-          setOverlay(<OverlayOne />)
-          onOpen()
-        }}
-      >
-        Use Overlay one
-      </Button>
-      <Button
-        ml="4"
+      <Box
+        as="button"
         onClick={() => {
           setOverlay(<OverlayTwo />)
           onOpen()
         }}
       >
-        Use Overlay two
-      </Button>
-      <Modal isCentered isOpen={isOpen} onClose={onClose}>
+        {children}
+      </Box>
+      <Modal size="full" isCentered isOpen={isOpen} onClose={onClose}>
         {overlay}
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>Custom backdrop filters!</Text>
+            <Text>{title}</Text>
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>

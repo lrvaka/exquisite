@@ -1,6 +1,6 @@
 import NextImage from "next/image"
 import { SectionParagraph } from "../components/SectionText"
-import { Box, Flex, Grid } from "@chakra-ui/react"
+import { Box, Flex, Grid, Container } from "@chakra-ui/react"
 import SVGArrow from "./SVGArrow"
 import Parallax from "./Parallax"
 import ChakraBox from "./ChakraBox"
@@ -23,43 +23,53 @@ const images = {
 
 const AboutUsSection = () => (
   <>
-    <Box px="4" py="20">
+    <Container maxW="container.xl" px="4" py="20" pb={["20", "20", "20", "40"]}>
       <Box as="h2" pb="10">
         <AnimatedHeading custom={0} title="Accomplished" />
         <AnimatedHeading custom={0} title="flooring &nbsp; expertise" />
       </Box>
-      <Flex flexDir="column" maxW="80vw">
-        <SectionParagraph pb="9">
+      <Flex
+        w="100%"
+        pb="8"
+        gap={["0", "0", "0", "24"]}
+        flexDir={["column", "column", "column", "row"]}
+        maxW={["80vw", "80vw", "80vw", "none"]}
+      >
+        <SectionParagraph pb="9" w={["100%", "100%", "100%", "50%"]}>
           Whether you&apos;re an architect, designer, developer or flooring
           contractor, Exquisite Wood Floors offers you a solution designed to
           perfectly match the style, requirements and budget of your project.
         </SectionParagraph>
-        <SectionParagraph pb="8">
+        <SectionParagraph w={["100%", "100%", "100%", "50%"]}>
           Every member of the Exquisite Wood Floors team is a wooden floor
           expert with extensive knowledge of their sector and years of flooring
           experience, delivering projects across all markets to the highest of
           standards, ensuring unique, durable floors of quality.
         </SectionParagraph>
-        <Flex
-          as="button"
-          textAlign="left"
-          fontWeight="700"
-          color="brand.200"
-          w="max-content"
-        >
-          <Flex as="a" href="#contact" gap="4">
-            <Box>Connect with us</Box>
-            <Box alignSelf="center">
-              <SVGArrow fill="#cdcda6" />
-            </Box>
-          </Flex>
+      </Flex>
+      <Flex
+        as="button"
+        textAlign="left"
+        fontWeight="700"
+        color="brand.200"
+        w="max-content"
+      >
+        <Flex as="a" href="#contact" gap="4">
+          <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>
+            Connect with us
+          </Box>
+          <Box alignSelf="center">
+            <SVGArrow fill="#cdcda6" />
+          </Box>
         </Flex>
       </Flex>
-    </Box>
+    </Container>
     <Grid
-      minH="300px"
+      minH={["300px", "400px", "500px", "800px"]}
       templateRows="repeat(4, 1fr)"
       templateColumns="repeat(25, 1fr)"
+      maxW="1440px"
+      m="0 auto"
     >
       <ChakraBox
         variants={images}
@@ -70,7 +80,7 @@ const AboutUsSection = () => (
         w="100%"
         h="100%"
         pos="relative"
-        gridRow="4 / 5"
+        gridRow={["4 / 5", "4 / 5", "4 / 5", "3 / 5"]}
         gridColumn="20 / 26"
         overflow="hidden"
         boxShadow="inset 0px 0px 42px -18px #000000"
@@ -83,7 +93,11 @@ const AboutUsSection = () => (
           offset={25}
           growth={2}
         >
-          <NextImage src="/images/about-1.png" layout="fill" />
+          <NextImage
+            src="/images/about-1.png"
+            layout="fill"
+            objectPosition="right top"
+          />
         </Parallax>
       </ChakraBox>
       <ChakraBox
@@ -109,10 +123,10 @@ const AboutUsSection = () => (
           growth={2}
         >
           <NextImage
-            src="/images/about-2.png"
+            src="/images/about-2.jpg"
             layout="fill"
             objectFit="cover"
-            objectPosition="5% 50%"
+            objectPosition="60% %"
           />
         </Parallax>
       </ChakraBox>
@@ -125,7 +139,7 @@ const AboutUsSection = () => (
         w="100%"
         h="100%"
         pos="relative"
-        gridRow="1 / 2"
+        gridRow={["1 / 2", "1 / 2", "1 / 2", "1 / 3"]}
         gridColumn="1 / 7"
         overflow="hidden"
         boxShadow="inset 0px 0px 42px -18px #000000"
@@ -138,7 +152,12 @@ const AboutUsSection = () => (
           offset={25}
           growth={2}
         >
-          <NextImage src="/images/about.png" layout="fill" objectFit="cover" />
+          <NextImage
+            src="/images/about.jpg"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="right top"
+          />
         </Parallax>
       </ChakraBox>
     </Grid>

@@ -1,4 +1,4 @@
-import { Flex, Box, Heading, chakra } from "@chakra-ui/react"
+import { Flex, Box, Heading, chakra, Container } from "@chakra-ui/react"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { useRef, useEffect, useState } from "react"
@@ -8,7 +8,7 @@ import slides from "./slides"
 import NextImage from "next/image"
 import { AnimatedHeading } from "./SectionText"
 import ChakraBox from "./ChakraBox"
-import BackdropExample from "./SlideModal"
+import ImageModal from "./SlideModal"
 
 const variants = {
   initial: {
@@ -29,57 +29,21 @@ const variants = {
   },
 }
 
-const animation = { duration: 22000, easing: (t) => t }
+const animation = { duration: 20000, easing: (t) => t }
 
 const SlideShowSection = (props) => {
-  const [carouselPosts, setCarouselPosts] = useState([])
-  const [isFetched, setIsFetched] = useState(false)
-
-  useEffect(() => {
-    console.log(props.posts)
-
-    const albumPosts = props.posts.data.filter(
-      (e) => e.media_type === "CAROUSEL_ALBUM"
-    )
-
-    async function fetchAlbums() {
-      await Promise.all(
-        albumPosts.map(async (item) => {
-          try {
-            console.log(item.id)
-            const res = await fetch(
-              `https://graph.instagram.com/${item.id}/children?fields=id,media_url&access_token=***REMOVED***`
-            )
-            const carouselPost = await res.json()
-            console.log(carouselPost)
-
-            setCarouselPosts([...carouselPosts, carouselPost])
-          } catch (err) {
-            console.log(err)
-          }
-        })
-      )
-      setIsFetched(true)
-    }
-
-    fetchAlbums()
-
-    console.log(albumPosts)
-    console.log(carouselPosts)
-  }, [carouselPosts, props.posts])
-
   const [sliderRef] = useKeenSlider({
     loop: true,
     renderMode: "performance",
     mode: "free",
     created(s) {
-      s.moveToIdx(11, true, animation)
+      s.moveToIdx(10, true, animation)
     },
     updated(s) {
-      s.moveToIdx(s.track.details.abs + 11, true, animation)
+      s.moveToIdx(s.track.details.abs + 10, true, animation)
     },
     animationEnded(s) {
-      s.moveToIdx(s.track.details.abs + 11, true, animation)
+      s.moveToIdx(s.track.details.abs + 10, true, animation)
     },
     slides: {
       perView: 2.5,
@@ -87,52 +51,65 @@ const SlideShowSection = (props) => {
     },
   })
   return (
-    <Box bgColor="brand.500" pos="relative">
-      <BackdropExample />
-      <ChakraBox
-        variants={variants}
-        viewport={{ once: true }}
-        initial="initial"
-        whileInView="animate"
-        overflow="hidden"
-        pos="relative"
-        ref={sliderRef}
-        className="keen-slider"
-      >
-        {isFetched
-          ? carouselPosts.map((e) =>
-              e.data.map((slide) => (
-                <Box className="keen-slider__slide" key={slide.id} h="15rem">
-                  <NextImage
-                    layout="fill"
-                    objectFit="cover"
-                    src={`/api/imageProxy?imageUrl=${slide.media_url}`}
-                  />
-                </Box>
-              ))
-            )
-          : null}
-      </ChakraBox>
+    <Box bgColor="brand.500">
+      <Container maxW="container.xl" p="0">
+        <Flex
+          flexDir={["column", "column", "column", "row-reverse"]}
+          pos="relative"
+        >
+          <ChakraBox
+            variants={variants}
+            viewport={{ once: true }}
+            display={["block", "block", "block", "none"]}
+            initial="initial"
+            whileInView="animate"
+            overflow="hidden"
+            pos="relative"
+            ref={sliderRef}
+            className="keen-slider"
+          >
+            {slides.map((e) => (
+              <Box className="keen-slider__slide" key={e.url} h="15rem">
+                <ImageModal title={e.url}>
+                  <NextImage layout="fill" objectFit="cover" src={e.url} />\
+                </ImageModal>
+              </Box>
+            ))}
+          </ChakraBox>
 
-      <Box px="4" py="20">
-        <Box as="h2" pb="10">
-          <AnimatedHeading custom={0} title="Fitting&nbsp;floors&nbsp;for" />
-          <AnimatedHeading custom={0} title="residential,&nbsp;commercial," />
-          <AnimatedHeading custom={0} title="development,&nbsp;hospitality" />
-          <AnimatedHeading custom={0} title="&&nbsp;domestic&nbsp;projects" />
-        </Box>
-        <Flex flexDir="column" maxW="80vw">
-          <SectionParagraph pb="9">
-            We are proud of the work we do, and our clients are more than
-            delighted. We owe our success to our deep knowledge base of wood
-            selection, the skills of our enthusiastic team, and the specialized
-            technologies and techniques we have at our disposal.
-          </SectionParagraph>
-          <SectionParagraph>
-            For more information, please do not hesitate to contact us.
-          </SectionParagraph>
+          <Box px="4" py="20">
+            <Box as="h2" pb="10">
+              <AnimatedHeading
+                custom={0}
+                title="Fitting&nbsp;floors&nbsp;for"
+              />
+              <AnimatedHeading
+                custom={0}
+                title="residential,&nbsp;commercial,"
+              />
+              <AnimatedHeading
+                custom={0}
+                title="development,&nbsp;hospitality"
+              />
+              <AnimatedHeading
+                custom={0}
+                title="&&nbsp;domestic&nbsp;projects"
+              />
+            </Box>
+            <Flex flexDir="column" maxW="80vw">
+              <SectionParagraph pb="9">
+                We are proud of the work we do, and our clients are more than
+                delighted. We owe our success to our deep knowledge base of wood
+                selection, the skills of our enthusiastic team, and the
+                specialized technologies and techniques we have at our disposal.
+              </SectionParagraph>
+              <SectionParagraph>
+                For more information, please do not hesitate to contact us.
+              </SectionParagraph>
+            </Flex>
+          </Box>
         </Flex>
-      </Box>
+      </Container>
     </Box>
   )
 }

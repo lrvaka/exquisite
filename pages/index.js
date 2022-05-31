@@ -20,6 +20,7 @@ import ContactSection from "../components/ContactSection"
 import Parallax from "../components/Parallax"
 import HeroSection from "../components/HeroSection"
 import AboutUsSection from "../components/AboutUsSection"
+import MessageSectionAnimation from "../components/MessageSectionAnimation"
 
 const grainAnimation = keyframes`
   0%, 100% { transform:translate(0, 0); }
@@ -41,7 +42,7 @@ const MarqueeSection = () => (
     <Heading
       fontWeight="black"
       color="brand.300"
-      fontSize="5rem"
+      fontSize={["5rem", "10rem"]}
       mr="3rem"
       opacity="0.25"
       overflowY="hidden"
@@ -51,21 +52,7 @@ const MarqueeSection = () => (
   </Marquee>
 )
 
-const MessageSection = () => (
-  <Flex textAlign="center" py="20">
-    <Box
-      borderTop="1px #cdcda6 solid"
-      borderBottom="1px #cdcda6 solid"
-      py="5rem"
-      px="3"
-    >
-      <Heading color="brand.200" fontWeight="black" fontSize="2rem">
-        Residential, retail or a commercial project, our approach is the same:
-        achieve synchronicity with clients and deliver exceptional value
-      </Heading>
-    </Box>
-  </Flex>
-)
+const MessageSection = () => <MessageSectionAnimation />
 
 export default function Home(props) {
   return (

@@ -31,7 +31,7 @@ const letterAni = {
 
 export const SectionHeading = ({ children, ...props }) => (
   <Heading
-    fontSize="2rem"
+    fontSize={["2rem", "2rem", "2rem", "2.5rem"]}
     as="h2"
     fontWeight="700"
     color="brand.100"
@@ -44,7 +44,7 @@ export const SectionHeading = ({ children, ...props }) => (
 
 export const SectionParagraph = ({ children, ...props }) => (
   <Text
-    fontSize="1rem"
+    fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
     color="white"
     fontWeight="400"
     lineHeight="normal"

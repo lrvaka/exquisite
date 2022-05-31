@@ -62,7 +62,7 @@ const AnimatedLetters = ({ title, custom = 0, ...props }) => (
         key={i}
         as={motion.span}
         color="brand.100"
-        fontSize="3.5rem"
+        fontSize={["3.5rem", "5rem", "6rem" ]}
         fontWeight="900"
         lineHeight="100%"
         variants={letterAni}
@@ -82,6 +82,7 @@ const HeroTitle = () => (
     transform="translate(-50%,-50%)"
     textAlign="center"
     pos="absolute"
+    zIndex="1"
   >
     <Flex as="span" gap="1rem" justifyContent="center">
       <AnimatedLetters custom={0} title="We" letterSpacing="-2.5px" />
@@ -110,8 +111,8 @@ const HeroSection = () => (
         w="100%"
         h="100%"
         pos="relative"
-        gridRow="11 / 15"
-        gridColumn="5 / 16"
+        gridRow={["11 / 15", "10 / 15"]}
+        gridColumn={["5 / 16", "11 / 16"]}
         variants={images}
         custom={3}
         initial="initial"
@@ -124,8 +125,8 @@ const HeroSection = () => (
         w="100%"
         h="100%"
         pos="relative"
-        gridRow=" 4 / 6"
-        gridColumn="2 / 9"
+        gridRow={["4 / 6", "4 / 7"]}
+        gridColumn={["2 / 9", "2 / 6"]}
         variants={images}
         custom={1}
         initial="initial"
