@@ -105,7 +105,7 @@ const ContactSection = () => (
           </Flex>
         </Stack>
       </Box>
-      <Flex alignSelf="center" flexDir="column" textAlign="center" gap="4">
+      <Flex maxW={["none", "none", "none", "20vw" ]} alignSelf="center" flexDir="column" textAlign="center" gap="4">
         <SectionHeading color="brand.500" fontSize="1.5rem">
           info@ewfny.com
         </SectionHeading>
