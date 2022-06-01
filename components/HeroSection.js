@@ -130,6 +130,8 @@ const HeroSection = () => {
       <Grid
         // ref={el}
         minH="97.5vh"
+        maxW="1920px"
+        m="0 auto"
         templateRows="repeat(15, 1fr)"
         templateColumns="repeat(15, 1fr)"
       >
