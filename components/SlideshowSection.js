@@ -37,7 +37,7 @@ const SlideShowSection = (props) => {
 
   useEffect(() => {
     if (smoother) {
-    console.log(smoother)
+      console.log(smoother)
       // smoother.onUpdate((self) => console.log("velocity:", self.getVelocity()))
     }
   }, [smoother])
@@ -89,36 +89,29 @@ const SlideShowSection = (props) => {
 
           <Box px="4" py="20">
             <Box as="h2" pb="10">
-              <AnimatedHeading
-                custom={0}
-                title="Fitting&nbsp;floors&nbsp;for"
-              />
-              <AnimatedHeading
-                custom={0}
-                title="residential,&nbsp;commercial,"
-              />
-              <AnimatedHeading
-                custom={0}
-                title="development,&nbsp;hospitality"
-              />
-              <AnimatedHeading
-                custom={0}
-                title="&&nbsp;domestic&nbsp;projects"
-              />
+              <AnimatedHeading custom={0} title="Team&nbsp;of&nbsp;seasoned" />
+              <AnimatedHeading custom={0} title="flooring&nbsp;expertise" />
             </Box>
             <Flex
               pr={["none", "none", "none", "50px"]}
               flexDir="column"
               maxW={["80vw", "80vw", "80vw"]}
             >
-              <SectionParagraph pb="9">
+              {/* <SectionParagraph pb="9">
                 We are proud of the work we do, and our clients are more than
                 delighted. We owe our success to our deep knowledge base of wood
                 selection, the skills of our enthusiastic team, and the
                 specialized technologies and techniques we have at our disposal.
+              </SectionParagraph> */}
+              <SectionParagraph pb="9">
+                Every member of the Exquisite Wood Floors team is a wooden floor
+                expert with extensive knowledge of their sector and years of
+                flooring experience, delivering projects across all markets to
+                the highest of standards, ensuring unique, durable floors of
+                quality.
               </SectionParagraph>
               <SectionParagraph>
-                For more information, please do not hesitate to contact us.
+                Contact us below to begin building with us.
               </SectionParagraph>
             </Flex>
           </Box>

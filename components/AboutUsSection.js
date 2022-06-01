@@ -35,8 +35,14 @@ const AboutUsSection = () => {
         pb={["20", "20", "20", "40"]}
       >
         <Box as="h2" pb="10">
-          <AnimatedHeading custom={0} title="Accomplished" />
-          <AnimatedHeading custom={0} title="flooring &nbsp; expertise" />
+          <AnimatedHeading
+            custom={0}
+            title="Fitting &nbsp; floors &nbsp; for"
+          />
+          <AnimatedHeading
+            custom={0}
+            title="a &nbsp;multitude&nbsp; of &nbsp; projects"
+          />
         </Box>
         <Flex
           w="100%"
@@ -49,13 +55,20 @@ const AboutUsSection = () => {
             Whether you&apos;re an architect, designer, developer or flooring
             contractor, Exquisite Wood Floors offers you a solution designed to
             perfectly match the style, requirements and budget of your project.
+            We are proud of the work we do, and our clients are more than
+            delighted.
           </SectionParagraph>
           <SectionParagraph w={["100%", "100%", "100%", "50%"]}>
+            We owe our success to our deep knowledge base of wood selection, the
+            skills of our enthusiastic team, and the specialized technologies
+            and techniques we have at our disposal.
+          </SectionParagraph>
+          {/* <SectionParagraph w={["100%", "100%", "100%", "50%"]}>
             Every member of the Exquisite Wood Floors team is a wooden floor
             expert with extensive knowledge of their sector and years of
             flooring experience, delivering projects across all markets to the
             highest of standards, ensuring unique, durable floors of quality.
-          </SectionParagraph>
+          </SectionParagraph> */}
         </Flex>
         <Flex
           as="button"
