@@ -61,7 +61,7 @@ const SlideShowSection = (props) => {
     },
   })
   return (
-    <Box bgColor="brand.500">
+    <Box bgColor="brand.500" id="works">
       <Container maxW="container.xl" p="0">
         <Flex
           flexDir={["column", "column", "column", "row-reverse"]}
