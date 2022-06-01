@@ -16,7 +16,6 @@ const MessageSectionAnimationMobile = () => (
       borderTop="1px #cdcda6 solid"
       borderBottom="1px #cdcda6 solid"
       pos="relative"
-      id="container"
     >
       <Box my="5rem" mx={["1rem", "1rem", "4rem"]}>
         <Heading
