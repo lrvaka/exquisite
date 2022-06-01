@@ -90,10 +90,10 @@ const AboutUsSection = () => {
         </Flex>
       </Container>
       <Grid
-        minH={["300px", "400px", "500px", "800px"]}
+        minH={["300px", "400px", "500px", "700px"]}
         templateRows="repeat(4, 1fr)"
         templateColumns="repeat(25, 1fr)"
-        maxW="1440px"
+        maxW="1300px"
         m="0 auto"
       >
         <ChakraBox

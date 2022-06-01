@@ -6,6 +6,7 @@ import { gsap } from "gsap"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import ScrollSmoother from "gsap/dist/ScrollSmoother"
 import ScrollerContext from "../store/gsap-context"
+import Navbar from "../components/Navbar"
 
 if (typeof window !== "undefined") {
   window.history.scrollRestoration = "manual"
@@ -32,6 +33,7 @@ function MyApp({ Component, pageProps }) {
       <Fonts />
       <ScrollerContext.Provider value={{ smoother }}>
         <Box id="smooth-wrapper">
+          <Navbar />
           <Component {...pageProps} />
         </Box>
       </ScrollerContext.Provider>
