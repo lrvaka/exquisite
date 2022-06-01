@@ -18,7 +18,6 @@ const MessageSectionAnimation = ({ children, ...props }) => {
         scrollTrigger: {
           trigger: containerRef.current,
           end: "center center",
-          markers: true,
           scrub: 1,
         },
       })
