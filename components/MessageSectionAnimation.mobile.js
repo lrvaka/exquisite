@@ -18,7 +18,7 @@ const MessageSectionAnimationMobile = () => (
       pos="relative"
       id="container"
     >
-      <Box my="5rem" mx={["1rem", "1rem", "4rem", "11vw"]}>
+      <Box my="5rem" mx={["1rem", "1rem", "4rem"]}>
         <Heading
           color="brand.200"
           fontWeight="black"

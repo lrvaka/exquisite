@@ -17,7 +17,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "bottom bottom-=300",
+        end: "bottom bottom",
         pin: messageRef.current,
         markers: true,
         scrub: 1,
@@ -39,15 +39,15 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
         borderBottom="1px #cdcda6 solid"
         pos="relative"
         id="container"
-        minH={["none", "none", "none", "300vh"]}
+        minH="300vh"
         ref={containerRef}
       >
-        <Box my="5rem" mx={["1rem", "1rem", "4rem", "11vw"]}>
+        <Box my="5rem" mx="11vw">
           <Heading
             ref={messageRef}
             color="brand.200"
             fontWeight="black"
-            fontSize={["2rem", "4rem", "5rem"]}
+            fontSize="9vh"
           >
             No matter the project, our approach is the same: achieve
             synchronicity with clients and deliver exceptional value
