@@ -17,7 +17,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "bottom bottom",
+        end: "bottom 90%",
         pin: messageRef.current,
         markers: true,
         scrub: 1,
