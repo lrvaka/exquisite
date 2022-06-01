@@ -1,4 +1,5 @@
 import Head from "next/head"
+import dynamic from 'next/dynamic'
 import {
   Box,
   Heading,
@@ -20,7 +21,10 @@ import ContactSection from "../components/ContactSection"
 import Parallax from "../components/Parallax"
 import HeroSection from "../components/HeroSection"
 import AboutUsSection from "../components/AboutUsSection"
-import MessageSectionAnimation from "../components/MessageSectionAnimation"
+
+const MessageSectionAnimation = dynamic(() =>
+  import("../components/MessageSectionAnimation")
+)
 
 const grainAnimation = keyframes`
   0%, 100% { transform:translate(0, 0); }
@@ -85,7 +89,13 @@ export default function Home(props) {
       <MessageSection />
       <SlideShowSection posts={props.posts} />
       <ContactSection />
-      <Flex py="2rem" borderTop="1px solid #cdcda6" color="brand.500" justifyContent="center" bgColor="brand.100">
+      <Flex
+        py="2rem"
+        borderTop="1px solid #cdcda6"
+        color="brand.500"
+        justifyContent="center"
+        bgColor="brand.100"
+      >
         © 2022 Exquisite Wood Floors NY.
       </Flex>
     </Box>
