@@ -17,7 +17,6 @@ const MessageSectionAnimationMobile = () => (
       borderBottom="1px #cdcda6 solid"
       pos="relative"
       id="container"
-      minH={["none", "none", "none", "300vh"]}
     >
       <Box my="5rem" mx={["1rem", "1rem", "4rem", "11vw"]}>
         <Heading
