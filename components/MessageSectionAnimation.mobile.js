@@ -1,91 +1,91 @@
-// import { useState, useRef, useLayoutEffect, useEffect } from "react"
-// import {
-//   motion,
-//   useViewportScroll,
-//   useTransform,
-//   useSpring,
-// } from "framer-motion"
-// import ChakraBox from "./ChakraBox"
-// import { Flex, Box, Heading, Grid } from "@chakra-ui/react"
-// import gsap from "gsap"
-// import planks from "./planks"
-// import NextImage from "next/image"
+import { useState, useRef, useLayoutEffect, useEffect } from "react"
+import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
+import ChakraBox from "./ChakraBox"
+import { Flex, Box, Heading, Grid, useMediaQuery } from "@chakra-ui/react"
+import gsap from "gsap"
+import planks from "./planks"
+import NextImage from "next/image"
+import ScrollTrigger from "gsap/dist/ScrollTrigger"
+import ResponsiveComponent from "./ResponsiveComponent"
 
-// const MessageSectionAnimationMobile = ({ children, ...props }) => {
-//   const containerRef = useRef()
+const MessageSectionAnimationMobile = ({ children, ...props }) => {
+  const mobileRef = useRef()
 
-//   useLayoutEffect(() => {
-//     let left = gsap.utils.toArray(".left").forEach((plank) => {
-//       gsap
-//         .timeline({
-//           scrollTrigger: {
-//             trigger: plank,
-//             scrub: true,
-//             end: () => `bottom center+=10`,
-//           },
-//         })
-//         .from(plank, {
-//           x: window.innerWidth * -1,
-//           ease: "power3.in",
-//         })
-//         .to(plank, {
-//           x: 0,
-//         })
-//     })
+  useIsomorphicLayoutEffect(() => {
+    let leftMobile = gsap.utils.toArray(".mobile-left")
 
-//     let right = gsap.utils.toArray(".right").forEach((plank) => {
-//       gsap
-//         .timeline({
-//           scrollTrigger: {
-//             trigger: plank,
-//             scrub: true,
-//             end: () => `bottom center+=10`,
-//           },
-//         })
-//         .from(plank, {
-//           x: window.innerWidth,
-//           ease: "power3.in",
-//         })
-//         .to(plank, {
-//           x: 0,
-//         })
-//     })
+    let rightMobile = gsap.utils.toArray(".mobile-right")
 
-//     return () => {}
-//   }, [])
+    rightMobile.forEach((plank, i) => {
+      let tl = gsap.fromTo(
+        plank,
+        {
+          x: window.innerWidth,
+          ease: "power4.out",
+        },
+        {
+          x: 0,
+          delay: 0.5 * 0.5 * i,
+          duration: 3,
+        }
+      )
+      ScrollTrigger.create({
+        trigger: mobileRef.current,
+        start: "top bottom",
+        animation: tl,
+        toggleActions: "play pause resume reset",
+      })
+    })
 
-//   return (
-//     <Box
-//       pos="relative"
-//       className="message"
-//       py="20"
-//       overflowX="hidden"
-//       ref={containerRef}
-//     >
-//       <Flex
-//         pos="relative"
-//         justifyContent="center"
-//         zIndex="2"
-//         flexDir="column"
-//         maxH="100vh"
-//         w="100vw"
-//         alignItems="center"
-//       >
-//         {planks.map((e) => (
-//           <Flex flexDir="row" zIndex="1">
-//             {e.map((element) => (
-//               <NextImage
-//                 className={element.class}
-//                 src={element.src}
-//                 width={element.w}
-//                 height={element.h}
-//               />
-//             ))}
-//           </Flex>
-//         ))}
-//       </Flex>
-//     </Box>
-//   )
-// }
+    leftMobile.forEach((plank, i) => {
+      let tl = gsap.fromTo(
+        plank,
+        {
+          x: window.innerWidth * -1,
+          ease: "power4.out",
+        },
+        {
+          x: 0,
+          delay: 0.5 * 0.5 * i,
+          duration: 3,
+        }
+      )
+      ScrollTrigger.create({
+        trigger: mobileRef.current,
+        start: "top bottom",
+        animation: tl,
+        toggleActions: "play pause resume reset",
+      })
+    })
 
-// export default MessageSectionAnimationMobile
+    return () => {}
+  }, [mobileRef])
+
+  return (
+    <Flex
+      pos="relative"
+      justifyContent="center"
+      flexDir="column"
+      w="100vw"
+      alignItems="center"
+      ref={mobileRef}
+    >
+      {planks.mobile.map((e, i) => (
+        <Flex position="relative" flexDir="row" zIndex="1" key={i}>
+          {e.map((element, index) => (
+            <NextImage
+              key={index}
+              className={element.class}
+              src={element.src}
+              width={element.w}
+              height={element.h}
+              priority="true"
+            />
+          ))}
+        </Flex>
+      ))}
+    </Flex>
+  )
+}
+
+export default MessageSectionAnimationMobile
