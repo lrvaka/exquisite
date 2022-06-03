@@ -34,6 +34,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
         trigger: containerRef.current,
         start: "top 90%",
         animation: tl,
+        toggleActions: "play pause resume reset",
       })
     })
 
@@ -54,6 +55,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
         trigger: containerRef.current,
         start: "top 90%",
         animation: tl,
+        toggleActions: "play pause resume reset",
       })
     })
 
