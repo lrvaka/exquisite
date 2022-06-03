@@ -71,10 +71,11 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
         alignItems="center"
         ref={containerRef}
       >
-        {planks.map((e) => (
-          <Flex flexDir="row" zIndex="1">
-            {e.map((element) => (
+        {planks.map((e, i) => (
+          <Flex flexDir="row" zIndex="1" key={i}>
+            {e.map((element, index) => (
               <NextImage
+                key={index}
                 className={element.class}
                 src={element.src}
                 width={element.w}
