@@ -25,7 +25,6 @@ function MyApp({ Component, pageProps }) {
         effects: true, // looks for data-speed and data-lag attributes on elements
       })
     )
-    console.log(smoother)
   }, [])
 
   return (

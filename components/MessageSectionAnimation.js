@@ -1,5 +1,4 @@
 import { Box, useMediaQuery } from "@chakra-ui/react"
-import Mobile from "./MessageSectionAnimation.mobile"
 import Desktop from "./MessageSectionAnimation.desktop"
 
 const MessageSectionAnimation = () => {
