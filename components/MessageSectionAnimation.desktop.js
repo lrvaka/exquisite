@@ -1,10 +1,5 @@
 import { useState, useRef, useLayoutEffect, useEffect } from "react"
-import {
-  motion,
-  useViewportScroll,
-  useTransform,
-  useSpring,
-} from "framer-motion"
+import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
 import ChakraBox from "./ChakraBox"
 import { Flex, Box, Heading, Grid } from "@chakra-ui/react"
 import gsap from "gsap"
@@ -15,7 +10,7 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger"
 const MessageSectionAnimationDesktop = ({ children, ...props }) => {
   const containerRef = useRef()
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     let left = gsap.utils.toArray(".left")
 
     let right = gsap.utils.toArray(".right")
@@ -23,21 +18,18 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
     let hide = (elem) => gsap.set(elem, { autoAlpha: 0 })
 
     right.forEach((plank, i) => {
-      hide(plank) // assure that the element is hidden when scrolled into view
-      let tl = gsap
-        .timeline()
-        .from(plank, {
+      let tl = gsap.fromTo(
+        plank,
+        {
           x: window.innerWidth,
           ease: "power4.out",
-          autoAlpha: 0,
-        })
-        .to(plank, {
-          autoAlpha: 1,
+        },
+        {
           x: 0,
-          delay: 0.1 + 0.5 * i,
-
+          delay: 0.5 * 0.5 * i,
           duration: 3,
-        })
+        }
+      )
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top 90%",
@@ -46,21 +38,18 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
     })
 
     left.forEach((plank, i) => {
-      hide(plank) // assure that the element is hidden when scrolled into view
-      let tl = gsap
-        .timeline()
-        .from(plank, {
+      let tl = gsap.fromTo(
+        plank,
+        {
           x: window.innerWidth * -1,
           ease: "power4.out",
-          autoAlpha: 0,
-        })
-        .to(plank, {
-          autoAlpha: 1,
+        },
+        {
           x: 0,
-          delay: 0.1 + 0.5 * i,
-
+          delay: 0.5 * 0.5 * i,
           duration: 3,
-        })
+        }
+      )
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top 90%",
@@ -76,7 +65,6 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
       <Flex
         pos="relative"
         justifyContent="center"
-        zIndex="2"
         flexDir="column"
         maxH="100vh"
         w="100vw"
@@ -91,6 +79,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
                 src={element.src}
                 width={element.w}
                 height={element.h}
+                priority="true"
               />
             ))}
           </Flex>
