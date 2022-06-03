@@ -32,7 +32,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
       )
       ScrollTrigger.create({
         trigger: containerRef.current,
-        start: "top 90%",
+        start: "top bottom",
         animation: tl,
         toggleActions: "play pause resume reset",
       })
@@ -53,7 +53,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
       )
       ScrollTrigger.create({
         trigger: containerRef.current,
-        start: "top 90%",
+        start: "top bottom",
         animation: tl,
         toggleActions: "play pause resume reset",
       })
