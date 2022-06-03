@@ -8,60 +8,71 @@ import {
 import ChakraBox from "./ChakraBox"
 import { Flex, Box, Heading, Grid } from "@chakra-ui/react"
 import gsap from "gsap"
-import Planks from "./planks"
+import planks from "./planks"
 import NextImage from "next/image"
+import ScrollTrigger from "gsap/dist/ScrollTrigger"
 
 const MessageSectionAnimationDesktop = ({ children, ...props }) => {
   const containerRef = useRef()
 
   useLayoutEffect(() => {
-    let left = gsap.utils.toArray(".left").forEach((plank) => {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: plank,
-            scrub: true,
-            end: () => `+=${containerRef.current.offsetHeight / 2}`,
-          },
-        })
-        .from(plank, {
-          x: window.innerWidth * -1,
-          ease: "power3.in",
-        })
-        .to(plank, {
-          x: 0,
-        })
-    })
+    let left = gsap.utils.toArray(".left")
 
-    let right = gsap.utils.toArray(".right").forEach((plank) => {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: plank,
-            scrub: true,
-            end: () => `+=${containerRef.current.offsetHeight / 2}`,
-          },
-        })
+    let right = gsap.utils.toArray(".right")
+
+    let hide = (elem) => gsap.set(elem, { autoAlpha: 0 })
+
+    right.forEach((plank, i) => {
+      hide(plank) // assure that the element is hidden when scrolled into view
+      let tl = gsap
+        .timeline()
         .from(plank, {
           x: window.innerWidth,
-          ease: "power3.in",
+          ease: "power4.out",
+          autoAlpha: 0,
         })
         .to(plank, {
+          autoAlpha: 1,
           x: 0,
+          delay: 0.1 + 0.5 * i,
+
+          duration: 3,
         })
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: "top 90%",
+        animation: tl,
+      })
+    })
+
+    left.forEach((plank, i) => {
+      hide(plank) // assure that the element is hidden when scrolled into view
+      let tl = gsap
+        .timeline()
+        .from(plank, {
+          x: window.innerWidth * -1,
+          ease: "power4.out",
+          autoAlpha: 0,
+        })
+        .to(plank, {
+          autoAlpha: 1,
+          x: 0,
+          delay: 0.1 + 0.5 * i,
+
+          duration: 3,
+        })
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: "top 90%",
+        animation: tl,
+      })
     })
 
     return () => {}
   }, [])
 
   return (
-    <Box
-      pos="relative"
-      className="message"
-      py="20"
-      overflowX="hidden"
-      ref={containerRef}
-    >
+    <Box pos="relative" className="message" py="20" overflowX="hidden">
       <Flex
         pos="relative"
         justifyContent="center"
@@ -70,176 +81,20 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
         maxH="100vh"
         w="100vw"
         alignItems="center"
+        ref={containerRef}
       >
-        <Flex flexDir="row" zIndex="1">
-          <NextImage
-            className="left"
-            src={Planks[0].src}
-            width={Planks[0].w}
-            height={Planks[0].h}
-          />
-
-          <NextImage
-            className="right"
-            src={Planks[1].src}
-            width={Planks[1].w}
-            height={Planks[1].h}
-          />
-        </Flex>
-        <Flex flexDir="row" zIndex="1">
-          <NextImage
-            className="left"
-            src={Planks[2].src}
-            width={Planks[2].w}
-            height={Planks[2].h}
-          />
-          <NextImage
-            className="right"
-            src={Planks[3].src}
-            width={Planks[3].w}
-            height={Planks[3].h}
-          />
-        </Flex>
-        <Flex flexDir="row" zIndex="1">
-          <NextImage
-            className="left"
-            src={Planks[4].src}
-            width={Planks[4].w}
-            height={Planks[4].h}
-          />
-          <NextImage
-            className="right"
-            src={Planks[5].src}
-            width={Planks[5].w}
-            height={Planks[5].h}
-          />
-        </Flex>
-        <Flex flexDir="row" zIndex="1">
-          <NextImage
-            className="left"
-            src={Planks[6].src}
-            width={Planks[6].w}
-            height={Planks[6].h}
-          />
-          <NextImage
-            className="right"
-            src={Planks[7].src}
-            width={Planks[7].w}
-            height={Planks[7].h}
-          />
-        </Flex>
-        <Flex flexDir="row" zIndex="1">
-          <NextImage
-            className="left"
-            src={Planks[8].src}
-            width={Planks[8].w}
-            height={Planks[8].h}
-          />
-          <NextImage
-            className="right"
-            src={Planks[9].src}
-            width={Planks[9].w}
-            height={Planks[9].h}
-          />
-        </Flex>
-        <Flex flexDir="row" zIndex="1">
-          <NextImage
-            className="left"
-            src={Planks[10].src}
-            width={Planks[10].w}
-            height={Planks[10].h}
-          />
-          <NextImage
-            className="right"
-            src={Planks[11].src}
-            width={Planks[11].w}
-            height={Planks[11].h}
-          />
-        </Flex>
-        <Flex flexDir="row" zIndex="1">
-          <NextImage
-            className="left"
-            src={Planks[12].src}
-            width={Planks[12].w}
-            height={Planks[12].h}
-          />
-          <NextImage
-            className="right"
-            src={Planks[13].src}
-            width={Planks[13].w}
-            height={Planks[13].h}
-          />
-        </Flex>
-        <Flex flexDir="row" zIndex="1">
-          <NextImage
-            className="left"
-            src={Planks[14].src}
-            width={Planks[14].w}
-            height={Planks[14].h}
-          />
-          <NextImage
-            className="right"
-            src={Planks[15].src}
-            width={Planks[15].w}
-            height={Planks[15].h}
-          />
-        </Flex>
-        <Flex flexDir="row" zIndex="1">
-          <NextImage
-            className="left"
-            src={Planks[16].src}
-            width={Planks[16].w}
-            height={Planks[16].h}
-          />
-          <NextImage
-            className="right"
-            src={Planks[17].src}
-            width={Planks[17].w}
-            height={Planks[17].h}
-          />
-        </Flex>
-        <Flex flexDir="row" zIndex="1">
-          <NextImage
-            className="left"
-            src={Planks[18].src}
-            width={Planks[18].w}
-            height={Planks[18].h}
-          />
-          <NextImage
-            className="right"
-            src={Planks[19].src}
-            width={Planks[19].w}
-            height={Planks[19].h}
-          />
-        </Flex>
-        <Flex flexDir="row" zIndex="1">
-          <NextImage
-            className="left"
-            src={Planks[20].src}
-            width={Planks[20].w}
-            height={Planks[20].h}
-          />
-          <NextImage
-            className="right"
-            src={Planks[21].src}
-            width={Planks[21].w}
-            height={Planks[21].h}
-          />
-        </Flex>
-        <Flex flexDir="row" zIndex="1">
-          <NextImage
-            className="left"
-            src={Planks[22].src}
-            width={Planks[22].w}
-            height={Planks[22].h}
-          />
-          <NextImage
-            className="right"
-            src={Planks[23].src}
-            width={Planks[23].w}
-            height={Planks[23].h}
-          />
-        </Flex>
+        {planks.map((e) => (
+          <Flex flexDir="row" zIndex="1">
+            {e.map((element) => (
+              <NextImage
+                className={element.class}
+                src={element.src}
+                width={element.w}
+                height={element.h}
+              />
+            ))}
+          </Flex>
+        ))}
       </Flex>
     </Box>
   )

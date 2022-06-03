@@ -32,8 +32,8 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider theme={theme}>
       <Fonts />
 
-      <Navbar />
       <ScrollerContext.Provider value={{ smoother }}>
+        <Navbar />
         <Component id="smooth-wrapper" {...pageProps} />
       </ScrollerContext.Provider>
     </ChakraProvider>
