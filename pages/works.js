@@ -108,7 +108,7 @@ const Works = () => {
     renderMode: "performance",
     mode: "free",
     created(s) {
-      s.moveToIdx(10, true, animation)
+      s.moveToIdx(-10, true, animation)
     },
     updated(s) {
       s.moveToIdx(s.track.details.abs - 10, true, animation)
