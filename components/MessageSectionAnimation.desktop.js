@@ -1,12 +1,12 @@
 import { useState, useRef, useLayoutEffect, useEffect } from "react"
 import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
-import ChakraBox from "./ChakraBox"
+import ChakraBox from "./utils/ChakraBox"
 import { Flex, Box, Heading, Grid, useMediaQuery } from "@chakra-ui/react"
 import gsap from "gsap"
 import planks from "./planks"
 import NextImage from "next/image"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
-import ResponsiveComponent from "./ResponsiveComponent"
+import ResponsiveComponent from "./utils/ResponsiveComponent"
 
 const MessageSectionAnimationDesktop = ({ children, ...props }) => {
   const containerRef = useRef()
@@ -58,9 +58,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
       })
     })
 
-    return () => {
-    
-    }
+    return () => {}
   }, [containerRef])
 
   return (

@@ -5,7 +5,7 @@ import {
   useTransform,
   useSpring,
 } from "framer-motion"
-import ChakraBox from "./ChakraBox"
+import ChakraBox from "./utils/ChakraBox"
 
 const Parallax = ({ children, growth = 1, offset = 50, ...props }) => {
   const [elementTop, setElementTop] = useState(0)

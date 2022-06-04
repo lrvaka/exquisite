@@ -1,12 +1,13 @@
 import NextImage from "next/image"
-import { SectionParagraph } from "../components/SectionText"
+import { SectionParagraph } from "./ui/SectionText"
 import { Box, Flex, Grid, Container } from "@chakra-ui/react"
-import SVGArrow from "./SVGArrow"
+import SVGArrow from "./ui/SVGArrow"
 import Parallax from "./Parallax"
-import ChakraBox from "./ChakraBox"
+import ChakraBox from "./utils/ChakraBox"
 import { useContext, useEffect, useLayoutEffect } from "react"
-import ScrollerContext from "../store/gsap-context"
-import { AnimatedHeading } from "../components/SectionText"
+import GsapContext from "../store/gsap-context"
+import { AnimatedHeading } from "./ui/SectionText"
+import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
 
 const images = {
   initial: { y: 25, scale: 0.75, opacity: 0, clipPath: "inset(100% 0 0 0)" },
@@ -24,8 +25,7 @@ const images = {
 }
 
 const AboutUsSection = () => {
-  const { smoother } = useContext(ScrollerContext)
-
+  const { smoother } = useContext(GsapContext)
   return (
     <>
       <Container
@@ -63,12 +63,6 @@ const AboutUsSection = () => {
             skills of our enthusiastic team, and the specialized technologies
             and techniques we have at our disposal.
           </SectionParagraph>
-          {/* <SectionParagraph w={["100%", "100%", "100%", "50%"]}>
-            Every member of the Exquisite Wood Floors team is a wooden floor
-            expert with extensive knowledge of their sector and years of
-            flooring experience, delivering projects across all markets to the
-            highest of standards, ensuring unique, durable floors of quality.
-          </SectionParagraph> */}
         </Flex>
         <Flex
           as="button"
@@ -110,30 +104,9 @@ const AboutUsSection = () => {
           overflow="hidden"
           boxShadow="inset 0px 0px 42px -18px #000000"
         >
-          <Box
-            data-speed="auto"
-            pos="absolute"
-            zIndex="-1"
-            w="100%"
-            h="160%"
-            id="parallax-image"
-          >
+          <Box data-speed="auto" pos="absolute" zIndex="-1" w="100%" h="160%">
             <NextImage src="/images/about-1.png" layout="fill" />
           </Box>
-          {/* <Parallax
-            pos="absolute"
-            zIndex="-1"
-            w="100%"
-            h="100%"
-            offset={25}
-            growth={2}
-          >
-            <NextImage
-              src="/images/about-1.png"
-              layout="fill"
-              objectPosition="right top"
-            />
-          </Parallax> */}
         </ChakraBox>
         <ChakraBox
           variants={images}
@@ -149,35 +122,13 @@ const AboutUsSection = () => {
           overflow="hidden"
           boxShadow="inset 0px 0px 42px -18px #000000"
         >
-          <Box
-            data-speed="auto"
-            pos="absolute"
-            zIndex="-1"
-            w="100%"
-            h="160%"
-            id="parallax-image"
-          >
+          <Box data-speed="auto" pos="absolute" zIndex="-1" w="100%" h="160%">
             <NextImage
               src="/images/about-2.jpg"
               layout="fill"
               objectFit="cover"
             />
           </Box>
-          {/* <Parallax
-            pos="absolute"
-            zIndex="-1"
-            w="100%"
-            h="100%"
-            offset={25}
-            growth={2}
-          >
-            <NextImage
-              src="/images/about-2.jpg"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="60% %"
-            />
-          </Parallax> */}
         </ChakraBox>
         <ChakraBox
           variants={images}
@@ -193,35 +144,13 @@ const AboutUsSection = () => {
           overflow="hidden"
           boxShadow="inset 0px 0px 42px -18px #000000"
         >
-          <Box
-            data-speed="auto"
-            pos="absolute"
-            w="100%"
-            h="160%"
-            zIndex="-1"
-            id="parallax-image"
-          >
+          <Box data-speed="auto" pos="absolute" w="100%" h="160%" zIndex="-1">
             <NextImage
               src="/images/about.jpg"
               layout="fill"
               objectFit="cover"
             />
           </Box>
-          {/* <Parallax
-            pos="absolute"
-            w="100%"
-            h="100%"
-            zIndex="-1"
-            offset={25}
-            growth={2}
-          >
-            <NextImage
-              src="/images/about.jpg"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="right top"
-            />
-          </Parallax> */}
         </ChakraBox>
       </Grid>
     </>

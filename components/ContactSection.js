@@ -9,24 +9,14 @@ import {
   Textarea,
 } from "@chakra-ui/react"
 import Parallax from "./Parallax"
-import SVGArrow from "./SVGArrow"
-import { SectionHeading } from "./SectionText"
+import SVGArrow from "./ui/SVGArrow"
+import { SectionHeading } from "./ui/SectionText"
 import NextImage from "next/image"
 import { IconButton } from "@chakra-ui/react"
 import { BsInstagram } from "react-icons/bs"
 
 const ContactSection = () => (
   <Box bgColor="brand.100" id="contact">
-    <Box
-      display={["none"]}
-      pos="absolute"
-      bottom="0"
-      transform="translate(20%, -150%)"
-      zIndex="1"
-    >
-      <NextImage src="/images/stamp.png" width="797" height="797" />
-    </Box>
-
     <Container
       display="flex"
       maxW="container.xl"
@@ -36,8 +26,7 @@ const ContactSection = () => (
       px="4"
       pt="20"
       pb="10"
-      pos="relative"
-      gap={[0,0,0,24]}
+      gap={[0, 0, 0, 24]}
     >
       <Box>
         <SectionHeading color="brand.500" pb="10">
@@ -105,7 +94,13 @@ const ContactSection = () => (
           </Flex>
         </Stack>
       </Box>
-      <Flex maxW={["none", "none", "none", "20vw" ]} alignSelf="center" flexDir="column" textAlign="center" gap="4">
+      <Flex
+        maxW={["none", "none", "none", "20vw"]}
+        alignSelf="center"
+        flexDir="column"
+        textAlign="center"
+        gap="4"
+      >
         <SectionHeading color="brand.500" fontSize="1.5rem">
           info@ewfny.com
         </SectionHeading>
