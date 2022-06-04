@@ -3,13 +3,12 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { useRef, useEffect, useState, useContext } from "react"
 import { motion, isValidMotionProp } from "framer-motion"
-import { SectionHeading, SectionParagraph } from "./SectionText"
+import { SectionHeading, SectionParagraph } from "./ui/SectionText"
 import slides from "./slides"
 import NextImage from "next/image"
-import { AnimatedHeading } from "./SectionText"
-import ChakraBox from "./ChakraBox"
+import { AnimatedHeading } from "./ui/SectionText"
+import ChakraBox from "./utils/ChakraBox"
 import ImageModal from "./SlideModal"
-import ScrollerContext from "../store/gsap-context"
 
 const variants = {
   initial: {
@@ -33,15 +32,6 @@ const variants = {
 const animation = { duration: 20000, easing: (t) => t }
 
 const SlideShowSection = (props) => {
-  const { smoother } = useContext(ScrollerContext)
-
-  useEffect(() => {
-    if (smoother) {
-      console.log(smoother)
-      // smoother.onUpdate((self) => console.log("velocity:", self.getVelocity()))
-    }
-  }, [smoother])
-
   const [sliderRef] = useKeenSlider({
     loop: true,
     renderMode: "performance",

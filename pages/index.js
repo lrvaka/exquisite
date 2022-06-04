@@ -1,5 +1,5 @@
 import Head from "next/head"
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic"
 import {
   Box,
   Heading,
@@ -9,20 +9,20 @@ import {
   keyframes,
   Button,
 } from "@chakra-ui/react"
-
+import GsapContext from "../store/gsap-context"
+import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
+import { useContext } from "react"
 import NextImage from "next/image"
-
-import Navbar from "../components/Navbar"
-import SVGArrow from "../components/SVGArrow"
 import Marquee from "react-fast-marquee"
 import SlideShowSection from "../components/SlideshowSection"
-import { SectionHeading, SectionParagraph } from "../components/SectionText"
+import { SectionHeading, SectionParagraph } from "../components/ui/SectionText"
 import ContactSection from "../components/ContactSection"
-import Parallax from "../components/Parallax"
 import HeroSection from "../components/HeroSection"
 import AboutUsSection from "../components/AboutUsSection"
+import Footer from "../components/ui/Footer"
+import React from "react"
 
-const MessageSectionAnimation = dynamic(() =>
+const MessageSection = dynamic(() =>
   import("../components/MessageSectionAnimation")
 )
 
@@ -56,12 +56,10 @@ const MarqueeSection = () => (
   </Marquee>
 )
 
-const MessageSection = () => <MessageSectionAnimation />
-
-export default function Home(props) {
+const Home = (props) => {
   return (
     <Box
-      id="smooth-content"
+      as="main"
       _before={{
         animation: animation,
         backgroundImage: "url(/images/noise.png)",
@@ -73,8 +71,9 @@ export default function Home(props) {
         top: "-110%",
         width: "300%",
         zIndex: "-10",
-        overflowY: "hidden",
+        overflow: "hidden",
       }}
+      zIndex="0"
       pos="relative"
     >
       <Head>
@@ -87,17 +86,11 @@ export default function Home(props) {
       <MarqueeSection />
       <AboutUsSection />
       <MessageSection />
-      <SlideShowSection posts={props.posts} />
+      <SlideShowSection />
       <ContactSection />
-      <Flex
-        py="2rem"
-        borderTop="1px solid #cdcda6"
-        color="brand.500"
-        justifyContent="center"
-        bgColor="brand.100"
-      >
-        © 2022 Exquisite Wood Floors NY.
-      </Flex>
+      <Footer bgColor="brand.100" />
     </Box>
   )
 }
+
+export default Home

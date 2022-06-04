@@ -1,5 +1,5 @@
 import { createContext } from "react"
 
-const ScrollerContext = createContext({})
+const GsapContext = createContext({})
 
-export default ScrollerContext
+export default GsapContext
