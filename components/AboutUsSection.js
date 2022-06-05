@@ -9,23 +9,28 @@ import GsapContext from "../store/gsap-context"
 import { AnimatedHeading } from "./ui/SectionText"
 import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
 import gsap from "gsap"
+import useArrayRef from "./hooks/useArrayRef"
 
 const AboutUsSection = () => {
+  const [imageRefs, setImageRefs] = useArrayRef()
   const { smoother } = useContext(GsapContext)
   const containerRef = useRef()
-  const tl = useRef()
+  const leftRef = useRef()
+  const rightRef = useRef()
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!containerRef.current) {
       return
     }
 
-    let images = gsap.utils.toArray("#image")
-    gsap.set(images, { autoAlpha: 1 })
+    let animation
+    gsap.set(imageRefs.current, { autoAlpha: 1 })
+    gsap.set(leftRef.current, { autoAlpha: 1 })
+    gsap.set(rightRef.current, { autoAlpha: 1 })
 
     // Target ALL descendants with the class of .box
-    images.forEach((image) => {
-      gsap.fromTo(
+    imageRefs.current.forEach((image) => {
+      animation = gsap.fromTo(
         image,
         {
           // this will animate ALL boxes
@@ -47,50 +52,53 @@ const AboutUsSection = () => {
       )
     })
 
-    gsap.fromTo(
-      "#leftP",
+    let leftP = gsap.fromTo(
+      leftRef.current,
       {
         // this will animate ALL boxes
         opacity: 0.1,
         scale: 0.75,
-        x: window.innerWidth * -1,
         clipPath: "inset(100% 0 0 0)",
       },
       {
         opacity: 1,
-        x: 0,
         clipPath: "inset(0% 0% 0% 0%)",
         scale: 1,
         scrollTrigger: {
-          trigger: "#leftP", // this will use the first box as the trigger
+          trigger: leftRef.current, // this will use the first box as the trigger
           scrub: true,
           end: "bottom 75%",
-          onLeave: (self) => self.kill(false, true),
         },
       }
     )
-    gsap.fromTo(
-      "#rightP",
+    let rightP = gsap.fromTo(
+      rightRef.current,
       {
         // this will animate ALL boxes
         opacity: 0.1,
-        x: window.innerWidth,
         scale: 0.75,
         clipPath: "inset(100% 0 0 0)",
       },
       {
-        x: 0,
         opacity: 1,
         clipPath: "inset(0% 0% 0% 0%)",
         scale: 1,
         scrollTrigger: {
-          trigger: "#rightP", // this will use the first box as the trigger
+          trigger: rightRef.current, // this will use the first box as the trigger
           scrub: true,
           end: "bottom 75%",
-          onLeave: (self) => self.kill(false, true),
         },
       }
     )
+
+    console.log(leftRef.current)
+    console.log(rightRef.current)
+
+    return () => {
+      rightP.kill()
+      leftP.kill()
+      animation.kill()
+    }
   }, [])
 
   return (
@@ -120,7 +128,7 @@ const AboutUsSection = () => {
           maxW={["80vw", "80vw", "80vw", "none"]}
         >
           <SectionParagraph
-            id="leftP"
+            ref={leftRef}
             pb="9"
             w={["100%", "100%", "100%", "50%"]}
           >
@@ -130,7 +138,7 @@ const AboutUsSection = () => {
             We are proud of the work we do, and our clients are more than
             delighted.
           </SectionParagraph>
-          <SectionParagraph id="rightP" w={["100%", "100%", "100%", "50%"]}>
+          <SectionParagraph ref={rightRef} w={["100%", "100%", "100%", "50%"]}>
             We owe our success to our deep knowledge base of wood selection, the
             skills of our enthusiastic team, and the specialized technologies
             and techniques we have at our disposal.
@@ -164,7 +172,7 @@ const AboutUsSection = () => {
         ref={containerRef}
       >
         <Box
-          id="image"
+          ref={setImageRefs}
           pos="relative"
           gridRow={["4 / 5", "4 / 5", "4 / 5", "3 / 5"]}
           gridColumn="20 / 26"
@@ -181,7 +189,7 @@ const AboutUsSection = () => {
           </Box>
         </Box>
         <Box
-          id="image"
+          ref={setImageRefs}
           pos="relative"
           gridRow="1 / 5"
           gridColumn="8 / 19"
@@ -199,7 +207,7 @@ const AboutUsSection = () => {
           </Box>
         </Box>
         <Box
-          id="image"
+          ref={setImageRefs}
           pos="relative"
           gridRow={["1 / 2", "1 / 2", "1 / 2", "1 / 3"]}
           gridColumn="1 / 7"

@@ -7,60 +7,55 @@ import planks from "./planks"
 import NextImage from "next/image"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import ResponsiveComponent from "./utils/ResponsiveComponent"
+import useArrayRef from "./hooks/useArrayRef"
 
 const MessageSectionAnimationMobile = ({ children, ...props }) => {
-  const mobileRef = useRef()
-
+  const containerRef = useRef()
+  const [leftPlankRefs, setLeftPlankRefs] = useArrayRef()
+  const [rightPlankRefs, setRightPlankRefs] = useArrayRef()
+  let plankType
   useIsomorphicLayoutEffect(() => {
-    let leftMobile = gsap.utils.toArray(".mobile-left")
+    console.log(leftPlankRefs)
+    console.log(rightPlankRefs)
+    gsap.set(leftPlankRefs.current, { autoAlpha: 0.1 })
+    gsap.set(rightPlankRefs.current, { autoAlpha: 0.1 })
 
-    let rightMobile = gsap.utils.toArray(".mobile-right")
-
-    rightMobile.forEach((plank, i) => {
-      let tl = gsap.fromTo(
+    leftPlankRefs.current.forEach((plank, i) => {
+      gsap.fromTo(
         plank,
+        { opacity: 0.1, x: window.innerWidth * -1 },
         {
-          x: window.innerWidth,
-          ease: "power4.out",
-        },
-        {
+          opacity: 1,
           x: 0,
-          delay: 0.5 * 0.5 * i,
-          duration: 3,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: plank,
+            scrub: true,
+            end: "bottom center",
+            onLeave: (self) => self.kill(false, true),
+          },
         }
       )
-      ScrollTrigger.create({
-        trigger: mobileRef.current,
-        start: "top bottom",
-        animation: tl,
-        toggleActions: "play pause resume reset",
-      })
     })
 
-    leftMobile.forEach((plank, i) => {
-      let tl = gsap.fromTo(
+    rightPlankRefs.current.forEach((plank, i) => {
+      gsap.fromTo(
         plank,
+        { opacity: 0.1, x: window.innerWidth },
         {
-          x: window.innerWidth * -1,
-          ease: "power4.out",
-        },
-        {
+          opacity: 1,
           x: 0,
-          delay: 0.5 * 0.5 * i,
-          duration: 3,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: plank,
+            scrub: true,
+            end: "bottom center",
+            onLeave: (self) => self.kill(false, true),
+          },
         }
       )
-      ScrollTrigger.create({
-        trigger: mobileRef.current,
-        start: "top bottom",
-        animation: tl,
-        toggleActions: "play pause resume reset",
-      })
     })
-
-    return () => {
-    }
-  }, [mobileRef])
+  }, [])
 
   return (
     <Flex
@@ -69,20 +64,33 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
       flexDir="column"
       w="100vw"
       alignItems="center"
-      ref={mobileRef}
+      ref={containerRef}
     >
       {planks.mobile.map((e, i) => (
-        <Flex position="relative" flexDir="row" zIndex="1" key={i}>
-          {e.map((element, index) => (
-            <NextImage
-              key={index}
-              className={element.class}
-              src={element.src}
-              width={element.w}
-              height={element.h}
-              priority="true"
-            />
-          ))}
+        <Flex pos="relative" flexDir="row" zIndex="1" key={i}>
+          {e.map((element, index) => {
+            if (element.ref === "setRightPlankRefs") {
+              plankType = setRightPlankRefs
+            }
+            if (element.ref === "setLeftPlankRefs") {
+              plankType = setLeftPlankRefs
+            }
+            return (
+              <Flex
+                visibility="hidden"
+                pos="relative"
+                key={index}
+                ref={plankType}
+              >
+                <NextImage
+                  src={element.src}
+                  width={element.w}
+                  height={element.h}
+                  priority="true"
+                />
+              </Flex>
+            )
+          })}
         </Flex>
       ))}
     </Flex>

@@ -1,5 +1,6 @@
 import { Heading, Text, Box } from "@chakra-ui/react"
 import { motion } from "framer-motion"
+import { forwardRef } from "react"
 
 const header = {
   animate: (i) => ({
@@ -42,17 +43,20 @@ export const SectionHeading = ({ children, ...props }) => (
   </Heading>
 )
 
-export const SectionParagraph = ({ children, ...props }) => (
-  <Text
-    fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
-    color="white"
-    fontWeight="400"
-    lineHeight="normal"
-    {...props}
-  >
-    {children}
-  </Text>
-)
+export const SectionParagraph = forwardRef((props, ref) => {
+  return (
+    <Text
+      fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
+      color="white"
+      fontWeight="400"
+      lineHeight="normal"
+      ref={ref}
+      {...props}
+    >
+      {props.children}
+    </Text>
+  )
+})
 
 export const AnimatedHeading = ({ title, custom = 0, ...props }) => (
   <Box

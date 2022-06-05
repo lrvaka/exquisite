@@ -2,64 +2,63 @@ import { useState, useRef, useLayoutEffect, useEffect } from "react"
 import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
 import ChakraBox from "./utils/ChakraBox"
 import { Flex, Box, Heading, Grid, useMediaQuery } from "@chakra-ui/react"
-import gsap from "gsap"
+import gsap, { random } from "gsap"
 import planks from "./planks"
 import NextImage from "next/image"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import ResponsiveComponent from "./utils/ResponsiveComponent"
+import useArrayRef from "./hooks/useArrayRef"
 
 const MessageSectionAnimationDesktop = ({ children, ...props }) => {
   const containerRef = useRef()
+  const [leftPlankRefs, setLeftPlankRefs] = useArrayRef()
+  const [rightPlankRefs, setRightPlankRefs] = useArrayRef()
+  let plankType
 
   useIsomorphicLayoutEffect(() => {
-    let left = gsap.utils.toArray(".left")
+    console.log(leftPlankRefs)
+    console.log(rightPlankRefs)
+    gsap.set(leftPlankRefs.current, { autoAlpha: 0.1 })
+    gsap.set(rightPlankRefs.current, { autoAlpha: 0.1 })
 
-    let right = gsap.utils.toArray(".right")
-
-    right.forEach((plank, i) => {
-      let tl = gsap.fromTo(
+    leftPlankRefs.current.forEach((plank, i) => {
+      gsap.fromTo(
         plank,
+        { opacity: 0.1, x: window.innerWidth * -1 },
         {
-          x: window.innerWidth,
-          ease: "power4.out",
-        },
-        {
+          opacity: 1,
           x: 0,
-          delay: 0.5 * 0.5 * i,
-          duration: 3,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: plank,
+            scrub: true,
+            end: "bottom center",
+            onLeave: (self) => self.kill(false, true),
+          },
         }
       )
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top bottom",
-        animation: tl,
-        toggleActions: "play pause resume reset",
-      })
     })
 
-    left.forEach((plank, i) => {
-      let tl = gsap.fromTo(
+    rightPlankRefs.current.forEach((plank, i) => {
+      gsap.fromTo(
         plank,
+        { opacity: 0.1, x: window.innerWidth },
         {
-          x: window.innerWidth * -1,
-          ease: "power4.out",
-        },
-        {
+          opacity: 1,
           x: 0,
-          delay: 0.5 * 0.5 * i,
-          duration: 3,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: plank,
+            scrub: true,
+            end: "bottom center",
+            onLeave: (self) => self.kill(false, true),
+          },
         }
       )
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top bottom",
-        animation: tl,
-        toggleActions: "play pause resume reset",
-      })
     })
 
     return () => {}
-  }, [containerRef])
+  }, [])
 
   return (
     <Flex
@@ -71,17 +70,30 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
       ref={containerRef}
     >
       {planks.desktop.map((e, i) => (
-        <Flex flexDir="row" zIndex="1" key={i}>
-          {e.map((element, index) => (
-            <NextImage
-              key={index}
-              className={element.class}
-              src={element.src}
-              width={element.w}
-              height={element.h}
-              priority="true"
-            />
-          ))}
+        <Flex pos="relative" flexDir="row" zIndex="1" key={i}>
+          {e.map((element, index) => {
+            if (element.ref === "setRightPlankRefs") {
+              plankType = setRightPlankRefs
+            }
+            if (element.ref === "setLeftPlankRefs") {
+              plankType = setLeftPlankRefs
+            }
+            return (
+              <Flex
+                visibility="hidden"
+                pos="relative"
+                key={index}
+                ref={plankType}
+              >
+                <NextImage
+                  src={element.src}
+                  width={element.w}
+                  height={element.h}
+                  priority="true"
+                />
+              </Flex>
+            )
+          })}
         </Flex>
       ))}
     </Flex>
