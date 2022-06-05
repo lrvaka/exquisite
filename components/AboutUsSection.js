@@ -29,26 +29,29 @@ const AboutUsSection = () => {
 
     // Target ALL descendants with the class of .box
     imageRefs.current.forEach((image) => {
-      gsap.fromTo(
-        image,
-        {
-          // this will animate ALL boxes
-          opacity: 0.1,
-          scale: 0.75,
-          clipPath: "inset(100% 0 0 0)",
-        },
-        {
-          opacity: 1,
-          clipPath: "inset(0% 0% 0% 0%)",
-          scale: 1,
+      gsap
+        .timeline({
           scrollTrigger: {
             trigger: image, // this will use the first box as the trigger
             scrub: true,
             end: "bottom 75%",
             onLeave: (self) => self.kill(false, true),
           },
-        }
-      )
+        })
+        .fromTo(
+          image,
+          {
+            // this will animate ALL boxes
+            opacity: 0.1,
+            scale: 0.75,
+            clipPath: "inset(100% 0 0 0)",
+          },
+          {
+            opacity: 1,
+            clipPath: "inset(0% 0% 0% 0%)",
+            scale: 1,
+          }
+        )
     })
 
     gsap.fromTo(
