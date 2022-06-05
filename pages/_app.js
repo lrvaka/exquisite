@@ -17,7 +17,7 @@ import GsapContext from "../store/gsap-context"
 import Navbar from "../components/ui/Navbar"
 import Footer from "../components/ui/Footer"
 import { useRouter } from "next/router"
-import Layout from "../components/layouts/layout"
+
 import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
 import PageTransitions from "../components/PageTransitions"
 
