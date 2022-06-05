@@ -110,15 +110,26 @@ const HeroSection = () => {
 
     const images = containerRef.current.children
 
-    gsap.set(images, { autoAlpha: 0.1 })
+    gsap.set(images, { autoAlpha: 0.01 })
 
     // Target ALL descendants with the class of .box
     gsap.fromTo(
       images,
-      { scale: 0 },
       {
+        y: 25,
+        scale: 0.75,
+        opacity: 0,
+        clipPath: "inset(100% 0 0 0)",
+      },
+      {
+        y: 0,
         scale: 1,
-        duration: 3,
+        opacity: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+        delay: 0.5,
+        duration: 2,
+        stagger: 1,
+        ease: "power4.out",
       }
     )
   }, [])
