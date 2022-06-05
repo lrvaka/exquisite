@@ -18,7 +18,7 @@ const AboutUsSection = () => {
   const leftRef = useRef()
   const rightRef = useRef()
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     if (!containerRef.current) {
       return
     }
