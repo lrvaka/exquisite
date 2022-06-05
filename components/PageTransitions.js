@@ -6,6 +6,7 @@ import { useState, useRef, useEffect, useContext } from "react"
 import gsap from "gsap"
 import Navbar from "./ui/Navbar"
 import { useRouter } from "next/router"
+import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
 
 const MainComponent = styled.div`
   position: "relative";
@@ -44,18 +45,17 @@ const Grid = styled.div`
 `
 
 const PageTransitions = ({ children, route, routingPageOffset }) => {
-  const { setNavColor } = useContext(GsapContext)
+  const { setNavColor, contentRef } = useContext(GsapContext)
   const [transitioning, setTransitioning] = useState()
   const tl = useRef()
   const transitionRef = useRef()
-  const router = useRouter()
 
   const playTransition = () => {
     tl.current.play(0)
   }
   const stopTransition = () => {}
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!transitionRef.current) {
       return
     }
@@ -101,10 +101,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
           onEnter={playTransition}
           onExited={stopTransition}
         >
-          <MainComponent
-            id="smooth-content"
-            routingPageOffset={routingPageOffset}
-          >
+          <MainComponent ref={contentRef} routingPageOffset={routingPageOffset}>
             {children}
           </MainComponent>
         </CSSTransition>

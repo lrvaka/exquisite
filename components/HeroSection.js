@@ -5,6 +5,7 @@ import Parallax from "./Parallax"
 import { useRef, useEffect } from "react"
 import ChakraBox from "./utils/ChakraBox"
 import gsap from "gsap"
+import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
 
 const header = {
   animate: (i) => ({
@@ -87,9 +88,8 @@ const HeroTitle = () => (
 
 const HeroSection = () => {
   const containerRef = useRef()
-  const tl = useRef()
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!containerRef.current) {
       return
     }
@@ -99,7 +99,7 @@ const HeroSection = () => {
     gsap.set(images, { autoAlpha: 0.01 })
 
     // Target ALL descendants with the class of .box
-    gsap.fromTo(
+    let animation = gsap.fromTo(
       images,
       {
         scale: 0.75,
@@ -116,6 +116,10 @@ const HeroSection = () => {
         ease: "power4.out",
       }
     )
+
+    return () => {
+      animation.kill()
+    }
   }, [])
 
   return (

@@ -4,6 +4,7 @@ import NextLink from "next/link"
 import GsapContext from "../../store/gsap-context"
 import { useContext, useState, useEffect } from "react"
 import { useRouter } from "next/router"
+import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 
 const Navbar = () => {
   const [color, setColor] = useState("white")
@@ -11,7 +12,7 @@ const Navbar = () => {
   const { smoother } = useContext(GsapContext)
   const router = useRouter()
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (router.asPath === "/works") {
       console.log(router.asPath)
       setTimeout(() => {

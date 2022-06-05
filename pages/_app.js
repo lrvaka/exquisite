@@ -29,6 +29,8 @@ function MyApp({ Component, pageProps }) {
   const [routingPageOffset, setRoutingPageOffset] = useState(0)
   const [smoother, setSmoother] = useState(null)
   const [navColor, setNavColor] = useState("white")
+  const contentRef = useRef()
+  const wrapperRef = useRef()
   const router = useRouter()
 
   useIsomorphicLayoutEffect(() => {
@@ -38,6 +40,8 @@ function MyApp({ Component, pageProps }) {
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger)
 
     let scroller = ScrollSmoother.create({
+      wrapper: wrapperRef.current,
+      content: contentRef.current,
       smooth: 2, // how long (in seconds) it takes to "catch up" to the native scroll position
       effects: true, // looks for data-speed and data-lag attributes on elements
     })
@@ -45,13 +49,13 @@ function MyApp({ Component, pageProps }) {
     setSmoother(scroller)
   }, [router.asPath])
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     setTimeout(() => {
       ScrollTrigger.refresh()
     }, 500)
   }, [router.asPath])
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const pageChange = () => {
       setRoutingPageOffset(window.scrollY)
     }
@@ -67,9 +71,10 @@ function MyApp({ Component, pageProps }) {
           setSmoother,
           navColor,
           setNavColor,
+          contentRef,
         }}
       >
-        <Box pos="relative" id="smooth-wrapper">
+        <Box pos="relative" ref={wrapperRef}>
           <Navbar />
           <PageTransitions
             route={router.asPath}
