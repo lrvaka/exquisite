@@ -3,9 +3,10 @@ import { keyframes } from "@emotion/react"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 import { useState, useRef, useEffect } from "react"
 import gsap from "gsap"
+import Navbar from "./ui/Navbar"
 
 const MainComponent = styled.div`
-  transform-style: preserve-3d;
+  position: "relative";
 
   &.page-enter-active {
     position: absolute;
@@ -14,25 +15,18 @@ const MainComponent = styled.div`
     width: 100%;
     z-index: 4;
     opacity: 0;
-    backface-visibility: hidden;
   }
 
   &.page-exit-active {
     main {
       transform: translateY(-${(props) => props.routingPageOffset}px);
     }
-
-    backface-visibility: hidden;
   }
-`
-
-const SecondaryComponent = styled.div`
-  position: relative;
 `
 
 const Grid = styled.div`
   pointer-events: none;
-
+  z-index: 5;
   width: 100%;
   height: 100vh;
   top: 0;
@@ -53,6 +47,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
   const transitionRef = useRef()
 
   const playTransition = () => {
+    tl.current.play(0)
     setTransitioning(true)
   }
   const stopTransition = () => setTransitioning("")
@@ -62,33 +57,32 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
       return
     }
 
-    if (transitioning) {
-      const squares = transitionRef.current.children
+    const squares = transitionRef.current.children
 
-      gsap.set(squares, { autoAlpha: 1 })
-      tl.current = gsap
-        .timeline({
-          repeat: 1,
-          repeatDelay: 0.2,
-          yoyo: true,
-          pause: false,
-        })
-        .fromTo(
-          squares,
-          { scale: 0, borderRadius: "100%" },
-          {
-            scale: 1,
-            borderRadius: 0,
-            stagger: {
-              grid: "auto",
-              from: "edges",
-              ease: "sine",
-              amount: 0.7,
-            },
-          }
-        )
-    }
-  }, [transitioning])
+    gsap.set(squares, { autoAlpha: 1 })
+    tl.current = gsap
+      .timeline({
+        repeat: 1,
+        repeatDelay: 0.2,
+        yoyo: true,
+        pause: true,
+      })
+      .fromTo(
+        squares,
+        { scale: 0, borderRadius: "100%" },
+        {
+          scale: 1,
+          borderRadius: 0,
+          stagger: {
+            grid: "auto",
+            from: "edges",
+            ease: "sine",
+            amount: 0.7,
+          },
+        }
+      )
+    return () => tl.current.kill()
+  }, [])
 
   return (
     <>
@@ -97,11 +91,13 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
           key={route}
           timeout={1000}
           classNames="page"
-          id="smooth-content"
           onEnter={playTransition}
           onExited={stopTransition}
         >
-          <MainComponent routingPageOffset={routingPageOffset}>
+          <MainComponent
+            id="smooth-content"
+            routingPageOffset={routingPageOffset}
+          >
             {children}
           </MainComponent>
         </CSSTransition>

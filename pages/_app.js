@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }) {
           setSmoother,
         }}
       >
-        <Box id="smooth-wrapper">
+        <Box pos="relative" id="smooth-wrapper">
           <Navbar />
           <PageTransitions
             route={router.asPath}
