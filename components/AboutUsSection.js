@@ -18,43 +18,41 @@ const AboutUsSection = () => {
   const leftRef = useRef()
   const rightRef = useRef()
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     if (!containerRef.current) {
       return
     }
 
+    let animation
     gsap.set(imageRefs.current, { autoAlpha: 1 })
     gsap.set(leftRef.current, { autoAlpha: 1 })
     gsap.set(rightRef.current, { autoAlpha: 1 })
 
     // Target ALL descendants with the class of .box
     imageRefs.current.forEach((image) => {
-      gsap
-        .timeline({
+      animation = gsap.fromTo(
+        image,
+        {
+          // this will animate ALL boxes
+          opacity: 0.1,
+          scale: 0.75,
+          clipPath: "inset(100% 0 0 0)",
+        },
+        {
+          opacity: 1,
+          clipPath: "inset(0% 0% 0% 0%)",
+          scale: 1,
           scrollTrigger: {
             trigger: image, // this will use the first box as the trigger
             scrub: true,
             end: "bottom 75%",
             onLeave: (self) => self.kill(false, true),
           },
-        })
-        .fromTo(
-          image,
-          {
-            // this will animate ALL boxes
-            opacity: 0.1,
-            scale: 0.75,
-            clipPath: "inset(100% 0 0 0)",
-          },
-          {
-            opacity: 1,
-            clipPath: "inset(0% 0% 0% 0%)",
-            scale: 1,
-          }
-        )
+        }
+      )
     })
 
-    gsap.fromTo(
+    let leftP = gsap.fromTo(
       leftRef.current,
       {
         // this will animate ALL boxes
@@ -74,7 +72,7 @@ const AboutUsSection = () => {
         },
       }
     )
-    gsap.fromTo(
+    let rightP = gsap.fromTo(
       rightRef.current,
       {
         // this will animate ALL boxes
@@ -98,7 +96,11 @@ const AboutUsSection = () => {
     console.log(leftRef.current)
     console.log(rightRef.current)
 
-    return () => {}
+    return () => {
+      rightP.kill()
+      leftP.kill()
+      animation.kill()
+    }
   }, [])
 
   return (
