@@ -1,13 +1,14 @@
 import { useContext } from "react"
 import GsapContext from "../store/gsap-context"
 import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
-import { Box, Container, Heading, Flex } from "@chakra-ui/react"
+import { Box, Container, Heading, Flex, Text, Grid } from "@chakra-ui/react"
 import { motion } from "framer-motion"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import ChakraBox from "../components/utils/ChakraBox"
 import workSlides from "../components/work-slides"
 import NextImage from "next/image"
+import ContactSection from "../components/ContactSection"
 
 const header = {
   animate: (i) => ({
@@ -56,7 +57,7 @@ const variants = {
   },
 }
 
-const animation = { duration: 100000, easing: (t) => t }
+const animation = { duration: 70000, easing: (t) => t }
 
 const AnimatedLetters = ({ title, custom = 0, ...props }) => (
   <Box
@@ -66,14 +67,15 @@ const AnimatedLetters = ({ title, custom = 0, ...props }) => (
     variants={header}
     initial="initial"
     animate="animate"
+    pb="10"
     {...props}
   >
     {[...title].map((letter, i) => (
       <Heading
         key={i}
         as={motion.span}
-        color="brand.100"
-        fontSize={["2rem", "3rem", "6rem"]}
+        color="brand.600"
+        fontSize={["2rem", "3rem", "4rem", "5rem", "6rem"]}
         fontWeight="900"
         lineHeight="100%"
         variants={letterAni}
@@ -139,12 +141,96 @@ const Works = () => {
       spacing: 15,
     },
   })
+  const [sliderRef3] = useKeenSlider({
+    loop: true,
+    renderMode: "performance",
+    mode: "free",
+    created(s) {
+      s.moveToIdx(-10, true, animation)
+    },
+    updated(s) {
+      s.moveToIdx(s.track.details.abs - 10, true, animation)
+    },
+    animationEnded(s) {
+      s.moveToIdx(s.track.details.abs - 10, true, animation)
+    },
+    slides: {
+      perView: 3,
+      spacing: 15,
+    },
+  })
+  const [sliderRef4] = useKeenSlider({
+    loop: true,
+    renderMode: "performance",
+    mode: "free",
+    created(s) {
+      s.moveToIdx(10, true, animation)
+    },
+    updated(s) {
+      s.moveToIdx(s.track.details.abs + 10, true, animation)
+    },
+    animationEnded(s) {
+      s.moveToIdx(s.track.details.abs + 10, true, animation)
+    },
+    slides: {
+      perView: 3,
+      spacing: 15,
+    },
+  })
+  const [sliderRef5] = useKeenSlider({
+    loop: true,
+    renderMode: "performance",
+    mode: "free",
+    created(s) {
+      s.moveToIdx(-10, true, animation)
+    },
+    updated(s) {
+      s.moveToIdx(s.track.details.abs - 10, true, animation)
+    },
+    animationEnded(s) {
+      s.moveToIdx(s.track.details.abs - 10, true, animation)
+    },
+    slides: {
+      perView: 3,
+      spacing: 15,
+    },
+  })
+  const [sliderRef6] = useKeenSlider({
+    loop: true,
+    renderMode: "performance",
+    mode: "free",
+    created(s) {
+      s.moveToIdx(10, true, animation)
+    },
+    updated(s) {
+      s.moveToIdx(s.track.details.abs + 10, true, animation)
+    },
+    animationEnded(s) {
+      s.moveToIdx(s.track.details.abs + 10, true, animation)
+    },
+    slides: {
+      perView: 3,
+      spacing: 15,
+    },
+  })
+
   return (
-    <Box as="main" pt="20vh">
+    <Box as="main" pt="20vh" bg="brand.200">
       <Container maxW="container.xl" px="4">
         <AnimatedLetters custom={1} title="Featured&nbsp;Works" />
+        <Grid templateColumns={["none", "none", "repeat(2, 1fr)"]}>
+          <Text
+            fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
+            color="black"
+            fontWeight="400"
+            lineHeight="normal"
+          >
+            Here is a few of our selected works from over the years, from
+            commercial to residential.
+          </Text>
+        </Grid>
       </Container>
-      <Flex flexDir="column" gap="24">
+      <Flex pt="24" flexDir="column" gap="24">
         <ChakraBox
           variants={variants}
           viewport={{ once: true }}
@@ -158,7 +244,13 @@ const Works = () => {
         >
           {workSlides.carolina.map((e) => (
             <Box className="keen-slider__slide" key={e} h="15rem">
-              <NextImage layout="fill" objectFit="cover" src={e} />
+              <NextImage
+                placeholder="blur"
+                blurDataURL
+                layout="fill"
+                objectFit="cover"
+                src={e}
+              />
             </Box>
           ))}
         </ChakraBox>
@@ -175,7 +267,13 @@ const Works = () => {
         >
           {workSlides.grafbro.map((e) => (
             <Box className="keen-slider__slide" key={e} h="15rem">
-              <NextImage layout="fill" objectFit="cover" src={e} />
+              <NextImage
+                placeholder="blur"
+                blurDataURL
+                layout="fill"
+                objectFit="cover"
+                src={e}
+              />
             </Box>
           ))}
         </ChakraBox>
@@ -192,11 +290,110 @@ const Works = () => {
         >
           {workSlides.gucci.map((e) => (
             <Box className="keen-slider__slide" key={e} h="15rem">
-              <NextImage layout="fill" objectFit="cover" src={e} />
+              <NextImage
+                placeholder="blur"
+                blurDataURL
+                layout="fill"
+                objectFit="cover"
+                src={e}
+              />
+            </Box>
+          ))}
+        </ChakraBox>
+        <ChakraBox
+          variants={variants}
+          viewport={{ once: true }}
+          display={["block", "block", "block", "none"]}
+          initial="initial"
+          whileInView="animate"
+          overflow="hidden"
+          pos="relative"
+          ref={sliderRef3}
+          className="keen-slider"
+        >
+          {workSlides.hearst.map((e) => (
+            <Box className="keen-slider__slide" key={e} h="15rem">
+              <NextImage
+                placeholder="blur"
+                blurDataURL
+                layout="fill"
+                objectFit="cover"
+                src={e}
+              />
+            </Box>
+          ))}
+        </ChakraBox>
+        <ChakraBox
+          variants={variants}
+          viewport={{ once: true }}
+          display={["block", "block", "block", "none"]}
+          initial="initial"
+          whileInView="animate"
+          overflow="hidden"
+          pos="relative"
+          ref={sliderRef4}
+          className="keen-slider"
+        >
+          {workSlides.michili.map((e) => (
+            <Box className="keen-slider__slide" key={e} h="15rem">
+              <NextImage
+                placeholder="blur"
+                blurDataURL
+                layout="fill"
+                objectFit="cover"
+                src={e}
+              />
+            </Box>
+          ))}
+        </ChakraBox>
+        <ChakraBox
+          variants={variants}
+          viewport={{ once: true }}
+          display={["block", "block", "block", "none"]}
+          initial="initial"
+          whileInView="animate"
+          overflow="hidden"
+          pos="relative"
+          ref={sliderRef5}
+          className="keen-slider"
+        >
+          {workSlides.orchard.map((e) => (
+            <Box className="keen-slider__slide" key={e} h="15rem">
+              <NextImage
+                placeholder="blur"
+                blurDataURL
+                layout="fill"
+                objectFit="cover"
+                src={e}
+              />
+            </Box>
+          ))}
+        </ChakraBox>
+        <ChakraBox
+          variants={variants}
+          viewport={{ once: true }}
+          display={["block", "block", "block", "none"]}
+          initial="initial"
+          whileInView="animate"
+          overflow="hidden"
+          pos="relative"
+          ref={sliderRef6}
+          className="keen-slider"
+        >
+          {workSlides.sezane.map((e) => (
+            <Box className="keen-slider__slide" key={e} h="15rem">
+              <NextImage
+                placeholder="blur"
+                blurDataURL
+                layout="fill"
+                objectFit="cover"
+                src={e}
+              />
             </Box>
           ))}
         </ChakraBox>
       </Flex>
+      <ContactSection />
     </Box>
   )
 }

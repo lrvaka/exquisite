@@ -71,7 +71,14 @@ const SlideShowSection = (props) => {
             {slides.map((e) => (
               <Box className="keen-slider__slide" key={e.url} h="15rem">
                 <ImageModal title={e.url}>
-                  <NextImage layout="fill" objectFit="cover" src={e.url} />\
+                  <NextImage
+                    placeholder="blur"
+                    layout="fill"
+                    blurDataURL
+                    objectFit="cover"
+                    src={e.url}
+                  />
+                  \
                 </ImageModal>
               </Box>
             ))}

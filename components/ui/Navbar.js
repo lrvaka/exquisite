@@ -30,7 +30,7 @@ const Navbar = () => {
             </NextLink>
             <Link
               onClick={() => {
-                smoother.scrollTo("/#contact", true, "center center")
+                smoother.scrollTo("#contact", true, "center center")
               }}
               fontFamily="quincy-cf"
               fontWeight="700"
