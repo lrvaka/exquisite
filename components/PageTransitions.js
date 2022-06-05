@@ -50,7 +50,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
     tl.current.play(0)
     setTransitioning(true)
   }
-  const stopTransition = () => setTransitioning("")
+  const stopTransition = () => setTransitioning(false)
 
   useEffect(() => {
     if (!transitionRef.current) {
@@ -60,12 +60,13 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
     const squares = transitionRef.current.children
 
     gsap.set(squares, { autoAlpha: 1 })
+
     tl.current = gsap
       .timeline({
         repeat: 1,
         repeatDelay: 0.2,
         yoyo: true,
-        pause: true,
+        paused: true,
       })
       .fromTo(
         squares,
@@ -77,11 +78,14 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
             grid: "auto",
             from: "edges",
             ease: "sine",
-            amount: 0.7,
+            amount: 0.5,
           },
         }
       )
-    return () => tl.current.kill()
+
+    return () => {
+      tl.current.kill()
+    }
   }, [])
 
   return (
