@@ -8,6 +8,7 @@ import { useRouter } from "next/router"
 const Navbar = () => {
   const [color, setColor] = useState("white")
   const [logo, setLogo] = useState("/images/white-logo.png")
+  const { smoother } = useContext(GsapContext)
   const router = useRouter()
 
   useEffect(() => {
