@@ -1,9 +1,11 @@
 import styled from "@emotion/styled"
 import { keyframes } from "@emotion/react"
+import GsapContext from "../store/gsap-context"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useContext } from "react"
 import gsap from "gsap"
 import Navbar from "./ui/Navbar"
+import { useRouter } from "next/router"
 
 const MainComponent = styled.div`
   position: "relative";
@@ -42,15 +44,19 @@ const Grid = styled.div`
 `
 
 const PageTransitions = ({ children, route, routingPageOffset }) => {
+  const { setNavColor } = useContext(GsapContext)
   const [transitioning, setTransitioning] = useState()
   const tl = useRef()
   const transitionRef = useRef()
+  const router = useRouter()
 
   const playTransition = () => {
     tl.current.play(0)
     setTransitioning(true)
   }
-  const stopTransition = () => setTransitioning(false)
+  const stopTransition = () => {
+    setTransitioning(false)
+  }
 
   useEffect(() => {
     if (!transitionRef.current) {
