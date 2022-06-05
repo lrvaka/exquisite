@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
   const wrapperRef = useRef()
   const router = useRouter()
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     if (smoother) {
       ScrollTrigger.getAll().forEach((t) => t.kill())
     }
@@ -49,13 +49,13 @@ function MyApp({ Component, pageProps }) {
     setSmoother(scroller)
   }, [router.asPath])
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     setTimeout(() => {
       ScrollTrigger.refresh()
     }, 500)
   }, [router.asPath])
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     const pageChange = () => {
       setRoutingPageOffset(window.scrollY)
     }
