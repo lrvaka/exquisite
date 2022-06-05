@@ -6,21 +6,6 @@ import { useRef, useEffect } from "react"
 import ChakraBox from "./utils/ChakraBox"
 import gsap from "gsap"
 
-const images = {
-  initial: { y: 25, scale: 0.75, opacity: 0, clipPath: "inset(100% 0 0 0)" },
-  animate: (i) => ({
-    y: 0,
-    scale: 1,
-    opacity: 1,
-    clipPath: "inset(0% 0% 0% 0%)",
-    transition: {
-      clipPath: { type: "spring", damping: 50 },
-      delay: i * 0.5,
-      duration: 1,
-    },
-  }),
-}
-
 const header = {
   animate: (i) => ({
     transition: {
@@ -102,6 +87,7 @@ const HeroTitle = () => (
 
 const HeroSection = () => {
   const containerRef = useRef()
+  const tl = useRef()
 
   useEffect(() => {
     if (!containerRef.current) {
@@ -113,7 +99,7 @@ const HeroSection = () => {
     gsap.set(images, { autoAlpha: 0.01 })
 
     // Target ALL descendants with the class of .box
-    gsap.fromTo(
+    tl.current = gsap.fromTo(
       images,
       {
         scale: 0.75,
@@ -130,6 +116,10 @@ const HeroSection = () => {
         ease: "power4.out",
       }
     )
+
+    tl.current.play(0)
+
+    return () => tl.current.kill()
   }, [])
 
   return (
