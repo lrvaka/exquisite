@@ -118,6 +118,7 @@ const HeroSection = () => {
       { scale: 0 },
       {
         scale: 1,
+        duration: 3,
       }
     )
   }, [])
