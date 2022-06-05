@@ -31,6 +31,9 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter()
 
   useIsomorphicLayoutEffect(() => {
+    if (smoother) {
+      ScrollTrigger.getAll().forEach((t) => t.kill())
+    }
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger)
 
     let scroller = ScrollSmoother.create({
