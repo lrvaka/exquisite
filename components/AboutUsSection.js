@@ -40,7 +40,7 @@ const AboutUsSection = () => {
           scrollTrigger: {
             trigger: image, // this will use the first box as the trigger
             scrub: true,
-            end: "bottom center",
+            end: "bottom 75%",
             onLeave: (self) => self.kill(false, true),
           },
         }
