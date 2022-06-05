@@ -57,6 +57,7 @@ export const SectionParagraph = forwardRef((props, ref) => {
     </Text>
   )
 })
+SectionParagraph.displayName="SectionParagraph"
 
 export const AnimatedHeading = ({ title, custom = 0, ...props }) => (
   <Box
