@@ -68,6 +68,7 @@ const AboutUsSection = () => {
           trigger: leftRef.current, // this will use the first box as the trigger
           scrub: true,
           end: "bottom 75%",
+          onLeave: (self) => self.kill(false, true),
         },
       }
     )
@@ -87,6 +88,7 @@ const AboutUsSection = () => {
           trigger: rightRef.current, // this will use the first box as the trigger
           scrub: true,
           end: "bottom 75%",
+          onLeave: (self) => self.kill(false, true),
         },
       }
     )
