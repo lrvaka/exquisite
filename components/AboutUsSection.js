@@ -96,11 +96,7 @@ const AboutUsSection = () => {
     console.log(leftRef.current)
     console.log(rightRef.current)
 
-    return () => {
-      rightP.kill()
-      leftP.kill()
-      animation.kill()
-    }
+    return () => {}
   }, [])
 
   return (
