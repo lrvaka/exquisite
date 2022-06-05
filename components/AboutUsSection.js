@@ -44,7 +44,7 @@ const AboutUsSection = () => {
           scrollTrigger: {
             trigger: image, // this will use the first box as the trigger
             scrub: true,
-            end: "bottom 75%",
+            end: "bottom center",
             onLeave: (self) => self.kill(false, true),
           },
         }
@@ -69,7 +69,7 @@ const AboutUsSection = () => {
         scrollTrigger: {
           trigger: leftRef.current, // this will use the first box as the trigger
           scrub: true,
-          end: "bottom 75%",
+          end: "bottom center",
           onLeave: (self) => self.kill(false, true),
         },
       }
@@ -92,7 +92,7 @@ const AboutUsSection = () => {
         scrollTrigger: {
           trigger: rightRef.current, // this will use the first box as the trigger
           scrub: true,
-          end: "bottom 75%",
+          end: "bottom center",
           onLeave: (self) => self.kill(false, true),
         },
       }
