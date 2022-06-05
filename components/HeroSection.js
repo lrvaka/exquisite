@@ -99,7 +99,7 @@ const HeroSection = () => {
     gsap.set(images, { autoAlpha: 0.01 })
 
     // Target ALL descendants with the class of .box
-    tl.current = gsap.fromTo(
+    gsap.fromTo(
       images,
       {
         scale: 0.75,
@@ -110,16 +110,12 @@ const HeroSection = () => {
         scale: 1,
         opacity: 1,
         clipPath: "inset(0% 0% 0% 0%)",
-        delay: 0.5,
+        delay: 0.75,
         duration: 2.5,
         stagger: 1.25,
         ease: "power4.out",
       }
     )
-
-    tl.current.play(0)
-
-    return () => tl.current.kill()
   }, [])
 
   return (
