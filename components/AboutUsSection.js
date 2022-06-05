@@ -7,7 +7,6 @@ import ChakraBox from "./utils/ChakraBox"
 import { useContext, useEffect, useRef } from "react"
 import GsapContext from "../store/gsap-context"
 import { AnimatedHeading } from "./ui/SectionText"
-import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
 import gsap from "gsap"
 import useArrayRef from "./hooks/useArrayRef"
 
@@ -56,14 +55,17 @@ const AboutUsSection = () => {
       leftRef.current,
       {
         // this will animate ALL boxes
+        x: -100,
         opacity: 0.1,
         scale: 0.75,
         clipPath: "inset(100% 0 0 0)",
       },
       {
+        x: 0,
         opacity: 1,
         clipPath: "inset(0% 0% 0% 0%)",
         scale: 1,
+        ease: "power4.out",
         scrollTrigger: {
           trigger: leftRef.current, // this will use the first box as the trigger
           scrub: true,
@@ -76,13 +78,16 @@ const AboutUsSection = () => {
       rightRef.current,
       {
         // this will animate ALL boxes
+        x: 100,
         opacity: 0.1,
         scale: 0.75,
         clipPath: "inset(100% 0 0 0)",
       },
       {
+        x: 0,
         opacity: 1,
         clipPath: "inset(0% 0% 0% 0%)",
+        ease: "power4.out",
         scale: 1,
         scrollTrigger: {
           trigger: rightRef.current, // this will use the first box as the trigger
