@@ -68,20 +68,17 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
         yoyo: true,
         paused: true,
       })
-      .fromTo(
-        squares,
-        { scale: 0, borderRadius: "100%" },
-        {
-          scale: 1,
-          borderRadius: 0,
-          stagger: {
-            grid: "auto",
-            from: "edges",
-            ease: "sine",
-            amount: 0.5,
-          },
-        }
-      )
+      .from(squares, { scale: 0, borderRadius: "100%" })
+      .to(squares, {
+        scale: 1,
+        borderRadius: 0,
+        stagger: {
+          grid: "auto",
+          from: "edges",
+          ease: "sine",
+          amount: 0.5,
+        },
+      })
 
     return () => {
       tl.current.kill()
