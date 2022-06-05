@@ -116,13 +116,11 @@ const HeroSection = () => {
     gsap.fromTo(
       images,
       {
-        y: 25,
         scale: 0.75,
-        opacity: 0,
+        opacity: 0.1,
         clipPath: "inset(100% 0 0 0)",
       },
       {
-        y: 0,
         scale: 1,
         opacity: 1,
         clipPath: "inset(0% 0% 0% 0%)",
