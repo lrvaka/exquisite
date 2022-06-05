@@ -4,28 +4,51 @@ import { Box, Flex, Grid, Container } from "@chakra-ui/react"
 import SVGArrow from "./ui/SVGArrow"
 import Parallax from "./Parallax"
 import ChakraBox from "./utils/ChakraBox"
-import { useContext, useEffect, useLayoutEffect } from "react"
+import { useContext, useEffect, useRef } from "react"
 import GsapContext from "../store/gsap-context"
 import { AnimatedHeading } from "./ui/SectionText"
 import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
-
-const images = {
-  initial: { y: 25, scale: 0.75, opacity: 0, clipPath: "inset(100% 0 0 0)" },
-  animate: (i) => ({
-    y: 0,
-    scale: 1,
-    opacity: 1,
-    clipPath: "inset(0% 0% 0% 0%)",
-    transition: {
-      clipPath: { type: "spring", damping: 50 },
-      delay: i * 0.5,
-      duration: 1,
-    },
-  }),
-}
+import gsap from "gsap"
 
 const AboutUsSection = () => {
   const { smoother } = useContext(GsapContext)
+  const containerRef = useRef()
+  const tl = useRef()
+
+  useEffect(() => {
+    if (!containerRef.current) {
+      return
+    }
+
+    let images = gsap.utils.toArray("#image")
+    gsap.set(images, { autoAlpha: 1 })
+
+    // Target ALL descendants with the class of .box
+    images.forEach((image) => {
+      gsap.fromTo(
+        image,
+        {
+          // this will animate ALL boxes
+          opacity: 0.1,
+          scale: 0.75,
+          clipPath: "inset(100% 0 0 0)",
+        },
+        {
+          opacity: 1,
+          clipPath: "inset(0% 0% 0% 0%)",
+          scale: 1,
+          scrollTrigger: {
+            trigger: image, // this will use the first box as the trigger
+            scrub: true,
+            markers: true,
+            end: "bottom center",
+            onLeave: (self) => self.kill(false, true),
+          },
+        }
+      )
+    })
+  }, [])
+
   return (
     <>
       <Container
@@ -89,20 +112,15 @@ const AboutUsSection = () => {
         templateColumns="repeat(25, 1fr)"
         maxW="1300px"
         m="0 auto"
+        ref={containerRef}
       >
-        <ChakraBox
-          variants={images}
-          custom={0}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          w="100%"
-          h="100%"
+        <Box
+          id="image"
           pos="relative"
           gridRow={["4 / 5", "4 / 5", "4 / 5", "3 / 5"]}
           gridColumn="20 / 26"
           overflow="hidden"
-          boxShadow="inset 0px 0px 42px -18px #000000"
+          visibility="hidden"
         >
           <Box data-speed="auto" pos="absolute" zIndex="-1" w="100%" h="160%">
             <NextImage
@@ -112,20 +130,14 @@ const AboutUsSection = () => {
               blurDataURL={`data:image/webp;base64,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`}
             />
           </Box>
-        </ChakraBox>
-        <ChakraBox
-          variants={images}
-          custom={1}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          w="100%"
-          h="100%"
+        </Box>
+        <Box
+          id="image"
           pos="relative"
           gridRow="1 / 5"
           gridColumn="8 / 19"
           overflow="hidden"
-          boxShadow="inset 0px 0px 42px -18px #000000"
+          visibility="hidden"
         >
           <Box data-speed="auto" pos="absolute" zIndex="-1" w="100%" h="160%">
             <NextImage
@@ -136,20 +148,14 @@ const AboutUsSection = () => {
               objectFit="cover"
             />
           </Box>
-        </ChakraBox>
-        <ChakraBox
-          variants={images}
-          custom={2}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          w="100%"
-          h="100%"
+        </Box>
+        <Box
+          id="image"
           pos="relative"
           gridRow={["1 / 2", "1 / 2", "1 / 2", "1 / 3"]}
           gridColumn="1 / 7"
           overflow="hidden"
-          boxShadow="inset 0px 0px 42px -18px #000000"
+          visibility="hidden"
         >
           <Box data-speed="auto" pos="absolute" w="100%" h="160%" zIndex="-1">
             <NextImage
@@ -160,7 +166,7 @@ const AboutUsSection = () => {
               blurDataURL={`data:image/webp;base64,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`}
             />
           </Box>
-        </ChakraBox>
+        </Box>
       </Grid>
     </>
   )
