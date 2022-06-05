@@ -52,11 +52,8 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
 
   const playTransition = () => {
     tl.current.play(0)
-    setTransitioning(true)
   }
-  const stopTransition = () => {
-    setTransitioning(false)
-  }
+  const stopTransition = () => {}
 
   useEffect(() => {
     if (!transitionRef.current) {
