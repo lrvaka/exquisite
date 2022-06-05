@@ -40,6 +40,7 @@ function MyApp({ Component, pageProps }) {
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger)
 
     let scroller = ScrollSmoother.create({
+      ignoreMobileResize: true,
       wrapper: wrapperRef.current,
       content: contentRef.current,
       smooth: 2, // how long (in seconds) it takes to "catch up" to the native scroll position
