@@ -9,6 +9,7 @@ import ChakraBox from "../components/utils/ChakraBox"
 import workSlides from "../components/work-slides"
 import NextImage from "next/image"
 import ContactSection from "../components/ContactSection"
+import Navbar from "../components/ui/Navbar"
 
 const header = {
   animate: (i) => ({

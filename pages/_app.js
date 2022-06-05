@@ -28,12 +28,13 @@ if (typeof window !== "undefined") {
 function MyApp({ Component, pageProps }) {
   const [routingPageOffset, setRoutingPageOffset] = useState(0)
   const [smoother, setSmoother] = useState(null)
+  const [navColor, setNavColor] = useState("white")
   const router = useRouter()
 
   useIsomorphicLayoutEffect(() => {
-    if (smoother) {
-      ScrollTrigger.getAll().forEach((t) => t.kill())
-    }
+    // if (smoother) {
+    //   ScrollTrigger.getAll().forEach((t) => t.kill())
+    // }
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger)
 
     let scroller = ScrollSmoother.create({
@@ -51,7 +52,9 @@ function MyApp({ Component, pageProps }) {
   }, [router.asPath])
 
   useEffect(() => {
-    const pageChange = () => setRoutingPageOffset(window.scrollY)
+    const pageChange = () => {
+      setRoutingPageOffset(window.scrollY)
+    }
     router.events.on("routeChangeStart", pageChange)
   }, [router.events])
 
@@ -62,6 +65,8 @@ function MyApp({ Component, pageProps }) {
         value={{
           smoother,
           setSmoother,
+          navColor,
+          setNavColor,
         }}
       >
         <Box pos="relative" id="smooth-wrapper">
