@@ -43,7 +43,7 @@ export const SectionHeading = ({ children, ...props }) => (
   </Heading>
 )
 
-export const SectionParagraph = forwardRef((props, ref) => {
+const Paragraph = (props, ref) => {
   return (
     <Text
       fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
@@ -56,8 +56,9 @@ export const SectionParagraph = forwardRef((props, ref) => {
       {props.children}
     </Text>
   )
-})
-SectionParagraph.displayName="SectionParagraph"
+}
+
+export const SectionParagraph = forwardRef(Paragraph)
 
 export const AnimatedHeading = ({ title, custom = 0, ...props }) => (
   <Box
