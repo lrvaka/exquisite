@@ -46,6 +46,51 @@ const AboutUsSection = () => {
         }
       )
     })
+
+    gsap.fromTo(
+      "#leftP",
+      {
+        // this will animate ALL boxes
+        opacity: 0.1,
+        scale: 0.75,
+        x: window.innerWidth * -1,
+        clipPath: "inset(100% 0 0 0)",
+      },
+      {
+        opacity: 1,
+        x: 0,
+        clipPath: "inset(0% 0% 0% 0%)",
+        scale: 1,
+        scrollTrigger: {
+          trigger: "#leftP", // this will use the first box as the trigger
+          scrub: true,
+          end: "bottom 75%",
+          onLeave: (self) => self.kill(false, true),
+        },
+      }
+    )
+    gsap.fromTo(
+      "#rightP",
+      {
+        // this will animate ALL boxes
+        opacity: 0.1,
+        x: window.innerWidth,
+        scale: 0.75,
+        clipPath: "inset(100% 0 0 0)",
+      },
+      {
+        x: 0,
+        opacity: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+        scale: 1,
+        scrollTrigger: {
+          trigger: "#rightP", // this will use the first box as the trigger
+          scrub: true,
+          end: "bottom 75%",
+          onLeave: (self) => self.kill(false, true),
+        },
+      }
+    )
   }, [])
 
   return (
@@ -55,6 +100,7 @@ const AboutUsSection = () => {
         px="4"
         py="20"
         pb={["20", "20", "20", "40"]}
+        overflowX="hidden"
       >
         <Box as="h2" pb="10">
           <AnimatedHeading
@@ -73,14 +119,18 @@ const AboutUsSection = () => {
           flexDir={["column", "column", "column", "row"]}
           maxW={["80vw", "80vw", "80vw", "none"]}
         >
-          <SectionParagraph pb="9" w={["100%", "100%", "100%", "50%"]}>
+          <SectionParagraph
+            id="leftP"
+            pb="9"
+            w={["100%", "100%", "100%", "50%"]}
+          >
             Whether you&apos;re an architect, designer, developer or flooring
             contractor, Exquisite Wood Floors offers you a solution designed to
             perfectly match the style, requirements and budget of your project.
             We are proud of the work we do, and our clients are more than
             delighted.
           </SectionParagraph>
-          <SectionParagraph w={["100%", "100%", "100%", "50%"]}>
+          <SectionParagraph id="rightP" w={["100%", "100%", "100%", "50%"]}>
             We owe our success to our deep knowledge base of wood selection, the
             skills of our enthusiastic team, and the specialized technologies
             and techniques we have at our disposal.
