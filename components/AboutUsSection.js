@@ -23,14 +23,13 @@ const AboutUsSection = () => {
       return
     }
 
-    let animation
     gsap.set(imageRefs.current, { autoAlpha: 1 })
     gsap.set(leftRef.current, { autoAlpha: 1 })
     gsap.set(rightRef.current, { autoAlpha: 1 })
 
     // Target ALL descendants with the class of .box
     imageRefs.current.forEach((image) => {
-      animation = gsap.fromTo(
+      gsap.fromTo(
         image,
         {
           // this will animate ALL boxes
@@ -52,7 +51,7 @@ const AboutUsSection = () => {
       )
     })
 
-    let leftP = gsap.fromTo(
+    gsap.fromTo(
       leftRef.current,
       {
         // this will animate ALL boxes
@@ -72,7 +71,7 @@ const AboutUsSection = () => {
         },
       }
     )
-    let rightP = gsap.fromTo(
+    gsap.fromTo(
       rightRef.current,
       {
         // this will animate ALL boxes
