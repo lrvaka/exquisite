@@ -55,7 +55,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
   }
   const stopTransition = () => {}
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     if (!transitionRef.current) {
       return
     }

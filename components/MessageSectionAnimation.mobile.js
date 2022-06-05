@@ -14,7 +14,8 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
   const [leftPlankRefs, setLeftPlankRefs] = useArrayRef()
   const [rightPlankRefs, setRightPlankRefs] = useArrayRef()
   let plankType
-  useIsomorphicLayoutEffect(() => {
+
+  useEffect(() => {
     console.log(leftPlankRefs)
     console.log(rightPlankRefs)
     gsap.set(leftPlankRefs.current, { autoAlpha: 0.1 })
