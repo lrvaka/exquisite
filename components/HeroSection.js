@@ -3,6 +3,8 @@ import NextImage from "next/image"
 import { motion } from "framer-motion"
 import Parallax from "./Parallax"
 import { useRef, useEffect } from "react"
+import ChakraBox from "./utils/ChakraBox"
+import gsap from "gsap"
 
 const images = {
   initial: { y: 25, scale: 0.75, opacity: 0, clipPath: "inset(100% 0 0 0)" },
@@ -99,6 +101,27 @@ const HeroTitle = () => (
 )
 
 const HeroSection = () => {
+  const containerRef = useRef()
+
+  useEffect(() => {
+    if (!containerRef.current) {
+      return
+    }
+
+    const images = containerRef.current.children
+
+    gsap.set(images, { autoAlpha: 0.1 })
+
+    // Target ALL descendants with the class of .box
+    gsap.fromTo(
+      images,
+      { scale: 0 },
+      {
+        scale: 1,
+      }
+    )
+  }, [])
+
   return (
     <Box pos="relative">
       <HeroTitle />
@@ -119,39 +142,37 @@ const HeroSection = () => {
           "repeat(15, 1fr)",
           "repeat(25, 1fr)",
         ]}
+        pos="relative"
+        ref={containerRef}
       >
-        <Parallax
-          w="100%"
-          h="100%"
+        <Box
+          visibility="hidden"
           pos="relative"
           gridRow={["11 / 15", "11 / 15", "11 / 15", "17 / 25"]}
           gridColumn={["5 / 16", "5 / 16", "5 / 16", "18 / 26"]}
-          variants={images}
-          custom={3}
-          initial="initial"
-          animate="animate"
-          offset={100}
+          data-speed="1.2"
         >
           <NextImage
+            priority
             src="/images/hero-1.webp"
             layout="fill"
             objectFit="cover"
           />
-        </Parallax>
-        <Parallax
-          w="100%"
-          h="100%"
+        </Box>
+        <Box
+          visibility="hidden"
           pos="relative"
           gridRow={["4 / 6", "4 / 6", "4 / 6", "6 / 12"]}
           gridColumn={["2 / 9", "2 / 9", "2 / 9", "2 / 8"]}
-          variants={images}
-          custom={1}
-          initial="initial"
-          animate="animate"
-          offset={75}
+          data-speed="1.1"
         >
-          <NextImage src="/images/hero-2.jpg" layout="fill" objectFit="cover" />
-        </Parallax>
+          <NextImage
+            priority
+            src="/images/hero-2.jpg"
+            layout="fill"
+            objectFit="cover"
+          />
+        </Box>
       </Grid>
     </Box>
   )
