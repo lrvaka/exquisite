@@ -5,6 +5,7 @@ import {
   Box,
   Container,
   Heading,
+  Link,
   Flex,
   Text,
   Grid,
@@ -492,17 +493,22 @@ const Works = () => {
             <SectionHeading color="brand.100" fontSize="1.5rem">
               941 Mclean Avenue, Suite 472, Yonkers, NY 10707
             </SectionHeading>
-            <IconButton
-              icon={<BsInstagram />}
-              alignSelf="center"
-              size="md"
-              color="white"
-              width="max-content"
-              variant="ghost"
-              _focus={{ backgroundColor: "transparent" }}
-              _active={{ backgroundColor: "transparent" }}
-              _hover={{ backgroundColor: "transparent" }}
-            />
+            <Link
+              href="https://www.instagram.com/exquisitewoodfloors/"
+              target="_blank"
+            >
+              <IconButton
+                icon={<BsInstagram />}
+                alignSelf="center"
+                size="md"
+                color="white"
+                width="max-content"
+                variant="ghost"
+                _focus={{ backgroundColor: "transparent" }}
+                _active={{ backgroundColor: "transparent" }}
+                _hover={{ backgroundColor: "transparent" }}
+              />
+            </Link>
           </Flex>
         </Container>
       </Box>

@@ -6,6 +6,7 @@ import {
   FormLabel,
   Input,
   Stack,
+  Link,
   Textarea,
 } from "@chakra-ui/react"
 import SVGArrow from "./ui/SVGArrow"
@@ -109,17 +110,22 @@ const ContactSection = ({ ...props }) => (
         <SectionHeading color="brand.500" fontSize="1.5rem">
           941 Mclean Avenue, Suite 472, Yonkers, NY 10707
         </SectionHeading>
-        <IconButton
-          icon={<BsInstagram />}
-          alignSelf="center"
-          size="md"
-          colorScheme="green"
-          width="max-content"
-          variant="ghost"
-          _focus={{ backgroundColor: "transparent" }}
-          _active={{ backgroundColor: "transparent" }}
-          _hover={{ backgroundColor: "transparent" }}
-        />
+        <Link
+          href="https://www.instagram.com/exquisitewoodfloors/"
+          target="_blank"
+        >
+          <IconButton
+            icon={<BsInstagram />}
+            alignSelf="center"
+            size="md"
+            colorScheme="green"
+            width="max-content"
+            variant="ghost"
+            _focus={{ backgroundColor: "transparent" }}
+            _active={{ backgroundColor: "transparent" }}
+            _hover={{ backgroundColor: "transparent" }}
+          />
+        </Link>
       </Flex>
     </Container>
   </Box>
