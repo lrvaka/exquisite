@@ -134,17 +134,20 @@ const Works = () => {
           templateColumns={["none", "none", "repeat(2, 1fr)"]}
           maxW={["80vw", "80vw", "80vw", "none"]}
         >
-          <Text
-            fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
-            color="black"
-            fontWeight="400"
-            lineHeight="normal"
-          >
-            Here is a few of our selected works from over the years. From
-            commercial to residential, installation to restoration, we&apos;ve
-            had the pleasure of working on various projects from a wide array of
-            clientele.
-          </Text>
+          <Flex flexDir="column">
+            <Text
+              fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
+              color="black"
+              fontWeight="400"
+              lineHeight="normal"
+              pb="9"
+            >
+              Here is a few of our selected works from over the years. From
+              commercial to residential, installation to restoration, we&apos;ve
+              had the pleasure of working on various projects from a wide array
+              of clientele.
+            </Text>
+          </Flex>
         </Grid>
         <Flex pos="relative" justifyContent="space-between">
           {clients.map((e) => (

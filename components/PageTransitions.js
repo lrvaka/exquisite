@@ -1,11 +1,15 @@
 import styled from "@emotion/styled"
 import { keyframes } from "@emotion/react"
 import GsapContext from "../store/gsap-context"
+import { Flex } from "@chakra-ui/react"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 import { useState, useRef, useEffect, useContext } from "react"
 import gsap from "gsap"
+import transitionPlanks from "./transition-planks"
 import Navbar from "./ui/Navbar"
 import { useRouter } from "next/router"
+import NextImage from "next/image"
+import useArrayRef from "./hooks/useArrayRef"
 import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
 
 const MainComponent = styled.div`
@@ -28,6 +32,8 @@ const MainComponent = styled.div`
 `
 
 const Grid = styled.div`
+  flex-direction: column;
+  display: flex;
   pointer-events: none;
   z-index: 5;
   width: 100%;
@@ -35,23 +41,23 @@ const Grid = styled.div`
   top: 0;
   left: 0;
   position: fixed;
-  display: grid;
-  grid-template-rows: repeat(10, 1fr);
-  grid-template-columns: repeat(10, 1fr);
-  div {
-    background: red;
-    visibility: hidden;
-  }
+  visibility: hidden;
 `
 
 const PageTransitions = ({ children, route, routingPageOffset }) => {
   const { setNavColor, contentRef } = useContext(GsapContext)
   const [transitioning, setTransitioning] = useState()
   const tl = useRef()
+  const tl1 = useRef()
   const transitionRef = useRef()
+  const [leftPlankRefs, setLeftPlankRefs] = useArrayRef()
+  const [rightPlankRefs, setRightPlankRefs] = useArrayRef()
+
+  let plankType
 
   const playTransition = () => {
     tl.current.play(0)
+    tl1.current.play(0)
   }
   const stopTransition = () => {}
 
@@ -60,9 +66,10 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
       return
     }
 
-    const squares = transitionRef.current.children
+    gsap.set(leftPlankRefs.current, { autoAlpha: 1 })
+    gsap.set(rightPlankRefs.current, { autoAlpha: 1 })
 
-    gsap.set(squares, { autoAlpha: 1 })
+    gsap.set(transitionRef.current, { autoAlpha: 1 })
 
     tl.current = gsap
       .timeline({
@@ -72,14 +79,34 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
         paused: true,
       })
       .fromTo(
-        squares,
-        { scale: 0, borderRadius: "100%" },
+        leftPlankRefs.current,
+        { x: window.innerWidth * -1 },
         {
-          scale: 1,
-          borderRadius: 0,
+          opacity: 1,
+          x: 0,
+          ease: "power4.out",
           stagger: {
-            grid: "auto",
-            from: "edges",
+            ease: "sine",
+            amount: 0.5,
+          },
+        }
+      )
+
+    tl1.current = gsap
+      .timeline({
+        repeat: 1,
+        repeatDelay: 0.2,
+        yoyo: true,
+        paused: true,
+      })
+      .fromTo(
+        rightPlankRefs.current,
+        { x: window.innerWidth },
+        {
+          opacity: 1,
+          x: 0,
+          ease: "power4.out",
+          stagger: {
             ease: "sine",
             amount: 0.5,
           },
@@ -88,6 +115,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
 
     return () => {
       tl.current.kill()
+      tl1.current.kill()
     }
   }, [])
 
@@ -107,8 +135,41 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
         </CSSTransition>
       </TransitionGroup>
       <Grid ref={transitionRef}>
-        {[...Array(100)].map((_, i) => (
-          <div key={i} />
+        {transitionPlanks.desktop.map((e, i) => (
+          <Flex
+            alignItems="stretch"
+            pos="relative"
+            flexDir="row"
+            zIndex="1"
+            key={i}
+            flex="1"
+          >
+            {e.map((element, index) => {
+              if (element.ref === "setRightPlankRefs") {
+                plankType = setRightPlankRefs
+              }
+              if (element.ref === "setLeftPlankRefs") {
+                plankType = setLeftPlankRefs
+              }
+              return (
+                <Flex
+                  visibility="hidden"
+                  pos="relative"
+                  height="auto"
+                  key={index}
+                  ref={plankType}
+                  alignItems="stretch"
+                >
+                  <NextImage
+                    src={element.src}
+                    width={element.w}
+                    height={element.h}
+                    priority="true"
+                  />
+                </Flex>
+              )
+            })}
+          </Flex>
         ))}
       </Grid>
     </>
