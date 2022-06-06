@@ -16,13 +16,14 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
   let plankType
 
   useEffect(() => {
-    console.log(leftPlankRefs)
-    console.log(rightPlankRefs)
+    let leftAni
+    let rightAni
+
     gsap.set(leftPlankRefs.current, { autoAlpha: 0.1 })
     gsap.set(rightPlankRefs.current, { autoAlpha: 0.1 })
 
     leftPlankRefs.current.forEach((plank, i) => {
-      gsap.fromTo(
+      leftAni = gsap.fromTo(
         plank,
         { opacity: 0.1, x: window.innerWidth * -1 },
         {
@@ -40,7 +41,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
     })
 
     rightPlankRefs.current.forEach((plank, i) => {
-      gsap.fromTo(
+      rightAni = gsap.fromTo(
         plank,
         { opacity: 0.1, x: window.innerWidth },
         {
@@ -57,7 +58,10 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
       )
     })
 
-    return () => {}
+    return () => {
+      leftAni.kill()
+      rightAni.kill()
+    }
   }, [])
 
   return (

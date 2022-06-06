@@ -9,6 +9,7 @@ import NextImage from "next/image"
 import { AnimatedHeading } from "./ui/SectionText"
 import ChakraBox from "./utils/ChakraBox"
 import ImageModal from "./SlideModal"
+import gsap from "gsap"
 
 const variants = {
   initial: {
@@ -50,6 +51,68 @@ const SlideShowSection = (props) => {
       spacing: 15,
     },
   })
+
+  const ref = useRef()
+  const textRef = useRef()
+
+  useEffect(() => {
+    if (!ref.current) {
+      return
+    }
+    gsap.set(ref.current, { autoAlpha: 1 })
+    gsap.set(textRef.current, { autoAlpha: 1 })
+
+    let ani = gsap.fromTo(
+      ref.current,
+      {
+        // this will animate ALL boxes
+        opacity: 0.1,
+        scale: 0.75,
+        clipPath: "inset(100% 0 0 0)",
+      },
+      {
+        opacity: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+        scale: 1,
+        scrollTrigger: {
+          trigger: ref.current, // this will use the first box as the trigger
+          scrub: true,
+          end: "bottom center",
+          onLeave: (self) => self.kill(false, true),
+        },
+      }
+    )
+
+    let textAni = gsap.fromTo(
+      textRef.current,
+      {
+        // this will animate ALL boxes
+        x: -100,
+        opacity: 0.1,
+        scale: 0.75,
+        clipPath: "inset(100% 0 0 0)",
+      },
+      {
+        x: 0,
+        opacity: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+        scale: 1,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: textRef.current, // this will use the first box as the trigger
+          scrub: true,
+          end: "bottom center",
+          onLeave: (self) => self.kill(false, true),
+        },
+      }
+    )
+
+    return () => {
+      ani.kill()
+      textAni.kill()
+    }
+  }, [])
+
   return (
     <Box bgColor="brand.500" id="works">
       <Container maxW="container.xl" p="0">
@@ -57,20 +120,29 @@ const SlideShowSection = (props) => {
           flexDir={["column", "column", "column", "row-reverse"]}
           pos="relative"
         >
-          <ChakraBox
-            variants={variants}
-            viewport={{ once: true }}
-            display={["block", "block", "block", "none"]}
-            initial="initial"
-            whileInView="animate"
+          <Flex
+            alignSelf="center"
             overflow="hidden"
             pos="relative"
-            ref={sliderRef}
-            className="keen-slider"
+            w="100%"
+            height="100%"
+            visibility="none"
+            ref={ref}
           >
-            {slides.map((e) => (
-              <Box className="keen-slider__slide" key={e.url} h="15rem">
-                <ImageModal title={e.url}>
+            <Box
+              overflow="hidden"
+              pos="relative"
+              minH="100%"
+              ref={sliderRef}
+              className="keen-slider"
+            >
+              {slides.map((e) => (
+                <Box
+                  className="keen-slider__slide"
+                  pos="relative"
+                  key={e.url}
+                  h={["15rem", "15rem", "15rem", "469.6"]}
+                >
                   <NextImage
                     placeholder="blur"
                     layout="fill"
@@ -78,12 +150,10 @@ const SlideShowSection = (props) => {
                     objectFit="cover"
                     src={e.url}
                   />
-                  \
-                </ImageModal>
-              </Box>
-            ))}
-          </ChakraBox>
-
+                </Box>
+              ))}
+            </Box>
+          </Flex>
           <Box px="4" py="20">
             <Box as="h2" pb="10">
               <AnimatedHeading custom={0} title="Team&nbsp;of&nbsp;seasoned" />
@@ -93,6 +163,8 @@ const SlideShowSection = (props) => {
               pr={["none", "none", "none", "50px"]}
               flexDir="column"
               maxW={["80vw", "80vw", "80vw"]}
+              visibility="none"
+              ref={textRef}
             >
               <SectionParagraph pb="9">
                 Every member of the Exquisite Wood Floors team is a wooden floor
