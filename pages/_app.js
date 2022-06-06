@@ -1,4 +1,4 @@
-import { ChakraProvider, Box } from "@chakra-ui/react"
+import { ChakraProvider, Box, Flex } from "@chakra-ui/react"
 import { theme } from "../lib/theme"
 import Fonts from "../lib/fonts"
 import {
@@ -75,7 +75,7 @@ function MyApp({ Component, pageProps }) {
           contentRef,
         }}
       >
-        <Box pos="relative" ref={wrapperRef}>
+        <Box ref={wrapperRef}>
           <Navbar />
           <PageTransitions
             route={router.asPath}

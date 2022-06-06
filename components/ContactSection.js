@@ -8,7 +8,6 @@ import {
   Stack,
   Textarea,
 } from "@chakra-ui/react"
-import Parallax from "./Parallax"
 import SVGArrow from "./ui/SVGArrow"
 import { SectionHeading } from "./ui/SectionText"
 import NextImage from "next/image"

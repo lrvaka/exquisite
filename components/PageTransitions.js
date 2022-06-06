@@ -33,6 +33,7 @@ const MainComponent = styled.div`
 
 const Grid = styled.div`
   flex-direction: column;
+  justify-content: center;
   display: flex;
   pointer-events: none;
   z-index: 5;
@@ -42,6 +43,7 @@ const Grid = styled.div`
   left: 0;
   position: fixed;
   visibility: hidden;
+  flex: 1;
 `
 
 const PageTransitions = ({ children, route, routingPageOffset }) => {
@@ -142,6 +144,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
             alignItems="stretch"
             pos="relative"
             flexDir="row"
+            justifyContent="center"
             zIndex="1"
             key={i}
             flex="1"
@@ -161,6 +164,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
                   key={index}
                   ref={plankType}
                   alignItems="stretch"
+                  
                 >
                   <NextImage
                     src={element.src}
