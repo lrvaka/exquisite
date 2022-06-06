@@ -141,8 +141,8 @@ const Works = () => {
             lineHeight="normal"
           >
             Here is a few of our selected works from over the years. From
-            commercial to residential, installation to restoration, we've had
-            the pleasure of working on various projects from a wide array of
+            commercial to residential, installation to restoration, we&apos;ve
+            had the pleasure of working on various projects from a wide array of
             clientele.
           </Text>
         </Grid>
