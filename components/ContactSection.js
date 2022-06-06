@@ -15,8 +15,8 @@ import NextImage from "next/image"
 import { IconButton } from "@chakra-ui/react"
 import { BsInstagram } from "react-icons/bs"
 
-const ContactSection = () => (
-  <Box bgColor="brand.100" id="contact">
+const ContactSection = ({ ...props }) => (
+  <Box bgColor="brand.100" id="contact" {...props}>
     <Container
       display="flex"
       maxW="container.xl"

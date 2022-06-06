@@ -12,7 +12,7 @@ import ResponsiveComponent from "./utils/ResponsiveComponent"
 
 const MessageSectionAnimation = ({ children, ...props }) => {
   return (
-    <Box pos="relative" py="20" overflowX="hidden">
+    <Box pos="relative" py="24" overflowX="hidden">
       <ResponsiveComponent
         mobileSize="480"
         mobileComponents={<MessageSectionAnimationMobile />}

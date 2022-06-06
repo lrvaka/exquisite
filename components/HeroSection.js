@@ -112,7 +112,7 @@ const HeroSection = () => {
         clipPath: "inset(0% 0% 0% 0%)",
         delay: 0.75,
         duration: 2.5,
-        stagger: 1.25,
+        stagger: 1,
         ease: "power4.out",
       }
     )

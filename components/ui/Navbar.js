@@ -16,7 +16,7 @@ const Navbar = () => {
     if (router.asPath === "/works") {
       console.log(router.asPath)
       setTimeout(() => {
-        setColor("#213a30")
+        setColor("black")
         setLogo("/images/dark-logo.png")
       }, 1000)
       return
