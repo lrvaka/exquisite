@@ -88,6 +88,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
           stagger: {
             ease: "sine",
             amount: 0.5,
+            from: "random",
           },
         }
       )
@@ -109,6 +110,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
           stagger: {
             ease: "sine",
             amount: 0.5,
+            from: "random",
           },
         }
       )
