@@ -8,9 +8,26 @@ import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 
 const Navbar = () => {
   const [color, setColor] = useState("white")
+  const [navLink, setNavLink] = useState()
   const [logo, setLogo] = useState("/images/white-logo.png")
   const { smoother } = useContext(GsapContext)
   const router = useRouter()
+
+  const WorkLink = (
+    <NextLink href="/works" passHref>
+      <Link fontFamily="quincy-cf" fontWeight="700" px="4" color="white">
+        Works
+      </Link>
+    </NextLink>
+  )
+
+  const HomeLink = (
+    <NextLink href="/" passHref>
+      <Link fontFamily="quincy-cf" fontWeight="700" px="4" color="black">
+        Home
+      </Link>
+    </NextLink>
+  )
 
   useIsomorphicLayoutEffect(() => {
     if (router.asPath === "/works") {
@@ -18,12 +35,14 @@ const Navbar = () => {
       setTimeout(() => {
         setColor("black")
         setLogo("/images/dark-logo.png")
+        setNavLink(HomeLink)
       }, 1000)
       return
     }
     setTimeout(() => {
       setColor("white")
       setLogo("/images/white-logo.png")
+      setNavLink(WorkLink)
     }, 1000)
     console.log(router.asPath)
   }, [router.asPath])
@@ -40,16 +59,7 @@ const Navbar = () => {
             </Link>
           </NextLink>
           <Flex alignSelf="center">
-            <NextLink href="/works" passHref>
-              <Link
-                fontFamily="quincy-cf"
-                fontWeight="700"
-                px="4"
-                color={color}
-              >
-                Works
-              </Link>
-            </NextLink>
+            {navLink}
             <Link
               onClick={() => {
                 smoother.scrollTo("#contact", true, "center center")
