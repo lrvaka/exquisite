@@ -1,12 +1,8 @@
-import { useState, useRef, useLayoutEffect, useEffect } from "react"
-import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
-import ChakraBox from "./utils/ChakraBox"
-import { Flex, Box, Heading, Grid, useMediaQuery } from "@chakra-ui/react"
+import { useState, useRef, useEffect } from "react"
+import { Flex, Box, } from "@chakra-ui/react"
 import gsap from "gsap"
 import planks from "./planks"
 import NextImage from "next/image"
-import ScrollTrigger from "gsap/dist/ScrollTrigger"
-import ResponsiveComponent from "./utils/ResponsiveComponent"
 import useArrayRef from "./hooks/useArrayRef"
 
 const MessageSectionAnimationMobile = ({ children, ...props }) => {

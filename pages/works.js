@@ -31,34 +31,6 @@ import MainWrapper from "../components/ui/Main"
 import Footer from "../components/ui/Footer"
 import clients from "../components/clients"
 
-const header = {
-  animate: (i) => ({
-    transition: {
-      delayChildren: i * 2,
-      staggerChildren: 0.05,
-    },
-  }),
-}
-
-const letterAni = {
-  initial: {
-    y: -20,
-    opacity: 0,
-    scale: 1.25,
-    skewX: 10,
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    skewX: 0,
-    transition: {
-      ease: [0.6, 0.01, -0.05, 0.95],
-      duration: 1,
-    },
-  },
-}
-
 const variants = {
   initial: {
     y: 25,

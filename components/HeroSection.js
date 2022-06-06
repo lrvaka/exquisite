@@ -1,8 +1,7 @@
 import { Box, Heading, Grid, Flex } from "@chakra-ui/react"
 import NextImage from "next/image"
 import { motion } from "framer-motion"
-import { useRef, useEffect } from "react"
-import ChakraBox from "./utils/ChakraBox"
+import { useRef } from "react"
 import gsap from "gsap"
 import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
 

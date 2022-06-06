@@ -8,7 +8,13 @@ import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 
 const Navbar = () => {
   const [color, setColor] = useState("white")
-  const [navLink, setNavLink] = useState()
+  const [navLink, setNavLink] = useState(
+    <NextLink href="/works" passHref>
+      <Link fontFamily="quincy-cf" fontWeight="700" px="4" color="white">
+        Works
+      </Link>
+    </NextLink>
+  )
   const [logo, setLogo] = useState("/images/white-logo.png")
   const { smoother } = useContext(GsapContext)
   const router = useRouter()

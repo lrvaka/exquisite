@@ -1,4 +1,5 @@
 import { Box, keyframes } from "@chakra-ui/react"
+import Head from "./Head"
 
 const grainAnimation = keyframes`
   0%, 100% { transform:translate(0, 0); }
@@ -15,29 +16,32 @@ const grainAnimation = keyframes`
 
 const animation = `${grainAnimation} 8s steps(10) infinite`
 
-const MainWrapper = ({ children, ...props }) => {
+const MainWrapper = ({ children, heading, ...props }) => {
   return (
-    <Box
-      as="main"
-      _before={{
-        animation: animation,
-        backgroundImage: "url(/images/noise.png)",
-        content: "''",
-        height: "300%",
-        left: "-50%",
-        opacity: "0.5",
-        position: "fixed",
-        top: "-110%",
-        width: "300%",
-        zIndex: "-10",
-        overflow: "hidden",
-      }}
-      zIndex="0"
-      pos="relative"
-      {...props}
-    >
-      {children}
-    </Box>
+    <>
+      <Head heading={heading} />
+      <Box
+        as="main"
+        _before={{
+          animation: animation,
+          backgroundImage: "url(/images/noise.png)",
+          content: "''",
+          height: "300%",
+          left: "-50%",
+          opacity: "0.5",
+          position: "fixed",
+          top: "-110%",
+          width: "300%",
+          zIndex: "-10",
+          overflow: "hidden",
+        }}
+        zIndex="0"
+        pos="relative"
+        {...props}
+      >
+        {children}
+      </Box>
+    </>
   )
 }
 

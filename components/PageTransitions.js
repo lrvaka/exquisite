@@ -47,8 +47,7 @@ const Grid = styled.div`
 `
 
 const PageTransitions = ({ children, route, routingPageOffset }) => {
-  const { setNavColor, contentRef } = useContext(GsapContext)
-  const [transitioning, setTransitioning] = useState()
+  const { contentRef } = useContext(GsapContext)
   const tl = useRef()
   const tl1 = useRef()
   const transitionRef = useRef()
@@ -164,7 +163,6 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
                   key={index}
                   ref={plankType}
                   alignItems="stretch"
-                  
                 >
                   <NextImage
                     src={element.src}

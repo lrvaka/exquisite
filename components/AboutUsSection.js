@@ -2,7 +2,6 @@ import NextImage from "next/image"
 import { SectionParagraph } from "./ui/SectionText"
 import { Box, Flex, Grid, Container } from "@chakra-ui/react"
 import SVGArrow from "./ui/SVGArrow"
-import ChakraBox from "./utils/ChakraBox"
 import { useContext, useEffect, useRef } from "react"
 import GsapContext from "../store/gsap-context"
 import { AnimatedHeading } from "./ui/SectionText"
@@ -96,9 +95,6 @@ const AboutUsSection = () => {
         },
       }
     )
-
-    console.log(leftRef.current)
-    console.log(rightRef.current)
 
     return () => {
       rightP.kill()
