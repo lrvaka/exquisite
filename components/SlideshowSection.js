@@ -138,12 +138,11 @@ const SlideShowSection = (props) => {
               className="keen-slider"
             >
               {slides.map((e) => (
-                <NextLink href="/works" passHref>
+                <NextLink key={e.url} href="/works" passHref>
                   <Link>
                     <Box
                       className="keen-slider__slide"
                       pos="relative"
-                      key={e.url}
                       h={["15rem", "15rem", "15rem", "469.6"]}
                     >
                       <NextImage
