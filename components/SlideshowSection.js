@@ -157,7 +157,7 @@ const SlideShowSection = (props) => {
           <Box px="4" py="20">
             <Box as="h2" pb="10">
               <AnimatedHeading custom={0} title="Team&nbsp;of&nbsp;seasoned" />
-              <AnimatedHeading custom={0} title="flooring&nbsp;expertise" />
+              <AnimatedHeading custom={0} title="flooring&nbsp;experts" />
             </Box>
             <Flex
               pr={["none", "none", "none", "50px"]}

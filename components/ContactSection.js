@@ -11,7 +11,6 @@ import {
 } from "@chakra-ui/react"
 import SVGArrow from "./ui/SVGArrow"
 import { SectionHeading } from "./ui/SectionText"
-import NextImage from "next/image"
 import { IconButton } from "@chakra-ui/react"
 import { BsInstagram } from "react-icons/bs"
 
