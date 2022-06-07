@@ -206,13 +206,8 @@ const Works = () => {
           />
         </Box>
       </Grid>
-      <ChakraBox
+      <Box
         py="24"
-        variants={variants}
-        viewport={{ once: true }}
-        display={["block", "block", "block", "none"]}
-        initial="initial"
-        whileInView="animate"
         overflow="hidden"
         pos="relative"
         ref={sliderRef}
@@ -229,7 +224,7 @@ const Works = () => {
             />
           </Box>
         ))}
-      </ChakraBox>
+      </Box>
       <Grid
         maxW="container.xl"
         m="0 auto"
@@ -334,12 +329,7 @@ const Works = () => {
           </Box>
         </Box>
       </Grid>
-      <ChakraBox
-        variants={variants}
-        viewport={{ once: true }}
-        display={["block", "block", "block", "none"]}
-        initial="initial"
-        whileInView="animate"
+      <Box
         overflow="hidden"
         pos="relative"
         ref={sliderRef1}
@@ -357,7 +347,7 @@ const Works = () => {
             />
           </Box>
         ))}
-      </ChakraBox>
+      </Box>
 
       <Box bgColor="brand.500" id="contact" pos="relative">
         <Container
