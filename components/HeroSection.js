@@ -86,7 +86,6 @@ const HeroTitle = () => (
 
 const HeroSection = () => {
   const containerRef = useRef()
-  const didAnimate = useRef()
 
   useIsomorphicLayoutEffect(() => {
     if (!containerRef.current) {
@@ -145,7 +144,6 @@ const HeroSection = () => {
         ref={containerRef}
       >
         <Box
-          willChange="transform"
           visibility="hidden"
           pos="relative"
           gridRow={["11 / 15", "11 / 15", "11 / 15", "17 / 25"]}
@@ -160,7 +158,6 @@ const HeroSection = () => {
           />
         </Box>
         <Box
-          willChange="transform"
           visibility="hidden"
           pos="relative"
           gridRow={["4 / 6", "4 / 6", "4 / 6", "6 / 12"]}

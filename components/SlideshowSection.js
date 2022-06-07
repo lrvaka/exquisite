@@ -56,11 +56,12 @@ const SlideShowSection = (props) => {
   const textRef = useRef()
 
   useEffect(() => {
-    if (!ref.current) {
+    if (!ref.current || !textRef.current) {
       return
     }
-    gsap.set(ref.current, { autoAlpha: 1 })
-    gsap.set(textRef.current, { autoAlpha: 1 })
+
+    gsap.set(ref.current, { autoAlpha: 0.01 })
+    gsap.set(textRef.current, { autoAlpha: 0.01 })
 
     let ani = gsap.fromTo(
       ref.current,
@@ -127,6 +128,7 @@ const SlideShowSection = (props) => {
             w="100%"
             height="100%"
             visibility="none"
+            willChange="transform"
             ref={ref}
           >
             <Box

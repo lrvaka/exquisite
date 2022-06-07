@@ -21,9 +21,9 @@ const AboutUsSection = () => {
     }
 
     let animation
-    gsap.set(imageRefs.current, { autoAlpha: 1 })
-    gsap.set(leftRef.current, { autoAlpha: 1 })
-    gsap.set(rightRef.current, { autoAlpha: 1 })
+    gsap.set(imageRefs.current, { autoAlpha: 0.1 })
+    gsap.set(leftRef.current, { autoAlpha: 0.1 })
+    gsap.set(rightRef.current, { autoAlpha: 0.1 })
 
     // Target ALL descendants with the class of .box
     imageRefs.current.forEach((image) => {
