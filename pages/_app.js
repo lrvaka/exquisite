@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }) {
     if (smoother) {
       ScrollTrigger.getAll().forEach((t) => t.kill())
     }
-    gsap.registerPlugin(CustomEase, ScrollSmoother, ScrollTrigger, SplitText)
+    gsap.registerPlugin(ScrollSmoother, ScrollTrigger, SplitText)
 
     let scroller = ScrollSmoother.create({
       ignoreMobileResize: true,
@@ -49,12 +49,11 @@ function MyApp({ Component, pageProps }) {
       effects: true, // looks for data-speed and data-lag attributes on elements
     })
 
-    CustomEase.create("a1", "0.6, 0.01, -0.05, 0.95")
-
     setSmoother(scroller)
   }, [router.asPath])
 
   useIsomorphicLayoutEffect(() => {
+    //timeout waiting for page to transition
     setTimeout(() => {
       ScrollTrigger.refresh()
     }, 500)
@@ -66,6 +65,12 @@ function MyApp({ Component, pageProps }) {
     }
     router.events.on("routeChangeStart", pageChange)
   }, [router.events])
+
+  useIsomorphicLayoutEffect(() => {
+    //register custom easing functions
+    gsap.registerPlugin(CustomEase)
+    CustomEase.create("a1", "0.6, 0.01, -0.05, 0.95")
+  }, [])
 
   return (
     <ChakraProvider theme={theme}>
