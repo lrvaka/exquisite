@@ -1,7 +1,7 @@
 import { Box, Heading, Grid, Flex } from "@chakra-ui/react"
 import NextImage from "next/image"
 import { motion } from "framer-motion"
-import { useRef } from "react"
+import { useLayoutEffect, useRef } from "react"
 import gsap from "gsap"
 import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
 
@@ -86,6 +86,7 @@ const HeroTitle = () => (
 
 const HeroSection = () => {
   const containerRef = useRef()
+  const didAnimate = useRef()
 
   useIsomorphicLayoutEffect(() => {
     if (!containerRef.current) {
@@ -94,26 +95,35 @@ const HeroSection = () => {
 
     const images = containerRef.current.children
 
-    gsap.set(images, { autoAlpha: 0.01 })
+    let animation = gsap.from(images, {
+      immediateRender: false,
+      scale: 0.75,
+      opacity: 0.1,
+      clipPath: "inset(100% 0 0 0)",
+      delay: 0.75,
+      duration: 2.5,
+      stagger: 1,
+      ease: "power4.out",
+    })
 
     // Target ALL descendants with the class of .box
-    let animation = gsap.fromTo(
-      images,
-      {
-        scale: 0.75,
-        opacity: 0.1,
-        clipPath: "inset(100% 0 0 0)",
-      },
-      {
-        scale: 1,
-        opacity: 1,
-        clipPath: "inset(0% 0% 0% 0%)",
-        delay: 0.75,
-        duration: 2.5,
-        stagger: 1,
-        ease: "power4.out",
-      }
-    )
+    // let animation = gsap.fromTo(
+    //   images,
+    //   {
+    //     scale: 0.75,
+    //     opacity: 0.1,
+    //     clipPath: "inset(100% 0 0 0)",
+    //   },
+    //   {
+    //     scale: 1,
+    //     opacity: 1,
+    //     clipPath: "inset(0% 0% 0% 0%)",
+    //     delay: 0.75,
+    //     duration: 2.5,
+    //     stagger: 1,
+    //     ease: "power4.out",
+    //   }
+    // )
 
     return () => {
       animation.kill()
@@ -144,7 +154,6 @@ const HeroSection = () => {
         ref={containerRef}
       >
         <Box
-          visibility="hidden"
           pos="relative"
           gridRow={["11 / 15", "11 / 15", "11 / 15", "17 / 25"]}
           gridColumn={["5 / 16", "5 / 16", "5 / 16", "18 / 26"]}
@@ -158,7 +167,6 @@ const HeroSection = () => {
           />
         </Box>
         <Box
-          visibility="hidden"
           pos="relative"
           gridRow={["4 / 6", "4 / 6", "4 / 6", "6 / 12"]}
           gridColumn={["2 / 9", "2 / 9", "2 / 9", "2 / 8"]}
