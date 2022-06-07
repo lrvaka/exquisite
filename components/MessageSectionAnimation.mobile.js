@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react"
-import { Flex, Box, } from "@chakra-ui/react"
+import { Flex, Box } from "@chakra-ui/react"
 import gsap from "gsap"
 import planks from "./planks"
 import NextImage from "next/image"
@@ -15,43 +15,38 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
     let leftAni
     let rightAni
 
-    gsap.set(leftPlankRefs.current, { autoAlpha: 0.1 })
-    gsap.set(rightPlankRefs.current, { autoAlpha: 0.1 })
+    gsap.set(leftPlankRefs.current, {
+      autoAlpha: 0.1,
+      x: window.innerWidth * -1,
+    })
+    gsap.set(rightPlankRefs.current, { autoAlpha: 0.1, x: window.innerWidth })
 
     leftPlankRefs.current.forEach((plank, i) => {
-      leftAni = gsap.fromTo(
-        plank,
-        { opacity: 0.1, x: window.innerWidth * -1 },
-        {
-          opacity: 1,
-          x: 0,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: plank,
-            scrub: true,
-            end: "bottom center",
-            onLeave: (self) => self.kill(false, true),
-          },
-        }
-      )
+      leftAni = gsap.to(plank, {
+        opacity: 1,
+        x: 0,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: plank,
+          scrub: true,
+          end: "bottom center",
+          onLeave: (self) => self.kill(false, true),
+        },
+      })
     })
 
     rightPlankRefs.current.forEach((plank, i) => {
-      rightAni = gsap.fromTo(
-        plank,
-        { opacity: 0.1, x: window.innerWidth },
-        {
-          opacity: 1,
-          x: 0,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: plank,
-            scrub: true,
-            end: "bottom center",
-            onLeave: (self) => self.kill(false, true),
-          },
-        }
-      )
+      rightAni = gsap.to(plank, {
+        opacity: 1,
+        x: 0,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: plank,
+          scrub: true,
+          end: "bottom center",
+          onLeave: (self) => self.kill(false, true),
+        },
+      })
     })
 
     return () => {

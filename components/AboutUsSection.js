@@ -21,80 +21,62 @@ const AboutUsSection = () => {
     }
 
     let animation
-    gsap.set(imageRefs.current, { autoAlpha: 0.1 })
-    gsap.set(leftRef.current, { autoAlpha: 0.1 })
-    gsap.set(rightRef.current, { autoAlpha: 0.1 })
+
+    gsap.set(imageRefs.current, {
+      autoAlpha: 0.1,
+      scale: 0.75,
+      clipPath: "inset(100% 0 0 0)",
+    })
 
     // Target ALL descendants with the class of .box
     imageRefs.current.forEach((image) => {
-      animation = gsap.fromTo(
-        image,
-        {
-          // this will animate ALL boxes
-          opacity: 0.1,
-          scale: 0.75,
-          clipPath: "inset(100% 0 0 0)",
+      console.log("image animated")
+      animation = gsap.to(image, {
+        opacity: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+        scale: 1,
+        scrollTrigger: {
+          trigger: image, // this will use the first box as the trigger
+          scrub: true,
+          end: "bottom bottom",
+          onLeave: (self) => self.kill(false, true),
         },
-        {
-          opacity: 1,
-          clipPath: "inset(0% 0% 0% 0%)",
-          scale: 1,
-          scrollTrigger: {
-            trigger: image, // this will use the first box as the trigger
-            scrub: true,
-            end: "bottom bottom",
-            onLeave: (self) => self.kill(false, true),
-          },
-        }
-      )
+      })
     })
 
-    let leftP = gsap.fromTo(
-      leftRef.current,
-      {
-        // this will animate ALL boxes
-        x: -50,
-        opacity: 0.1,
-        scale: 0.75,
-        clipPath: "inset(100% 0 0 0)",
-      },
-      {
-        x: 0,
-        opacity: 1,
-        clipPath: "inset(0% 0% 0% 0%)",
-        scale: 1,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: leftRef.current, // this will use the first box as the trigger
-          scrub: true,
-          end: "bottom 80%",
-          onLeave: (self) => self.kill(false, true),
-        },
-      }
-    )
-    let rightP = gsap.fromTo(
-      rightRef.current,
-      {
-        // this will animate ALL boxes
-        x: 50,
-        opacity: 0.1,
-        scale: 0.75,
-        clipPath: "inset(100% 0 0 0)",
-      },
-      {
-        x: 0,
-        opacity: 1,
-        clipPath: "inset(0% 0% 0% 0%)",
-        ease: "power4.out",
-        scale: 1,
-        scrollTrigger: {
-          trigger: rightRef.current, // this will use the first box as the trigger
-          scrub: true,
-          end: "bottom 80%",
-          onLeave: (self) => self.kill(false, true),
-        },
-      }
-    )
+    gsap.set(leftRef.current, {
+      x: -50,
+      opacity: 0.1,
+      scale: 0.75,
+      clipPath: "inset(100% 0 0 0)",
+    })
+
+    let leftP = gsap.to(leftRef.current, {
+      x: 0,
+      opacity: 1,
+      clipPath: "inset(0% 0% 0% 0%)",
+      scale: 1,
+      ease: "power4.out",
+      scrollTrigger: leftRef.current,
+      duration: 1,
+    })
+
+    gsap.set(rightRef.current, {
+      x: 50,
+      opacity: 0.1,
+      scale: 0.75,
+      clipPath: "inset(100% 0 0 0)",
+    })
+
+    let rightP = gsap.to(rightRef.current, {
+      x: 0,
+      opacity: 1,
+      clipPath: "inset(0% 0% 0% 0%)",
+      ease: "power4.out",
+      scale: 1,
+      scrollTrigger: rightRef.current,
+      duration: 1, // this will use the first box as the trigger
+    })
 
     return () => {
       rightP.kill()
@@ -177,6 +159,7 @@ const AboutUsSection = () => {
         >
           <Box data-speed="auto" pos="absolute" zIndex="-1" w="100%" h="160%">
             <NextImage
+              priority
               src="/images/about-1.png"
               layout="fill"
               placeholder="blur"
@@ -194,6 +177,7 @@ const AboutUsSection = () => {
         >
           <Box data-speed="auto" pos="absolute" zIndex="-1" w="100%" h="160%">
             <NextImage
+              priority
               src="/images/about-2.jpg"
               layout="fill"
               placeholder="blur"
@@ -212,6 +196,7 @@ const AboutUsSection = () => {
         >
           <Box data-speed="auto" pos="absolute" w="100%" h="160%" zIndex="-1">
             <NextImage
+              priority
               src="/images/about.jpg"
               layout="fill"
               objectFit="cover"

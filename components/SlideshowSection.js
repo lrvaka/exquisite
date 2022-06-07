@@ -42,53 +42,36 @@ const SlideShowSection = (props) => {
       return
     }
 
-    gsap.set(ref.current, { autoAlpha: 0.1 })
-    gsap.set(textRef.current, { autoAlpha: 0.1 })
+    gsap.set(ref.current, {
+      autoAlpha: 0.1,
+      scale: 0.75,
+      clipPath: "inset(100% 0% 0% 0%)",
+    })
 
-    let ani = gsap.fromTo(
-      ref.current,
-      {
-        // this will animate ALL boxes
-        opacity: 0.1,
-        scale: 0.75,
-        clipPath: "inset(100% 0% 0% 0%)",
-      },
-      {
-        opacity: 1,
-        clipPath: "inset(0% 0% 0% 0%)",
-        scale: 1,
-        scrollTrigger: {
-          trigger: ref.current, // this will use the first box as the trigger
-          scrub: true,
-          end: "bottom center",
-          onLeave: (self) => self.kill(false, true),
-        },
-      }
-    )
+    let ani = gsap.to(ref.current, {
+      opacity: 1,
+      clipPath: "inset(0% 0% 0% 0%)",
+      scale: 1,
+      duration: 1.5,
+      scrollTrigger: ref.current, // this will use the first box as the trigger
+    })
 
-    let textAni = gsap.fromTo(
-      textRef.current,
-      {
-        // this will animate ALL boxes
-        x: -100,
-        opacity: 0.1,
-        scale: 0.75,
-        clipPath: "inset(100% 0 0 0)",
-      },
-      {
-        x: 0,
-        opacity: 1,
-        clipPath: "inset(0% 0% 0% 0%)",
-        scale: 1,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: textRef.current, // this will use the first box as the trigger
-          scrub: true,
-          end: "bottom center",
-          onLeave: (self) => self.kill(false, true),
-        },
-      }
-    )
+    gsap.set(textRef.current, {
+      autoAlpha: 0.1,
+      x: -100,
+      scale: 0.75,
+      clipPath: "inset(100% 0 0 0)",
+    })
+
+    let textAni = gsap.to(textRef.current, {
+      x: 0,
+      opacity: 1,
+      clipPath: "inset(0% 0% 0% 0%)",
+      scale: 1,
+      ease: "power4.out",
+      scrollTrigger: textRef.current, // this will use the first box as the trigger
+      duration: 1,
+    })
 
     return () => {
       ani.kill()
@@ -110,7 +93,6 @@ const SlideShowSection = (props) => {
             w="100%"
             height="100%"
             visibility="hidden"
-            willChange="transform"
             ref={ref}
           >
             <Box
