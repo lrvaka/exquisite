@@ -1,7 +1,7 @@
 import { Box, Heading, Grid, Flex } from "@chakra-ui/react"
 import NextImage from "next/image"
 import { motion } from "framer-motion"
-import { useLayoutEffect, useRef } from "react"
+import { useRef } from "react"
 import gsap from "gsap"
 import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
 
@@ -95,37 +95,26 @@ const HeroSection = () => {
 
     const images = containerRef.current.children
 
-    gsap.set(images, { autoAlpha: 1 })
-
-    let animation = gsap.from(images, {
-      immediateRender: false,
-      scale: 0.75,
-      opacity: 0.1,
-      clipPath: "inset(100% 0 0 0)",
-      delay: 0.75,
-      duration: 2.5,
-      stagger: 1,
-      ease: "power4.out",
-    })
+    gsap.set(images, { autoAlpha: 0.01 })
 
     // Target ALL descendants with the class of .box
-    // let animation = gsap.fromTo(
-    //   images,
-    //   {
-    //     scale: 0.75,
-    //     opacity: 0.1,
-    //     clipPath: "inset(100% 0 0 0)",
-    //   },
-    //   {
-    //     scale: 1,
-    //     opacity: 1,
-    //     clipPath: "inset(0% 0% 0% 0%)",
-    //     delay: 0.75,
-    //     duration: 2.5,
-    //     stagger: 1,
-    //     ease: "power4.out",
-    //   }
-    // )
+    let animation = gsap.fromTo(
+      images,
+      {
+        scale: 0.75,
+        opacity: 0.1,
+        clipPath: "inset(100% 0 0 0)",
+      },
+      {
+        scale: 1,
+        opacity: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+        delay: 0.75,
+        duration: 2.5,
+        stagger: 1,
+        ease: "power4.out",
+      }
+    )
 
     return () => {
       animation.kill()
@@ -156,8 +145,9 @@ const HeroSection = () => {
         ref={containerRef}
       >
         <Box
-          pos="relative"
+          willChange="transform"
           visibility="hidden"
+          pos="relative"
           gridRow={["11 / 15", "11 / 15", "11 / 15", "17 / 25"]}
           gridColumn={["5 / 16", "5 / 16", "5 / 16", "18 / 26"]}
           data-speed="1.2"
@@ -170,8 +160,9 @@ const HeroSection = () => {
           />
         </Box>
         <Box
-          pos="relative"
+          willChange="transform"
           visibility="hidden"
+          pos="relative"
           gridRow={["4 / 6", "4 / 6", "4 / 6", "6 / 12"]}
           gridColumn={["2 / 9", "2 / 9", "2 / 9", "2 / 8"]}
           data-speed="1.1"
