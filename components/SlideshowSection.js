@@ -3,32 +3,14 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { useRef, useEffect, useState, useContext } from "react"
 import { motion, isValidMotionProp } from "framer-motion"
-import { SectionHeading, SectionParagraph } from "./ui/SectionText"
+import { SectionParagraph } from "./ui/SectionText"
 import slides from "./slides"
 import NextImage from "next/image"
+import SectionHeading from "./ui/SectionHeading"
 import { AnimatedHeading } from "./ui/SectionText"
 import ChakraBox from "./utils/ChakraBox"
 import NextLink from "next/link"
 import gsap from "gsap"
-
-const variants = {
-  initial: {
-    y: 25,
-    scale: 0.99,
-    opacity: 0,
-    clipPath: "inset(100% 0 0 0)",
-  },
-  animate: {
-    y: 0,
-    scale: 1,
-    opacity: 1,
-    clipPath: "inset(0% 0% 0% 0%)",
-    transition: {
-      clipPath: { type: "spring", damping: 50 },
-      duration: 1,
-    },
-  },
-}
 
 const animation = { duration: 20000, easing: (t) => t }
 
@@ -60,7 +42,7 @@ const SlideShowSection = (props) => {
       return
     }
 
-    gsap.set(ref.current, { autoAlpha: 0.1})
+    gsap.set(ref.current, { autoAlpha: 0.1 })
     gsap.set(textRef.current, { autoAlpha: 0.1 })
 
     let ani = gsap.fromTo(
@@ -160,10 +142,12 @@ const SlideShowSection = (props) => {
             </Box>
           </Flex>
           <Box px="4" py="20">
-            <Box as="h2" pb="10">
-              <AnimatedHeading custom={0} title="Team&nbsp;of&nbsp;seasoned" />
-              <AnimatedHeading custom={0} title="flooring&nbsp;experts" />
-            </Box>
+            <SectionHeading pb="10">
+              Team of seasoned
+              <br />
+              flooring experts
+            </SectionHeading>
+
             <Flex
               pr={["none", "none", "none", "50px"]}
               flexDir="column"
