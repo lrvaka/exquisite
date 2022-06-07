@@ -60,8 +60,8 @@ const SlideShowSection = (props) => {
       return
     }
 
-    gsap.set(ref.current, { autoAlpha: 0.01 })
-    gsap.set(textRef.current, { autoAlpha: 0.01 })
+    gsap.set(ref.current, { autoAlpha: 0.1})
+    gsap.set(textRef.current, { autoAlpha: 0.1 })
 
     let ani = gsap.fromTo(
       ref.current,
@@ -69,7 +69,7 @@ const SlideShowSection = (props) => {
         // this will animate ALL boxes
         opacity: 0.1,
         scale: 0.75,
-        clipPath: "inset(100% 0 0 0)",
+        clipPath: "inset(100% 0% 0% 0%)",
       },
       {
         opacity: 1,
@@ -127,7 +127,7 @@ const SlideShowSection = (props) => {
             pos="relative"
             w="100%"
             height="100%"
-            visibility="none"
+            visibility="hidden"
             willChange="transform"
             ref={ref}
           >
