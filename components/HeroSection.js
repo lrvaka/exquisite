@@ -6,34 +6,6 @@ import gsap from "gsap"
 import SplitText from "gsap/dist/SplitText"
 import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
 
-const header = {
-  animate: (i) => ({
-    transition: {
-      delayChildren: i * 0.25,
-      staggerChildren: 0.05,
-    },
-  }),
-}
-
-const letterAni = {
-  initial: {
-    y: -20,
-    opacity: 0,
-    scale: 1.25,
-    skewX: 10,
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    skewX: 0,
-    transition: {
-      ease: [0.6, 0.01, -0.05, 0.95],
-      duration: 1,
-    },
-  },
-}
-
 const HeroSection = () => {
   const containerRef = useRef()
   const headingRef = useRef()
