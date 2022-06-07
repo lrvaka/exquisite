@@ -3,6 +3,7 @@ import NextImage from "next/image"
 import { motion } from "framer-motion"
 import { useRef } from "react"
 import gsap from "gsap"
+import SplitText from "gsap/dist/SplitText"
 import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
 
 const header = {
@@ -33,68 +34,23 @@ const letterAni = {
   },
 }
 
-const AnimatedLetters = ({ title, custom = 0, ...props }) => (
-  <Box
-    as={motion.span}
-    display="flex"
-    custom={custom}
-    variants={header}
-    initial="initial"
-    animate="animate"
-    {...props}
-  >
-    {[...title].map((letter, i) => (
-      <Heading
-        key={i}
-        as={motion.span}
-        color="brand.100"
-        fontSize={["3.5rem", "5rem", "6rem"]}
-        fontWeight="900"
-        lineHeight="100%"
-        variants={letterAni}
-      >
-        {letter}
-      </Heading>
-    ))}
-  </Box>
-)
-
-const HeroTitle = () => (
-  <Box
-    as="h1"
-    top="50%"
-    left="50%"
-    width="90vw"
-    transform="translate(-50%,-50%)"
-    textAlign="center"
-    pos="absolute"
-    zIndex="1"
-  >
-    <Flex as="span" gap="1rem" justifyContent="center">
-      <AnimatedLetters custom={0} title="We" letterSpacing="-2.5px" />
-      <AnimatedLetters custom={1} title="make" />
-    </Flex>
-    <Flex as="span" gap="1rem" justifyContent="center">
-      <AnimatedLetters custom={2} title="living" />
-      <AnimatedLetters custom={3} title="spaces" />
-    </Flex>
-    <Flex as="span" gap="1rem" justifyContent="center">
-      <AnimatedLetters custom={5} title="Exquisite" />
-    </Flex>
-  </Box>
-)
-
 const HeroSection = () => {
   const containerRef = useRef()
+  const headingRef = useRef()
 
   useIsomorphicLayoutEffect(() => {
     if (!containerRef.current) {
       return
     }
 
+    const split = new SplitText(headingRef.current, {
+      type: "chars, words",
+    })
+
     const images = containerRef.current.children
 
     gsap.set(images, { autoAlpha: 0.01 })
+    gsap.set(headingRef.current, { autoAlpha: 1 })
 
     // Target ALL descendants with the class of .box
     let animation = gsap.fromTo(
@@ -115,6 +71,32 @@ const HeroSection = () => {
       }
     )
 
+    let splitCharsAni = gsap.fromTo(
+      split.chars,
+      {
+        y: -20,
+        opacity: 0,
+        scale: 1.25,
+        skewX: 10,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        skewX: 0,
+        duration: 1,
+        stagger: 0.05,
+        ease: "a1",
+      }
+    )
+
+    // split.words.forEach((word, i) => {
+    //   gsap.to(word, {
+    //     delay: i * 0.25,
+    //     ease: CustomEase.create("a1", "0.6, 0.01, -0.05, 0.95"),
+    //   })
+    // })
+
     return () => {
       animation.kill()
     }
@@ -122,7 +104,26 @@ const HeroSection = () => {
 
   return (
     <Box pos="relative">
-      <HeroTitle />
+      <Heading
+        as="h1"
+        visibility="hidden"
+        color="brand.100"
+        fontSize={["3.5rem", "5rem", "6rem"]}
+        fontWeight="900"
+        lineHeight="100%"
+        top="50%"
+        left="50%"
+        width="90vw"
+        transform="translate(-50%,-50%)"
+        textAlign="center"
+        pos="absolute"
+        zIndex="1"
+        ref={headingRef}
+      >
+        We make <br />
+        living spaces <br />
+        Exquisite
+      </Heading>
 
       <Grid
         minH="97.5vh"
