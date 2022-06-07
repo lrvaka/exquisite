@@ -95,6 +95,8 @@ const HeroSection = () => {
 
     const images = containerRef.current.children
 
+    gsap.set(images, { autoAlpha: 1 })
+
     let animation = gsap.from(images, {
       immediateRender: false,
       scale: 0.75,
@@ -155,6 +157,7 @@ const HeroSection = () => {
       >
         <Box
           pos="relative"
+          visibility="hidden"
           gridRow={["11 / 15", "11 / 15", "11 / 15", "17 / 25"]}
           gridColumn={["5 / 16", "5 / 16", "5 / 16", "18 / 26"]}
           data-speed="1.2"
@@ -168,6 +171,7 @@ const HeroSection = () => {
         </Box>
         <Box
           pos="relative"
+          visibility="hidden"
           gridRow={["4 / 6", "4 / 6", "4 / 6", "6 / 12"]}
           gridColumn={["2 / 9", "2 / 9", "2 / 9", "2 / 8"]}
           data-speed="1.1"
