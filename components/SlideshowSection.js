@@ -9,7 +9,6 @@ import NextImage from "next/image"
 import { AnimatedHeading } from "./ui/SectionText"
 import ChakraBox from "./utils/ChakraBox"
 import NextLink from "next/link"
-import ImageModal from "./SlideModal"
 import gsap from "gsap"
 
 const variants = {
