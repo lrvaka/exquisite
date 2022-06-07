@@ -4,9 +4,9 @@ import { Box, Flex, Grid, Container } from "@chakra-ui/react"
 import SVGArrow from "./ui/SVGArrow"
 import { useContext, useEffect, useRef } from "react"
 import GsapContext from "../store/gsap-context"
-import { AnimatedHeading } from "./ui/SectionText"
 import gsap from "gsap"
 import useArrayRef from "./hooks/useArrayRef"
+import SectionHeading from "./ui/SectionHeading"
 
 const AboutUsSection = () => {
   const [imageRefs, setImageRefs] = useArrayRef()
@@ -42,7 +42,7 @@ const AboutUsSection = () => {
           scrollTrigger: {
             trigger: image, // this will use the first box as the trigger
             scrub: true,
-            end: "bottom center",
+            end: "bottom bottom",
             onLeave: (self) => self.kill(false, true),
           },
         }
@@ -53,7 +53,7 @@ const AboutUsSection = () => {
       leftRef.current,
       {
         // this will animate ALL boxes
-        x: -100,
+        x: -50,
         opacity: 0.1,
         scale: 0.75,
         clipPath: "inset(100% 0 0 0)",
@@ -67,7 +67,7 @@ const AboutUsSection = () => {
         scrollTrigger: {
           trigger: leftRef.current, // this will use the first box as the trigger
           scrub: true,
-          end: "bottom center",
+          end: "bottom 80%",
           onLeave: (self) => self.kill(false, true),
         },
       }
@@ -76,7 +76,7 @@ const AboutUsSection = () => {
       rightRef.current,
       {
         // this will animate ALL boxes
-        x: 100,
+        x: 50,
         opacity: 0.1,
         scale: 0.75,
         clipPath: "inset(100% 0 0 0)",
@@ -90,7 +90,7 @@ const AboutUsSection = () => {
         scrollTrigger: {
           trigger: rightRef.current, // this will use the first box as the trigger
           scrub: true,
-          end: "bottom center",
+          end: "bottom 80%",
           onLeave: (self) => self.kill(false, true),
         },
       }
@@ -112,16 +112,10 @@ const AboutUsSection = () => {
         pb={["20", "20", "20", "40"]}
         overflowX="hidden"
       >
-        <Box as="h2" pb="10">
-          <AnimatedHeading
-            custom={0}
-            title="Fitting &nbsp; floors &nbsp; for"
-          />
-          <AnimatedHeading
-            custom={0}
-            title="a &nbsp;multitude&nbsp; of &nbsp; projects"
-          />
-        </Box>
+        <SectionHeading pb="10">
+          Fitting floors for <br /> a multitude of projects
+        </SectionHeading>
+
         <Flex
           w="100%"
           pb="8"
