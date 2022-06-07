@@ -20,6 +20,8 @@ import { useRouter } from "next/router"
 
 import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
 import PageTransitions from "../components/PageTransitions"
+import SplitText from "gsap/dist/SplitText"
+import CustomEase from "gsap/dist/CustomEase"
 
 if (typeof window !== "undefined") {
   window.history.scrollRestoration = "manual"
@@ -37,7 +39,7 @@ function MyApp({ Component, pageProps }) {
     if (smoother) {
       ScrollTrigger.getAll().forEach((t) => t.kill())
     }
-    gsap.registerPlugin(ScrollSmoother, ScrollTrigger)
+    gsap.registerPlugin(CustomEase, ScrollSmoother, ScrollTrigger, SplitText)
 
     let scroller = ScrollSmoother.create({
       ignoreMobileResize: true,
@@ -46,6 +48,8 @@ function MyApp({ Component, pageProps }) {
       smooth: 2, // how long (in seconds) it takes to "catch up" to the native scroll position
       effects: true, // looks for data-speed and data-lag attributes on elements
     })
+
+    CustomEase.create("a1", "0.6, 0.01, -0.05, 0.95")
 
     setSmoother(scroller)
   }, [router.asPath])
