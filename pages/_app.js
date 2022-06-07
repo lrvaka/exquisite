@@ -23,10 +23,6 @@ import PageTransitions from "../components/PageTransitions"
 import SplitText from "gsap/dist/SplitText"
 import CustomEase from "gsap/dist/CustomEase"
 
-if (typeof window !== "undefined") {
-  window.history.scrollRestoration = "manual"
-}
-
 function MyApp({ Component, pageProps }) {
   const [routingPageOffset, setRoutingPageOffset] = useState(0)
   const [smoother, setSmoother] = useState(null)
@@ -53,17 +49,16 @@ function MyApp({ Component, pageProps }) {
   }, [router.asPath])
 
   useIsomorphicLayoutEffect(() => {
-    //timeout waiting for page to transition
-    setTimeout(() => {
-      ScrollTrigger.refresh()
-    }, 500)
-  }, [router.asPath])
-
-  useIsomorphicLayoutEffect(() => {
     const pageChange = () => {
       setRoutingPageOffset(window.scrollY)
     }
+    const refreshScrollTrigger = () => {
+      setTimeout(() => {
+        ScrollTrigger.refresh()
+      }, 500)
+    }
     router.events.on("routeChangeStart", pageChange)
+    router.events.on("routeChangeComplete", refreshScrollTrigger)
   }, [router.events])
 
   useIsomorphicLayoutEffect(() => {
