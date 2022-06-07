@@ -21,46 +21,36 @@ const HeroSection = () => {
 
     const images = containerRef.current.children
 
-    gsap.set(images, { autoAlpha: 0.01 })
-    gsap.set(headingRef.current, { autoAlpha: 1 })
+    gsap.set(images, {
+      scale: 0.75,
+      autoAlpha: 0.1,
+      clipPath: "inset(100% 0 0 0)",
+    })
 
     // Target ALL descendants with the class of .box
-    let animation = gsap.fromTo(
-      images,
-      {
-        scale: 0.75,
-        opacity: 0.1,
-        clipPath: "inset(100% 0 0 0)",
-      },
-      {
-        scale: 1,
-        opacity: 1,
-        clipPath: "inset(0% 0% 0% 0%)",
-        delay: 0.75,
-        duration: 2.5,
-        stagger: 1,
-        ease: "power4.out",
-      }
-    )
+    let animation = gsap.to(images, {
+      scale: 1,
+      opacity: 1,
+      clipPath: "inset(0% 0% 0% 0%)",
+      delay: 0.75,
+      duration: 2.5,
+      stagger: 1,
+      ease: "power4.out",
+    })
 
-    let splitCharsAni = gsap.fromTo(
-      split.chars,
-      {
-        y: -20,
-        opacity: 0,
-        scale: 1.25,
-        skewX: 10,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        skewX: 0,
-        duration: 1,
-        stagger: 0.05,
-        ease: "a1",
-      }
-    )
+    gsap.set(headingRef.current, { autoAlpha: 1 })
+    gsap.set(split.chars, { y: -20, opacity: 0, scale: 1.25, skewX: 10 })
+
+    let splitCharsAni = gsap.to(split.chars, {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      skewX: 0,
+      duration: 1,
+      stagger: 0.05,
+      delay: 0.5,
+      ease: "a1",
+    })
 
     return () => {
       animation.kill()
