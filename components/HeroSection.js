@@ -62,13 +62,6 @@ const HeroSection = () => {
       }
     )
 
-    // split.words.forEach((word, i) => {
-    //   gsap.to(word, {
-    //     delay: i * 0.25,
-    //     ease: CustomEase.create("a1", "0.6, 0.01, -0.05, 0.95"),
-    //   })
-    // })
-
     return () => {
       animation.kill()
     }
