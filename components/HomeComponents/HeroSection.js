@@ -1,7 +1,9 @@
 import { Box, Heading, Grid, Flex } from "@chakra-ui/react"
 import NextImage from "next/image"
 import { motion } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useContext } from "react"
+import GsapContext from "../../store/gsap-context"
+import useArrayRef from "../hooks/useArrayRef"
 import gsap from "gsap"
 import SplitText from "gsap/dist/SplitText"
 import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
@@ -48,7 +50,6 @@ const HeroSection = () => {
       skewX: 0,
       duration: 1,
       stagger: 0.05,
-      delay: 0.5,
       ease: "a1",
     })
 
