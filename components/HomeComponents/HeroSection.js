@@ -7,6 +7,8 @@ import useArrayRef from "../hooks/useArrayRef"
 import gsap from "gsap"
 import SplitText from "gsap/dist/SplitText"
 import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
+import heroImage1 from "../../public/images/hero-1.webp"
+import heroImage2 from "../../public/images/hero-2.jpg"
 
 const HeroSection = () => {
   const containerRef = useRef()
@@ -108,12 +110,7 @@ const HeroSection = () => {
           gridColumn={["5 / 16", "5 / 16", "5 / 16", "18 / 26"]}
           data-speed="1.2"
         >
-          <NextImage
-            priority={true}
-            src="/images/hero-1.webp"
-            layout="fill"
-            objectFit="cover"
-          />
+          <NextImage priority={true} src={heroImage1} />
         </Box>
         <Box
           visibility="hidden"
@@ -122,12 +119,7 @@ const HeroSection = () => {
           gridColumn={["2 / 9", "2 / 9", "2 / 9", "2 / 8"]}
           data-speed="1.1"
         >
-          <NextImage
-            priority={true}
-            src="/images/hero-2.jpg"
-            layout="fill"
-            objectFit="cover"
-          />
+          <NextImage priority={true} src={heroImage2} />
         </Box>
       </Grid>
     </Box>
