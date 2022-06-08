@@ -24,14 +24,14 @@ import gridImage2 from "../public/images/works/michili/2.jpg"
 import gridImage3 from "../public/images/works/michili/5.jpg"
 import gridImage4 from "../public/images/works/sezane/1.jpg"
 import gridImage5 from "../public/images/works/grid/3.jpg"
-import gridImage6 from '../public/images/works/grid/2.jpg'
-import gridImage7 from '../public/images/works/grid/7.jpg'
-import gridImage8 from '../public/images/works/grid/6.jpg'
-import gridImage9 from '../public/images/works/grid/4.jpg'
-import gridImage10 from '../public/images/works/grid/1.jpg'
+import gridImage6 from "../public/images/works/grid/2.jpg"
+import gridImage7 from "../public/images/works/grid/7.jpg"
+import gridImage8 from "../public/images/works/grid/6.jpg"
+import gridImage9 from "../public/images/works/grid/4.jpg"
+import gridImage10 from "../public/images/works/grid/1.jpg"
 
 const GridImage = ({ ...props }) => (
-  <NextImage layout="fill" objectFit="cover" {...props} />
+  <NextImage placeholder="blur" layout="fill" objectFit="cover" {...props} />
 )
 
 const GridItem = ({ src, ...props }) => (
@@ -175,35 +175,15 @@ const Works = () => {
         templateColumns="repeat(10, 1fr)"
         templateRows="repeat(10,1fr)"
       >
-        <ParallaxGridItem
-          gridRow="6 / 11"
-          gridColumn="1/ 3"
-          src={gridImage5}
-        />
+        <ParallaxGridItem gridRow="6 / 11" gridColumn="1/ 3" src={gridImage5} />
 
-        <GridItem
-          gridRow="1 / 6"
-          gridColumn="1 / 5"
-          src={gridImage6}
-        />
+        <GridItem gridRow="1 / 6" gridColumn="1 / 5" src={gridImage6} />
 
-        <ParallaxGridItem
-          gridRow="1 / 6"
-          gridColumn="5 / 8"
-          src={gridImage7}
-        />
+        <ParallaxGridItem gridRow="1 / 6" gridColumn="5 / 8" src={gridImage7} />
 
-        <GridItem
-          gridRow="1 / 7"
-          gridColumn="8/ 11"
-          src={gridImage8}
-        />
+        <GridItem gridRow="1 / 7" gridColumn="8/ 11" src={gridImage8} />
 
-        <GridItem
-          gridRow="6 / 11"
-          gridColumn="3 / 8"
-          src={gridImage9}
-        />
+        <GridItem gridRow="6 / 11" gridColumn="3 / 8" src={gridImage9} />
 
         <ParallaxGridItem
           gridRow="7 / 11"
