@@ -67,9 +67,6 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
       return
     }
 
-    gsap.set(leftPlankRefs.current, { x: window.innerWidth * -1 })
-    gsap.set(rightPlankRefs.current, { x: window.innerWidth })
-
     gsap.set(transitionRef.current, { autoAlpha: 1 })
 
     tl.current = gsap
@@ -79,15 +76,19 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
         yoyo: true,
         paused: true,
       })
-      .to(leftPlankRefs.current, {
-        x: 0,
-        ease: "power4.out",
-        stagger: {
-          ease: "sine",
-          amount: 0.5,
-          from: "random",
-        },
-      })
+      .fromTo(
+        leftPlankRefs.current,
+        { x: window.innerWidth * -1 },
+        {
+          x: 0,
+          ease: "power4.out",
+          stagger: {
+            ease: "sine",
+            amount: 0.5,
+            from: "random",
+          },
+        }
+      )
 
     tl1.current = gsap
       .timeline({
@@ -96,15 +97,19 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
         yoyo: true,
         paused: true,
       })
-      .to(rightPlankRefs.current, {
-        x: 0,
-        ease: "power4.out",
-        stagger: {
-          ease: "sine",
-          amount: 0.5,
-          from: "random",
-        },
-      })
+      .fromTo(
+        rightPlankRefs.current,
+        { x: window.innerWidth },
+        {
+          x: 0,
+          ease: "power4.out",
+          stagger: {
+            ease: "sine",
+            amount: 0.5,
+            from: "random",
+          },
+        }
+      )
 
     return () => {
       tl.current.kill()
