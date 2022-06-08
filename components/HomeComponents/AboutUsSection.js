@@ -171,7 +171,12 @@ const AboutUsSection = () => {
           visibility="hidden"
         >
           <Box data-speed="auto" pos="relative" w="100%" h="160%">
-            <NextImage layout="fill" objectFit="cover" src={aboutImage1} />
+            <NextImage
+              priority={true}
+              layout="fill"
+              objectFit="cover"
+              src={aboutImage1}
+            />
           </Box>
         </Box>
         <Box
@@ -183,7 +188,12 @@ const AboutUsSection = () => {
           visibility="hidden"
         >
           <Box data-speed="auto" pos="relative" w="100%" h="160%">
-            <NextImage layout="fill" objectFit="cover" src={aboutImage2} />
+            <NextImage
+              priority={true}
+              layout="fill"
+              objectFit="cover"
+              src={aboutImage2}
+            />
           </Box>
         </Box>
         <Box
@@ -195,7 +205,12 @@ const AboutUsSection = () => {
           visibility="hidden"
         >
           <Box data-speed="auto" pos="relative" w="100%" h="160%">
-            <NextImage layout="fill" objectFit="cover" src={aboutImage} />
+            <NextImage
+              priority={true}
+              layout="fill"
+              objectFit="cover"
+              src={aboutImage}
+            />
           </Box>
         </Box>
       </Grid>
