@@ -81,8 +81,8 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
               >
                 <NextImage
                   src={element.src}
-                  width={element.w}
-                  height={element.h}
+                  // width={element.w}
+                  // height={element.h}
                   priority={true}
                 />
               </Flex>
