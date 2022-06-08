@@ -81,7 +81,12 @@ const SlideShowSection = (props) => {
                     pos="relative"
                     h={["15rem", "15rem", "15rem", "469.6"]}
                   >
-                    <NextImage layout="fill" objectFit="cover" src={e.src} />
+                    <NextImage
+                      placeholder="blur"
+                      layout="fill"
+                      objectFit="cover"
+                      src={e.src}
+                    />
                   </Box>
                 </Link>
               </NextLink>
