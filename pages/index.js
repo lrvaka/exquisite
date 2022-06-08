@@ -14,17 +14,16 @@ import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEf
 import { useContext } from "react"
 import NextImage from "next/image"
 import Marquee from "react-fast-marquee"
-import SlideShowSection from "../components/SlideshowSection"
-import { SectionHeading, SectionParagraph } from "../components/ui/SectionText"
-import ContactSection from "../components/ContactSection"
-import HeroSection from "../components/HeroSection"
-import AboutUsSection from "../components/AboutUsSection"
+import SlideShowSection from "../components/HomeComponents/SlideshowSection"
+import ContactSection from "../components/HomeComponents/ContactSection"
+import HeroSection from "../components/HomeComponents/HeroSection"
+import AboutUsSection from "../components/HomeComponents/AboutUsSection"
 import Footer from "../components/ui/Footer"
 import React from "react"
 import MainWrapper from "../components/ui/Main"
 
 const MessageSection = dynamic(() =>
-  import("../components/MessageSectionAnimation")
+  import("../components/HomeComponents/MessageSectionAnimation")
 )
 
 const MarqueeSection = () => (

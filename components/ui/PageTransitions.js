@@ -1,16 +1,16 @@
 import styled from "@emotion/styled"
 import { keyframes } from "@emotion/react"
-import GsapContext from "../store/gsap-context"
+import GsapContext from "../../store/gsap-context"
 import { Flex } from "@chakra-ui/react"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 import { useState, useRef, useEffect, useContext } from "react"
 import gsap from "gsap"
-import transitionPlanks from "./transition-planks"
-import Navbar from "./ui/Navbar"
+import transitionPlanks from '../../lib/transition-planks'
+import Navbar from "./Navbar"
 import { useRouter } from "next/router"
 import NextImage from "next/image"
-import useArrayRef from "./hooks/useArrayRef"
-import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
+import useArrayRef from "../hooks/useArrayRef"
+import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 
 const MainComponent = styled.div`
   position: "relative";

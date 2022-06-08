@@ -1,12 +1,11 @@
 import NextImage from "next/image"
-import { SectionParagraph } from "./ui/SectionText"
-import { Box, Flex, Grid, Container } from "@chakra-ui/react"
-import SVGArrow from "./ui/SVGArrow"
+import { Box, Flex, Grid, Container, Text } from "@chakra-ui/react"
+import SVGArrow from "../ui/SVGArrow"
 import { useContext, useEffect, useRef } from "react"
-import GsapContext from "../store/gsap-context"
+import GsapContext from "../../store/gsap-context"
 import gsap from "gsap"
-import useArrayRef from "./hooks/useArrayRef"
-import SectionHeading from "./ui/SectionHeading"
+import useArrayRef from "../hooks/useArrayRef"
+import SectionHeading from "../ui/SectionHeading"
 
 const AboutUsSection = () => {
   const [imageRefs, setImageRefs] = useArrayRef()
@@ -105,9 +104,13 @@ const AboutUsSection = () => {
           flexDir={["column", "column", "column", "row"]}
           maxW={["80vw", "80vw", "80vw", "none"]}
         >
-          <SectionParagraph
+          <Text
             ref={leftRef}
             pb="9"
+            fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
+            color="white"
+            fontWeight="400"
+            lineHeight="normal"
             w={["100%", "100%", "100%", "50%"]}
           >
             Whether you&apos;re an architect, designer, developer or flooring
@@ -115,12 +118,19 @@ const AboutUsSection = () => {
             perfectly match the style, requirements and budget of your project.
             We are proud of the work we do, and our clients are more than
             delighted.
-          </SectionParagraph>
-          <SectionParagraph ref={rightRef} w={["100%", "100%", "100%", "50%"]}>
+          </Text>
+          <Text
+            fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
+            color="white"
+            fontWeight="400"
+            lineHeight="normal"
+            ref={rightRef}
+            w={["100%", "100%", "100%", "50%"]}
+          >
             We owe our success to our deep knowledge base of wood selection, the
             skills of our enthusiastic team, and the specialized technologies
             and techniques we have at our disposal.
-          </SectionParagraph>
+          </Text>
         </Flex>
         <Flex
           as="button"

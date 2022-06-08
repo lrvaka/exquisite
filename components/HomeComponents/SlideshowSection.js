@@ -1,14 +1,10 @@
-import { Flex, Box, Heading, chakra, Container, Link } from "@chakra-ui/react"
+import { Flex, Box, Heading, Text, Container, Link } from "@chakra-ui/react"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
-import { useRef, useEffect, useState, useContext } from "react"
-import { motion, isValidMotionProp } from "framer-motion"
-import { SectionParagraph } from "./ui/SectionText"
-import slides from "./slides"
+import { useRef, useEffect } from "react"
+import slides from "../../lib/slides"
 import NextImage from "next/image"
-import SectionHeading from "./ui/SectionHeading"
-import { AnimatedHeading } from "./ui/SectionText"
-import ChakraBox from "./utils/ChakraBox"
+import SectionHeading from "../ui/SectionHeading"
 import NextLink from "next/link"
 import gsap from "gsap"
 
@@ -137,16 +133,27 @@ const SlideShowSection = (props) => {
               visibility="none"
               ref={textRef}
             >
-              <SectionParagraph pb="9">
+              <Text
+                fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
+                color="white"
+                fontWeight="400"
+                lineHeight="normal"
+                pb="9"
+              >
                 Every member of the Exquisite Wood Floors team is a wooden floor
                 expert with extensive knowledge of their sector and years of
                 flooring experience, delivering projects across all markets to
                 the highest of standards, ensuring unique, durable floors of
                 quality.
-              </SectionParagraph>
-              <SectionParagraph>
+              </Text>
+              <Text
+                fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
+                color="white"
+                fontWeight="400"
+                lineHeight="normal"
+              >
                 Contact us below to begin building with us.
-              </SectionParagraph>
+              </Text>
             </Flex>
           </Box>
         </Flex>
