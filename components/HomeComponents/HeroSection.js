@@ -41,14 +41,15 @@ const HeroSection = () => {
     })
 
     gsap.set(headingRef.current, { autoAlpha: 1 })
-    gsap.set(split.chars, { y: -20, opacity: 0, scale: 1.25, skewX: 10 })
+    gsap.set(split.chars, { y: -20, autoAlpha: 0.01, scale: 1.25, skewX: 10 })
 
     let splitCharsAni = gsap.to(split.chars, {
       y: 0,
-      opacity: 1,
+      autoAlpha: 1,
       scale: 1,
       skewX: 0,
       duration: 1,
+      delay: 0.3,
       stagger: 0.05,
       ease: "a1",
     })
