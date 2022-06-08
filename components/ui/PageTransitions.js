@@ -157,7 +157,6 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
                   key={index}
                   ref={plankType}
                   alignItems="stretch"
-                  willChange="transform"
                 >
                   <NextImage
                     placeholder="blur"
