@@ -24,7 +24,7 @@ const MainWrapper = ({ children, heading, ...props }) => {
         as="main"
         _before={{
           animation: animation,
-          backgroundImage: "url(/images/noise.png)",
+          backgroundImage: "url(/images/noise.webp)",
           content: "''",
           height: "300%",
           left: "-50%",
