@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react"
 import MessageSectionAnimationMobile from "./MessageSectionAnimation.mobile"
 import MessageSectionAnimationDesktop from "./MessageSectionAnimation.desktop"
-import ResponsiveComponent from "./utils/ResponsiveComponent"
+import ResponsiveComponent from "../utils/ResponsiveComponent"
 
 const MessageSectionAnimation = ({ children, ...props }) => {
   return (

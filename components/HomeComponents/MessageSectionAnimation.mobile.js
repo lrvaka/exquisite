@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react"
 import { Flex, Box } from "@chakra-ui/react"
 import gsap from "gsap"
-import planks from "./planks"
+import planks from "../../lib/planks"
 import NextImage from "next/image"
-import useArrayRef from "./hooks/useArrayRef"
+import useArrayRef from "../hooks/useArrayRef"
 
 const MessageSectionAnimationMobile = ({ children, ...props }) => {
   const containerRef = useRef()

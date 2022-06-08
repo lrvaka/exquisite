@@ -1,13 +1,10 @@
-import { useState, useRef, useLayoutEffect, useEffect } from "react"
-import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
-import ChakraBox from "./utils/ChakraBox"
+import { useState, useRef, useEffect } from "react"
 import { Flex, Box, Heading, Grid, useMediaQuery } from "@chakra-ui/react"
-import gsap, { random } from "gsap"
-import planks from "./planks"
+import gsap from "gsap"
+import planks from "../../lib/planks"
 import NextImage from "next/image"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
-import ResponsiveComponent from "./utils/ResponsiveComponent"
-import useArrayRef from "./hooks/useArrayRef"
+import useArrayRef from "../hooks/useArrayRef"
 
 const MessageSectionAnimationDesktop = ({ children, ...props }) => {
   const containerRef = useRef()

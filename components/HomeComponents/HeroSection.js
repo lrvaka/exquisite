@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { useRef } from "react"
 import gsap from "gsap"
 import SplitText from "gsap/dist/SplitText"
-import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
+import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 
 const HeroSection = () => {
   const containerRef = useRef()
