@@ -17,13 +17,6 @@ const SectionHeading = ({ children, ...props }) => {
       type: "chars, words",
     })
 
-    // gsap.set(split.chars, {
-    //   autoAlpha: 0.1,
-    //   y: 10,
-    //   scale: 1.25,
-    //   skewX: 10,
-    // })
-
     let splitCharsAni = gsap.from(split.chars, {
       autoAlpha: 0.1,
       y: 10,
