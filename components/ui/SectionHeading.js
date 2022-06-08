@@ -17,8 +17,6 @@ const SectionHeading = ({ children, ...props }) => {
       type: "chars, words",
     })
 
-    gsap.set(ref.current, { autoAlpha: 1 })
-
     gsap.set(split.chars, {
       autoAlpha: 0.1,
       y: 10,
