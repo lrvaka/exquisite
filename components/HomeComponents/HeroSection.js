@@ -18,7 +18,7 @@ const HeroSection = () => {
     }
 
     const split = new SplitText(headingRef.current, {
-      type: "chars, words",
+      type: "chars",
     })
 
     const images = containerRef.current.children
