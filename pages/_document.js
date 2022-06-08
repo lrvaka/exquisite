@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <link
           rel="preload"
-          href=href="https://use.typekit.net/qoq0ljs.css"
+          href="https://use.typekit.net/qoq0ljs.css"
           as="font"
         />
       </Head>
