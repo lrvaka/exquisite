@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { keyframes } from "@emotion/react"
 import GsapContext from "../../store/gsap-context"
-import { Flex } from "@chakra-ui/react"
+import { Flex, Box } from "@chakra-ui/react"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 import { useState, useRef, useEffect, useContext } from "react"
 import gsap from "gsap"
@@ -43,6 +43,7 @@ const Grid = styled.div`
   left: 0;
   position: fixed;
   visibility: hidden;
+  background: "black",
   flex: 1;
 `
 
@@ -158,13 +159,16 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
                   ref={plankType}
                   alignItems="stretch"
                   willChange="transform"
+                  bgColor="#705d56"
+                  border="1px solid #a1938e"
                 >
-                  <NextImage
+                  <Box minW={element.w} minH={element.h} />
+                  {/* <NextImage
                     src={element.src}
                     width={element.w}
                     height={element.h}
                     priority={true}
-                  />
+                  /> */}
                 </Flex>
               )
             })}
