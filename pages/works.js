@@ -19,15 +19,19 @@ import Navbar from "../components/ui/Navbar"
 import MainWrapper from "../components/ui/Main"
 import Footer from "../components/ui/Footer"
 import clients from "../lib/clients"
+import gridImage1 from "../public/images/works/grid/8.webp"
+import gridImage2 from "../public/images/works/michili/2.jpg"
+import gridImage3 from "../public/images/works/michili/5.jpg"
+import gridImage4 from "../public/images/works/sezane/1.jpg"
+import gridImage5 from "../public/images/works/grid/3.jpg"
+import gridImage6 from '../public/images/works/grid/2.jpg'
+import gridImage7 from '../public/images/works/grid/7.jpg'
+import gridImage8 from '../public/images/works/grid/6.jpg'
+import gridImage9 from '../public/images/works/grid/4.jpg'
+import gridImage10 from '../public/images/works/grid/1.jpg'
 
 const GridImage = ({ ...props }) => (
-  <NextImage
-    placeholder="blur"
-    blurDataURL={`data:image/webp;base64,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`}
-    layout="fill"
-    objectFit="cover"
-    {...props}
-  />
+  <NextImage layout="fill" objectFit="cover" {...props} />
 )
 
 const GridItem = ({ src, ...props }) => (
@@ -142,26 +146,14 @@ const Works = () => {
         <ParallaxGridItem
           gridRow="1 / 11"
           gridColumn="1 / 5"
-          src="/images/works/grid/8.webp"
+          src={gridImage1}
         />
 
-        <GridItem
-          gridRow="1 / 5"
-          gridColumn="5 / 8"
-          src="/images/works/michili/2.jpg"
-        />
+        <GridItem gridRow="1 / 5" gridColumn="5 / 8" src={gridImage2} />
 
-        <ParallaxGridItem
-          gridRow="1 / 5"
-          gridColumn="8/ 11"
-          src="/images/works/michili/5.jpg"
-        />
+        <ParallaxGridItem gridRow="1 / 5" gridColumn="8/ 11" src={gridImage3} />
 
-        <GridItem
-          gridRow="5 / 11"
-          gridColumn="5 / 11"
-          src="/images/works/sezane/1.jpg"
-        />
+        <GridItem gridRow="5 / 11" gridColumn="5 / 11" src={gridImage4} />
       </Grid>
       <Box
         py="24"
@@ -170,8 +162,8 @@ const Works = () => {
         ref={sliderRef}
         className="keen-slider"
       >
-        {workSlides.carolina.map((e) => (
-          <Box className="keen-slider__slide" key={e} h="15rem">
+        {workSlides.carolina.map((e, i) => (
+          <Box className="keen-slider__slide" key={i} h="15rem">
             <GridImage src={e} />
           </Box>
         ))}
@@ -186,37 +178,37 @@ const Works = () => {
         <ParallaxGridItem
           gridRow="6 / 11"
           gridColumn="1/ 3"
-          src="/images/works/grid/3.jpg"
+          src={gridImage5}
         />
 
         <GridItem
           gridRow="1 / 6"
           gridColumn="1 / 5"
-          src="/images/works/grid/2.jpg"
+          src={gridImage6}
         />
 
         <ParallaxGridItem
           gridRow="1 / 6"
           gridColumn="5 / 8"
-          src="/images/works/grid/7.jpg"
+          src={gridImage7}
         />
 
         <GridItem
           gridRow="1 / 7"
           gridColumn="8/ 11"
-          src="/images/works/grid/6.jpg"
+          src={gridImage8}
         />
 
         <GridItem
           gridRow="6 / 11"
           gridColumn="3 / 8"
-          src="/images/works/grid/4.jpg"
+          src={gridImage9}
         />
 
         <ParallaxGridItem
           gridRow="7 / 11"
           gridColumn="8/ 11"
-          src="/images/works/grid/1.jpg"
+          src={gridImage10}
         />
       </Grid>
       <Box
@@ -226,8 +218,8 @@ const Works = () => {
         py="24"
         className="keen-slider"
       >
-        {workSlides.grafbro.map((e) => (
-          <Box className="keen-slider__slide" key={e} h="15rem">
+        {workSlides.grafbro.map((e, i) => (
+          <Box className="keen-slider__slide" key={i} h="15rem">
             <GridImage src={e} />
           </Box>
         ))}
