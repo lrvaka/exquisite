@@ -90,6 +90,7 @@ const SlideShowSection = (props) => {
             height="100%"
             visibility="hidden"
             ref={ref}
+            willChange="opacity"
           >
             <Box
               overflow="hidden"
