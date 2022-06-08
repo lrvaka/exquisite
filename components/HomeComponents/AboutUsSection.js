@@ -111,7 +111,6 @@ const AboutUsSection = () => {
             color="white"
             fontWeight="400"
             lineHeight="normal"
-            willChange="transform"
             w={["100%", "100%", "100%", "50%"]}
           >
             Whether you&apos;re an architect, designer, developer or flooring
@@ -125,7 +124,6 @@ const AboutUsSection = () => {
             color="white"
             fontWeight="400"
             lineHeight="normal"
-            willChange="transform"
             ref={rightRef}
             w={["100%", "100%", "100%", "50%"]}
           >
