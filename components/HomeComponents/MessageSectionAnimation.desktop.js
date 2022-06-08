@@ -80,10 +80,10 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
                 ref={plankType}
               >
                 <NextImage
+                  placeholder="blur"
                   src={element.src}
                   // width={element.w}
                   // height={element.h}
-                  priority={true}
                 />
               </Flex>
             )

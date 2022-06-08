@@ -160,10 +160,10 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
                   willChange="transform"
                 >
                   <NextImage
+                    placeholder="blur"
                     src={element.component}
                     // width={element.w}
                     // height={element.h}
-                    priority={true}
                   />
                 </Flex>
               )

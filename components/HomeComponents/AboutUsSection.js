@@ -172,7 +172,7 @@ const AboutUsSection = () => {
         >
           <Box data-speed="auto" pos="relative" w="100%" h="160%">
             <NextImage
-              priority={true}
+              placeholder="blur"
               layout="fill"
               objectFit="cover"
               src={aboutImage1}
@@ -189,7 +189,7 @@ const AboutUsSection = () => {
         >
           <Box data-speed="auto" pos="relative" w="100%" h="160%">
             <NextImage
-              priority={true}
+              placeholder="blur"
               layout="fill"
               objectFit="cover"
               src={aboutImage2}
@@ -206,7 +206,7 @@ const AboutUsSection = () => {
         >
           <Box data-speed="auto" pos="relative" w="100%" h="160%">
             <NextImage
-              priority={true}
+              placeholder="blur"
               layout="fill"
               objectFit="cover"
               src={aboutImage}
