@@ -16,14 +16,13 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
     let rightAni
 
     gsap.set(leftPlankRefs.current, {
-      autoAlpha: 0.1,
+      autoAlpha: 1,
       x: window.innerWidth * -1,
     })
-    gsap.set(rightPlankRefs.current, { autoAlpha: 0.1, x: window.innerWidth })
+    gsap.set(rightPlankRefs.current, { autoAlpha: 1, x: window.innerWidth })
 
     leftPlankRefs.current.forEach((plank, i) => {
       leftAni = gsap.to(plank, {
-        opacity: 1,
         x: 0,
         ease: "power4.out",
         scrollTrigger: {
@@ -37,7 +36,6 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
 
     rightPlankRefs.current.forEach((plank, i) => {
       rightAni = gsap.to(plank, {
-        opacity: 1,
         x: 0,
         ease: "power4.out",
         scrollTrigger: {
