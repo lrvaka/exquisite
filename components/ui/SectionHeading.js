@@ -17,27 +17,23 @@ const SectionHeading = ({ children, ...props }) => {
       type: "chars, words",
     })
 
-    gsap.set(ref.current, { autoAlpha: 1 })
+    gsap.set(split.chars, {
+      autoAlpha: 0.1,
+      y: 10,
+      scale: 1.25,
+      skewX: 10,
+    })
 
-    let splitCharsAni = gsap.fromTo(
-      split.chars,
-      {
-        y: 10,
-        opacity: 0,
-        scale: 1.25,
-        skewX: 10,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        skewX: 0,
-        duration: 1,
-        stagger: 0.01,
-        ease: "a1",
-        scrollTrigger: ref.current,
-      }
-    )
+    let splitCharsAni = gsap.to(split.chars, {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      skewX: 0,
+      duration: 1,
+      stagger: 0.01,
+      ease: "a1",
+      scrollTrigger: ref.current,
+    })
   }, [])
 
   return (
@@ -47,7 +43,6 @@ const SectionHeading = ({ children, ...props }) => {
       fontWeight="700"
       color="brand.100"
       lineHeight="none"
-      visibility="hidden"
       ref={ref}
       {...props}
     >

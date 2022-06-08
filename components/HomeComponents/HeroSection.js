@@ -107,7 +107,7 @@ const HeroSection = () => {
           data-speed="1.2"
         >
           <NextImage
-            priority
+            priority={true}
             src="/images/hero-1.webp"
             layout="fill"
             objectFit="cover"
@@ -121,7 +121,7 @@ const HeroSection = () => {
           data-speed="1.1"
         >
           <NextImage
-            priority
+            priority={true}
             src="/images/hero-2.jpg"
             layout="fill"
             objectFit="cover"
