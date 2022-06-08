@@ -81,6 +81,7 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
                 <NextImage
                   placeholder="blur"
                   src={element.src}
+                  priority
                   // width={element.w}
                   // height={element.h}
                 />

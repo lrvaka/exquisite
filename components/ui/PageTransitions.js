@@ -161,6 +161,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
                   <NextImage
                     placeholder="blur"
                     src={element.component}
+                    priority
                     // width={element.w}
                     // height={element.h}
                   />
