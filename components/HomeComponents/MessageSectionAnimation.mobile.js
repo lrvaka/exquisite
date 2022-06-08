@@ -84,7 +84,7 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
                   src={element.src}
                   width={element.w}
                   height={element.h}
-                  priority="true"
+                  priority={true}
                 />
               </Flex>
             )
