@@ -48,6 +48,10 @@ function MyApp({ Component, pageProps }) {
       effects: true, // looks for data-speed and data-lag attributes on elements
     })
 
+    setTimeout(() => {
+      ScrollTrigger.refresh()
+    }, 500)
+
     setSmoother(scroller)
   }, [router.asPath])
 
@@ -55,13 +59,8 @@ function MyApp({ Component, pageProps }) {
     const pageChange = () => {
       setRoutingPageOffset(window.scrollY)
     }
-    const refreshScrollTrigger = () => {
-      setTimeout(() => {
-        ScrollTrigger.refresh()
-      }, 500)
-    }
+
     router.events.on("routeChangeStart", pageChange)
-    router.events.on("routeChangeComplete", refreshScrollTrigger)
   }, [router.events])
 
   useIsomorphicLayoutEffect(() => {
