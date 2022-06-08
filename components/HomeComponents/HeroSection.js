@@ -110,7 +110,12 @@ const HeroSection = () => {
           gridColumn={["5 / 16", "5 / 16", "5 / 16", "18 / 26"]}
           data-speed="1.2"
         >
-          <NextImage layout="responsive" placeholder="blur" src={heroImage1} />
+          <NextImage
+            placeholder="blur"
+            layout="fill"
+            objectFit="cover"
+            src={heroImage1}
+          />
         </Box>
         <Box
           visibility="hidden"
@@ -119,7 +124,12 @@ const HeroSection = () => {
           gridColumn={["2 / 9", "2 / 9", "2 / 9", "2 / 8"]}
           data-speed="1.1"
         >
-          <NextImage layout="responsive" placeholder="blur" src={heroImage2} />
+          <NextImage
+            placeholder="blur"
+            layout="fill"
+            objectFit="cover"
+            src={heroImage2}
+          />
         </Box>
       </Grid>
     </Box>
