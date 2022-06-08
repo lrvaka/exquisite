@@ -5,7 +5,7 @@ import { Flex } from "@chakra-ui/react"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 import { useState, useRef, useEffect, useContext } from "react"
 import gsap from "gsap"
-import transitionPlanks from '../../lib/transition-planks'
+import transitionPlanks from "../../lib/transition-planks"
 import Navbar from "./Navbar"
 import { useRouter } from "next/router"
 import NextImage from "next/image"
@@ -67,8 +67,8 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
       return
     }
 
-    gsap.set(leftPlankRefs.current, { autoAlpha: 1 })
-    gsap.set(rightPlankRefs.current, { autoAlpha: 1 })
+    gsap.set(leftPlankRefs.current, { x: window.innerWidth * -1 })
+    gsap.set(rightPlankRefs.current, { x: window.innerWidth })
 
     gsap.set(transitionRef.current, { autoAlpha: 1 })
 
@@ -79,20 +79,15 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
         yoyo: true,
         paused: true,
       })
-      .fromTo(
-        leftPlankRefs.current,
-        { x: window.innerWidth * -1 },
-        {
-          opacity: 1,
-          x: 0,
-          ease: "power4.out",
-          stagger: {
-            ease: "sine",
-            amount: 0.5,
-            from: "random",
-          },
-        }
-      )
+      .to(leftPlankRefs.current, {
+        x: 0,
+        ease: "power4.out",
+        stagger: {
+          ease: "sine",
+          amount: 0.5,
+          from: "random",
+        },
+      })
 
     tl1.current = gsap
       .timeline({
@@ -101,20 +96,15 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
         yoyo: true,
         paused: true,
       })
-      .fromTo(
-        rightPlankRefs.current,
-        { x: window.innerWidth },
-        {
-          opacity: 1,
-          x: 0,
-          ease: "power4.out",
-          stagger: {
-            ease: "sine",
-            amount: 0.5,
-            from: "random",
-          },
-        }
-      )
+      .to(rightPlankRefs.current, {
+        x: 0,
+        ease: "power4.out",
+        stagger: {
+          ease: "sine",
+          amount: 0.5,
+          from: "random",
+        },
+      })
 
     return () => {
       tl.current.kill()
@@ -157,7 +147,6 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
               }
               return (
                 <Flex
-                  visibility="hidden"
                   pos="relative"
                   height="auto"
                   key={index}
@@ -168,7 +157,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
                     src={element.src}
                     width={element.w}
                     height={element.h}
-                    priority="true"
+                    priority={true}
                   />
                 </Flex>
               )
