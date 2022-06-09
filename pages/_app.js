@@ -15,7 +15,6 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import ScrollSmoother from "gsap/dist/ScrollSmoother"
 import GsapContext from "../store/gsap-context"
 import Navbar from "../components/ui/Navbar"
-import Footer from "../components/ui/Footer"
 import { useRouter } from "next/router"
 import PageTransitions from "../components/ui/PageTransitions"
 import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
@@ -75,7 +74,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ChakraProvider theme={theme}>
-      {/* <Fonts /> */}
       <GsapContext.Provider
         value={{
           smoother,
