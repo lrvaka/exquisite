@@ -160,6 +160,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
                 >
                   <NextImage
                     placeholder="blur"
+                    loading="lazy"
                     src={element.component}
                     // width={element.w}
                     // height={element.h}
