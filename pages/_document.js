@@ -4,11 +4,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <link
-          rel="preload"
-          href="https://use.typekit.net/qoq0ljs.css"
-          as="font"
-        />
+        <link rel="stylesheet" href="https://use.typekit.net/qoq0ljs.css" />
       </Head>
       <body>
         <Main />
