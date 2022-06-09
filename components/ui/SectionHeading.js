@@ -5,29 +5,29 @@ import SplitText from "gsap/dist/SplitText"
 import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 
 const SectionHeading = ({ children, ...props }) => {
-  const ref = useRef()
+  // const ref = useRef()
 
-  useEffect(() => {
-    if (!ref.current) {
-      return
-    }
-    console.log(ref.current)
+  // useEffect(() => {
+  //   if (!ref.current) {
+  //     return
+  //   }
+  //   console.log(ref.current)
 
-    const split = new SplitText(ref.current, {
-      type: "chars, words",
-    })
+  //   const split = new SplitText(ref.current, {
+  //     type: "chars, words",
+  //   })
 
-    let splitCharsAni = gsap.from(split.chars, {
-      autoAlpha: 0.1,
-      y: 10,
-      scale: 1.25,
-      skewX: 10,
-      duration: 1,
-      stagger: 0.01,
-      ease: "a1",
-      scrollTrigger: ref.current,
-    })
-  }, [])
+  //   let splitCharsAni = gsap.from(split.words, {
+  //     autoAlpha: 0.1,
+  //     y: 10,
+  //     scale: 1.25,
+  //     skewX: 10,
+  //     duration: 1,
+  //     stagger: 0.01,
+  //     ease: "a1",
+  //     scrollTrigger: ref.current,
+  //   })
+  // }, [])
 
   return (
     <Heading
@@ -36,7 +36,7 @@ const SectionHeading = ({ children, ...props }) => {
       fontWeight="700"
       color="brand.100"
       lineHeight="none"
-      ref={ref}
+      // ref={ref}
       {...props}
     >
       {children}

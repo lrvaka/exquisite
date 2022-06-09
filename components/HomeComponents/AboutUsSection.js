@@ -10,6 +10,20 @@ import aboutImage from "../../public/images/about.jpg"
 import aboutImage1 from "../../public/images/about-1.png"
 import aboutImage2 from "../../public/images/about-2.jpg"
 
+const ParallaxImage = ({ src }) => {
+  return (
+    <Box data-speed="auto" pos="relative" w="100%" h="160%">
+      <NextImage
+        quality={25}
+        placeholder="blur"
+        layout="fill"
+        objectFit="cover"
+        src={src}
+      />
+    </Box>
+  )
+}
+
 const AboutUsSection = () => {
   const [imageRefs, setImageRefs] = useArrayRef()
   const { smoother } = useContext(GsapContext)
@@ -168,16 +182,8 @@ const AboutUsSection = () => {
           gridRow={["4 / 5", "4 / 5", "4 / 5", "3 / 5"]}
           gridColumn="20 / 26"
           overflow="hidden"
-          visibility="hidden"
         >
-          <Box data-speed="auto" pos="relative" w="100%" h="160%">
-            <NextImage
-              placeholder="blur"
-              layout="fill"
-              objectFit="cover"
-              src={aboutImage1}
-            />
-          </Box>
+          <ParallaxImage src={aboutImage1} />
         </Box>
         <Box
           ref={setImageRefs}
@@ -185,16 +191,8 @@ const AboutUsSection = () => {
           gridRow="1 / 5"
           gridColumn="8 / 19"
           overflow="hidden"
-          visibility="hidden"
         >
-          <Box data-speed="auto" pos="relative" w="100%" h="160%">
-            <NextImage
-              placeholder="blur"
-              layout="fill"
-              objectFit="cover"
-              src={aboutImage2}
-            />
-          </Box>
+          <ParallaxImage src={aboutImage2} />
         </Box>
         <Box
           ref={setImageRefs}
@@ -202,16 +200,8 @@ const AboutUsSection = () => {
           gridRow={["1 / 2", "1 / 2", "1 / 2", "1 / 3"]}
           gridColumn="1 / 7"
           overflow="hidden"
-          visibility="hidden"
         >
-          <Box data-speed="auto" pos="relative" w="100%" h="160%">
-            <NextImage
-              placeholder="blur"
-              layout="fill"
-              objectFit="cover"
-              src={aboutImage}
-            />
-          </Box>
+          <ParallaxImage src={aboutImage} />
         </Box>
       </Grid>
     </>
