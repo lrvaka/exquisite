@@ -111,6 +111,7 @@ const HeroSection = () => {
           data-speed="1.2"
         >
           <NextImage
+            quality={25}
             placeholder="blur"
             layout="fill"
             objectFit="cover"
@@ -125,6 +126,7 @@ const HeroSection = () => {
           data-speed="1.1"
         >
           <NextImage
+            quality={25}
             placeholder="blur"
             layout="fill"
             objectFit="cover"

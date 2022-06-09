@@ -82,6 +82,7 @@ const SlideShowSection = (props) => {
                     h={["15rem", "15rem", "15rem", "469.6"]}
                   >
                     <NextImage
+                      quality={10}
                       placeholder="blur"
                       layout="fill"
                       objectFit="cover"
