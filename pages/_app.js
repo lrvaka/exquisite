@@ -75,7 +75,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ChakraProvider theme={theme}>
-      <Fonts />
+      {/* <Fonts /> */}
       <GsapContext.Provider
         value={{
           smoother,
