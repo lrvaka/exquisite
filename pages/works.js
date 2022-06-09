@@ -19,6 +19,10 @@ import Navbar from "../components/ui/Navbar"
 import MainWrapper from "../components/ui/Main"
 import Footer from "../components/ui/Footer"
 import clients from "../lib/clients"
+import GridItem from "../components/WorksComponents/GridItem"
+import GridImage from "../components/WorksComponents/GridImage"
+import ParallaxGridItem from "../components/WorksComponents/ParallaxGridItem"
+
 import gridImage1 from "../public/images/works/grid/8.webp"
 import gridImage2 from "../public/images/works/michili/2.jpg"
 import gridImage3 from "../public/images/works/michili/5.jpg"
@@ -29,24 +33,6 @@ import gridImage7 from "../public/images/works/grid/7.jpg"
 import gridImage8 from "../public/images/works/grid/6.jpg"
 import gridImage9 from "../public/images/works/grid/4.jpg"
 import gridImage10 from "../public/images/works/grid/1.jpg"
-
-const GridImage = ({ ...props }) => (
-  <NextImage placeholder="blur" layout="fill" objectFit="cover" {...props} />
-)
-
-const GridItem = ({ src, ...props }) => (
-  <Box pos="relative" overflow="hidden" {...props}>
-    <GridImage src={src} />
-  </Box>
-)
-
-const ParallaxGridItem = ({ src, ...props }) => (
-  <Box pos="relative" overflow="hidden" {...props}>
-    <Box data-speed="auto" pos="relative" w="100%" h="160%">
-      <GridImage src={src} />
-    </Box>
-  </Box>
-)
 
 const animation = { duration: 50000, easing: (t) => t }
 
