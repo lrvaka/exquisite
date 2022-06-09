@@ -1,16 +1,16 @@
 import styled from "@emotion/styled"
 import { keyframes } from "@emotion/react"
-import GsapContext from "../store/gsap-context"
+import GsapContext from "../../store/gsap-context"
 import { Flex } from "@chakra-ui/react"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 import { useState, useRef, useEffect, useContext } from "react"
 import gsap from "gsap"
-import transitionPlanks from "./transition-planks"
-import Navbar from "./ui/Navbar"
+import transitionPlanks from "../../lib/transition-planks"
+import Navbar from "./Navbar"
 import { useRouter } from "next/router"
 import NextImage from "next/image"
-import useArrayRef from "./hooks/useArrayRef"
-import useIsomorphicLayoutEffect from "./hooks/useIsomorphicLayoutEffect"
+import useArrayRef from "../hooks/useArrayRef"
+import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 
 const MainComponent = styled.div`
   position: "relative";
@@ -67,9 +67,6 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
       return
     }
 
-    gsap.set(leftPlankRefs.current, { autoAlpha: 1 })
-    gsap.set(rightPlankRefs.current, { autoAlpha: 1 })
-
     gsap.set(transitionRef.current, { autoAlpha: 1 })
 
     tl.current = gsap
@@ -81,10 +78,10 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
       })
       .fromTo(
         leftPlankRefs.current,
-        { x: window.innerWidth * -1 },
+        { x: window.innerWidth * -1, autoAlpha: 0 },
         {
-          opacity: 1,
           x: 0,
+          autoAlpha: 1,
           ease: "power4.out",
           stagger: {
             ease: "sine",
@@ -103,10 +100,10 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
       })
       .fromTo(
         rightPlankRefs.current,
-        { x: window.innerWidth },
+        { x: window.innerWidth, autoAlpha: 0  },
         {
-          opacity: 1,
           x: 0,
+          autoAlpha: 1,
           ease: "power4.out",
           stagger: {
             ease: "sine",
@@ -157,19 +154,23 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
               }
               return (
                 <Flex
-                  visibility="hidden"
                   pos="relative"
                   height="auto"
                   key={index}
                   ref={plankType}
                   alignItems="stretch"
+                  bgColor="#705d56"
+                  border="1px solid #a1938e"
+                  visibility="hidden"
                 >
-                  <NextImage
-                    src={element.src}
-                    width={element.w}
-                    height={element.h}
-                    priority="true"
-                  />
+                  <Flex minW={element.w} minH={element.h} />
+                  {/* <NextImage
+                    placeholder="blur"
+                    loading="lazy"
+                    src={element.component}
+                    // width={element.w}
+                    // height={element.h}
+                  /> */}
                 </Flex>
               )
             })}

@@ -15,11 +15,11 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import ScrollSmoother from "gsap/dist/ScrollSmoother"
 import GsapContext from "../store/gsap-context"
 import Navbar from "../components/ui/Navbar"
-import Footer from "../components/ui/Footer"
 import { useRouter } from "next/router"
-
+import PageTransitions from "../components/ui/PageTransitions"
 import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
-import PageTransitions from "../components/PageTransitions"
+import SplitText from "gsap/dist/SplitText"
+import CustomEase from "gsap/dist/CustomEase"
 
 if (typeof window !== "undefined") {
   window.history.scrollRestoration = "manual"
@@ -37,35 +37,43 @@ function MyApp({ Component, pageProps }) {
     if (smoother) {
       ScrollTrigger.getAll().forEach((t) => t.kill())
     }
-    gsap.registerPlugin(ScrollSmoother, ScrollTrigger)
+    gsap.registerPlugin(ScrollSmoother, ScrollTrigger, SplitText)
 
     let scroller = ScrollSmoother.create({
       ignoreMobileResize: true,
       wrapper: wrapperRef.current,
       content: contentRef.current,
+      effects: true,
       smooth: 2, // how long (in seconds) it takes to "catch up" to the native scroll position
-      effects: true, // looks for data-speed and data-lag attributes on elements
     })
 
-    setSmoother(scroller)
-  }, [router.asPath])
-
-  useIsomorphicLayoutEffect(() => {
     setTimeout(() => {
       ScrollTrigger.refresh()
     }, 500)
+
+    setSmoother(scroller)
+
+    return () => {
+      scroller.kill()
+    }
   }, [router.asPath])
 
   useIsomorphicLayoutEffect(() => {
     const pageChange = () => {
       setRoutingPageOffset(window.scrollY)
     }
+
     router.events.on("routeChangeStart", pageChange)
   }, [router.events])
 
+  useIsomorphicLayoutEffect(() => {
+    //register custom easing functions
+    gsap.registerPlugin(CustomEase)
+    CustomEase.create("a1", "0.6, 0.01, -0.05, 0.95")
+  }, [])
+
   return (
     <ChakraProvider theme={theme}>
-      <Fonts />
       <GsapContext.Provider
         value={{
           smoother,
