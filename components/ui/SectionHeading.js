@@ -16,18 +16,20 @@ const SectionHeading = ({ children, ...props }) => {
     const split = new SplitText(ref.current, {
       type: "chars, words",
     })
+    console.log(split.chars)
 
-   gsap.from(split.chars, {
-      autoAlpha: 0.1,
-      y: 10,
-      scale: 1.25,
-      skewX: 10,
-      duration: 1,
-      stagger: 0.01,
-      ease: "a1",
-      scrollTrigger: ref.current,
+    split.chars.forEach((char, i) => {
+      gsap.from(char, {
+        y: 10,
+        opacity: 0,
+        scale: 1.25,
+        skewX: 10,
+        duration: 1,
+        delay: i * 0.01,
+        ease: "a1",
+        scrollTrigger: ref.current,
+      })
     })
-
   }, [])
 
   return (
