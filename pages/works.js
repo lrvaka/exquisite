@@ -107,14 +107,14 @@ const Works = () => {
           </Flex>
         </Grid>
         <Flex pos="relative" justifyContent="space-between">
-          {clients.map((e) => (
+          {clients.map((e, i) => (
             <Box
               w={["50px", "100px"]}
               h={["25px", "50px"]}
-              key={e}
+              key={i}
               pos="relative"
             >
-              <NextImage height="500" width="500" src={e} />
+              <NextImage src={e} />
             </Box>
           ))}
         </Flex>
