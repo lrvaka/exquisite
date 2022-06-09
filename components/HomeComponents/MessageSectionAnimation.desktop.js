@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from "react"
-import { Flex, Box, } from "@chakra-ui/react"
+import { Flex, Box, Heading, Grid, useMediaQuery } from "@chakra-ui/react"
 import gsap from "gsap"
-import planks from "./planks"
+import planks from "../../lib/planks"
 import NextImage from "next/image"
-import useArrayRef from "./hooks/useArrayRef"
+import ScrollTrigger from "gsap/dist/ScrollTrigger"
+import useArrayRef from "../hooks/useArrayRef"
 
-const MessageSectionAnimationMobile = ({ children, ...props }) => {
+const MessageSectionAnimationDesktop = ({ children, ...props }) => {
   const containerRef = useRef()
   const [leftPlankRefs, setLeftPlankRefs] = useArrayRef()
   const [rightPlankRefs, setRightPlankRefs] = useArrayRef()
@@ -15,43 +16,36 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
     let leftAni
     let rightAni
 
-    gsap.set(leftPlankRefs.current, { autoAlpha: 0.1 })
-    gsap.set(rightPlankRefs.current, { autoAlpha: 0.1 })
+    gsap.set(leftPlankRefs.current, {
+      autoAlpha: 1,
+      x: window.innerWidth * -1,
+    })
+    gsap.set(rightPlankRefs.current, { autoAlpha: 1, x: window.innerWidth })
 
     leftPlankRefs.current.forEach((plank, i) => {
-      leftAni = gsap.fromTo(
-        plank,
-        { opacity: 0.1, x: window.innerWidth * -1 },
-        {
-          opacity: 1,
-          x: 0,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: plank,
-            scrub: true,
-            end: "bottom center",
-            onLeave: (self) => self.kill(false, true),
-          },
-        }
-      )
+      leftAni = gsap.to(plank, {
+        x: 0,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: plank,
+          scrub: true,
+          end: "bottom center",
+          onLeave: (self) => self.kill(false, true),
+        },
+      })
     })
 
     rightPlankRefs.current.forEach((plank, i) => {
-      rightAni = gsap.fromTo(
-        plank,
-        { opacity: 0.1, x: window.innerWidth },
-        {
-          opacity: 1,
-          x: 0,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: plank,
-            scrub: true,
-            end: "bottom center",
-            onLeave: (self) => self.kill(false, true),
-          },
-        }
-      )
+      rightAni = gsap.to(plank, {
+        x: 0,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: plank,
+          scrub: true,
+          end: "bottom center",
+          onLeave: (self) => self.kill(false, true),
+        },
+      })
     })
 
     return () => {
@@ -69,7 +63,7 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
       alignItems="center"
       ref={containerRef}
     >
-      {planks.mobile.map((e, i) => (
+      {planks.desktop.map((e, i) => (
         <Flex pos="relative" flexDir="row" zIndex="1" key={i}>
           {e.map((element, index) => {
             if (element.ref === "setRightPlankRefs") {
@@ -86,10 +80,11 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
                 ref={plankType}
               >
                 <NextImage
+                  placeholder="blur"
                   src={element.src}
-                  width={element.w}
-                  height={element.h}
-                  priority="true"
+                  priority
+                  // width={element.w}
+                  // height={element.h}
                 />
               </Flex>
             )
@@ -100,4 +95,4 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
   )
 }
 
-export default MessageSectionAnimationMobile
+export default MessageSectionAnimationDesktop
