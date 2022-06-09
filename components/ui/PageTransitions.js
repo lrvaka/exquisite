@@ -162,7 +162,6 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
                     placeholder="blur"
                     loading="lazy"
                     src={element.component}
-                    priority
                     // width={element.w}
                     // height={element.h}
                   />
