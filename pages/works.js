@@ -28,18 +28,18 @@ import gridImage1 from "../public/images/works/carolina/8.jpg"
 import gridImage2 from "../public/images/works/carolina/3.jpg"
 import gridImage3 from "../public/images/works/carolina/1.jpg"
 import gridImage4 from "../public/images/works/carolina/4.jpg"
-import gridImage5 from "../public/images/works/grid/3.jpg"
-import gridImage6 from "../public/images/works/grid/2.jpg"
-import gridImage7 from "../public/images/works/grid/7.jpg"
-import gridImage8 from "../public/images/works/grid/6.jpg"
-import gridImage9 from "../public/images/works/grid/4.jpg"
-import gridImage10 from "../public/images/works/grid/1.jpg"
+import gridImage5 from "../public/images/works/orchard/3.jpg"
+import gridImage6 from "../public/images/works/orchard/2.jpg"
+import gridImage7 from "../public/images/works/orchard/7.jpg"
+import gridImage8 from "../public/images/works/orchard/6.jpg"
+import gridImage9 from "../public/images/works/orchard/4.jpg"
+import gridImage10 from "../public/images/works/orchard/1.jpg"
 import useArrayRef from "../components/hooks/useArrayRef"
 
 const animation = { duration: 50000, easing: (t) => t }
 
 const WorksHeading = () => (
-  <Container pos="relative" maxW="container.xl" px="4" minH="100vh">
+  <Container pos="relative" maxW="container.xl" px="4" minH="70vh">
     <Heading
       pb="10"
       color="brand.500"
@@ -130,21 +130,18 @@ const Works = () => {
       return
     }
 
-    gsap.set(gridItems.current, { autoAlpha: 0.1})
-
     gridItems.current.forEach((e, i) => {
       gsap.fromTo(
         e,
         {
           opacity: 0.1,
+          scale: 0.75,
         },
         {
           opacity: 1,
+          scale: 1,
           duration: 2,
-          delay: i * 0.5,
-          scrollTrigger: {
-            trigger: e,
-          },
+          scrollTrigger: e,
         }
       )
     }, [])
@@ -154,40 +151,39 @@ const Works = () => {
     <MainWrapper pt="20vh" bg="brand.200">
       <WorksHeading />
       <Grid
-        maxW="container.lg"
+        maxW="container.xl"
         m="0 auto"
         minH={["500px", "800px"]}
         templateColumns="repeat(10, 1fr)"
         templateRows="repeat(10,1fr)"
-        mb="32"
+        mb="60"
         ref={el}
       >
         <GridItem
-          visibility="hidden"
           ref={setGridItems}
+          data-speed="1.1"
           gridRow="1 / 10"
           gridColumn="1 / 6"
           src={gridImage1}
         />
 
         <GridItem
-          visibility="hidden"
           ref={setGridItems}
+          data-speed="1.2"
           gridRow="1 / 11"
           gridColumn="6 / 11"
           src={gridImage3}
         />
 
         <GridItem
-          visibility="hidden"
           ref={setGridItems}
+          data-speed="1.3"
           gridRow="5 / 10"
           gridColumn="3 / 8"
           src={gridImage4}
         />
 
         <GridItem
-          visibility="hidden"
           ref={setGridItems}
           gridRow="6 / 10"
           gridColumn="1 / 5"
@@ -195,7 +191,7 @@ const Works = () => {
         />
       </Grid>
       <Grid
-        maxW="container.lg"
+        maxW="container.xl"
         m="0 auto"
         minH={["500px", "800px"]}
         templateColumns="repeat(10, 1fr)"
@@ -203,26 +199,42 @@ const Works = () => {
         mb="32"
       >
         <GridItem
+          ref={setGridItems}
           data-speed="1.2"
-          gridRow="1 / 10"
-          gridColumn="1 / 6"
-          src={gridImage1}
+          gridRow="1 / 6"
+          gridColumn="1 / 5"
+          src={gridImage8}
         />
 
         <GridItem
+          ref={setGridItems}
           data-speed="1.1"
-          gridRow="1 / 11"
-          gridColumn="6 / 11"
-          src={gridImage3}
+          gridRow="3 / 11"
+          gridColumn="4 / 8"
+          src={gridImage6}
         />
 
-        <GridItem gridRow="5 / 10" gridColumn="3 / 8" src={gridImage4} />
+        <GridItem
+          ref={setGridItems}
+          gridRow="1 / 5"
+          gridColumn="8 / 11"
+          data-lag="0.1"
+          src={gridImage10}
+        />
+        <GridItem
+          ref={setGridItems}
+          gridRow="6 / 11"
+          gridColumn="8 / 11"
+          data-lag="0.2"
+          src={gridImage5}
+        />
 
         <GridItem
+          ref={setGridItems}
           data-speed="1.3"
           gridRow="6 / 10"
           gridColumn="1 / 5"
-          src={gridImage2}
+          src={gridImage7}
         />
       </Grid>
       {/* <Box
