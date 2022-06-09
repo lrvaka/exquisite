@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { keyframes } from "@emotion/react"
 import GsapContext from "../../store/gsap-context"
-import { Flex } from "@chakra-ui/react"
+import { Flex} from "@chakra-ui/react"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 import { useState, useRef, useEffect, useContext } from "react"
 import gsap from "gsap"
@@ -157,14 +157,17 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
                   key={index}
                   ref={plankType}
                   alignItems="stretch"
+                  bgColor="#705d56"
+                  border="1px solid #a1938e"
                 >
-                  <NextImage
+                  <Flex minW={element.w} minH={element.h} />
+                  {/* <NextImage
                     placeholder="blur"
                     loading="lazy"
                     src={element.component}
                     // width={element.w}
                     // height={element.h}
-                  />
+                  /> */}
                 </Flex>
               )
             })}
