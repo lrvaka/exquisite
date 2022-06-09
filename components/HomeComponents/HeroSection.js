@@ -67,7 +67,7 @@ const HeroSection = () => {
         as="h1"
         visibility="hidden"
         color="brand.100"
-        fontSize={["3.5rem", "5rem", "6rem"]}
+        fontSize={["3rem", "5rem", "6rem"]}
         fontWeight="900"
         lineHeight="100%"
         top="50%"
