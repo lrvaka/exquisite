@@ -53,8 +53,9 @@ const MarqueeText = ({ children, ...props }) => (
   <Heading
     fontWeight="black"
     color="brand.400"
-    fontSize={["2rem", "3rem", "4rem", "5rem", "6rem"]}
+    fontSize={[ "4rem", "5rem", "6rem", "7rem"]}
     opacity="0.25"
+    mr="24"
     overflowY="hidden"
     {...props}
   >
@@ -64,11 +65,11 @@ const MarqueeText = ({ children, ...props }) => (
 
 const MarqueeSection = ({ ...props }) => (
   <Marquee gradient={false}>
-    <Flex gap="24" {...props}>
+    <Flex {...props}>
       <MarqueeText>Reliable</MarqueeText>
       <MarqueeText>Quality</MarqueeText>
       <MarqueeText>Craftsmanship</MarqueeText>
-      <MarqueeText mr="24">Pristine</MarqueeText>
+      <MarqueeText>Pristine</MarqueeText>
     </Flex>
   </Marquee>
 )
