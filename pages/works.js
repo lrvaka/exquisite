@@ -48,12 +48,13 @@ import gridImage20 from "../public/images/works/gucci/6.jpg"
 import gridImage21 from "../public/images/works/gucci/7.jpg"
 import useArrayRef from "../components/hooks/useArrayRef"
 import Marquee from "react-fast-marquee"
+import ScrollTrigger from "gsap/dist/ScrollTrigger"
 
 const MarqueeText = ({ children, ...props }) => (
   <Heading
     fontWeight="black"
     color="brand.400"
-    fontSize={[ "4rem", "5rem", "6rem", "7rem"]}
+    fontSize={["4rem", "5rem", "6rem", "7rem"]}
     opacity="0.25"
     mr="24"
     overflowY="hidden"
@@ -108,7 +109,7 @@ const WorksHeading = () => (
     <Flex pos="relative" justifyContent="space-between">
       {clients.map((e, i) => (
         <Box w={["50px", "100px"]} h={["25px", "50px"]} key={i} pos="relative">
-          <NextImage src={e} />
+          <NextImage src={e} priority />
         </Box>
       ))}
     </Flex>
@@ -128,6 +129,8 @@ const Works = () => {
     if (!gridItems.current) {
       return
     }
+
+    gsap.registerPlugin(ScrollTrigger)
 
     gridItems.current.forEach((e, i) => {
       gsap.fromTo(

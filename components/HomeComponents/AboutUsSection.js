@@ -46,7 +46,6 @@ const AboutUsSection = () => {
 
     // Target ALL descendants with the class of .box
     imageRefs.current.forEach((image) => {
-      console.log("image animated")
       animation = gsap.to(image, {
         opacity: 1,
         clipPath: "inset(0% 0% 0% 0%)",
