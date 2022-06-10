@@ -11,12 +11,10 @@ const SectionHeading = ({ children, ...props }) => {
     if (!ref.current) {
       return
     }
-    console.log(ref.current)
 
     const split = new SplitText(ref.current, {
       type: "chars, words",
     })
-    console.log(split.chars)
 
     split.chars.forEach((char, i) => {
       gsap.from(char, {
