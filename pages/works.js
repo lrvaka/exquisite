@@ -136,10 +136,12 @@ const Works = () => {
         {
           opacity: 0.1,
           scale: 0.75,
+          clipPath: "inset(100% 0 0 0)",
         },
         {
           opacity: 1,
           scale: 1,
+          clipPath: "inset(0% 0% 0% 0%)",
           duration: 2,
           scrollTrigger: e,
         }
@@ -152,6 +154,7 @@ const Works = () => {
       <WorksHeading />
       <Grid
         maxW="container.xl"
+        pos="relative"
         m="0 auto"
         minH={["500px", "800px"]}
         templateColumns="repeat(10, 1fr)"
@@ -159,6 +162,19 @@ const Works = () => {
         mb="60"
         ref={el}
       >
+        <Heading
+          zIndex="2"
+          mixBlendMode="difference"
+          pos="absolute"
+          transform="translate(-50%,-50%)"
+          top="50%"
+          left="50%"
+          color="white"
+          fontWeight="black"
+          fontSize={["6xl", "9xl"]}
+        >
+          Reliable
+        </Heading>
         <GridItem
           ref={setGridItems}
           data-speed="1.1"
@@ -190,14 +206,29 @@ const Works = () => {
           src={gridImage2}
         />
       </Grid>
+
       <Grid
+        pos="relative"
         maxW="container.xl"
         m="0 auto"
         minH={["500px", "800px"]}
         templateColumns="repeat(10, 1fr)"
         templateRows="repeat(10,1fr)"
-        mb="32"
+        mb="60"
       >
+        <Heading
+          zIndex="2"
+          mixBlendMode="difference"
+          pos="absolute"
+          transform="translate(-50%,-50%)"
+          top="50%"
+          left="50%"
+          color="white"
+          fontWeight="black"
+          fontSize={["6xl", "9xl"]}
+        >
+          Artisanal
+        </Heading>
         <GridItem
           ref={setGridItems}
           data-speed="1.2"
@@ -218,14 +249,12 @@ const Works = () => {
           ref={setGridItems}
           gridRow="1 / 5"
           gridColumn="8 / 11"
-          data-lag="0.1"
           src={gridImage10}
         />
         <GridItem
           ref={setGridItems}
           gridRow="6 / 11"
           gridColumn="8 / 11"
-          data-lag="0.2"
           src={gridImage5}
         />
 
@@ -235,6 +264,60 @@ const Works = () => {
           gridRow="6 / 10"
           gridColumn="1 / 5"
           src={gridImage7}
+        />
+      </Grid>
+      <Grid
+        pos="relative"
+        maxW="container.xl"
+        m="0 auto"
+        minH={["500px", "800px"]}
+        templateColumns="repeat(10, 1fr)"
+        templateRows="repeat(10,1fr)"
+        mb="60"
+        ref={el}
+      >
+        <Heading
+          zIndex="2"
+          mixBlendMode="difference"
+          pos="absolute"
+          transform="translate(-50%,-50%)"
+          top="50%"
+          left="50%"
+          color="white"
+          fontWeight="black"
+          fontSize={["6xl", "9xl"]}
+        >
+          Exquisite
+        </Heading>
+        <GridItem
+          ref={setGridItems}
+          data-speed="1.1"
+          gridRow="1 / 10"
+          gridColumn="1 / 6"
+          src={gridImage1}
+        />
+
+        <GridItem
+          ref={setGridItems}
+          data-speed="1.2"
+          gridRow="1 / 11"
+          gridColumn="6 / 11"
+          src={gridImage3}
+        />
+
+        <GridItem
+          ref={setGridItems}
+          data-speed="1.3"
+          gridRow="5 / 10"
+          gridColumn="3 / 8"
+          src={gridImage4}
+        />
+
+        <GridItem
+          ref={setGridItems}
+          gridRow="6 / 10"
+          gridColumn="1 / 5"
+          src={gridImage2}
         />
       </Grid>
       {/* <Box
