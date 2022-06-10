@@ -25,7 +25,7 @@ import ChakraBox from "../components/utils/ChakraBox"
 import GridItem from "../components/WorksComponents/GridItem"
 import GridImage from "../components/WorksComponents/GridImage"
 import ParallaxGridItem from "../components/WorksComponents/ParallaxGridItem"
-
+import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import gridImage1 from "../public/images/works/carolina/8.jpg"
 import gridImage2 from "../public/images/works/carolina/3.jpg"
 import gridImage3 from "../public/images/works/carolina/1.jpg"
@@ -128,6 +128,8 @@ const Works = () => {
     if (!gridItems.current) {
       return
     }
+
+    gsap.registerPlugin(ScrollTrigger);
 
     gridItems.current.forEach((e, i) => {
       gsap.fromTo(
