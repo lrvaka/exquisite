@@ -1,10 +1,8 @@
-import { chakra, shouldForwardProp } from "@chakra-ui/react"
-import { motion } from "framer-motion"
+import { chakra } from "@chakra-ui/react"
+import { motion, isValidMotionProp } from "framer-motion"
 
 const ChakraBox = chakra(motion.div, {
-  shouldForwardProp: (prop) => {
-    return shouldForwardProp(prop) || prop === "transition"
-  },
+  shouldForwardProp: isValidMotionProp,
 })
 
 export default ChakraBox
