@@ -60,7 +60,7 @@ const Home = (props) => {
       <AboutUsSection />
       <MessageSection />
       <SlideShowSection />
-      <ContactSection />
+      <ContactSection logoColor="brand.500" />
       <Footer bgColor="brand.100" />
     </MainWrapper>
   )

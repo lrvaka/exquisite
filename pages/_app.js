@@ -53,9 +53,7 @@ function MyApp({ Component, pageProps }) {
 
     setSmoother(scroller)
 
-    return () => {
-      scroller.kill()
-    }
+    return () => {}
   }, [router.asPath])
 
   useIsomorphicLayoutEffect(() => {
