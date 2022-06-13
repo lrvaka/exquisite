@@ -72,7 +72,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
     tl.current = gsap
       .timeline({
         repeat: 1,
-        repeatDelay: 0.2,
+        repeatDelay: 1,
         yoyo: true,
         paused: true,
       })
@@ -85,7 +85,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
           ease: "power4.out",
           stagger: {
             ease: "sine",
-            amount: 1.5,
+            amount: 1.25,
             from: "random",
           },
         }
@@ -94,7 +94,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
     tl1.current = gsap
       .timeline({
         repeat: 1,
-        repeatDelay: 0.2,
+        repeatDelay: 1,
         yoyo: true,
         paused: true,
       })
@@ -107,7 +107,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
           ease: "power4.out",
           stagger: {
             ease: "sine",
-            amount: 1.5,
+            amount: 1.25,
             from: "random",
           },
         }
