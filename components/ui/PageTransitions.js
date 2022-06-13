@@ -85,7 +85,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
           ease: "power4.out",
           stagger: {
             ease: "sine",
-            amount: 0.5,
+            amount: 1.5,
             from: "random",
           },
         }
@@ -107,7 +107,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
           ease: "power4.out",
           stagger: {
             ease: "sine",
-            amount: 0.5,
+            amount: 1.5,
             from: "random",
           },
         }
@@ -124,7 +124,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
       <TransitionGroup component={null}>
         <CSSTransition
           key={route}
-          timeout={1000}
+          timeout={2000}
           classNames="page"
           onEnter={playTransition}
           onExited={stopTransition}
