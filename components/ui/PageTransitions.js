@@ -124,7 +124,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
       <TransitionGroup component={null}>
         <CSSTransition
           key={route}
-          timeout={2000}
+          timeout={1500}
           classNames="page"
           onEnter={playTransition}
           onExited={stopTransition}
