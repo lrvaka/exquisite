@@ -37,7 +37,6 @@ const Navbar = () => {
 
   useIsomorphicLayoutEffect(() => {
     if (router.asPath === "/works") {
-      console.log(router.asPath)
       setTimeout(() => {
         setColor("black")
         setLogo("/images/dark-logo.png")
@@ -50,7 +49,6 @@ const Navbar = () => {
       setLogo("/images/white-logo.png")
       setNavLink(WorkLink)
     }, 1000)
-    console.log(router.asPath)
   }, [router.asPath])
 
   return (
