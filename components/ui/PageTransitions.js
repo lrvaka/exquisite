@@ -72,7 +72,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
     tl.current = gsap
       .timeline({
         repeat: 1,
-        repeatDelay: 0.2,
+        repeatDelay: 0.5,
         yoyo: true,
         paused: true,
       })
@@ -94,7 +94,7 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
     tl1.current = gsap
       .timeline({
         repeat: 1,
-        repeatDelay: 0.2,
+        repeatDelay: 0.5,
         yoyo: true,
         paused: true,
       })
