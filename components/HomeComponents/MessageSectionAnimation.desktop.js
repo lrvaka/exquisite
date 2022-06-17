@@ -22,61 +22,61 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
     })
     gsap.set(rightPlankRefs.current, { autoAlpha: 1, x: window.innerWidth })
 
-    leftAni = gsap.to(leftPlankRefs.current, {
-      x: 0,
-      ease: "power2.out",
-      stagger: 0.6,
-      duration: 1,
-      scrollTrigger: {
-        trigger: containerRef.current,
-        pin: true,
-        pinSpacing: true,
-        scrub: 0.5,
-        start: "top top",
-        end: "+=5000",
-      },
-    })
-
-    rightAni = gsap.to(rightPlankRefs.current, {
-      x: 0,
-      ease: "power2.out",
-      stagger: 0.6,
-      duration: 1,
-      scrollTrigger: {
-        trigger: containerRef.current,
-        pin: true,
-        pinSpacing: true,
-        scrub: 0.5,
-        start: "top top",
-        end: "+=5000",
-      },
-    })
-
-    // leftPlankRefs.current.forEach((plank, i) => {
-    //   leftAni = gsap.to(plank, {
-    //     x: 0,
-    //     ease: "power4.out",
-    //     scrollTrigger: {
-    //       trigger: plank,
-    //       scrub: true,
-    //       end: "bottom center",
-    //       onLeave: (self) => self.kill(false, true),
-    //     },
-    //   })
+    // leftAni = gsap.to(leftPlankRefs.current, {
+    //   x: 0,
+    //   ease: "power2.out",
+    //   stagger: 0.6,
+    //   duration: 1,
+    //   scrollTrigger: {
+    //     trigger: containerRef.current,
+    //     pin: true,
+    //     pinSpacing: true,
+    //     scrub: 0.5,
+    //     start: "top top",
+    //     end: "+=5000",
+    //   },
     // })
 
-    // rightPlankRefs.current.forEach((plank, i) => {
-    //   rightAni = gsap.to(plank, {
-    //     x: 0,
-    //     ease: "power4.out",
-    //     scrollTrigger: {
-    //       trigger: plank,
-    //       scrub: true,
-    //       end: "bottom center",
-    //       onLeave: (self) => self.kill(false, true),
-    //     },
-    //   })
+    // rightAni = gsap.to(rightPlankRefs.current, {
+    //   x: 0,
+    //   ease: "power2.out",
+    //   stagger: 0.6,
+    //   duration: 1,
+    //   scrollTrigger: {
+    //     trigger: containerRef.current,
+    //     pin: true,
+    //     pinSpacing: true,
+    //     scrub: 0.5,
+    //     start: "top top",
+    //     end: "+=5000",
+    //   },
     // })
+
+    leftPlankRefs.current.forEach((plank, i) => {
+      leftAni = gsap.to(plank, {
+        x: 0,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: plank,
+          scrub: true,
+          end: "bottom center",
+          onLeave: (self) => self.kill(false, true),
+        },
+      })
+    })
+
+    rightPlankRefs.current.forEach((plank, i) => {
+      rightAni = gsap.to(plank, {
+        x: 0,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: plank,
+          scrub: true,
+          end: "bottom center",
+          onLeave: (self) => self.kill(false, true),
+        },
+      })
+    })
 
     return () => {
       leftAni.kill()
