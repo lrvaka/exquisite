@@ -48,7 +48,6 @@ import gridImage20 from "../public/images/works/gucci/6.jpg"
 import gridImage21 from "../public/images/works/gucci/7.jpg"
 import useArrayRef from "../components/hooks/useArrayRef"
 import Marquee from "react-fast-marquee"
-import ScrollTrigger from "gsap/dist/ScrollTrigger"
 
 const MarqueeText = ({ children, ...props }) => (
   <Heading
@@ -130,10 +129,7 @@ const Works = () => {
       return
     }
 
-
-    gsap.registerPlugin(ScrollTrigger);
-
-
+    gsap.registerPlugin(ScrollTrigger)
 
     gridItems.current.forEach((e, i) => {
       gsap.fromTo(

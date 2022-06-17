@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useMediaQuery } from "@chakra-ui/react"
+import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 
 const ResponsiveComponent = ({
   mobileSize,
@@ -8,7 +9,7 @@ const ResponsiveComponent = ({
 }) => {
   const [loaded, setLoaded] = useState(false)
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!loaded) setLoaded(true)
   }, [loaded])
 
