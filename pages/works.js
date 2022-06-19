@@ -1,30 +1,16 @@
 import { useContext, useRef, useEffect } from "react"
 import GsapContext from "../store/gsap-context"
 import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
-import {
-  Box,
-  Container,
-  Heading,
-  Link,
-  Flex,
-  Text,
-  Grid,
-} from "@chakra-ui/react"
+import { Box, Container, Heading, Flex, Text, Grid } from "@chakra-ui/react"
 import WorksModal from "../components/ui/Modal"
-import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
-import workSlides from "../lib/work-slides"
 import NextImage from "next/image"
 import ContactSection from "../components/HomeComponents/ContactSection"
-import Navbar from "../components/ui/Navbar"
 import MainWrapper from "../components/ui/Main"
 import Footer from "../components/ui/Footer"
 import clients from "../lib/clients"
 import gsap from "gsap"
-import ChakraBox from "../components/utils/ChakraBox"
 import GridItem from "../components/WorksComponents/GridItem"
-import GridImage from "../components/WorksComponents/GridImage"
-import ParallaxGridItem from "../components/WorksComponents/ParallaxGridItem"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import gridImage1 from "../public/images/works/carolina/8.jpg"
 import gridImage2 from "../public/images/works/carolina/3.jpg"
@@ -55,7 +41,7 @@ const MarqueeText = ({ children, ...props }) => (
     color="brand.400"
     fontSize={["4rem", "5rem", "6rem", "7rem"]}
     opacity="0.25"
-    mr="24"
+    mr="60"
     overflowY="hidden"
     {...props}
   >
@@ -63,13 +49,13 @@ const MarqueeText = ({ children, ...props }) => (
   </Heading>
 )
 
-const MarqueeSection = ({ ...props }) => (
+const MarqueeSection = ({ text, ...props }) => (
   <Marquee gradient={false}>
     <Flex {...props}>
-      <MarqueeText>Reliable</MarqueeText>
-      <MarqueeText>Quality</MarqueeText>
-      <MarqueeText>Craftsmanship</MarqueeText>
-      <MarqueeText>Pristine</MarqueeText>
+      <MarqueeText>{text}</MarqueeText>
+      <MarqueeText>{text}</MarqueeText>
+      <MarqueeText>{text}</MarqueeText>
+      <MarqueeText>{text}</MarqueeText>
     </Flex>
   </Marquee>
 )
@@ -210,7 +196,7 @@ const Works = () => {
         />
       </Grid>
 
-      <MarqueeSection />
+      <MarqueeSection text="Quality" />
 
       <Grid
         pos="relative"
@@ -274,7 +260,7 @@ const Works = () => {
         />
       </Grid>
 
-      <MarqueeSection />
+      <MarqueeSection text="Craftsmanship" />
 
       <Grid
         pos="relative"
@@ -338,7 +324,7 @@ const Works = () => {
         />
       </Grid>
 
-      <MarqueeSection />
+      <MarqueeSection text="Pristine" />
 
       <Grid
         pos="relative"
@@ -409,13 +395,15 @@ const Works = () => {
         />
       </Grid>
 
+      <MarqueeSection text="Exquisite" pb="16" />
+
       <Flex
         justifyContent="center"
         alignItems="center"
         pos="relative"
         maxW="container.xl"
         m="0 auto"
-        mb="40"
+        mb="20"
         minH="150px"
         ref={el}
       >
@@ -430,7 +418,7 @@ const Works = () => {
             lineHeight="100%"
             fontSize={["4xl", "5xl"]}
           >
-            View More
+            More Works
           </Heading>
         </WorksModal>
       </Flex>
