@@ -17,9 +17,21 @@ import "keen-slider/keen-slider.min.css"
 import GridImage from "../WorksComponents/GridImage"
 import workSlides from "../../lib/work-slides"
 
+const animation = { duration: 20000, easing: (t) => t }
+
 function WorksModal({ children }) {
   const [sliderRef] = useKeenSlider({
     loop: true,
+    renderMode: "performance",
+    created(s) {
+      s.moveToIdx(10, true, animation)
+    },
+    updated(s) {
+      s.moveToIdx(s.track.details.abs + 10, true, animation)
+    },
+    animationEnded(s) {
+      s.moveToIdx(s.track.details.abs + 10, true, animation)
+    },
     mode: "free",
     slides: {
       perView: 1.75,
@@ -30,7 +42,13 @@ function WorksModal({ children }) {
 
   return (
     <>
-      <Modal colorScheme="green"  size="5xl" onClose={onClose} isOpen={isOpen} isCentered>
+      <Modal
+        colorScheme="green"
+        size="5xl"
+        onClose={onClose}
+        isOpen={isOpen}
+        isCentered
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
