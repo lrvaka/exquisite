@@ -41,7 +41,7 @@ const MarqueeText = ({ children, ...props }) => (
     color="brand.400"
     fontSize={["4rem", "5rem", "6rem", "7rem"]}
     opacity="0.25"
-    mr="60"
+    mr={["32","60"]}
     overflowY="hidden"
     {...props}
   >
