@@ -9,10 +9,13 @@ import {
   Link,
   Textarea,
   Heading,
+  Text,
 } from "@chakra-ui/react"
 import SVGArrow from "../ui/SVGArrow"
 import { IconButton } from "@chakra-ui/react"
 import { BsInstagram } from "react-icons/bs"
+import { useForm, ValidationError } from "@formspree/react"
+import ScrollTrigger from "gsap/dist/ScrollTrigger"
 
 const ContactInfoText = ({ children, contactInfoTextColor = "brand.500" }) => (
   <Heading
@@ -49,69 +52,118 @@ const ContactInfoSection = ({ contactInfoTextColor, logoColor }) => (
   </Flex>
 )
 
-const ContactForm = ({ contactFormVariant, formLabelColor }) => (
-  <Stack spacing={12} pos="relative" zIndex="2" pb="14">
-    <FormControl isRequired>
-      <FormLabel color={formLabelColor} htmlFor="name">
-        Name
-      </FormLabel>
-      <Input
+const ContactForm = ({ contactFormVariant, formLabelColor }) => {
+  const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM)
+
+  if (state.succeeded) {
+    setTimeout(() => {
+      ScrollTrigger.refresh()
+    }, 100)
+    return (
+      <Container
+        maxW="sm"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        textAlign="center"
+        mb={["12", "0"]}
+        pb={["0", "36"]}
+        pt={["0", "10"]}
         color={formLabelColor}
-        variant={contactFormVariant}
-        id="name"
-        type="text"
-      />
-    </FormControl>
-    <FormControl isRequired>
-      <FormLabel color={formLabelColor} htmlFor="email">
-        Email
-      </FormLabel>
-      <Input
-        color={formLabelColor}
-        variant={contactFormVariant}
-        id="email"
-        type="email"
-      />
-    </FormControl>
-    <FormControl>
-      <FormLabel color={formLabelColor} htmlFor="phone">
-        Phone
-      </FormLabel>
-      <Input
-        color={formLabelColor}
-        variant={contactFormVariant}
-        id="phone"
-        type="tel"
-      />
-    </FormControl>
-    <FormControl isRequired>
-      <FormLabel color={formLabelColor} htmlFor="enquiry">
-        Enquiry
-      </FormLabel>
-      <Textarea
-        variant={contactFormVariant}
-        color={formLabelColor}
-        id="enquiry"
-        resize="none"
-        type="text"
-        maxLength="1500"
-      />
-    </FormControl>
-    <Flex
-      as="button"
-      textAlign="left"
-      fontWeight="700"
-      color="brand.300"
-      gap="4"
-      w="max-content"
+      >
+        <Text fontSize="xl" lineHeight="100%">
+          Thank you for taking the first steps towards a more Exquisite living
+          experience. We will be in touch with you shortly.
+        </Text>
+      </Container>
+    )
+  }
+
+  return (
+    <Stack
+      as="form"
+      onSubmit={handleSubmit}
+      spacing={12}
+      pos="relative"
+      zIndex="2"
+      pb="14"
     >
-      <Box>Send now</Box>
-      <Box alignSelf="center">
-        <SVGArrow fill="#979a6f" />
-      </Box>
-    </Flex>
-  </Stack>
-)
+      <FormControl isRequired>
+        <FormLabel color={formLabelColor} htmlFor="name">
+          Name
+        </FormLabel>
+        <Input
+          color={formLabelColor}
+          variant={contactFormVariant}
+          id="name"
+          name="name"
+          type="text"
+        />
+        <ValidationError prefix="Name" field="name" errors={state.errors} />
+      </FormControl>
+      <FormControl isRequired>
+        <FormLabel color={formLabelColor} htmlFor="email">
+          Email
+        </FormLabel>
+        <Input
+          color={formLabelColor}
+          variant={contactFormVariant}
+          id="email"
+          type="email"
+          name="email"
+        />
+        <ValidationError prefix="Email" field="email" errors={state.errors} />
+      </FormControl>
+      <FormControl>
+        <FormLabel color={formLabelColor} htmlFor="phone">
+          Phone
+        </FormLabel>
+        <Input
+          color={formLabelColor}
+          variant={contactFormVariant}
+          id="phone"
+          name="phone"
+          type="tel"
+        />
+        <ValidationError prefix="Phone" field="phone" errors={state.errors} />
+      </FormControl>
+      <FormControl isRequired>
+        <FormLabel color={formLabelColor} htmlFor="enquiry">
+          Enquiry
+        </FormLabel>
+        <Textarea
+          variant={contactFormVariant}
+          color={formLabelColor}
+          id="message"
+          name="message"
+          resize="none"
+          type="text"
+          maxLength="1500"
+        />
+        <ValidationError
+          prefix="Message"
+          field="message"
+          errors={state.errors}
+        />
+      </FormControl>
+      <Flex
+        as="button"
+        type="submit"
+        textAlign="left"
+        fontWeight="700"
+        color="brand.300"
+        gap="4"
+        w="max-content"
+        disabled={state.submitting}
+      >
+        <Box>Send now</Box>
+        <Box alignSelf="center">
+          <SVGArrow fill="#979a6f" />
+        </Box>
+      </Flex>
+    </Stack>
+  )
+}
 
 const ContactSection = ({
   headingColor = "brand.500",

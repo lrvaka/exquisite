@@ -13,13 +13,7 @@ import aboutImage2 from "../../public/images/about-2.jpg"
 const ParallaxImage = ({ src }) => {
   return (
     <Box data-speed="auto" pos="relative" w="100%" h="160%">
-      <NextImage
-        quality={25}
-        placeholder="blur"
-        layout="fill"
-        objectFit="cover"
-        src={src}
-      />
+      <NextImage placeholder="blur" layout="fill" objectFit="cover" src={src} />
     </Box>
   )
 }
