@@ -57,7 +57,7 @@ const Navbar = () => {
         <Flex justifyContent="space-between" p="4">
           <NextLink href="/" passHref>
             <Link>
-              <Box w="60px">
+              <Box w="100px">
                 <NextImage src={logo} width={78} height={87} />
               </Box>
             </Link>
