@@ -1,18 +1,6 @@
 import Head from "next/head"
 import dynamic from "next/dynamic"
-import {
-  Box,
-  Heading,
-  Text,
-  Flex,
-  Grid,
-  keyframes,
-  Button,
-} from "@chakra-ui/react"
-import GsapContext from "../store/gsap-context"
-import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
-import { useContext } from "react"
-import NextImage from "next/image"
+import { Heading } from "@chakra-ui/react"
 import Marquee from "react-fast-marquee"
 import SlideShowSection from "../components/HomeComponents/SlideshowSection"
 import ContactSection from "../components/HomeComponents/ContactSection"
@@ -41,17 +29,20 @@ const MarqueeSection = () => (
   </Marquee>
 )
 
-const Meta = {
+const meta = {
   title: "Exquisite Wood Floors: Hardwood Flooring You Can Trust",
   description:
-    "We make any living space exquisite with our reliable and beautiful hardwood flooring",
+    "We make any living space exquisite with our reliable and appealing hardwood flooring",
+  url: "https://www.exquisitewoodfloors.com",
+  twitter: "https://twitter.com/exquisitewoodfloors",
+  imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.png",
+  imageAlt: "Exquisite Wood Floors",
 }
 
 const Home = (props) => {
   return (
-    <MainWrapper>
+    <MainWrapper heading={meta}>
       <Head>
-        <title>Exquisite Wood Floors</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
