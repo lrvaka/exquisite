@@ -41,7 +41,7 @@ const MarqueeText = ({ children, ...props }) => (
     color="brand.400"
     fontSize={["4rem", "5rem", "6rem", "7rem"]}
     opacity="0.25"
-    mr={["32","60"]}
+    mr={["32", "60"]}
     overflowY="hidden"
     {...props}
   >
@@ -104,6 +104,15 @@ const WorksHeading = () => (
   </Container>
 )
 
+const meta = {
+  title: "Works - Exquisite Wood Floors",
+  description: "Display of selected works we've completed over the years.",
+  url: "https://www.exquisitewoodfloors.com/works",
+  twitter: "https://twitter.com/ewfny",
+  imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.png",
+  imageAlt: "Exquisite Wood Floors",
+}
+
 const Works = () => {
   const el = useRef()
   const q = gsap.utils.selector(el)
@@ -137,7 +146,7 @@ const Works = () => {
   })
 
   return (
-    <MainWrapper pt="20vh" bg="brand.200">
+    <MainWrapper pt="20vh" bg="brand.200" heading={meta}>
       <WorksHeading />
       <Grid
         maxW="container.xl"
