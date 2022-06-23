@@ -2,7 +2,6 @@ import Head from "next/head"
 import PropTypes from "prop-types"
 
 const DocHead = (props) => {
-  console.log(props)
   return (
     <>
       <Head>
