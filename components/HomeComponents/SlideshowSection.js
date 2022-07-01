@@ -61,7 +61,7 @@ const SlideShowSection = (props) => {
 
   return (
     <Box bgColor="brand.500" id="works">
-      <Container maxW="container.xl" p="0">
+      <Container maxW="1800px" p="0">
         <Flex
           flexDir={["column", "column", "column", "row-reverse"]}
           pos="relative"
@@ -82,7 +82,6 @@ const SlideShowSection = (props) => {
                     h={["15rem", "15rem", "15rem", "469.6"]}
                   >
                     <NextImage
-                      quality={10}
                       placeholder="blur"
                       layout="fill"
                       objectFit="cover"
@@ -104,12 +103,12 @@ const SlideShowSection = (props) => {
             <Flex
               pr={["none", "none", "none", "50px"]}
               flexDir="column"
-              maxW={["80vw", "80vw", "80vw"]}
+              maxW="80vw"
               visibility="none"
               ref={textRef}
             >
               <Text
-                fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
+                fontSize="clamp(1rem, 0.8333333333333333rem + 0.5555555555555556vw, 1.5rem)"
                 color="white"
                 fontWeight="400"
                 lineHeight="normal"
@@ -122,7 +121,7 @@ const SlideShowSection = (props) => {
                 quality.
               </Text>
               <Text
-                fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
+                fontSize="clamp(1rem, 0.8333333333333333rem + 0.5555555555555556vw, 1.5rem)"
                 color="white"
                 fontWeight="400"
                 lineHeight="normal"

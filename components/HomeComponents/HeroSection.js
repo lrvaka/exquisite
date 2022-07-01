@@ -1,14 +1,30 @@
-import { Box, Heading, Grid, Flex } from "@chakra-ui/react"
+import { Box, Heading, Grid, Flex, Link, Text, Icon } from "@chakra-ui/react"
 import NextImage from "next/image"
 import { motion } from "framer-motion"
 import { useRef, useContext } from "react"
-import GsapContext from "../../store/gsap-context"
-import useArrayRef from "../hooks/useArrayRef"
+import SVGArrow from "./SVGArrow"
 import gsap from "gsap"
 import SplitText from "gsap/dist/SplitText"
 import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 import heroImage1 from "../../public/images/hero-1.webp"
 import heroImage2 from "../../public/images/hero-2.jpg"
+import { BsArrowRight } from "react-icons/bs"
+
+const variants = {
+  initial: {
+    clipPath: "inset(0 100% 0 0)",
+    opacity: 0,
+  },
+  animate: {
+    clipPath: "inset(0% 0% 0% 0%)",
+    opacity: 1,
+    transition: {
+      delay: 3,
+      duration: 2,
+      ease: "easeOut",
+    },
+  },
+}
 
 const HeroSection = () => {
   const containerRef = useRef()
@@ -63,26 +79,57 @@ const HeroSection = () => {
 
   return (
     <Box pos="relative">
-      <Heading
-        as="h1"
-        visibility="hidden"
-        color="brand.100"
-        fontSize={["3rem", "5rem", "6rem"]}
-        fontWeight="900"
-        lineHeight="100%"
+      <Box
         top="50%"
         left="50%"
-        width="90vw"
         transform="translate(-50%,-50%)"
-        textAlign="center"
         pos="absolute"
-        zIndex="1"
-        ref={headingRef}
+        textAlign="center"
+        width="90vw"
       >
-        We make <br />
-        living spaces <br />
-        Exquisite
-      </Heading>
+        <Heading
+          pos="relative"
+          lineHeight="100%"
+          as="h1"
+          visibility="hidden"
+          color="brand.500"
+          fontSize="clamp(3rem, 1.3333333333333333rem + 5.555555555555556vw, 8rem)"
+          fontWeight="900"
+          zIndex="1"
+          ref={headingRef}
+        >
+          We make <br />
+          living spaces <br />
+          Exquisite
+        </Heading>
+        <Flex justifyContent="center" pt={["4", "6", "6", "8"]}>
+          <Link
+            as={motion.div}
+            variants={variants}
+            initial="initial"
+            animate="animate"
+            fontSize="lg"
+            display="flex"
+            maxW="max-content"
+            p={["3", "5"]}
+            color="brand.500"
+            border="1px solid #213a30"
+          >
+            Schedule your consultation now!
+            <motion.div
+              initial={{ clipPath: "inset(0% 100% 0% 0%)" }}
+              animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
+              transition={{
+                duration: 1,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+            >
+              <Icon as={BsArrowRight} ml="2" />
+            </motion.div>
+          </Link>
+        </Flex>
+      </Box>
 
       <Grid
         minH="97.5vh"
@@ -103,6 +150,15 @@ const HeroSection = () => {
         pos="relative"
         ref={containerRef}
       >
+        <Box
+          pos="absolute"
+          bottom="7.5%"
+          left={["1%", "-5%", "0%", "0%"]}
+          textAlign="center"
+          transform="rotate(90deg)"
+        >
+          <SVGArrow fill="#213a30" />
+        </Box>
         <Box
           visibility="hidden"
           pos="relative"

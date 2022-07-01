@@ -146,7 +146,7 @@ const Works = () => {
   })
 
   return (
-    <MainWrapper pt="20vh" bg="brand.200" heading={meta}>
+    <MainWrapper pt="20vh" heading={meta}>
       <WorksHeading />
       <Grid
         maxW="container.xl"
