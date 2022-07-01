@@ -19,7 +19,6 @@ const grainAnimation = keyframes`
 const animation = `${grainAnimation} 8s steps(10) infinite`
 
 const MainWrapper = ({ children, heading, ...props }) => {
-  const { contentRef } = useContext(GsapContext)
   return (
     <>
       <Head heading={heading} />
@@ -40,7 +39,6 @@ const MainWrapper = ({ children, heading, ...props }) => {
         }}
         zIndex="0"
         pos="relative"
-        ref={contentRef}
         {...props}
       >
         {children}
