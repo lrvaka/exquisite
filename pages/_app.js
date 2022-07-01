@@ -38,10 +38,6 @@ function MyApp({ Component, pageProps }) {
       smooth: 2, // how long (in seconds) it takes to "catch up" to the native scroll position
     })
 
-    setTimeout(() => {
-      ScrollTrigger.refresh()
-    }, 500)
-
     setSmoother(scroller)
 
     return () => {}
@@ -75,6 +71,7 @@ function MyApp({ Component, pageProps }) {
         <Box ref={wrapperRef}>
           <Navbar />
           <PageTransitions
+            contentRef={contentRef}
             route={router.asPath}
             routingPageOffset={routingPageOffset}
           >
