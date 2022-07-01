@@ -97,10 +97,12 @@ const AboutUsSection = () => {
   return (
     <>
       <Container
+        bgColor="brand.500"
         maxW="container.xl"
-        px="4"
+        px={["4", "8", "12"]}
         py="20"
-        pb={["20", "20", "20", "40"]}
+        my="20"
+        // mb={["20", "20", "20", "40"]}
         overflowX="hidden"
       >
         <SectionHeading pb="10">
@@ -117,7 +119,7 @@ const AboutUsSection = () => {
           <Text
             ref={leftRef}
             pb="9"
-            fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
+            fontSize="clamp(1rem, 0.8333333333333333rem + 0.5555555555555556vw, 1.5rem)"
             color="white"
             fontWeight="400"
             lineHeight="normal"
@@ -130,7 +132,7 @@ const AboutUsSection = () => {
             delighted.
           </Text>
           <Text
-            fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
+            fontSize="clamp(1rem, 0.8333333333333333rem + 0.5555555555555556vw, 1.5rem)"
             color="white"
             fontWeight="400"
             lineHeight="normal"
@@ -162,10 +164,9 @@ const AboutUsSection = () => {
         </Flex>
       </Container>
       <Grid
-        minH={["300px", "400px", "500px", "700px"]}
+        minH={["300px", "400px", "500px", "700px", "900px"]}
         templateRows="repeat(4, 1fr)"
         templateColumns="repeat(25, 1fr)"
-        maxW="1300px"
         m="0 auto"
         ref={containerRef}
       >

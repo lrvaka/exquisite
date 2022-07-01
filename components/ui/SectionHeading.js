@@ -32,7 +32,7 @@ const SectionHeading = ({ children, ...props }) => {
 
   return (
     <Heading
-      fontSize={["2rem", "2rem", "2rem", "2.5rem"]}
+      fontSize="clamp(2rem, 1.3333333333333333rem + 2.2222222222222223vw, 4rem)"
       as="h2"
       fontWeight="700"
       color="brand.100"
