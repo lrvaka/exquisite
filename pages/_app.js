@@ -11,6 +11,9 @@ import PageTransitions from "../components/ui/PageTransitions"
 import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
 import SplitText from "gsap/dist/SplitText"
 import CustomEase from "gsap/dist/CustomEase"
+import ResponsiveComponent from "../components/utils/ResponsiveComponent"
+import PageTransitionsMobile from "../components/ui/PageTransitions.mobile"
+import PageTransitionsOther from "../components/ui/PageTransitions.other"
 
 if (typeof window !== "undefined") {
   window.history.scrollRestoration = "manual"
@@ -25,6 +28,22 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter()
 
   useIsomorphicLayoutEffect(() => {
+    setTimeout(() => {
+      gsap.registerPlugin(ScrollSmoother, ScrollTrigger, SplitText)
+
+      let scroller = ScrollSmoother.create({
+        ignoreMobileResize: true,
+        wrapper: wrapperRef.current,
+        content: contentRef.current,
+        effects: true,
+        smooth: 2, // how long (in seconds) it takes to "catch up" to the native scroll position
+      })
+
+      setSmoother(scroller)
+    }, 100)
+  }, [])
+
+  useIsomorphicLayoutEffect(() => {
     if (smoother) {
       ScrollTrigger.getAll().forEach((t) => t.kill())
     }
@@ -37,6 +56,10 @@ function MyApp({ Component, pageProps }) {
       effects: true,
       smooth: 2, // how long (in seconds) it takes to "catch up" to the native scroll position
     })
+
+    setTimeout(() => {
+      ScrollTrigger.refresh()
+    }, 500)
 
     setSmoother(scroller)
 
@@ -66,12 +89,12 @@ function MyApp({ Component, pageProps }) {
           navColor,
           setNavColor,
           contentRef,
+          routingPageOffset
         }}
       >
         <Box ref={wrapperRef}>
           <Navbar />
           <PageTransitions
-            contentRef={contentRef}
             route={router.asPath}
             routingPageOffset={routingPageOffset}
           >
