@@ -9,6 +9,7 @@ import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 import heroImage1 from "../../public/images/hero-1.webp"
 import heroImage2 from "../../public/images/hero-2.jpg"
 import { BsArrowRight } from "react-icons/bs"
+import {GiWoodBeam} from 'react-icons/gi'
 
 const variants = {
   initial: {
@@ -102,7 +103,7 @@ const HeroSection = () => {
           living spaces <br />
           Exquisite
         </Heading>
-        <Flex justifyContent="center" pt={["4", "6", "6", "8"]}>
+        <Flex justifyContent="center" alignItems="center" pt={["4", "6", "6", "8"]}>
           <Link
             as={motion.div}
             variants={variants}
@@ -110,6 +111,7 @@ const HeroSection = () => {
             animate="animate"
             fontSize="lg"
             display="flex"
+            alignItems="center"
             maxW="max-content"
             p={["3", "5"]}
             color="brand.500"
@@ -117,15 +119,15 @@ const HeroSection = () => {
           >
             Schedule your consultation now!
             <motion.div
-              initial={{ clipPath: "inset(0% 100% 0% 0%)" }}
-              animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
+              initial={{ rotate: 15 }}
+              animate={{ rotate: 0}}
               transition={{
                 duration: 1,
                 repeat: Infinity,
                 repeatType: "reverse",
               }}
             >
-              <Icon as={BsArrowRight} ml="2" />
+              <Icon w={10} h={10} as={GiWoodBeam} ml="2" />
             </motion.div>
           </Link>
         </Flex>

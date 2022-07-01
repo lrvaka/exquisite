@@ -4,8 +4,10 @@ import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 
 const ResponsiveComponent = ({
   mobileSize,
+  otherSize,
   mobileComponents,
   desktopComponents,
+  otherComponents,
 }) => {
   const [loaded, setLoaded] = useState(false)
 
@@ -14,9 +16,17 @@ const ResponsiveComponent = ({
   }, [loaded])
 
   const [isMobile] = useMediaQuery(`(max-width: ${mobileSize}px)`)
+  const [isOther] = useMediaQuery(`(min-width: ${otherSize}px)`)
 
-  if (loaded)
-    return <>{isMobile ? <>{mobileComponents}</> : <>{desktopComponents}</>}</>
+  if (loaded) {
+    if (isMobile) {
+      return mobileComponents
+    } else if (isOther) {
+      return otherComponents
+    }
+    return desktopComponents
+  }
+
   return null
 }
 

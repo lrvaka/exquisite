@@ -1,5 +1,7 @@
 import { Box, keyframes } from "@chakra-ui/react"
 import Head from "./Head"
+import { useContext } from "react"
+import GsapContext from "../../store/gsap-context"
 
 const grainAnimation = keyframes`
   0%, 100% { transform:translate(0, 0); }
@@ -17,6 +19,7 @@ const grainAnimation = keyframes`
 const animation = `${grainAnimation} 8s steps(10) infinite`
 
 const MainWrapper = ({ children, heading, ...props }) => {
+  const { contentRef } = useContext(GsapContext)
   return (
     <>
       <Head heading={heading} />
@@ -37,6 +40,7 @@ const MainWrapper = ({ children, heading, ...props }) => {
         }}
         zIndex="0"
         pos="relative"
+        ref={contentRef}
         {...props}
       >
         {children}
