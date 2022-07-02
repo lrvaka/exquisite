@@ -14,7 +14,7 @@ import PageTransitionsOther from "./PageTransitions.other"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import { useRouter } from "next/router"
 
-const PageTransitions = ({ children, route, routPageOffset }) => {
+const PageTransitions = ({ children, route }) => {
   const router = useRouter()
 
   useEffect(() => {
@@ -27,19 +27,17 @@ const PageTransitions = ({ children, route, routPageOffset }) => {
         mobileSize="436"
         otherSize="1920"
         desktopComponents={
-          <PageTransitionsDesktop route={route} routPageOffset={routPageOffset}>
+          <PageTransitionsDesktop route={route}>
             {children}
           </PageTransitionsDesktop>
         }
         mobileComponents={
-          <PageTransitionsMobile route={route} routPageOffset={routPageOffset}>
+          <PageTransitionsMobile route={route}>
             {children}
           </PageTransitionsMobile>
         }
         otherComponents={
-          <PageTransitionsOther route={route} routPageOffset={routPageOffset}>
-            {children}
-          </PageTransitionsOther>
+          <PageTransitionsOther route={route}>{children}</PageTransitionsOther>
         }
       />
     </>

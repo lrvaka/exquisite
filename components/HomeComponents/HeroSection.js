@@ -119,15 +119,15 @@ const HeroSection = () => {
           >
             Schedule your consultation now!
             <motion.div
-              initial={{ rotate: 15 }}
-              animate={{ rotate: 0}}
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1.1}}
               transition={{
                 duration: 1,
                 repeat: Infinity,
                 repeatType: "reverse",
               }}
             >
-              <Icon w={10} h={10} as={GiWoodBeam} ml="2" />
+              <Icon  as={BsArrowRight} ml="2" />
             </motion.div>
           </Link>
         </Flex>

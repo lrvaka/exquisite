@@ -9,6 +9,7 @@ import AboutUsSection from "../components/HomeComponents/AboutUsSection"
 import Footer from "../components/ui/Footer"
 import React from "react"
 import MainWrapper from "../components/ui/Main"
+import ServicesSection from "../components/HomeComponents/ServicesSection"
 
 const MessageSection = dynamic(() =>
   import("../components/HomeComponents/MessageSectionAnimation")
@@ -49,6 +50,7 @@ const Home = (props) => {
       <HeroSection />
       <MarqueeSection />
       <AboutUsSection />
+      <ServicesSection />
       <MessageSection />
       <SlideShowSection />
       <ContactSection logoColor="brand.500" />
