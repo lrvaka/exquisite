@@ -2,7 +2,6 @@ import { Heading } from "@chakra-ui/react"
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import SplitText from "gsap/dist/SplitText"
-import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 
 const SectionHeading = ({ children, ...props }) => {
   const ref = useRef()

@@ -28,25 +28,10 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter()
 
   useIsomorphicLayoutEffect(() => {
-    setTimeout(() => {
-      gsap.registerPlugin(ScrollSmoother, ScrollTrigger, SplitText)
-
-      let scroller = ScrollSmoother.create({
-        ignoreMobileResize: true,
-        wrapper: wrapperRef.current,
-        content: contentRef.current,
-        effects: true,
-        smooth: 2, // how long (in seconds) it takes to "catch up" to the native scroll position
-      })
-
-      setSmoother(scroller)
-    }, 100)
-  }, [])
-
-  useIsomorphicLayoutEffect(() => {
     if (smoother) {
       ScrollTrigger.getAll().forEach((t) => t.kill())
     }
+
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger, SplitText)
 
     let scroller = ScrollSmoother.create({
@@ -54,15 +39,14 @@ function MyApp({ Component, pageProps }) {
       wrapper: wrapperRef.current,
       content: contentRef.current,
       effects: true,
-      smooth: 2, // how long (in seconds) it takes to "catch up" to the native scroll position
+      smooth: 0, // how long (in seconds) it takes to "catch up" to the native scroll position
     })
+
+    setSmoother(scroller)
 
     setTimeout(() => {
       ScrollTrigger.refresh()
     }, 500)
-
-    setSmoother(scroller)
-
     return () => {}
   }, [router.asPath])
 
@@ -89,7 +73,7 @@ function MyApp({ Component, pageProps }) {
           navColor,
           setNavColor,
           contentRef,
-          routingPageOffset
+          routingPageOffset,
         }}
       >
         <Box ref={wrapperRef}>
