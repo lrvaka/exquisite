@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useMediaQuery } from "@chakra-ui/react"
 import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 

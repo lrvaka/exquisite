@@ -7,6 +7,7 @@ import NextImage from "next/image"
 import SectionHeading from "../ui/SectionHeading"
 import NextLink from "next/link"
 import gsap from "gsap"
+import SVGArrow from "../ui/SVGArrow"
 
 const animation = { duration: 20000, easing: (t) => t }
 
@@ -15,6 +16,7 @@ const SlideShowSection = (props) => {
     loop: true,
     renderMode: "performance",
     mode: "free",
+    initial: 0,
     created(s) {
       s.moveToIdx(10, true, animation)
     },
@@ -93,7 +95,7 @@ const SlideShowSection = (props) => {
             ))}
           </Box>
 
-          <Box px="4" py="20">
+          <Box px="4" py={{ base: "20", md: "40" }}>
             <SectionHeading pb="10">
               Team of seasoned
               <br />
@@ -103,7 +105,7 @@ const SlideShowSection = (props) => {
             <Flex
               pr={["none", "none", "none", "50px"]}
               flexDir="column"
-              maxW="80vw"
+              maxW={{ sm: "80vw", md: "80vw", "2xl": "40vw" }}
               visibility="none"
               ref={textRef}
             >
@@ -120,14 +122,21 @@ const SlideShowSection = (props) => {
                 the highest of standards, ensuring unique, durable floors of
                 quality.
               </Text>
-              <Text
-                fontSize="clamp(1rem, 0.8333333333333333rem + 0.5555555555555556vw, 1.5rem)"
-                color="white"
-                fontWeight="400"
-                lineHeight="normal"
+              <Flex
+                as="button"
+                textAlign="left"
+                fontWeight="700"
+                color="brand.200"
+                w="max-content"
+                gap="4"
               >
-                Contact us below to begin building with us.
-              </Text>
+                <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>
+                  View works
+                </Box>
+                <Box alignSelf="center">
+                  <SVGArrow fill="#cdcda6" />
+                </Box>
+              </Flex>
             </Flex>
           </Box>
         </Flex>

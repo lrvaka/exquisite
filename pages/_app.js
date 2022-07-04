@@ -1,6 +1,6 @@
 import { ChakraProvider, Box } from "@chakra-ui/react"
 import { theme } from "../lib/theme"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { gsap } from "gsap"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import ScrollSmoother from "gsap/dist/ScrollSmoother"
@@ -11,9 +11,6 @@ import PageTransitions from "../components/ui/PageTransitions"
 import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
 import SplitText from "gsap/dist/SplitText"
 import CustomEase from "gsap/dist/CustomEase"
-import ResponsiveComponent from "../components/utils/ResponsiveComponent"
-import PageTransitionsMobile from "../components/ui/PageTransitions.mobile"
-import PageTransitionsOther from "../components/ui/PageTransitions.other"
 
 if (typeof window !== "undefined") {
   window.history.scrollRestoration = "manual"
@@ -22,7 +19,6 @@ if (typeof window !== "undefined") {
 function MyApp({ Component, pageProps }) {
   const [routingPageOffset, setRoutingPageOffset] = useState(0)
   const [smoother, setSmoother] = useState(null)
-  const [navColor, setNavColor] = useState("white")
   const contentRef = useRef()
   const wrapperRef = useRef()
   const router = useRouter()
@@ -31,7 +27,6 @@ function MyApp({ Component, pageProps }) {
     if (smoother) {
       ScrollTrigger.getAll().forEach((t) => t.kill())
     }
-
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger, SplitText)
 
     let scroller = ScrollSmoother.create({
@@ -39,14 +34,15 @@ function MyApp({ Component, pageProps }) {
       wrapper: wrapperRef.current,
       content: contentRef.current,
       effects: true,
-      smooth: 0, // how long (in seconds) it takes to "catch up" to the native scroll position
+      smooth: 3, // how long (in seconds) it takes to "catch up" to the native scroll position
     })
-
-    setSmoother(scroller)
 
     setTimeout(() => {
       ScrollTrigger.refresh()
     }, 500)
+
+    setSmoother(scroller)
+
     return () => {}
   }, [router.asPath])
 
@@ -70,10 +66,7 @@ function MyApp({ Component, pageProps }) {
         value={{
           smoother,
           setSmoother,
-          navColor,
-          setNavColor,
           contentRef,
-          routingPageOffset,
         }}
       >
         <Box ref={wrapperRef}>

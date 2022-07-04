@@ -9,13 +9,23 @@ import {
   Link,
   Textarea,
   Heading,
+  Icon,
   Text,
+  Popover,
+  PopoverTrigger,
+  useClipboard,
+  PopoverContent,
+  PopoverBody,
 } from "@chakra-ui/react"
 import SVGArrow from "../ui/SVGArrow"
 import { IconButton } from "@chakra-ui/react"
+import { AiOutlineMail } from "react-icons/ai"
 import { BsInstagram } from "react-icons/bs"
+import { HiPhone } from "react-icons/hi"
+import { IoLocationOutline } from "react-icons/io5"
 import { useForm, ValidationError } from "@formspree/react"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
+import { useState } from "react"
 
 const ContactInfoText = ({ children, contactInfoTextColor = "brand.500" }) => (
   <Heading
@@ -24,33 +34,51 @@ const ContactInfoText = ({ children, contactInfoTextColor = "brand.500" }) => (
     lineHeight="none"
     color={contactInfoTextColor}
     fontSize="1.5rem"
+    textAlign="left"
   >
     {children}
   </Heading>
 )
 
-const ContactInfoSection = ({ contactInfoTextColor, logoColor }) => (
-  <Flex
-    maxW={["none", "none", "none", "20vw"]}
-    alignSelf="center"
-    flexDir="column"
-    textAlign="center"
-    gap="4"
-  >
-    <ContactInfoText contactInfoTextColor={contactInfoTextColor}>
-      info@ewfny.com
-    </ContactInfoText>
-    <ContactInfoText contactInfoTextColor={contactInfoTextColor}>
-      +1 (914) 237 7898
-    </ContactInfoText>
-    <ContactInfoText contactInfoTextColor={contactInfoTextColor}>
-      941 Mclean Avenue, Suite 472, Yonkers, NY 10707
-    </ContactInfoText>
-    <Link href="https://www.instagram.com/exquisitewoodfloors/" target="_blank">
-      <IconButton color={logoColor} icon={<BsInstagram />} />
-    </Link>
-  </Flex>
-)
+const ContactInfoSection = ({ contactInfoTextColor, logoColor }) => {
+  const { hasCopied, onCopy } = useClipboard("+1 (914)-237-7898")
+  return (
+    <Flex
+      maxW={["none", "none", "none", "20vw"]}
+      alignSelf="center"
+      flexDir="column"
+      textAlign="center"
+      gap="4"
+    >
+      <Flex justifyContent="left" gap="2" alignItems="center">
+        <Icon as={AiOutlineMail} h={4} w={4} />
+        <ContactInfoText contactInfoTextColor={contactInfoTextColor}>
+          info@ewfny.com
+        </ContactInfoText>
+      </Flex>
+      <Flex justifyContent="left" gap="2" alignItems="center">
+        <Icon as={HiPhone} h={4} w={4} />
+        <ContactInfoText contactInfoTextColor={contactInfoTextColor}>
+          +1 (914) 237 7898
+        </ContactInfoText>
+      </Flex>
+      <Link href="https://www.google.com/maps/place/941+McLean+Ave+%23472,+Yonkers,+NY+10704/@40.9034428,-73.8675617,19z/data=!3m1!4b1!4m5!3m4!1s0x89c2f2e70ca2a027:0x2a5bc5f5c5d874f9!8m2!3d40.9034428!4d-73.8670145">
+        <Flex justifyContent="left" gap="2" alignItems="center">
+          <Icon alignSelf="center" as={IoLocationOutline} h={4} w={4} />
+          <ContactInfoText contactInfoTextColor={contactInfoTextColor}>
+            941 Mclean Avenue, Suite 472, Yonkers, NY 10707
+          </ContactInfoText>
+        </Flex>
+      </Link>
+      <Link
+        href="https://www.instagram.com/exquisitewoodfloors/"
+        target="_blank"
+      >
+        <IconButton color={logoColor} icon={<BsInstagram />} />
+      </Link>
+    </Flex>
+  )
+}
 
 const ContactForm = ({ contactFormVariant, formLabelColor }) => {
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM)
