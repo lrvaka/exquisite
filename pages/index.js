@@ -10,6 +10,8 @@ import Footer from "../components/ui/Footer"
 import React from "react"
 import MainWrapper from "../components/ui/Main"
 import ServicesSection from "../components/HomeComponents/ServicesSection"
+import AboutUsSectionDesktop from "../components/HomeComponents/AboutUsSection.desktop"
+import TestimonialSection from "../components/HomeComponents/TestimonialSection"
 
 const MessageSection = dynamic(() =>
   import("../components/HomeComponents/MessageSectionAnimation")
@@ -49,7 +51,8 @@ const Home = (props) => {
 
       <HeroSection />
       <MarqueeSection />
-      <AboutUsSection />
+      <AboutUsSectionDesktop />
+      <TestimonialSection />
       <ServicesSection />
       <MessageSection />
       <SlideShowSection />

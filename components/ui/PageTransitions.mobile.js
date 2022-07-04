@@ -1,32 +1,9 @@
 import styled from "@emotion/styled"
-import { keyframes } from "@emotion/react"
-import GsapContext from "../../store/gsap-context"
 import { Flex } from "@chakra-ui/react"
-import { TransitionGroup, CSSTransition } from "react-transition-group"
-import { useState, useRef, useEffect, useContext } from "react"
+import { useRef, useEffect } from "react"
 import gsap from "gsap"
 import transitionPlanks from "../../lib/transition-planks"
 import useArrayRef from "../hooks/useArrayRef"
-import PageTransitionsDesktop from "./PageTransitions.desktop"
-
-const MainComponent = styled.div`
-  position: "relative";
-
-  &.page-enter-active {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 4;
-    opacity: 0;
-  }
-
-  &.page-exit-active {
-    main {
-      transform: translateY(-${(props) => props.routingPageOffset}px);
-    }
-  }
-`
 
 const Grid = styled.div`
   flex-direction: column;
@@ -39,13 +16,10 @@ const Grid = styled.div`
   top: 0;
   left: 0;
   position: fixed;
-  visibility: hidden;
   flex: 1;
 `
 
-const PageTransitionsMobile = ({ children, route }) => {
-  const { contentRef } = useContext(GsapContext)
-  const { routingPageOffset } = useContext(GsapContext)
+const PageTransitionsMobile = ({ addAnimation }) => {
   const tl = useRef()
   const tl1 = useRef()
   const transitionRef = useRef()
@@ -54,61 +28,42 @@ const PageTransitionsMobile = ({ children, route }) => {
 
   let plankType
 
-  const playTransition = () => {
-    tl.current.play(0)
-    tl1.current.play(0)
-  }
-
   useEffect(() => {
     if (!transitionRef.current) {
       return
     }
 
-    gsap.set(transitionRef.current, { autoAlpha: 1 })
+    tl.current = gsap.fromTo(
+      leftPlankRefs.current,
+      { x: window.innerWidth * -1, autoAlpha: 0 },
+      {
+        x: 0,
+        autoAlpha: 1,
+        ease: "power4.out",
+        stagger: {
+          ease: "sine",
+          amount: 0.5,
+          from: "random",
+        },
+      }
+    )
 
-    tl.current = gsap
-      .timeline({
-        repeat: 1,
-        repeatDelay: 0.5,
-        yoyo: true,
-        paused: true,
-      })
-      .fromTo(
-        leftPlankRefs.current,
-        { x: window.innerWidth * -1, autoAlpha: 0 },
-        {
-          x: 0,
-          autoAlpha: 1,
-          ease: "power4.out",
-          stagger: {
-            ease: "sine",
-            amount: 0.5,
-            from: "random",
-          },
-        }
-      )
+    tl1.current = gsap.fromTo(
+      rightPlankRefs.current,
+      { x: window.innerWidth, autoAlpha: 0 },
+      {
+        x: 0,
+        autoAlpha: 1,
+        ease: "power4.out",
+        stagger: {
+          ease: "sine",
+          amount: 0.5,
+          from: "random",
+        },
+      }
+    )
 
-    tl1.current = gsap
-      .timeline({
-        repeat: 1,
-        repeatDelay: 0.5,
-        yoyo: true,
-        paused: true,
-      })
-      .fromTo(
-        rightPlankRefs.current,
-        { x: window.innerWidth, autoAlpha: 0 },
-        {
-          x: 0,
-          autoAlpha: 1,
-          ease: "power4.out",
-          stagger: {
-            ease: "sine",
-            amount: 0.5,
-            from: "random",
-          },
-        }
-      )
+    addAnimation(tl.current, tl1.current)
 
     return () => {
       tl.current.kill()
@@ -118,18 +73,6 @@ const PageTransitionsMobile = ({ children, route }) => {
 
   return (
     <>
-      <TransitionGroup component={null}>
-        <CSSTransition
-          key={route}
-          timeout={1000}
-          classNames="page"
-          onEnter={playTransition}
-        >
-          <MainComponent ref={contentRef} routingPageOffset={routingPageOffset}>
-            {children}
-          </MainComponent>
-        </CSSTransition>
-      </TransitionGroup>
       <Grid ref={transitionRef}>
         {transitionPlanks.mobile.map((e, i) => (
           <Flex

@@ -29,6 +29,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
       stagger: { from: "random", amount: 0.5 },
       scrollTrigger: {
         trigger: containerRef.current,
+        start: "center bottom",
       },
     })
 
@@ -39,6 +40,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
       stagger: { from: "random", amount: 0.5 },
       scrollTrigger: {
         trigger: containerRef.current,
+        start: "center bottom",
       },
     })
 

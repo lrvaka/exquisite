@@ -9,14 +9,7 @@ import SectionHeading from "../ui/SectionHeading"
 import aboutImage from "../../public/images/about.jpg"
 import aboutImage1 from "../../public/images/about-1.png"
 import aboutImage2 from "../../public/images/about-2.jpg"
-
-const ParallaxImage = ({ src }) => {
-  return (
-    <Box data-speed="auto" pos="relative" w="100%" h="160%">
-      <NextImage placeholder="blur" layout="fill" objectFit="cover" src={src} />
-    </Box>
-  )
-}
+import ParallaxImage from "../ui/ParallaxImage"
 
 const AboutUsSection = () => {
   const [imageRefs, setImageRefs] = useArrayRef()
@@ -92,7 +85,7 @@ const AboutUsSection = () => {
       leftP.kill()
       animation.kill()
     }
-  }, [])
+  }, [imageRefs])
 
   return (
     <>

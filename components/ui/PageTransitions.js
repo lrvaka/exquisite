@@ -1,44 +1,90 @@
 import styled from "@emotion/styled"
-import { keyframes } from "@emotion/react"
 import GsapContext from "../../store/gsap-context"
-import { Flex } from "@chakra-ui/react"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
-import { useState, useRef, useEffect, useContext } from "react"
+import { useRef, useCallback, useContext } from "react"
 import gsap from "gsap"
-import transitionPlanks from "../../lib/transition-planks"
-import useArrayRef from "../hooks/useArrayRef"
 import ResponsiveComponent from "../utils/ResponsiveComponent"
 import PageTransitionsDesktop from "./PageTransitions.desktop"
 import PageTransitionsMobile from "./PageTransitions.mobile"
 import PageTransitionsOther from "./PageTransitions.other"
-import ScrollTrigger from "gsap/dist/ScrollTrigger"
-import { useRouter } from "next/router"
 
-const PageTransitions = ({ children, route }) => {
-  const router = useRouter()
+const MainComponent = styled.div`
+  position: "relative";
 
-  useEffect(() => {
-    ScrollTrigger.refresh()
-  }, [router.asPath])
+  &.page-enter-active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 4;
+    opacity: 0;
+  }
+
+  &.page-exit-active {
+    main {
+      transform: translateY(-${(props) => props.routingPageOffset}px);
+    }
+  }
+`
+
+const PageTransitions = ({ children, route, routingPageOffset }) => {
+  const { contentRef } = useContext(GsapContext)
+  const tl = useRef(
+    gsap.timeline({
+      repeat: 1,
+      repeatDelay: 0.5,
+      yoyo: true,
+      paused: true,
+    })
+  )
+  const tl1 = useRef(
+    gsap.timeline({
+      repeat: 1,
+      repeatDelay: 0.5,
+      yoyo: true,
+      paused: true,
+    })
+  )
+
+  const playTransition = () => {
+    tl.current.play(0)
+    tl1.current.play(0)
+  }
+
+  const addAnimation = useCallback(
+    (animation, animation1) => {
+      console.log("useCallback")
+      tl.current.clear()
+      tl1.current.clear()
+      tl.current.add(animation)
+      tl1.current.add(animation1)
+      console.log(tl.current)
+    },
+    [tl, tl1]
+  )
 
   return (
     <>
+      <TransitionGroup component={null}>
+        <CSSTransition
+          key={route}
+          timeout={1000}
+          classNames="page"
+          onEnter={playTransition}
+        >
+          <MainComponent ref={contentRef} routingPageOffset={routingPageOffset}>
+            {children}
+          </MainComponent>
+        </CSSTransition>
+      </TransitionGroup>
       <ResponsiveComponent
         mobileSize="436"
         otherSize="1920"
         desktopComponents={
-          <PageTransitionsDesktop route={route}>
-            {children}
-          </PageTransitionsDesktop>
+          <PageTransitionsDesktop addAnimation={addAnimation} />
         }
-        mobileComponents={
-          <PageTransitionsMobile route={route}>
-            {children}
-          </PageTransitionsMobile>
-        }
-        otherComponents={
-          <PageTransitionsOther route={route}>{children}</PageTransitionsOther>
-        }
+        mobileComponents={<PageTransitionsMobile addAnimation={addAnimation} />}
+        otherComponents={<PageTransitionsOther addAnimation={addAnimation} />}
       />
     </>
   )
