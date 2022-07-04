@@ -90,10 +90,10 @@ const ServicesSection = () => {
           </ServicesItem>
 
           <ServicesItem heading="Repair">
-            There's nothing like coming home to a beautiful, well-maintained
-            wood floor. It gives your space an instant feeling of luxury and
-            refinement. But what happens when something goes wrong and your wood
-            floor is damaged? That's where we come in.
+            There&apos;s nothing like coming home to a beautiful,
+            well-maintained wood floor. It gives your space an instant feeling
+            of luxury and refinement. But what happens when something goes wrong
+            and your wood floor is damaged? That&apos;s where we come in.
           </ServicesItem>
         </Flex>
       </Flex>

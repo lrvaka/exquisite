@@ -19,9 +19,9 @@ const TestimonialSection = () => {
           fontSize="3xl"
           _css={{ hangingPunctuation: "first last" }}
         >
-          "The service provided by the people at EWF is unmatched, they were
-          highly customer-oriented, and ensured that I had the best experience
-          every step of the way. I love my new floors!"
+          &quot;The service provided by the people at EWF is unmatched, they
+          were highly customer-oriented, and ensured that I had the best
+          experience every step of the way. I love my new floors!&quot;
         </Text>
         <Text color="brand.100" fontStyle="italic" textAlign="right">
           - M. Holmes, Manhattan NY
