@@ -58,6 +58,7 @@ const NavbarItemsMobile = () => {
               }, 2000)
             }
           }}
+          
           py="4"
         >
           Services
