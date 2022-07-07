@@ -8,14 +8,14 @@ const ServicesItem = ({ heading, children }) => {
   const { smoother } = useContext(GsapContext)
   return (
     <Flex
+      flex={1}
       textAlign="center"
       flexDir="column"
-      maxW={{ md: "300px", "2xl": "350px" }}
       bgColor="brand.400"
       gap={4}
       p="10"
     >
-      <Box flexGrow={1}>
+      <Box flexGrow={1} maxW="500px" m="0 auto">
         <Heading
           pb={4}
           color="brand.200"
@@ -51,7 +51,7 @@ const ServicesItem = ({ heading, children }) => {
 const ServicesSection = () => {
   return (
     <>
-      <Flex pt="24" flexDir="column">
+      <Flex pt="24" px="12" flexDir="column" id="services">
         <Flex
           flexDir="column"
           justifyContent="center"
@@ -75,6 +75,7 @@ const ServicesSection = () => {
           gap="24"
           alignSelf="center"
           flexDir={["column", "column", "row"]}
+          minW="100%"
         >
           <ServicesItem heading="Installation">
             We offer professional installation services for all types of wood

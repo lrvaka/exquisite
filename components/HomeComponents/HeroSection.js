@@ -9,7 +9,7 @@ import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 import heroImage1 from "../../public/images/hero-1.webp"
 import heroImage2 from "../../public/images/hero-2.jpg"
 import { BsArrowRight } from "react-icons/bs"
-import {GiWoodBeam} from 'react-icons/gi'
+import { GiWoodBeam } from "react-icons/gi"
 
 const variants = {
   initial: {
@@ -90,20 +90,34 @@ const HeroSection = () => {
       >
         <Heading
           pos="relative"
+          mb="2"
           lineHeight="100%"
           as="h1"
           visibility="hidden"
           color="brand.500"
-          fontSize="clamp(3rem, 1.3333333333333333rem + 5.555555555555556vw, 8rem)"
+          fontSize="9xl"
           fontWeight="900"
           zIndex="1"
           ref={headingRef}
         >
-          We make <br />
-          living spaces <br />
-          Exquisite
+          Exquisite <br />
+          Wood Floors
         </Heading>
-        <Flex justifyContent="center" alignItems="center" pt={["4", "6", "6", "8"]}>
+        <Text
+          pos="relative"
+          lineHeight="100%"
+          as="h1"
+          color="brand.500"
+          fontSize="4xl"
+          zIndex="1"
+        >
+          We make living spaces Exquisite
+        </Text>
+        <Flex
+          justifyContent="center"
+          alignItems="center"
+          pt={["4", "6", "6", "8"]}
+        >
           <Link
             as={motion.div}
             variants={variants}
@@ -113,21 +127,20 @@ const HeroSection = () => {
             display="flex"
             alignItems="center"
             maxW="max-content"
-            p={["3", "5"]}
-            color="brand.500"
+            py="2"
+            px="4"
+            color="brand.400"
             border="1px solid #213a30"
           >
             Schedule your consultation now!
             <motion.div
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1.1}}
               transition={{
                 duration: 1,
                 repeat: Infinity,
                 repeatType: "reverse",
               }}
             >
-              <Icon  as={BsArrowRight} ml="2" />
+              <Icon as={BsArrowRight} ml="2" mt="2" />
             </motion.div>
           </Link>
         </Flex>

@@ -78,13 +78,7 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
                 key={index}
                 ref={plankType}
               >
-                <NextImage
-                  placeholder="blur"
-                  src={element.src}
-                  priority
-                  // width={element.w}
-                  // height={element.h}
-                />
+                <NextImage placeholder="blur" src={element.src} priority />
               </Flex>
             )
           })}

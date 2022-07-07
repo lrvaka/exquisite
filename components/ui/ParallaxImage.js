@@ -3,8 +3,14 @@ import { Box } from "@chakra-ui/react"
 
 const ParallaxImage = ({ src, ...props }) => {
   return (
-    <Box data-speed="auto" pos="relative" w="100%" h="160%" {...props}>
-      <NextImage priority="true" placeholder="blur" layout="fill" objectFit="cover" src={src} />
+    <Box data-speed="auto" pos="absolute" w="100%" h="160%" {...props}>
+      <NextImage
+        priority="true"
+        placeholder="blur"
+        layout="fill"
+        objectFit="cover"
+        src={src}
+      />
     </Box>
   )
 }

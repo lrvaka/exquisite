@@ -117,7 +117,6 @@ const Works = () => {
   const el = useRef()
   const q = gsap.utils.selector(el)
   const [gridItems, setGridItems] = useArrayRef()
-  const ifAnimate = useRef(false)
 
   useIsomorphicLayoutEffect(() => {
     if (!gridItems.current) {

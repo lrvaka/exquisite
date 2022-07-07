@@ -9,6 +9,8 @@ import aboutImage from "../../public/images/about.jpg"
 import aboutImage1 from "../../public/images/about-1.png"
 import aboutImage2 from "../../public/images/about-2.jpg"
 import ParallaxImage from "../ui/ParallaxImage"
+import NextImage from "next/image"
+import aboutUsImage from "../../public/images/about-us.png"
 
 const AboutUsSectionDesktop = () => {
   const [imageRefs, setImageRefs] = useArrayRef()
@@ -30,7 +32,6 @@ const AboutUsSectionDesktop = () => {
       clipPath: "inset(100% 0 0 0)",
     })
 
-    // Target ALL descendants with the class of .box
     imageRefs.current.forEach((image) => {
       animation = gsap.to(image, {
         opacity: 1,
@@ -40,6 +41,7 @@ const AboutUsSectionDesktop = () => {
           trigger: image, // this will use the first box as the trigger
           scrub: true,
           end: "bottom bottom",
+          markers: true,
           onLeave: (self) => self.kill(false, true),
         },
       })
@@ -88,47 +90,34 @@ const AboutUsSectionDesktop = () => {
 
   return (
     <>
-      <Flex pt="24" px="12" maxW="2800px" m="0 auto">
-        <Grid
-          minH="1000px"
-          templateRows="repeat(4, 1fr)"
-          templateColumns="repeat(25, 1fr)"
-          flex={1}
-          ref={containerRef}
-        >
-          <Box
-            ref={setImageRefs}
-            pos="relative"
-            gridRow="1 / 5"
-            gridColumn="1 / 25"
-            overflow="hidden"
-          >
-            <ParallaxImage src={aboutImage2} />
-          </Box>
-        </Grid>
+      <Grid templateColumns="1fr 0.75fr" maxW="1800px" m="0 auto" mb="60">
+        <Box pos="relative" w="100%" h="125%">
+          <NextImage
+            priority="true"
+            placeholder="blur"
+            layout="fill"
+            objectFit="contain"
+            src={aboutUsImage}
+          />
+        </Box>
         <Box
           justifySelf="center"
           alignSelf="center"
-          maxW="700px"
-          bgColor="brand.500"
+          maxW="80vw"
           px={["4", "8", "12"]}
           py="20"
+          bgColor="brand.500"
           overflowX="hidden"
         >
-          <SectionHeading pb="10">
-            Your one stop shop for all your flooring needs
+          <SectionHeading pb="10" color="brand.200">
+            Your one stop shop for <br />
+            all your flooring needs
           </SectionHeading>
 
-          <Flex
-            w="100%"
-            pb="8"
-            gap={["0", "0", "0", "24"]}
-            flexDir={["column", "column", "column", "row"]}
-          >
+          <Flex pb="12" flexDir="column" gap="8">
             <Text
               ref={leftRef}
-              pb="9"
-              fontSize="clamp(1rem, 0.8333333333333333rem + 0.5555555555555556vw, 1.5rem)"
+              fontSize={{ base: "xl", sm: "lg" }}
               color="white"
               fontWeight="400"
               lineHeight="normal"
@@ -136,11 +125,19 @@ const AboutUsSectionDesktop = () => {
               Exquisite Wood Floors is a leading wood flooring company in the
               New York Metropolitan area that specializes in a wide range of
               flooring projects from retail and commercial to residential and
-              hospitality, and much more. We are able to provide our clients
-              with quality services and products that meet their specific needs.
-              Our team is dedicated to providing professional service and
-              support, so you can be assured your project will be handled with
-              the utmost care.
+              hospitality, and much more.
+            </Text>
+            <Text
+              ref={leftRef}
+              fontSize={{ base: "xl", sm: "lg" }}
+              color="white"
+              fontWeight="400"
+              lineHeight="normal"
+            >
+              We are able to provide our clients with quality services and
+              products that meet their specific needs. Our team is dedicated to
+              providing professional service and support, so you can be assured
+              your project will be handled with the utmost care.
             </Text>
           </Flex>
           <Flex
@@ -160,11 +157,11 @@ const AboutUsSectionDesktop = () => {
             </Box>
           </Flex>
         </Box>
-      </Flex>
+      </Grid>
       <Grid
-        pt="24"
-        minH="1000px"
-        templateRows="repeat(4, 1fr)"
+       
+        minH="90vh"
+        templateRows="repeat(10, 1fr)"
         templateColumns="repeat(25, 1fr)"
         flex={1}
         ref={containerRef}
@@ -172,7 +169,7 @@ const AboutUsSectionDesktop = () => {
         <Box
           ref={setImageRefs}
           pos="relative"
-          gridRow="3 / 5"
+          gridRow="5 / 11"
           gridColumn="20 / 26"
           overflow="hidden"
         >
@@ -181,7 +178,7 @@ const AboutUsSectionDesktop = () => {
         <Box
           ref={setImageRefs}
           pos="relative"
-          gridRow="1 / 5"
+          gridRow="2 / 9"
           gridColumn="8 / 19"
           overflow="hidden"
         >
@@ -190,7 +187,7 @@ const AboutUsSectionDesktop = () => {
         <Box
           ref={setImageRefs}
           pos="relative"
-          gridRow="1 / 3"
+          gridRow="1 / 6"
           gridColumn="1 / 7"
           overflow="hidden"
         >

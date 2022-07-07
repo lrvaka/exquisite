@@ -29,7 +29,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
       stagger: { from: "random", amount: 0.5 },
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "center bottom",
+        start: "center-=25% bottom",
       },
     })
 
@@ -40,7 +40,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
       stagger: { from: "random", amount: 0.5 },
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "center bottom",
+        start: "center-=25% bottom",
       },
     })
 
@@ -75,13 +75,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
                 key={index}
                 ref={plankType}
               >
-                <NextImage
-                  placeholder="blur"
-                  src={element.src}
-                  priority
-                  // width={element.w}
-                  // height={element.h}
-                />
+                <NextImage placeholder="blur" src={element.src} priority />
               </Flex>
             )
           })}

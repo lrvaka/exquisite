@@ -12,18 +12,14 @@ import NavbarItems from "./Navbar/NavbarItems"
 const Navbar = () => {
   const { smoother } = useContext(GsapContext)
   const router = useRouter()
-  //bgColor="rgba(58, 96, 97, 0.25)"
+
   return (
     <Box w="100%" as="nav" pos="fixed" zIndex="1">
       <Container pos="relative" maxW="2300px" p="0">
         <Flex justifyContent="space-between" p="4">
           <NextLink href="/" passHref>
-            <Link>
-              <NextImage
-                src="/images/dark-logo.png"
-                width={91.40625}
-                height={101.953125}
-              />
+            <Link maxW={{ base: "90px", md: "100px", "2xl": "125px" }}>
+              <NextImage src="/images/dark-logo.png" width={312} height={348} />
             </Link>
           </NextLink>
           <Flex
@@ -45,7 +41,7 @@ const Navbar = () => {
               }}
               fontFamily="quincy-cf"
               fontWeight="700"
-              p={["3", "4"]}
+              p="2"
               fontSize={["md", "large"]}
               color="brand.200"
               bgColor="brand.400"
