@@ -53,12 +53,10 @@ const PageTransitions = ({ children, route, routingPageOffset }) => {
 
   const addAnimation = useCallback(
     (animation, animation1) => {
-      console.log("useCallback")
       tl.current.clear()
       tl1.current.clear()
       tl.current.add(animation)
       tl1.current.add(animation1)
-      console.log(tl.current)
     },
     [tl, tl1]
   )

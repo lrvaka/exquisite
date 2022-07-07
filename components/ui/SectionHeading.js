@@ -31,7 +31,7 @@ const SectionHeading = ({ children, ...props }) => {
 
   return (
     <Heading
-      fontSize={{base: "4xl", md: "5xl"}}
+      fontSize={{base: "2xl", md: "4xl"}}
       as="h2"
       fontWeight="700"
       color="brand.100"
