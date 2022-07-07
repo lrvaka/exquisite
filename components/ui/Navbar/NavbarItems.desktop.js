@@ -22,7 +22,7 @@ const NavbarItemsDesktop = () => {
         fontWeight="700"
         color="black"
         lineHeight="100%"
-        fontSize={["md", "large"]}
+        fontSize={{base: "md", "2xl": "2xl"}}
         onClick={() => {
           if (router.asPath === "/") {
             smoother.scrollTo("#services", true, "center center")

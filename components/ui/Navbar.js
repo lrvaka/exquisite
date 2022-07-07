@@ -42,7 +42,7 @@ const Navbar = () => {
               fontFamily="quincy-cf"
               fontWeight="700"
               p="2"
-              fontSize={["md", "large"]}
+              fontSize={{base: "md", "2xl": "2xl"}}
               color="brand.200"
               bgColor="brand.400"
               display="flex"
