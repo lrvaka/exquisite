@@ -408,7 +408,7 @@ const Works = () => {
         </Grid>
       </WorksModal>
 
-      <MarqueeSection text="Exquisite" pb="16" />
+      <MarqueeSection text="Exquisite" mb="16" />
 
       <Flex
         justifyContent="center"

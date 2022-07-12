@@ -5,7 +5,7 @@ import image from "../../public/images/wood.jpeg"
 
 const TestimonialSection = () => {
   return (
-    <Flex gap={12} flexDir={{ base: "column-reverse", md: "row" }} mb="24">
+    <Flex flexDir={{ base: "column-reverse", md: "row" }} mb="24">
       <Flex
         overflowY="hidden"
         pos="relative"
