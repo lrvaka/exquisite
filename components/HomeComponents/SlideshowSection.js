@@ -110,7 +110,7 @@ const SlideShowSection = (props) => {
               ref={textRef}
             >
               <Text
-                fontSize="clamp(1rem, 0.8333333333333333rem + 0.5555555555555556vw, 1.5rem)"
+                fontSize={{ base: "md", sm: "lg" }}
                 color="white"
                 fontWeight="400"
                 lineHeight="normal"

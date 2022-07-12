@@ -4,19 +4,29 @@ import image from "../../public/images/test-section.png"
 
 const TestimonialSection = () => {
   return (
-    <Grid mt="24" minH="500px" overflowY="hidden" pos="relative">
+    <Grid
+      my="24"
+      minH={{ base: "300px", md: "500px" }}
+      overflowY="hidden"
+      pos="relative"
+    >
       <ParallaxImage src={image} />
       <Flex
         flexDir="column"
+        justifyContent="center"
+        w="100%"
+        h="100%"
+        px="8"
         top="50%"
         left="50%"
         transform="translate(-50%,-50%)"
         pos="absolute"
+        maxW="800px"
       >
         <Text
           as="blockquote"
-          color="brand.100"
-          fontSize="3xl"
+          color="white"
+          fontSize={{ base: "lg", md: "3xl" }}
           _css={{ hangingPunctuation: "first last" }}
         >
           &quot;The service provided by the people at EWF is unmatched, they

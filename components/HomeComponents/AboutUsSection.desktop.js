@@ -90,8 +90,19 @@ const AboutUsSectionDesktop = () => {
 
   return (
     <>
-      <Grid templateColumns="1fr 0.75fr" maxW="1800px" m="0 auto" mb="60">
-        <Box pos="relative" w="100%" h="125%">
+      <Flex
+        maxW="1800px"
+        m="0 auto"
+        mb="24"
+        mt="24"
+        flexDir={{ base: "column", md: "row" }}
+      >
+        <Box
+          pos="relative"
+          w="100%"
+          minH={{ base: "400px", "2xl": "600px" }}
+          flex={1.5}
+        >
           <NextImage
             priority="true"
             placeholder="blur"
@@ -101,9 +112,7 @@ const AboutUsSectionDesktop = () => {
           />
         </Box>
         <Box
-          justifySelf="center"
-          alignSelf="center"
-          maxW="80vw"
+          flex={{ base: 1, sm: 1 }}
           px={["4", "8", "12"]}
           py="20"
           bgColor="brand.500"
@@ -117,7 +126,7 @@ const AboutUsSectionDesktop = () => {
           <Flex pb="12" flexDir="column" gap="8">
             <Text
               ref={leftRef}
-              fontSize={{ base: "xl", sm: "lg" }}
+              fontSize={{ base: "md", sm: "lg" }}
               color="white"
               fontWeight="400"
               lineHeight="normal"
@@ -128,8 +137,8 @@ const AboutUsSectionDesktop = () => {
               hospitality, and much more.
             </Text>
             <Text
-              ref={leftRef}
-              fontSize={{ base: "xl", sm: "lg" }}
+              ref={rightRef}
+              fontSize={{ base: "md", sm: "lg" }}
               color="white"
               fontWeight="400"
               lineHeight="normal"
@@ -157,10 +166,9 @@ const AboutUsSectionDesktop = () => {
             </Box>
           </Flex>
         </Box>
-      </Grid>
+      </Flex>
       <Grid
-       
-        minH="90vh"
+        minH={{ base: "500px", md: "1000px", "2xl": "1250px" }}
         templateRows="repeat(10, 1fr)"
         templateColumns="repeat(25, 1fr)"
         flex={1}

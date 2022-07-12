@@ -19,11 +19,11 @@ const ServicesItem = ({ heading, children }) => {
         <Heading
           pb={4}
           color="brand.200"
-          fontSize={{ sm: "3xl", md: "4xl", "2xl": "5xl" }}
+          fontSize={{ base: "2xl", md: "3xl", "2xl": "5xl" }}
         >
           {heading}
         </Heading>
-        <Text color="white" fontSize={{ sm: "md", md: "lg", "2xl": "2xl" }}>
+        <Text color="white" fontSize={{ base: "md", md: "lg" }}>
           {children}
         </Text>
       </Box>
@@ -39,7 +39,7 @@ const ServicesItem = ({ heading, children }) => {
         }}
         gap="2"
       >
-        <Box fontSize={{ sm: "md", md: "md", "2xl": "2xl" }}>
+        <Box fontSize={{ base: "md", md: "lg", "2xl": "2xl" }}>
           {`Get ${heading} Now`}
         </Box>
         <Icon as={HiArrowNarrowRight} />
@@ -51,20 +51,24 @@ const ServicesItem = ({ heading, children }) => {
 const ServicesSection = () => {
   return (
     <>
-      <Flex pt="24" px="12" flexDir="column" id="services">
+      <Flex flexDir="column" id="services">
         <Flex
           flexDir="column"
           justifyContent="center"
           alignItems="center"
-          maxW="600px"
+          maxW="500px"
           textAlign="center"
-          pb="20"
+          pb="10"
           alignSelf="center"
+          gap="1"
+          px="4"
         >
           <SectionHeading color="brand.500">
-            Got A Flooring Problem? We Have All The Solutions
+            Got A Flooring Problem? <br />
+            We Have All The Solutions
           </SectionHeading>
-          <Text fontSize="2xl">
+
+          <Text fontSize={{ base: "md", sm: "lg" }}>
             We cover everything that has to do with flooring, here are some of
             the services we offer.
           </Text>
@@ -72,10 +76,11 @@ const ServicesSection = () => {
 
         <Flex
           justifyContent="space-between"
-          gap="24"
+          gap="4"
           alignSelf="center"
           flexDir={["column", "column", "row"]}
           minW="100%"
+          px={[0, 6, 12]}
         >
           <ServicesItem heading="Installation">
             We offer professional installation services for all types of wood
