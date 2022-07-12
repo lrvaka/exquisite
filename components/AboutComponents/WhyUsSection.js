@@ -7,7 +7,6 @@ import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
 import WhyUsSectionItem from "./WhyUsSectionItem"
 
 const WhyUsSection = () => {
-  const [sectionRefs, setSectionRefs] = useArrayRef()
   const containerRef = useRef()
 
   useLayoutEffect(() => {
@@ -53,7 +52,6 @@ const WhyUsSection = () => {
           alignItems="center"
           lineHeight="normal"
           pos="absolute"
-          ref={setSectionRefs}
           bgColor="brand.500"
         >
           <Heading
@@ -66,35 +64,19 @@ const WhyUsSection = () => {
             Why Work With Us?
           </Heading>
         </Flex>
-        <WhyUsSectionItem
-          ref={setSectionRefs}
-          color="brand.200"
-          bgColor="brand.400"
-        >
+        <WhyUsSectionItem color="brand.200" bgColor="brand.400">
           We are experts in all things flooring
         </WhyUsSectionItem>
 
-        <WhyUsSectionItem
-          ref={setSectionRefs}
-          color="brand.100"
-          bgColor="brand.300"
-        >
+        <WhyUsSectionItem color="brand.100" bgColor="brand.300">
           We use only the highest quality materials and products
         </WhyUsSectionItem>
 
-        <WhyUsSectionItem
-          ref={setSectionRefs}
-          color="brand.500"
-          bgColor="brand.200"
-        >
+        <WhyUsSectionItem color="brand.500" bgColor="brand.200">
           We have a wide variety of flooring options to choose from
         </WhyUsSectionItem>
 
-        <WhyUsSectionItem
-          ref={setSectionRefs}
-          color="black"
-          bgColor="brand.100"
-        >
+        <WhyUsSectionItem color="black" bgColor="brand.100">
           We offer competitive rates and excellent customer service
         </WhyUsSectionItem>
       </Box>

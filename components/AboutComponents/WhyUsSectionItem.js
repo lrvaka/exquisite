@@ -1,10 +1,9 @@
 import { Flex, Text } from "@chakra-ui/react"
 import { forwardRef } from "react"
 
-const WhyUsSectionItem = forwardRef((props, ref) => {
+const WhyUsSectionItem = (props) => {
   return (
     <Flex
-      ref={ref}
       pos="absolute"
       w="100%"
       h="100%"
@@ -24,8 +23,6 @@ const WhyUsSectionItem = forwardRef((props, ref) => {
       </Text>
     </Flex>
   )
-})
-
-WhyUsSectionItem.displayName = "WhyUsSectionItem"
+}
 
 export default WhyUsSectionItem
