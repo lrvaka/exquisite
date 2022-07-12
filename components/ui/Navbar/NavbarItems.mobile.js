@@ -41,7 +41,7 @@ const NavbarItemsMobile = () => {
             Home
           </MenuItem>
         </NextLink>
-        <NextLink href="/works" passHref>
+        <NextLink href="/portfolio" passHref>
           <MenuItem _focus={{ bgColor: "brand.500" }} py="4">
             Portfolio
           </MenuItem>
@@ -58,14 +58,15 @@ const NavbarItemsMobile = () => {
               }, 2000)
             }
           }}
-          
           py="4"
         >
           Services
         </MenuItem>
-        <MenuItem _focus={{ bgColor: "brand.500" }} py="4">
-          About
-        </MenuItem>
+        <NextLink href="/about" passHref>
+          <MenuItem _focus={{ bgColor: "brand.500" }} py="4">
+            About
+          </MenuItem>
+        </NextLink>
       </MenuList>
     </Menu>
   )

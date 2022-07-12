@@ -20,7 +20,7 @@ const TestimonialSlider = () => {
 
   return (
     <>
-      <Flex ref={sliderRef} className="keen-slider">
+      <Flex ref={sliderRef} className="keen-slider" pos="relative" maxW="90vw">
         {loaded && instanceRef.current && (
           <>
             <Arrow
@@ -48,17 +48,23 @@ const TestimonialSlider = () => {
               maxW="850px"
               flexDir="column"
               justifyContent="center"
+              px="8"
               m="0 auto"
             >
               <Text
                 as="blockquote"
-                color="brand.100"
-                fontSize="3xl"
+                color="white"
+                fontSize={{ base: "sm", md: "xl" }}
                 _css={{ hangingPunctuation: "first last" }}
               >
                 {e.test}
               </Text>
-              <Text color="brand.100" fontStyle="italic" textAlign="right">
+              <Text
+                fontSize={{ base: "sm", md: "xl" }}
+                color="brand.100"
+                fontStyle="italic"
+                textAlign="right"
+              >
                 {e.author}
               </Text>
             </Flex>
@@ -74,7 +80,7 @@ function Arrow(props) {
     <>
       {props.left && (
         <Box
-          w="40px"
+          w="20px"
           position="absolute"
           top="50%"
           transform="translateY(-50%)"
@@ -96,11 +102,12 @@ function Arrow(props) {
       )}
       {!props.left && (
         <Box
-          w="40px"
+          w="20px"
           position="absolute"
           top="50%"
           transform="translateY(-50%)"
           cursor="pointer"
+          left="calc(100% - 20px)"
           zIndex="2"
         >
           <svg

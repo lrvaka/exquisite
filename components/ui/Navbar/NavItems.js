@@ -11,7 +11,7 @@ const NavItem = ({ href, title, ...props }) => (
       fontWeight="700"
       px="4"
       color="black"
-      fontSize={{base: "md", "2xl": "2xl"}}
+      fontSize={{ base: "xl", "2xl": "2xl" }}
     >
       {title}
     </Link>

@@ -22,7 +22,7 @@ const NavbarItemsDesktop = () => {
         fontWeight="700"
         color="black"
         lineHeight="100%"
-        fontSize={{base: "md", "2xl": "2xl"}}
+        fontSize={{ base: "xl", "2xl": "2xl" }}
         onClick={() => {
           if (router.asPath === "/") {
             smoother.scrollTo("#services", true, "center center")
@@ -36,7 +36,7 @@ const NavbarItemsDesktop = () => {
       >
         Services
       </Button>
-      <NavItem href="/works" title="Works" mr="4" />
+      <NavItem href="/portfolio" title="Portfolio" mr="4" />
     </>
   )
 }

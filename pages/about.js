@@ -1,7 +1,16 @@
 import { useContext, useRef, useEffect, useState } from "react"
 import GsapContext from "../store/gsap-context"
 import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
-import { Box, Container, Heading, Flex, Text, Grid } from "@chakra-ui/react"
+import {
+  Box,
+  Container,
+  Heading,
+  Flex,
+  Text,
+  Grid,
+  Link,
+  Icon,
+} from "@chakra-ui/react"
 import "keen-slider/keen-slider.min.css"
 import ContactSection from "../components/HomeComponents/ContactSection"
 import MainWrapper from "../components/ui/Main"
@@ -13,7 +22,13 @@ import useArrayRef from "../components/hooks/useArrayRef"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import gsap from "gsap"
 import image2 from "../public/images/wood.png"
-import TestimonialSlider from "../components/ui/TestimonialSlider"
+import image3 from "../public/images/view-works.jpeg"
+import TestimonialSlider from "../components/AboutComponents/TestimonialSlider"
+import NextImage from "next/image"
+import { motion } from "framer-motion"
+import { BsArrowRight } from "react-icons/bs"
+import WhyUsSection from "../components/AboutComponents/WhyUsSection"
+import TestimonialSection from "../components/AboutComponents/TestimonialSection"
 
 const meta = {
   title: "Works - Exquisite Wood Floors",
@@ -27,29 +42,39 @@ const meta = {
 const InfoSection = () => {
   return (
     <Flex
+      py={{ base: 20, md: 0 }}
       m="0 auto"
       pos="relative"
-      maxW="1800px"
-      px="12"
       mt="24"
-      pb="20"
-      minH="90vh"
+      mb="24"
+      gap={12}
+      minH={{ base: "1000px", md: "500px" }}
+      flexDir={{ base: "column", md: "row" }}
     >
-      <Grid columnGap={14} templateColumns="0.75fr 1fr">
-        <Flex flexDir="column" justifyContent="center">
+      <Box pos="absolute" top="0" right="0" h="300px" w="300px">
+        <NextImage src="/images/stamp.png" layout="fill" objectFit="cover" />
+      </Box>
+      <Flex
+        flexDir="column"
+        justifyContent="center"
+        flex={{ base: "0", md: "1" }}
+        bgColor="brand.500"
+      >
+        <Box maxW="800px" alignSelf="center" px="4" py={{ base: 20, md: 0 }}>
           <Heading
-            pb="10"
-            color="brand.500"
-            fontSize={["2rem", "3rem", "4rem", "5rem", "6rem"]}
+            mb="10"
+            color="brand.100"
+            fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
             fontWeight="900"
             lineHeight="100%"
+            borderBottom="1px #979a6f solid"
           >
             About Us
           </Heading>
 
           <Text
-            fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
-            color="black"
+            fontSize={{ base: "md", md: "xl" }}
+            color="white"
             fontWeight="400"
             lineHeight="normal"
           >
@@ -61,183 +86,92 @@ const InfoSection = () => {
             the perfect choice for your flooring needs. Contact us today to
             schedule a consultation!
           </Text>
-        </Flex>
-        <Flex
-          minH="100%"
-          overflowY="hidden"
-          pos="relative"
-          justifyContent="center"
-          alignItems="center"
-          gridColumn="2"
-        >
-          <ParallaxImage src={image1} />
-        </Flex>
-      </Grid>
-    </Flex>
-  )
-}
-
-const WhyUsSection = () => {
-  const [sectionRefs, setSectionRefs] = useArrayRef()
-  const containerRef = useRef()
-
-  useIsomorphicLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
-
-    gsap.set(sectionRefs.current, {
-      zIndex: (i, target, targets) => targets.length - i,
-    })
-
-    gsap.to(sectionRefs.current, {
-      yPercent: -100,
-      ease: "none",
-      stagger: 0.5,
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "+=400%",
-        scrub: true,
-        pin: true,
-      },
-    })
-  }, [])
-
-  return (
-    <Box pos="relative">
-      <Box
-        ref={containerRef}
-        w="100vw"
-        h="100vh"
+        </Box>
+      </Flex>
+      <Flex
+        minH="100%"
+        flex={{ base: 1, "2xl": 1.5 }}
+        overflowY="hidden"
         pos="relative"
-        top="0"
-        left="0"
-        overflow="hidden"
+        justifyContent="center"
+        alignItems="center"
       >
-        <Flex
-          fontSize="2xl"
-          textAlign="center"
-          color="black"
-          fontWeight="400"
-          w="100%"
-          h="100%"
-          justifyContent="center"
-          alignItems="center"
-          lineHeight="normal"
-          pos="absolute"
-          ref={setSectionRefs}
-          bgColor="orange"
-        >
-          <Heading
-            color="brand.500"
-            fontSize={["2rem", "3rem", "4rem", "5rem", "6rem"]}
-            fontWeight="900"
-            lineHeight="100%"
-            textAlign="center"
-          >
-            Why Work With Us?
-          </Heading>
-        </Flex>
-        <Flex
-          fontSize="2xl"
-          textAlign="center"
-          color="black"
-          fontWeight="400"
-          w="100%"
-          h="100%"
-          justifyContent="center"
-          alignItems="center"
-          lineHeight="normal"
-          pos="absolute"
-          ref={setSectionRefs}
-          bgColor="green.100"
-        >
-          We are experts in all things flooring
-        </Flex>
-        <Flex
-          fontSize="2xl"
-          textAlign="center"
-          color="black"
-          fontWeight="400"
-          w="100%"
-          h="100%"
-          justifyContent="center"
-          alignItems="center"
-          lineHeight="normal"
-          pos="absolute"
-          ref={setSectionRefs}
-          bgColor="blue.50"
-        >
-          We use only the highest quality materials and products
-        </Flex>
-        <Flex
-          fontSize="2xl"
-          textAlign="center"
-          color="black"
-          fontWeight="400"
-          w="100%"
-          h="100%"
-          justifyContent="center"
-          alignItems="center"
-          lineHeight="normal"
-          pos="absolute"
-          ref={setSectionRefs}
-          bgColor="red"
-        >
-          We have a wide variety of flooring options to choose from
-        </Flex>
-        <Flex
-          fontSize="2xl"
-          textAlign="center"
-          color="black"
-          fontWeight="400"
-          w="100%"
-          h="100%"
-          justifyContent="center"
-          alignItems="center"
-          lineHeight="normal"
-          pos="absolute"
-          ref={setSectionRefs}
-          bgColor="red.400"
-        >
-          We offer competitive rates and excellent customer service
-        </Flex>
-      </Box>
-    </Box>
+        <ParallaxImage src={image1} />
+      </Flex>
+    </Flex>
   )
 }
 
 const About = () => {
   return (
     <MainWrapper heading={meta} pos="relative">
-      <Flex
-        minH="400px"
-        overflowY="hidden"
-        pos="relative"
-        maxW="1800px"
-        m="0 auto"
-        mt="20vh"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <ParallaxImage src={image} />
-        <Heading
-          color="brand.200"
-          fontSize="7xl"
-          textAlign="center"
-          fontWeight="black"
+      <Box pt="180px">
+        <Flex
+          minH={{ base: "300px", lg: "400px" }}
+          overflowY="hidden"
           pos="relative"
+          m="0 auto"
+          justifyContent="center"
+          alignItems="center"
         >
-          Flooring services
-          <br /> with a piece of mind
-        </Heading>
-      </Flex>
-
+          <ParallaxImage src={image} />
+          <Heading
+            color="brand.200"
+            fontSize={{ base: "2xl", lg: "6xl" }}
+            textAlign="center"
+            fontWeight="black"
+            pos="relative"
+          >
+            Flooring services
+            <br /> with a piece of mind
+          </Heading>
+        </Flex>
+      </Box>
       <InfoSection />
       <WhyUsSection />
-      <Grid minH="500px" overflowY="hidden" pos="relative" mt="-700px" mb="20">
-        <ParallaxImage src={image2} />
-        <TestimonialSlider />
-      </Grid>
+      <Flex
+        overflowY="hidden"
+        pos="relative"
+        minH="500px"
+        mt="-700px"
+        mb="24"
+        minW="100%"
+      >
+        <ParallaxImage src={image3} />
+        <Flex
+          flexDir="column"
+          pos="absolute"
+          top="calc(75% - 142px)"
+          left="10%"
+        >
+          <Heading
+            color="brand.100"
+            fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
+            fontWeight="900"
+            lineHeight="100%"
+            borderBottom="1px #979a6f solid"
+          >
+            Portfolio
+          </Heading>
+          <Link
+            fontSize={{ base: "xs", sm: "sm", md: "md", lg: "lg" }}
+            display="flex"
+            alignItems="center"
+            maxW="max-content"
+            py="2"
+            px="4"
+            bgColor="brand.500"
+            color="brand.100"
+            border="1px solid #213a30"
+          >
+            View Projects
+            <Icon as={BsArrowRight} ml="2" />
+          </Link>
+        </Flex>
+      </Flex>
+
+      <TestimonialSection />
+
       <ContactSection
         bgColor="brand.500"
         contactFormVariant="work"

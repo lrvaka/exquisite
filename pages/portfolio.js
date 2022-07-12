@@ -65,20 +65,16 @@ const WorksHeading = () => (
     <Heading
       pb="10"
       color="brand.500"
-      fontSize={["2rem", "3rem", "4rem", "5rem", "6rem"]}
+      fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
       fontWeight="900"
       lineHeight="100%"
     >
       Featured Works
     </Heading>
-    <Grid
-      pb="20"
-      templateColumns={["none", "none", "repeat(2, 1fr)"]}
-      maxW={["80vw", "80vw", "80vw", "none"]}
-    >
-      <Flex flexDir="column">
+    <Flex pb="20">
+      <Flex flexDir="column" maxW={{ base: "100%", md: "50%" }}>
         <Text
-          fontSize={["1rem", "1rem", "1rem", "1.25rem"]}
+          fontSize={{ base: "md", md: "xl" }}
           color="black"
           fontWeight="400"
           lineHeight="normal"
@@ -90,7 +86,7 @@ const WorksHeading = () => (
           clientele.
         </Text>
       </Flex>
-    </Grid>
+    </Flex>
     <Flex pos="relative" justifyContent="space-between">
       {clients.map((e, i) => (
         <Box w={["50px", "100px"]} h={["25px", "50px"]} key={i} pos="relative">
