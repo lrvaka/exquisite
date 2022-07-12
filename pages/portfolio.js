@@ -1,7 +1,18 @@
 import { useContext, useRef, useEffect } from "react"
 import GsapContext from "../store/gsap-context"
 import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
-import { Box, Container, Heading, Flex, Text, Grid } from "@chakra-ui/react"
+import {
+  Box,
+  Container,
+  Heading,
+  Flex,
+  Text,
+  Grid,
+  Button,
+  Icon,
+  Link,
+} from "@chakra-ui/react"
+import { IoOpen } from "react-icons/io5"
 import WorksModal from "../components/ui/Modal"
 import "keen-slider/keen-slider.min.css"
 import NextImage from "next/image"
@@ -421,18 +432,22 @@ const Works = () => {
         ref={el}
       >
         <WorksModal slides={workSlides.all}>
-          <Heading
-            zIndex="2"
-            textAlign="center"
-            gridRow=" 1 / 5"
-            gridColumn="4 / 8"
-            color="brand.400"
-            fontWeight="100"
-            lineHeight="100%"
-            fontSize={["4xl", "5xl"]}
+          <Link
+            as="button"
+            pos="relative"
+            fontSize={{ base: "xs", sm: "sm", md: "xl", lg: "xl" }}
+            display="flex"
+            alignItems="center"
+            maxW="max-content"
+            py="2"
+            px="4"
+            bgColor="brand.500"
+            color="brand.100"
+            border="1px solid #213a30"
           >
             More Works
-          </Heading>
+            <Icon as={IoOpen} ml="2"  />
+          </Link>
         </WorksModal>
       </Flex>
 

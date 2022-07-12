@@ -1,6 +1,6 @@
 import { ChakraProvider, Box } from "@chakra-ui/react"
 import { theme } from "../lib/theme"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 import { gsap } from "gsap"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import ScrollSmoother from "gsap/dist/ScrollSmoother"
