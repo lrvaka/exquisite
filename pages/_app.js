@@ -11,6 +11,7 @@ import PageTransitions from "../components/ui/PageTransitions"
 import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
 import SplitText from "gsap/dist/SplitText"
 import CustomEase from "gsap/dist/CustomEase"
+import Script from "next/script"
 
 if (typeof window !== "undefined") {
   window.history.scrollRestoration = "manual"
@@ -61,25 +62,40 @@ function MyApp({ Component, pageProps }) {
   }, [])
 
   return (
-    <ChakraProvider theme={theme}>
-      <GsapContext.Provider
-        value={{
-          smoother,
-          setSmoother,
-          contentRef,
-        }}
-      >
-        <Box ref={wrapperRef}>
-          <Navbar />
-          <PageTransitions
-            route={router.asPath}
-            routingPageOffset={routingPageOffset}
-          >
-            <Component {...pageProps} />
-          </PageTransitions>
-        </Box>
-      </GsapContext.Provider>
-    </ChakraProvider>
+    <>
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}')
+        `}
+      </Script>
+
+      <ChakraProvider theme={theme}>
+        <GsapContext.Provider
+          value={{
+            smoother,
+            setSmoother,
+            contentRef,
+          }}
+        >
+          <Box ref={wrapperRef}>
+            <Navbar />
+            <PageTransitions
+              route={router.asPath}
+              routingPageOffset={routingPageOffset}
+            >
+              <Component {...pageProps} />
+            </PageTransitions>
+          </Box>
+        </GsapContext.Provider>
+      </ChakraProvider>
+    </>
   )
 }
 

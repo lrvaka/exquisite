@@ -104,7 +104,7 @@ const WorksHeading = () => (
 const meta = {
   title: "Portfolio - Exquisite Wood Floors",
   description: "Display of selected works we've completed over the years.",
-  url: "https://www.exquisitewoodfloors.com/works",
+  url: "https://www.exquisitewoodfloors.com/portfolio",
   twitter: "https://twitter.com/ewfny",
   imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.png",
   imageAlt: "Exquisite Wood Floors",
