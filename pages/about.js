@@ -160,7 +160,7 @@ const About = () => {
             pos="relative"
           >
             Flooring services
-            <br /> with a piece of mind
+            <br /> with a peace of mind
           </Heading>
         </Flex>
       </Box>
