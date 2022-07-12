@@ -12,7 +12,11 @@ const WhyUsSection = () => {
 
   useIsomorphicLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
-    ScrollTrigger.refresh()
+
+    setTimeout(() => {
+      ScrollTrigger.refresh()
+    }, 500)
+
     gsap.set(sectionRefs.current, {
       zIndex: (i, target, targets) => targets.length - i,
     })
