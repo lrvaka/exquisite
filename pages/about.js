@@ -1,6 +1,8 @@
 import { useContext, useRef, useEffect, useState } from "react"
+import NextLink from "next/link"
 import GsapContext from "../store/gsap-context"
 import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
+import SVGArrow from "../components/ui/SVGArrow"
 import {
   Box,
   Container,
@@ -12,6 +14,7 @@ import {
   Icon,
 } from "@chakra-ui/react"
 import "keen-slider/keen-slider.min.css"
+import { useRouter } from "next/router"
 import ContactSection from "../components/HomeComponents/ContactSection"
 import MainWrapper from "../components/ui/Main"
 import Footer from "../components/ui/Footer"
@@ -39,9 +42,10 @@ const meta = {
 }
 
 const InfoSection = () => {
+  const { smoother } = useContext(GsapContext)
+
   return (
     <Flex
-      py={{ base: 20, md: 0 }}
       m="0 auto"
       pos="relative"
       mt="24"
@@ -50,16 +54,32 @@ const InfoSection = () => {
       minH={{ base: "1000px", md: "500px" }}
       flexDir={{ base: "column", md: "row" }}
     >
-      <Box pos="absolute" top="0" right="0" h="300px" w="300px">
-        <NextImage src="/images/stamp.png" layout="fill" objectFit="cover" />
-      </Box>
       <Flex
         flexDir="column"
         justifyContent="center"
         flex={{ base: "0", md: "1" }}
         bgColor="brand.500"
       >
-        <Box maxW="800px" alignSelf="center" px="4" py={{ base: 20, md: 0 }}>
+        <Box
+          maxW="800px"
+          alignSelf="center"
+          px="4"
+          py={{ base: 20, md: 0 }}
+          pos="relative"
+        >
+          <Box
+            pos="absolute"
+            top="0"
+            right="0"
+            h={{ base: "300px", lg: "400px", "2xl": "500px" }}
+            w={{ base: "300px", lg: "400px", "2xl": "500px" }}
+          >
+            <NextImage
+              src="/images/stamp.png"
+              layout="fill"
+              objectFit="cover"
+            />
+          </Box>
           <Heading
             mb="10"
             color="brand.100"
@@ -76,6 +96,7 @@ const InfoSection = () => {
             color="white"
             fontWeight="400"
             lineHeight="normal"
+            mb="12"
           >
             Exquisite Wood Floors is a family-owned and operated flooring
             company with over 25 years of experience. We love what we do, and it
@@ -85,6 +106,22 @@ const InfoSection = () => {
             the perfect choice for your flooring needs. Contact us today to
             schedule a consultation!
           </Text>
+          <Flex
+            as="button"
+            textAlign="left"
+            fontWeight="700"
+            color="brand.200"
+            w="max-content"
+            onClick={() => {
+              smoother.scrollTo("#contact", true, "center center")
+            }}
+            gap="4"
+          >
+            <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>Contact us</Box>
+            <Box alignSelf="center">
+              <SVGArrow fill="#cdcda6" />
+            </Box>
+          </Flex>
         </Box>
       </Flex>
       <Flex
@@ -102,11 +139,12 @@ const InfoSection = () => {
 }
 
 const About = () => {
+  const router = useRouter()
   return (
     <MainWrapper heading={meta} pos="relative">
-      <Box pt="180px">
+      <Box pt={{ base: "130px", md: "180px" }}>
         <Flex
-          minH={{ base: "300px", lg: "400px" }}
+          minH={{ base: "200px", lg: "400px" }}
           overflowY="hidden"
           pos="relative"
           m="0 auto"
@@ -152,20 +190,22 @@ const About = () => {
           >
             Portfolio
           </Heading>
-          <Link
-            fontSize={{ base: "xs", sm: "sm", md: "md", lg: "lg" }}
-            display="flex"
-            alignItems="center"
-            maxW="max-content"
-            py="2"
-            px="4"
-            bgColor="brand.500"
-            color="brand.100"
-            border="1px solid #213a30"
-          >
-            View Projects
-            <Icon as={BsArrowRight} ml="2" />
-          </Link>
+          <NextLink href="/portfolio" passHref>
+            <Link
+              fontSize={{ base: "xs", sm: "sm", md: "md", lg: "lg" }}
+              display="flex"
+              alignItems="center"
+              maxW="max-content"
+              py="2"
+              px="4"
+              bgColor="brand.500"
+              color="brand.100"
+              border="1px solid #213a30"
+            >
+              View Projects
+              <Icon as={BsArrowRight} ml="2" />
+            </Link>
+          </NextLink>
         </Flex>
       </Flex>
 

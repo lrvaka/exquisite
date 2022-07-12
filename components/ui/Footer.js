@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react"
+import { Flex, Text } from "@chakra-ui/react"
 
 const Footer = ({ ...props }) => (
   <Flex
@@ -6,9 +6,11 @@ const Footer = ({ ...props }) => (
     borderTop="1px solid #cdcda6"
     color="brand.500"
     justifyContent="center"
+    fontSize={{base: "xs", md: "md"}}
     {...props}
   >
-    © 2022 Exquisite Wood Floors NY.
+    <Text>© 2022 Exquisite Wood Floors NY. |</Text>
+    <Text>&nbsp;Website by Blockhead Digital</Text>
   </Flex>
 )
 

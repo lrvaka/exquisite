@@ -122,21 +122,23 @@ const SlideShowSection = (props) => {
                 the highest of standards, ensuring unique, durable floors of
                 quality.
               </Text>
-              <Flex
-                as="button"
-                textAlign="left"
-                fontWeight="700"
-                color="brand.200"
-                w="max-content"
-                gap="4"
-              >
-                <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>
-                  View works
-                </Box>
-                <Box alignSelf="center">
-                  <SVGArrow fill="#cdcda6" />
-                </Box>
-              </Flex>
+              <NextLink href="/portfolio" passHref>
+                <Link
+                  display="flex"
+                  textAlign="left"
+                  fontWeight="700"
+                  color="brand.200"
+                  w="max-content"
+                  gap="4"
+                >
+                  <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>
+                    View portfolio
+                  </Box>
+                  <Box alignSelf="center">
+                    <SVGArrow fill="#cdcda6" />
+                  </Box>
+                </Link>
+              </NextLink>
             </Flex>
           </Box>
         </Flex>
