@@ -33,9 +33,9 @@ import WhyUsSection from "../components/AboutComponents/WhyUsSection"
 import TestimonialSection from "../components/AboutComponents/TestimonialSection"
 
 const meta = {
-  title: "Works - Exquisite Wood Floors",
-  description: "Display of selected works we've completed over the years.",
-  url: "https://www.exquisitewoodfloors.com/works",
+  title: "About - Exquisite Wood Floors",
+  description: "Learn more about the Exquisite Wood Floors family",
+  url: "https://www.exquisitewoodfloors.com/about",
   twitter: "https://twitter.com/ewfny",
   imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.png",
   imageAlt: "Exquisite Wood Floors",
@@ -139,7 +139,6 @@ const InfoSection = () => {
 }
 
 const About = () => {
-  const router = useRouter()
   return (
     <MainWrapper heading={meta} pos="relative">
       <Box pt={{ base: "130px", md: "180px" }}>
