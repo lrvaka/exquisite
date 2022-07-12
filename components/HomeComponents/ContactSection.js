@@ -51,20 +51,26 @@ const ContactInfoSection = ({ contactInfoTextColor, logoColor }) => {
       gap="4"
     >
       <Flex justifyContent="left" gap="2" alignItems="center">
-        <Icon as={AiOutlineMail} h={4} w={4} />
+        <Icon as={AiOutlineMail} h={4} w={4} color={logoColor} />
         <ContactInfoText contactInfoTextColor={contactInfoTextColor}>
           info@ewfny.com
         </ContactInfoText>
       </Flex>
       <Flex justifyContent="left" gap="2" alignItems="center">
-        <Icon as={HiPhone} h={4} w={4} />
+        <Icon as={HiPhone} h={4} w={4} color={logoColor} />
         <ContactInfoText contactInfoTextColor={contactInfoTextColor}>
           +1 (914) 237 7898
         </ContactInfoText>
       </Flex>
       <Link href="https://www.google.com/maps/place/941+McLean+Ave+%23472,+Yonkers,+NY+10704/@40.9034428,-73.8675617,19z/data=!3m1!4b1!4m5!3m4!1s0x89c2f2e70ca2a027:0x2a5bc5f5c5d874f9!8m2!3d40.9034428!4d-73.8670145">
         <Flex justifyContent="left" gap="2" alignItems="center">
-          <Icon alignSelf="center" as={IoLocationOutline} h={4} w={4} />
+          <Icon
+            alignSelf="center"
+            as={IoLocationOutline}
+            h={4}
+            w={4}
+            color={logoColor}
+          />
           <ContactInfoText contactInfoTextColor={contactInfoTextColor}>
             941 Mclean Avenue, Suite 472, Yonkers, NY 10707
           </ContactInfoText>

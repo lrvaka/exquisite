@@ -34,6 +34,7 @@ import gridImage20 from "../public/images/works/gucci/6.jpg"
 import gridImage21 from "../public/images/works/gucci/7.jpg"
 import useArrayRef from "../components/hooks/useArrayRef"
 import Marquee from "react-fast-marquee"
+import workSlides from "../lib/work-slides"
 
 const MarqueeText = ({ children, ...props }) => (
   <Heading
@@ -101,7 +102,7 @@ const WorksHeading = () => (
 )
 
 const meta = {
-  title: "Works - Exquisite Wood Floors",
+  title: "Portfolio - Exquisite Wood Floors",
   description: "Display of selected works we've completed over the years.",
   url: "https://www.exquisitewoodfloors.com/works",
   twitter: "https://twitter.com/ewfny",
@@ -111,7 +112,6 @@ const meta = {
 
 const Works = () => {
   const el = useRef()
-  const q = gsap.utils.selector(el)
   const [gridItems, setGridItems] = useArrayRef()
 
   useIsomorphicLayoutEffect(() => {
@@ -143,261 +143,270 @@ const Works = () => {
   return (
     <MainWrapper pt="20vh" heading={meta}>
       <WorksHeading />
-      <Grid
-        maxW="container.xl"
-        pos="relative"
-        m="0 auto"
-        minH={["500px", "800px"]}
-        templateColumns="repeat(10, 1fr)"
-        templateRows="repeat(10,1fr)"
-        mb="40"
-        ref={el}
-      >
-        <Heading
-          zIndex="2"
-          mixBlendMode="difference"
-          pos="absolute"
-          transform="translate(-50%,-50%)"
-          top="50%"
-          left="50%"
-          color="white"
-          fontWeight="black"
-          fontSize={["6xl", "9xl"]}
-          lineHeight="100%"
+
+      <WorksModal slides={workSlides.carolina}>
+        <Grid
+          maxW="container.xl"
+          pos="relative"
+          m="0 auto"
+          minH={["500px", "800px"]}
+          templateColumns="repeat(10, 1fr)"
+          templateRows="repeat(10,1fr)"
+          mb="40"
+          ref={el}
         >
-          Carolina <br />
-          Herrera
-        </Heading>
-        <GridItem
-          ref={setGridItems}
-          data-speed="1.1"
-          gridRow="1 / 10"
-          gridColumn="1 / 6"
-          src={gridImage1}
-        />
+          <Heading
+            zIndex="2"
+            mixBlendMode="difference"
+            pos="absolute"
+            transform="translate(-50%,-50%)"
+            top="50%"
+            left="50%"
+            color="white"
+            fontWeight="black"
+            fontSize={["6xl", "9xl"]}
+            lineHeight="100%"
+          >
+            Carolina <br />
+            Herrera
+          </Heading>
+          <GridItem
+            ref={setGridItems}
+            data-speed="1.1"
+            gridRow="1 / 10"
+            gridColumn="1 / 6"
+            src={gridImage1}
+          />
 
-        <GridItem
-          ref={setGridItems}
-          data-speed="1.2"
-          gridRow="1 / 11"
-          gridColumn="6 / 11"
-          src={gridImage3}
-        />
+          <GridItem
+            ref={setGridItems}
+            data-speed="1.2"
+            gridRow="1 / 11"
+            gridColumn="6 / 11"
+            src={gridImage3}
+          />
 
-        <GridItem
-          ref={setGridItems}
-          data-speed="1.3"
-          gridRow="5 / 10"
-          gridColumn="3 / 8"
-          src={gridImage4}
-        />
+          <GridItem
+            ref={setGridItems}
+            data-speed="1.3"
+            gridRow="5 / 10"
+            gridColumn="3 / 8"
+            src={gridImage4}
+          />
 
-        <GridItem
-          ref={setGridItems}
-          gridRow="6 / 10"
-          gridColumn="1 / 5"
-          src={gridImage2}
-        />
-      </Grid>
+          <GridItem
+            ref={setGridItems}
+            gridRow="6 / 10"
+            gridColumn="1 / 5"
+            src={gridImage2}
+          />
+        </Grid>
+      </WorksModal>
 
       <MarqueeSection text="Quality" />
 
-      <Grid
-        pos="relative"
-        maxW="container.xl"
-        m="0 auto"
-        minH={["500px", "800px"]}
-        templateColumns="repeat(10, 1fr)"
-        templateRows="repeat(10,1fr)"
-        my="40"
-      >
-        <Heading
-          zIndex="2"
-          mixBlendMode="difference"
-          pos="absolute"
-          transform="translate(-50%,-50%)"
-          top="50%"
-          left="50%"
-          color="white"
-          fontWeight="black"
-          lineHeight="100%"
-          fontSize={["6xl", "9xl"]}
+      <WorksModal slides={workSlides.orchard}>
+        <Grid
+          pos="relative"
+          maxW="container.xl"
+          m="0 auto"
+          minH={["500px", "800px"]}
+          templateColumns="repeat(10, 1fr)"
+          templateRows="repeat(10,1fr)"
+          my="40"
         >
-          196 <br />
-          Orchard
-        </Heading>
-        <GridItem
-          ref={setGridItems}
-          data-speed="1.2"
-          gridRow="1 / 6"
-          gridColumn="1 / 5"
-          src={gridImage8}
-        />
+          <Heading
+            zIndex="2"
+            mixBlendMode="difference"
+            pos="absolute"
+            transform="translate(-50%,-50%)"
+            top="50%"
+            left="50%"
+            color="white"
+            fontWeight="black"
+            lineHeight="100%"
+            fontSize={["6xl", "9xl"]}
+          >
+            196 <br />
+            Orchard
+          </Heading>
+          <GridItem
+            ref={setGridItems}
+            data-speed="1.2"
+            gridRow="1 / 6"
+            gridColumn="1 / 5"
+            src={gridImage8}
+          />
 
-        <GridItem
-          ref={setGridItems}
-          data-speed="1.1"
-          gridRow="3 / 11"
-          gridColumn="4 / 8"
-          src={gridImage6}
-        />
+          <GridItem
+            ref={setGridItems}
+            data-speed="1.1"
+            gridRow="3 / 11"
+            gridColumn="4 / 8"
+            src={gridImage6}
+          />
 
-        <GridItem
-          ref={setGridItems}
-          gridRow="1 / 5"
-          gridColumn="8 / 11"
-          src={gridImage9}
-        />
-        <GridItem
-          ref={setGridItems}
-          gridRow="6 / 11"
-          gridColumn="8 / 11"
-          src={gridImage5}
-        />
+          <GridItem
+            ref={setGridItems}
+            gridRow="1 / 5"
+            gridColumn="8 / 11"
+            src={gridImage9}
+          />
+          <GridItem
+            ref={setGridItems}
+            gridRow="6 / 11"
+            gridColumn="8 / 11"
+            src={gridImage5}
+          />
 
-        <GridItem
-          ref={setGridItems}
-          data-speed="1.3"
-          gridRow="6 / 10"
-          gridColumn="1 / 5"
-          src={gridImage7}
-        />
-      </Grid>
+          <GridItem
+            ref={setGridItems}
+            data-speed="1.3"
+            gridRow="6 / 10"
+            gridColumn="1 / 5"
+            src={gridImage7}
+          />
+        </Grid>
+      </WorksModal>
 
       <MarqueeSection text="Craftsmanship" />
 
-      <Grid
-        pos="relative"
-        maxW="container.xl"
-        m="0 auto"
-        minH={["500px", "800px"]}
-        templateColumns="repeat(10, 1fr)"
-        templateRows="repeat(10,1fr)"
-        my="40"
-        ref={el}
-      >
-        <Heading
-          zIndex="2"
-          mixBlendMode="difference"
-          pos="absolute"
-          transform="translate(-50%,-50%)"
-          top="50%"
-          left="50%"
-          color="white"
-          fontWeight="black"
-          lineHeight="100%"
-          fontSize={["6xl", "9xl"]}
+      <WorksModal slides={workSlides.hearst}>
+        <Grid
+          pos="relative"
+          maxW="container.xl"
+          m="0 auto"
+          minH={["500px", "800px"]}
+          templateColumns="repeat(10, 1fr)"
+          templateRows="repeat(10,1fr)"
+          my="40"
+          ref={el}
         >
-          Gabriela <br /> Hearst
-        </Heading>
-        <GridItem
-          ref={setGridItems}
-          data-speed="1.1"
-          gridRow="1 / 10"
-          gridColumn="1 / 6"
-          src={gridImage10}
-        />
+          <Heading
+            zIndex="2"
+            mixBlendMode="difference"
+            pos="absolute"
+            transform="translate(-50%,-50%)"
+            top="50%"
+            left="50%"
+            color="white"
+            fontWeight="black"
+            lineHeight="100%"
+            fontSize={["6xl", "9xl"]}
+          >
+            Gabriela <br /> Hearst
+          </Heading>
+          <GridItem
+            ref={setGridItems}
+            data-speed="1.1"
+            gridRow="1 / 10"
+            gridColumn="1 / 6"
+            src={gridImage10}
+          />
 
-        <GridItem
-          ref={setGridItems}
-          gridRow="1 / 11"
-          gridColumn="6 / 11"
-          src={gridImage11}
-        />
+          <GridItem
+            ref={setGridItems}
+            gridRow="1 / 11"
+            gridColumn="6 / 11"
+            src={gridImage11}
+          />
 
-        <GridItem
-          ref={setGridItems}
-          data-speed="1.3"
-          gridRow="1 / 4"
-          gridColumn="8 / 11"
-          src={gridImage12}
-        />
+          <GridItem
+            ref={setGridItems}
+            data-speed="1.3"
+            gridRow="1 / 4"
+            gridColumn="8 / 11"
+            src={gridImage12}
+          />
 
-        <GridItem
-          ref={setGridItems}
-          gridRow="8 / 11"
-          gridColumn="2 / 4"
-          src={gridImage13}
-        />
-        <GridItem
-          ref={setGridItems}
-          data-speed="1.2"
-          gridRow="1 / 4"
-          gridColumn="3 / 7"
-          src={gridImage14}
-        />
-      </Grid>
+          <GridItem
+            ref={setGridItems}
+            gridRow="8 / 11"
+            gridColumn="2 / 4"
+            src={gridImage13}
+          />
+          <GridItem
+            ref={setGridItems}
+            data-speed="1.2"
+            gridRow="1 / 4"
+            gridColumn="3 / 7"
+            src={gridImage14}
+          />
+        </Grid>
+      </WorksModal>
 
       <MarqueeSection text="Pristine" />
 
-      <Grid
-        pos="relative"
-        maxW="container.xl"
-        m="0 auto"
-        minH={["500px", "800px"]}
-        templateColumns="repeat(10, 1fr)"
-        templateRows="repeat(10,1fr)"
-        my="40"
-        ref={el}
-      >
-        <Heading
-          zIndex="2"
-          mixBlendMode="difference"
-          pos="absolute"
-          transform="translate(-50%,-50%)"
-          top="50%"
-          left="50%"
-          color="white"
-          fontWeight="black"
-          lineHeight="100%"
-          fontSize={["6xl", "9xl"]}
+      <WorksModal slides={workSlides.gucci}>
+        <Grid
+          pos="relative"
+          maxW="container.xl"
+          m="0 auto"
+          minH={["500px", "800px"]}
+          templateColumns="repeat(10, 1fr)"
+          templateRows="repeat(10,1fr)"
+          my="40"
+          ref={el}
         >
-          Gucci
-        </Heading>
+          <Heading
+            zIndex="2"
+            mixBlendMode="difference"
+            pos="absolute"
+            transform="translate(-50%,-50%)"
+            top="50%"
+            left="50%"
+            color="white"
+            fontWeight="black"
+            lineHeight="100%"
+            fontSize={["6xl", "9xl"]}
+          >
+            Gucci
+          </Heading>
 
-        <GridItem
-          ref={setGridItems}
-          data-speed="1.3"
-          gridRow="1 / 7"
-          gridColumn="6 / 11"
-          src={gridImage17}
-        />
+          <GridItem
+            ref={setGridItems}
+            data-speed="1.3"
+            gridRow="1 / 7"
+            gridColumn="6 / 11"
+            src={gridImage17}
+          />
 
-        <GridItem
-          ref={setGridItems}
-          data-speed="0.9"
-          gridRow="4 / 11"
-          gridColumn="2 / 7"
-          src={gridImage18}
-        />
+          <GridItem
+            ref={setGridItems}
+            data-speed="0.9"
+            gridRow="4 / 11"
+            gridColumn="2 / 7"
+            src={gridImage18}
+          />
 
-        <GridItem
-          ref={setGridItems}
-          gridRow="5 / 11"
-          gridColumn="8 / 11"
-          src={gridImage20}
-        />
-        <GridItem
-          ref={setGridItems}
-          gridRow="7 / 10"
-          gridColumn="1 / 3"
-          src={gridImage21}
-        />
-        <GridItem
-          ref={setGridItems}
-          data-speed="1.2"
-          gridRow="9 / 11"
-          gridColumn="5 / 8"
-          src={gridImage16}
-        />
-        <GridItem
-          ref={setGridItems}
-          data-speed="1.1"
-          gridRow="2 / 5"
-          gridColumn="1 / 5"
-          src={gridImage15}
-        />
-      </Grid>
+          <GridItem
+            ref={setGridItems}
+            gridRow="5 / 11"
+            gridColumn="8 / 11"
+            src={gridImage20}
+          />
+          <GridItem
+            ref={setGridItems}
+            gridRow="7 / 10"
+            gridColumn="1 / 3"
+            src={gridImage21}
+          />
+          <GridItem
+            ref={setGridItems}
+            data-speed="1.2"
+            gridRow="9 / 11"
+            gridColumn="5 / 8"
+            src={gridImage16}
+          />
+          <GridItem
+            ref={setGridItems}
+            data-speed="1.1"
+            gridRow="2 / 5"
+            gridColumn="1 / 5"
+            src={gridImage15}
+          />
+        </Grid>
+      </WorksModal>
 
       <MarqueeSection text="Exquisite" pb="16" />
 
@@ -411,7 +420,7 @@ const Works = () => {
         minH="150px"
         ref={el}
       >
-        <WorksModal>
+        <WorksModal slides={workSlides.all}>
           <Heading
             zIndex="2"
             textAlign="center"

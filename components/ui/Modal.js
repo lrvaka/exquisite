@@ -13,29 +13,22 @@ import {
   Flex,
 } from "@chakra-ui/react"
 import { useKeenSlider } from "keen-slider/react"
+import NextImage from "next/image"
+import { useState } from "react"
 import "keen-slider/keen-slider.min.css"
 import GridImage from "../WorksComponents/GridImage"
-import workSlides from "../../lib/work-slides"
 
-const animation = { duration: 20000, easing: (t) => t }
-
-function WorksModal({ children }) {
-  const [sliderRef] = useKeenSlider({
+function PortfolioModal({ slides, children }) {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [loaded, setLoaded] = useState(false)
+  const [sliderRef, instanceRef] = useKeenSlider({
     loop: true,
-    renderMode: "performance",
-    created(s) {
-      s.moveToIdx(10, true, animation)
+    initial: 0,
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel)
     },
-    updated(s) {
-      s.moveToIdx(s.track.details.abs + 10, true, animation)
-    },
-    animationEnded(s) {
-      s.moveToIdx(s.track.details.abs + 10, true, animation)
-    },
-    mode: "free",
-    slides: {
-      perView: 1.75,
-      spacing: 15,
+    created() {
+      setLoaded(true)
     },
   })
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -44,7 +37,7 @@ function WorksModal({ children }) {
     <>
       <Modal
         colorScheme="green"
-        size="5xl"
+        size="full"
         onClose={onClose}
         isOpen={isOpen}
         isCentered
@@ -52,14 +45,44 @@ function WorksModal({ children }) {
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
-          <ModalBody display="flex" pt="14">
-            <Box ref={sliderRef} className="keen-slider">
-              {workSlides.carolina.map((e) => (
-                <Box className="keen-slider__slide" key={e} h="20rem">
-                  <GridImage src={e} />
-                </Box>
+          <ModalBody display="flex" pt="14" justifyContent="center">
+            <Flex
+              ref={sliderRef}
+              className="keen-slider"
+              minW="350px"
+              maxW="50vw"
+            >
+              <>
+                <Arrow
+                  left
+                  onClick={(e) =>
+                    e.stopPropagation() || instanceRef.current?.prev()
+                  }
+                />
+
+                <Arrow
+                  onClick={(e) =>
+                    e.stopPropagation() || instanceRef.current?.next()
+                  }
+                />
+              </>
+
+              {slides.map((e) => (
+                <Flex
+                  className="keen-slider__slide"
+                  key={e}
+                  justifyContent="center"
+                >
+                  <NextImage
+                    priority="true"
+                    placeholder="blur"
+                    layout="fill"
+                    objectFit="cover"
+                    src={e}
+                  />
+                </Flex>
               ))}
-            </Box>
+            </Flex>
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>
@@ -67,9 +90,60 @@ function WorksModal({ children }) {
         </ModalContent>
       </Modal>
 
-      <Button onClick={onOpen}>{children}</Button>
+      <Box cursor="pointer" onClick={onOpen}>
+        {children}
+      </Box>
     </>
   )
 }
 
-export default WorksModal
+function Arrow(props) {
+  return (
+    <>
+      {props.left && (
+        <Box
+          w="20px"
+          position="absolute"
+          top="50%"
+          transform="translateY(-50%)"
+          cursor="pointer"
+          zIndex="2"
+        >
+          <svg
+            onClick={props.onClick}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="white"
+          >
+            <path
+              fill="white"
+              d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"
+            />
+          </svg>
+        </Box>
+      )}
+      {!props.left && (
+        <Box
+          w="20px"
+          position="absolute"
+          top="50%"
+          transform="translateY(-50%)"
+          cursor="pointer"
+          left="calc(100% - 20px)"
+          zIndex="2"
+        >
+          <svg
+            onClick={props.onClick}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="white"
+          >
+            <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+          </svg>
+        </Box>
+      )}
+    </>
+  )
+}
+
+export default PortfolioModal

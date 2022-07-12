@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Container, Text } from "@chakra-ui/react"
+import { Box, Flex, Grid, Container, Text, Link } from "@chakra-ui/react"
 import SVGArrow from "../ui/SVGArrow"
 import { useContext, useEffect, useRef } from "react"
 import GsapContext from "../../store/gsap-context"
@@ -11,6 +11,7 @@ import aboutImage2 from "../../public/images/about-2.jpg"
 import ParallaxImage from "../ui/ParallaxImage"
 import NextImage from "next/image"
 import aboutUsImage from "../../public/images/about-us.png"
+import NextLink from "next/link"
 
 const AboutUsSectionDesktop = () => {
   const [imageRefs, setImageRefs] = useArrayRef()
@@ -149,22 +150,23 @@ const AboutUsSectionDesktop = () => {
               your project will be handled with the utmost care.
             </Text>
           </Flex>
-          <Flex
-            as="button"
-            textAlign="left"
-            fontWeight="700"
-            color="brand.200"
-            w="max-content"
-            onClick={() => {
-              smoother.scrollTo("#contact", true, "center center")
-            }}
-            gap="4"
-          >
-            <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>Learn more</Box>
-            <Box alignSelf="center">
-              <SVGArrow fill="#cdcda6" />
-            </Box>
-          </Flex>
+          <NextLink href="/about" passHref>
+            <Link
+              display="flex"
+              textAlign="left"
+              fontWeight="700"
+              color="brand.200"
+              w="max-content"
+              gap="4"
+            >
+              <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>
+                Learn more
+              </Box>
+              <Box alignSelf="center">
+                <SVGArrow fill="#cdcda6" />
+              </Box>
+            </Link>
+          </NextLink>
         </Box>
       </Flex>
       <Grid
