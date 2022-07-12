@@ -39,16 +39,9 @@ const Navbar = () => {
           >
             <NavbarItems />
             <Link
-              onClick={() => {
-                if (router.asPath === "/") {
-                  smoother.scrollTo("#contact", true, "center center")
-                } else {
-                  router.push("/")
-                  setTimeout(() => {
-                    smoother.scrollTo("#contact", true, "center center")
-                  }, 2000)
-                }
-              }}
+              onClick={() =>
+                smoother.scrollTo("#contact", true, "center center")
+              }
               fontFamily="quincy-cf"
               fontWeight="700"
               p="2"
