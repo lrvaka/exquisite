@@ -50,7 +50,7 @@ const InfoSection = () => {
       pos="relative"
       mt="24"
       mb="24"
-      gap={12}
+      gap={{ base: 12, sm: 0 }}
       minH={{ base: "1000px", md: "500px" }}
       flexDir={{ base: "column", md: "row" }}
     >
