@@ -43,7 +43,9 @@ function MyApp({ Component, pageProps }) {
 
     setSmoother(scroller)
 
-    return () => {}
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill())
+    }
   }, [router.asPath])
 
   useIsomorphicLayoutEffect(() => {
