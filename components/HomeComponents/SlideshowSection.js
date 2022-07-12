@@ -76,7 +76,7 @@ const SlideShowSection = (props) => {
             className="keen-slider"
           >
             {slides.map((e) => (
-              <NextLink key={e.url} href="/works" passHref>
+              <NextLink key={e.url} href="/portfolio" passHref>
                 <Link>
                   <Box
                     className="keen-slider__slide"
