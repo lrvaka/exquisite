@@ -1,10 +1,36 @@
 import useArrayRef from "../hooks/useArrayRef"
-import { useLayoutEffect, useRef } from "react"
+import { useLayoutEffect, useRef, forwardRef } from "react"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import { Box, Flex, Text, Heading } from "@chakra-ui/react"
 import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
-import WhyUsSectionItem from "./WhyUsSectionItem"
+
+const WhyUsSectionItem = forwardRef((props, ref) => {
+  return (
+    <Flex
+      w="100%"
+      h="100%"
+      justifyContent="center"
+      alignItems="center"
+      lineHeight="normal"
+      pos="absolute"
+      ref={ref}
+      bgColor={props.bgColor}
+      px="4"
+    >
+      <Text
+        fontSize={{ base: "4xl", xl: "5xl", "2xl": "7xl" }}
+        fontWeight="500"
+        textAlign="center"
+        color={props.color}
+      >
+        {props.children}
+      </Text>
+    </Flex>
+  )
+})
+
+WhyUsSectionItem.displayName = "WhyUsSectionItem"
 
 const WhyUsSection = () => {
   const [sectionRefs, setSectionRefs] = useArrayRef()
@@ -17,7 +43,7 @@ const WhyUsSection = () => {
       zIndex: (i, target, targets) => targets.length - i,
     })
 
-    let to = gsap.to(sectionRefs.current, {
+    gsap.to(sectionRefs.current, {
       yPercent: -100,
       ease: "none",
       stagger: 0.5,
@@ -29,9 +55,7 @@ const WhyUsSection = () => {
         pin: true,
       },
     })
-    return () => {
-      to.kill()
-    }
+    return () => {}
   }, [])
 
   return (
