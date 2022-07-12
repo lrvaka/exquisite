@@ -44,7 +44,7 @@ const ContactInfoSection = ({ contactInfoTextColor, logoColor }) => {
   const { hasCopied, onCopy } = useClipboard("+1 (914)-237-7898")
   return (
     <Flex
-      maxW={["none", "none", "none", "20vw"]}
+      maxW={["none", "none", "none", "300px"]}
       alignSelf="center"
       flexDir="column"
       textAlign="center"
