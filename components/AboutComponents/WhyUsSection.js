@@ -4,33 +4,7 @@ import gsap from "gsap"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import { Box, Flex, Text, Heading } from "@chakra-ui/react"
 import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
-
-const WhyUsSectionItem = forwardRef((props, ref) => {
-  return (
-    <Flex
-      w="100%"
-      h="100%"
-      justifyContent="center"
-      alignItems="center"
-      lineHeight="normal"
-      pos="absolute"
-      ref={ref}
-      bgColor={props.bgColor}
-      px="4"
-    >
-      <Text
-        fontSize={{ base: "4xl", xl: "5xl", "2xl": "7xl" }}
-        fontWeight="500"
-        textAlign="center"
-        color={props.color}
-      >
-        {props.children}
-      </Text>
-    </Flex>
-  )
-})
-
-WhyUsSectionItem.displayName = "WhyUsSectionItem"
+import WhyUsSectionItem from "./WhyUsSectionItem"
 
 const WhyUsSection = () => {
   const [sectionRefs, setSectionRefs] = useArrayRef()
@@ -38,12 +12,11 @@ const WhyUsSection = () => {
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
-
-    gsap.set(sectionRefs.current, {
+    gsap.set(containerRef.current.children, {
       zIndex: (i, target, targets) => targets.length - i,
     })
 
-    gsap.to(sectionRefs.current, {
+    gsap.to(containerRef.current.children, {
       yPercent: -100,
       ease: "none",
       stagger: 0.5,

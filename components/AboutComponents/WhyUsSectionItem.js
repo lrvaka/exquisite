@@ -4,13 +4,13 @@ import { forwardRef } from "react"
 const WhyUsSectionItem = forwardRef((props, ref) => {
   return (
     <Flex
+      ref={ref}
+      pos="absolute"
       w="100%"
       h="100%"
       justifyContent="center"
       alignItems="center"
       lineHeight="normal"
-      pos="absolute"
-      ref={ref}
       bgColor={props.bgColor}
       px="4"
     >
