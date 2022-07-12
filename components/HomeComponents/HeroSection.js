@@ -159,9 +159,7 @@ const HeroSection = () => {
             border="1px solid #213a30"
           >
             Schedule your free consultation now!
-            <motion.div>
-              <Icon as={BsArrowRight} ml="2" mt="2" />
-            </motion.div>
+            <Icon as={BsArrowRight} ml="2" mt="2" />
           </Link>
         </Flex>
       </Box>

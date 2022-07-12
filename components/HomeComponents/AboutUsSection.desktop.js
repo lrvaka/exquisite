@@ -42,7 +42,6 @@ const AboutUsSectionDesktop = () => {
           trigger: image, // this will use the first box as the trigger
           scrub: true,
           end: "bottom bottom",
-          markers: true,
           onLeave: (self) => self.kill(false, true),
         },
       })
