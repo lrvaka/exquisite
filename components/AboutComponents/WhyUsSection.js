@@ -1,5 +1,5 @@
 import useArrayRef from "../hooks/useArrayRef"
-import { useRef } from "react"
+import { useLayoutEffect, useRef } from "react"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import { Box, Flex, Text, Heading } from "@chakra-ui/react"
@@ -10,18 +10,14 @@ const WhyUsSection = () => {
   const [sectionRefs, setSectionRefs] = useArrayRef()
   const containerRef = useRef()
 
-  useIsomorphicLayoutEffect(() => {
+  useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
-
-    setTimeout(() => {
-      ScrollTrigger.refresh()
-    }, 500)
 
     gsap.set(sectionRefs.current, {
       zIndex: (i, target, targets) => targets.length - i,
     })
 
-    gsap.to(sectionRefs.current, {
+    let to = gsap.to(sectionRefs.current, {
       yPercent: -100,
       ease: "none",
       stagger: 0.5,
@@ -33,6 +29,9 @@ const WhyUsSection = () => {
         pin: true,
       },
     })
+    return () => {
+      to.kill()
+    }
   }, [])
 
   return (
