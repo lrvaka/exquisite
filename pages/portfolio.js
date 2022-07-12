@@ -51,7 +51,13 @@ const MarqueeText = ({ children, ...props }) => (
   <Heading
     fontWeight="black"
     color="brand.400"
-    fontSize={["4rem", "5rem", "6rem", "7rem"]}
+    fontSize={{
+      base: "4rem",
+      sm: "5rem",
+      md: "6rem",
+      xl: "7rem",
+      "2xl": "12rem",
+    }}
     opacity="0.25"
     mr={["32", "60"]}
     overflowY="hidden"
@@ -446,7 +452,7 @@ const Works = () => {
             border="1px solid #213a30"
           >
             More Works
-            <Icon as={IoOpen} ml="2"  />
+            <Icon as={IoOpen} ml="2" />
           </Link>
         </WorksModal>
       </Flex>

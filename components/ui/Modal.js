@@ -102,7 +102,7 @@ function Arrow(props) {
     <>
       {props.left && (
         <Box
-          w="20px"
+          w={{ base: "20px", "2xl": "30px" }}
           position="absolute"
           top="50%"
           transform="translateY(-50%)"
@@ -124,12 +124,12 @@ function Arrow(props) {
       )}
       {!props.left && (
         <Box
-          w="20px"
+          w={{ base: "20px", "2xl": "30px" }}
           position="absolute"
           top="50%"
           transform="translateY(-50%)"
           cursor="pointer"
-          left="calc(100% - 20px)"
+          left={{ base: "calc(100% - 20px)", "2xl": "calc(100% - 30px)" }}
           zIndex="2"
         >
           <svg
