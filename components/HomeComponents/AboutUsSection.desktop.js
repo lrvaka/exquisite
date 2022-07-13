@@ -160,7 +160,7 @@ const AboutUsSectionDesktop = () => {
               gap="4"
             >
               <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>
-                Learn more
+                About us
               </Box>
               <Box alignSelf="center">
                 <SVGArrow fill="#cdcda6" />
