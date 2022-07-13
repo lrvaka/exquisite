@@ -142,7 +142,7 @@ const HeroSection = () => {
           mt={{ base: 2, sm: 2, md: 4, lg: 6 }}
         >
           <Link
-            as={motion.a}
+            as={motion.button}
             onClick={() => smoother.scrollTo("#contact", true, "center center")}
             pos="relative"
             variants={variants}
