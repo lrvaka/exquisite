@@ -75,7 +75,7 @@ const SlideShowSection = (props) => {
             ref={sliderRef}
             className="keen-slider"
           >
-            {slides.map((e) => (
+            {slides.map((e, i) => (
               <NextLink key={e.url} href="/portfolio" passHref>
                 <Link>
                   <Box
@@ -84,6 +84,7 @@ const SlideShowSection = (props) => {
                     h={["15rem", "15rem", "15rem", "469.6"]}
                   >
                     <NextImage
+                      alt={`carousel image ${i}`}
                       placeholder="blur"
                       layout="fill"
                       objectFit="cover"

@@ -10,7 +10,7 @@ const TestimonialSection = () => {
       overflowY="hidden"
       pos="relative"
     >
-      <ParallaxImage src={image} />
+      <ParallaxImage alt="backdrop for testimonial" src={image} />
       <Flex
         flexDir="column"
         justifyContent="center"
