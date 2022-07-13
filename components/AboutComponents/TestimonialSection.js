@@ -19,7 +19,7 @@ const TestimonialSection = () => {
         flexDir="column"
         justifyContent="center"
         alignItems="center"
-        bgColor="brand.500"
+        bgColor="brand.400"
         flex={{ base: 0, md: 1.5 }}
         py={{ base: 20 }}
       >

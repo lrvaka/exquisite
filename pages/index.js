@@ -1,7 +1,5 @@
 import Head from "next/head"
 import dynamic from "next/dynamic"
-import { Heading } from "@chakra-ui/react"
-import Marquee from "react-fast-marquee"
 import SlideShowSection from "../components/HomeComponents/SlideshowSection"
 import ContactSection from "../components/HomeComponents/ContactSection"
 import HeroSection from "../components/HomeComponents/HeroSection"
@@ -12,24 +10,10 @@ import MainWrapper from "../components/ui/Main"
 import ServicesSection from "../components/HomeComponents/ServicesSection"
 import AboutUsSectionDesktop from "../components/HomeComponents/AboutUsSection.desktop"
 import TestimonialSection from "../components/HomeComponents/TestimonialSection"
+import MarqueeSection from "../components/HomeComponents/MarqueeSection"
 
 const MessageSection = dynamic(() =>
   import("../components/HomeComponents/MessageSectionAnimation")
-)
-
-const MarqueeSection = () => (
-  <Marquee gradient={false}>
-    <Heading
-      fontWeight="black"
-      color="brand.300"
-      fontSize={["5rem", "10rem"]}
-      mr="3rem"
-      opacity="0.25"
-      overflowY="hidden"
-    >
-      EXQUISITE WOOD FLOORS
-    </Heading>
-  </Marquee>
 )
 
 const meta = {
