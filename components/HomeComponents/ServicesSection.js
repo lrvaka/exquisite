@@ -52,8 +52,11 @@ const ServicesItem = ({ heading, children }) => {
 
 const ServicesSection = () => {
   const containerRef = useRef()
+  const subHeadRef = useRef()
   useEffect(() => {
     gsap.set(containerRef.current.children, { autoAlpha: 0, y: 200 })
+    gsap.set(subHeadRef.current, { autoAlpha: 0 })
+
     let ani = gsap.to(containerRef.current.children, {
       y: 0,
       autoAlpha: 1,
@@ -63,8 +66,19 @@ const ServicesSection = () => {
         trigger: containerRef.current,
       },
     })
+
+    let subAni = gsap.to(subHeadRef.current, {
+      autoAlpha: 1,
+      ease: "power4.out",
+      delay: 0.5,
+      duration: 1.5,
+      scrollTrigger: {
+        trigger: subHeadRef.current,
+      },
+    })
     return () => {
       ani.kill()
+      subAni.kill()
     }
   }, [])
   return (
@@ -86,7 +100,7 @@ const ServicesSection = () => {
             We Have All The Solutions
           </SectionHeading>
 
-          <Text fontSize={{ base: "md", sm: "lg" }}>
+          <Text ref={subHeadRef} fontSize={{ base: "md", sm: "lg" }}>
             We cover everything that has to do with flooring, here are some of
             the services we offer.
           </Text>
