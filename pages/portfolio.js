@@ -112,7 +112,12 @@ const WorksHeading = () => (
       </Flex>
     </Flex>
     <Box pos="absolute" top="0" right="0" h="600px" w="600px">
-      <NextImage src="/images/stamp.png" layout="fill" objectFit="cover" />
+      <NextImage
+        alt="ewf emblem"
+        src="/images/stamp.png"
+        layout="fill"
+        objectFit="cover"
+      />
     </Box>
   </Container>
 )
