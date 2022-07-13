@@ -29,7 +29,7 @@ const InfoSection = () => {
           maxW="800px"
           alignSelf="center"
           px={{ base: "4", md: "12" }}
-          py={{ base: 20, md: 20 }}
+          py="20"
           pos="relative"
         >
           <Box
