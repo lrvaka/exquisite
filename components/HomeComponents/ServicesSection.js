@@ -54,7 +54,7 @@ const ServicesSection = () => {
   const containerRef = useRef()
   const subHeadRef = useRef()
   useEffect(() => {
-    gsap.set(containerRef.current.children, { autoAlpha: 0, y: 200 })
+    gsap.set(containerRef.current.children, { autoAlpha: 0, y: 50 })
     gsap.set(subHeadRef.current, { autoAlpha: 0 })
 
     let ani = gsap.to(containerRef.current.children, {
