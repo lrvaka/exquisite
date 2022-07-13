@@ -1,5 +1,4 @@
-import { useContext, useRef, useEffect } from "react"
-import GsapContext from "../store/gsap-context"
+import { useRef } from "react"
 import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
 import {
   Box,
@@ -8,7 +7,6 @@ import {
   Flex,
   Text,
   Grid,
-  Button,
   Icon,
   Link,
 } from "@chakra-ui/react"
@@ -19,7 +17,6 @@ import NextImage from "next/image"
 import ContactSection from "../components/HomeComponents/ContactSection"
 import MainWrapper from "../components/ui/Main"
 import Footer from "../components/ui/Footer"
-import clients from "../lib/clients"
 import gsap from "gsap"
 import GridItem from "../components/WorksComponents/GridItem"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
@@ -181,6 +178,7 @@ const Works = () => {
             Herrera
           </Heading>
           <GridItem
+            alt={`beautiful carolina herrera job flooring 1`}
             ref={setGridItems}
             data-speed="1.1"
             gridRow="1 / 10"
@@ -189,6 +187,7 @@ const Works = () => {
           />
 
           <GridItem
+            alt={`beautiful carolina herrera job flooring 2`}
             ref={setGridItems}
             data-speed="1.2"
             gridRow="1 / 11"
@@ -197,6 +196,7 @@ const Works = () => {
           />
 
           <GridItem
+            alt={`beautiful carolina herrera job flooring 3`}
             ref={setGridItems}
             data-speed="1.3"
             gridRow="5 / 10"
@@ -205,6 +205,7 @@ const Works = () => {
           />
 
           <GridItem
+            alt={`beautiful carolina herrera job flooring 4`}
             ref={setGridItems}
             gridRow="6 / 10"
             gridColumn="1 / 5"
@@ -241,6 +242,7 @@ const Works = () => {
             Orchard
           </Heading>
           <GridItem
+            alt={`beautiful 196 Orchard job flooring 1`}
             ref={setGridItems}
             data-speed="1.2"
             gridRow="1 / 6"
@@ -249,6 +251,7 @@ const Works = () => {
           />
 
           <GridItem
+            alt={`beautiful 196 Orchard job flooring 2`}
             ref={setGridItems}
             data-speed="1.1"
             gridRow="3 / 11"
@@ -257,12 +260,14 @@ const Works = () => {
           />
 
           <GridItem
+            alt={`beautiful 196 Orchard job flooring 3`}
             ref={setGridItems}
             gridRow="1 / 5"
             gridColumn="8 / 11"
             src={gridImage9}
           />
           <GridItem
+            alt={`beautiful 196 Orchard job flooring 4`}
             ref={setGridItems}
             gridRow="6 / 11"
             gridColumn="8 / 11"
@@ -270,6 +275,7 @@ const Works = () => {
           />
 
           <GridItem
+            alt={`beautiful 196 Orchard job flooring 5`}
             ref={setGridItems}
             data-speed="1.3"
             gridRow="6 / 10"
@@ -307,6 +313,7 @@ const Works = () => {
             Gabriela <br /> Hearst
           </Heading>
           <GridItem
+            alt={`beautiful Gabriela Hearst job flooring 1`}
             ref={setGridItems}
             data-speed="1.1"
             gridRow="1 / 10"
@@ -315,6 +322,7 @@ const Works = () => {
           />
 
           <GridItem
+            alt={`beautiful Gabriela Hearst job flooring 2`}
             ref={setGridItems}
             gridRow="1 / 11"
             gridColumn="6 / 11"
@@ -322,6 +330,7 @@ const Works = () => {
           />
 
           <GridItem
+            alt={`beautiful Gabriela Hearst job flooring 3`}
             ref={setGridItems}
             data-speed="1.3"
             gridRow="1 / 4"
@@ -330,12 +339,14 @@ const Works = () => {
           />
 
           <GridItem
+            alt={`beautiful Gabriela Hearst job flooring 4`}
             ref={setGridItems}
             gridRow="8 / 11"
             gridColumn="2 / 4"
             src={gridImage13}
           />
           <GridItem
+            alt={`beautiful Gabriela Hearst job flooring 5`}
             ref={setGridItems}
             data-speed="1.2"
             gridRow="1 / 4"
@@ -374,6 +385,7 @@ const Works = () => {
           </Heading>
 
           <GridItem
+            alt={`beautiful gucci job flooring 1`}
             ref={setGridItems}
             data-speed="1.3"
             gridRow="1 / 7"
@@ -382,6 +394,7 @@ const Works = () => {
           />
 
           <GridItem
+            alt={`beautiful gucci job flooring 2`}
             ref={setGridItems}
             data-speed="0.9"
             gridRow="4 / 11"
@@ -390,18 +403,21 @@ const Works = () => {
           />
 
           <GridItem
+            alt={`beautiful gucci job flooring 3`}
             ref={setGridItems}
             gridRow="5 / 11"
             gridColumn="8 / 11"
             src={gridImage20}
           />
           <GridItem
+            alt={`beautiful gucci job flooring 4`}
             ref={setGridItems}
             gridRow="7 / 10"
             gridColumn="1 / 3"
             src={gridImage21}
           />
           <GridItem
+            alt={`beautiful gucci job flooring 5`}
             ref={setGridItems}
             data-speed="1.2"
             gridRow="9 / 11"
@@ -409,6 +425,7 @@ const Works = () => {
             src={gridImage16}
           />
           <GridItem
+            alt={`beautiful gucci job flooring 6`}
             ref={setGridItems}
             data-speed="1.1"
             gridRow="2 / 5"
