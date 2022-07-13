@@ -40,6 +40,7 @@ const InfoSection = () => {
             w={{ base: "300px", lg: "400px", "2xl": "500px" }}
           >
             <NextImage
+              sizes="25vw"
               alt="ewf stamp"
               src="/images/stamp.png"
               layout="fill"
