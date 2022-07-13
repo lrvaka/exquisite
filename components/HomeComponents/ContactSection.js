@@ -165,7 +165,7 @@ const ContactForm = ({ contactFormVariant, formLabelColor }) => {
         <ValidationError prefix="Phone" field="phone" errors={state.errors} />
       </FormControl>
       <FormControl isRequired>
-        <FormLabel color={formLabelColor} htmlFor="enquiry">
+        <FormLabel color={formLabelColor} htmlFor="message">
           Enquiry
         </FormLabel>
         <Textarea
