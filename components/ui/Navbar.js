@@ -28,7 +28,10 @@ const Navbar = () => {
       <Container pos="relative" maxW="2300px" p="0">
         <Flex justifyContent="space-between" p="4">
           <NextLink href="/" passHref>
-            <Link aria-label="logo" maxW={{ base: "90px", md: "90px", "2xl": "125px" }}>
+            <Link
+              aria-label="logo"
+              maxW={{ base: "90px", md: "90px", "2xl": "125px" }}
+            >
               <NextImage src="/images/dark-logo.png" width={312} height={348} />
             </Link>
           </NextLink>
@@ -39,6 +42,7 @@ const Navbar = () => {
           >
             <NavbarItems />
             <Link
+              as="button"
               onClick={() =>
                 smoother.scrollTo("#contact", true, "center center")
               }
