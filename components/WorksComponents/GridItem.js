@@ -3,9 +3,9 @@ import { forwardRef } from "react"
 import { Box } from "@chakra-ui/react"
 
 // eslint-disable-next-line react/display-name
-const GridItem = forwardRef(({ src, ...props }, ref) => (
+const GridItem = forwardRef(({ src, alt, ...props }, ref) => (
   <Box pos="relative" overflow="hidden" {...props} ref={ref}>
-    <GridImage src={src} />
+    <GridImage alt={alt} src={src} />
   </Box>
 ))
 

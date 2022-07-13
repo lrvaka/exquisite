@@ -1,7 +1,7 @@
 import NextImage from "next/image"
 
-const GridImage = ({ ...props }) => (
-  <NextImage priority="true" placeholder="blur" layout="fill" objectFit="cover" {...props} />
+const GridImage = ({ alt, ...props }) => (
+  <NextImage alt={alt} priority="true" placeholder="blur" layout="fill" objectFit="cover" {...props} />
 )
 
 export default GridImage
