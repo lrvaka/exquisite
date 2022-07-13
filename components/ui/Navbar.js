@@ -29,10 +29,10 @@ const Navbar = () => {
         <Flex justifyContent="space-between" p="4">
           <NextLink href="/" passHref>
             <Link
-              aria-label="logo"
+              aria-label="home button"
               maxW={{ base: "90px", md: "90px", "2xl": "125px" }}
             >
-              <NextImage src="/images/dark-logo.png" width={312} height={348} />
+              <NextImage alt="ewf logo" src="/images/dark-logo.png" width={312} height={348} />
             </Link>
           </NextLink>
           <Flex

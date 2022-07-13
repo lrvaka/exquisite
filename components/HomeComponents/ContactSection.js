@@ -77,10 +77,13 @@ const ContactInfoSection = ({ contactInfoTextColor, logoColor }) => {
         </Flex>
       </Link>
       <Link
+        alignSelf="center"
+        aria-label="our instagram page"
         href="https://www.instagram.com/exquisitewoodfloors/"
         target="_blank"
+        width="max-content"
       >
-        <IconButton color={logoColor} icon={<BsInstagram />} />
+        <Icon color={logoColor}  as={BsInstagram} w={5} h={5}/>
       </Link>
     </Flex>
   )
