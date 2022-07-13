@@ -104,6 +104,7 @@ const AboutUsSectionDesktop = () => {
           flex={1.5}
         >
           <NextImage
+            alt="beautiful wood floor graphic design"
             priority="true"
             placeholder="blur"
             layout="fill"
@@ -182,7 +183,7 @@ const AboutUsSectionDesktop = () => {
           gridColumn="20 / 26"
           overflow="hidden"
         >
-          <ParallaxImage src={aboutImage1} />
+          <ParallaxImage alt="beautiful wood floor home" src={aboutImage1} />
         </Box>
         <Box
           ref={setImageRefs}
@@ -191,7 +192,7 @@ const AboutUsSectionDesktop = () => {
           gridColumn="8 / 19"
           overflow="hidden"
         >
-          <ParallaxImage src={aboutImage2} />
+          <ParallaxImage alt="beautiful wood floor home" src={aboutImage2} />
         </Box>
         <Box
           ref={setImageRefs}
@@ -200,7 +201,7 @@ const AboutUsSectionDesktop = () => {
           gridColumn="1 / 7"
           overflow="hidden"
         >
-          <ParallaxImage src={aboutImage} />
+          <ParallaxImage alt="beautiful wood floor home" src={aboutImage} />
         </Box>
       </Grid>
     </>

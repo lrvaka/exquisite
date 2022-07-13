@@ -191,6 +191,7 @@ const HeroSection = () => {
           data-speed="1.2"
         >
           <NextImage
+            alt="beautiful wood floor home"
             quality={25}
             placeholder="blur"
             layout="fill"
@@ -206,6 +207,7 @@ const HeroSection = () => {
           data-speed="1.1"
         >
           <NextImage
+            alt="beautiful wood floor home"
             quality={25}
             placeholder="blur"
             layout="fill"

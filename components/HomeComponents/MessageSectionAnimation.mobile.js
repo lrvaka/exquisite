@@ -78,7 +78,12 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
                 key={index}
                 ref={plankType}
               >
-                <NextImage placeholder="blur" src={element.src} priority />
+                <NextImage
+                  placeholder="blur"
+                  alt={`The EWF mantra plank ${i}-${index}`}
+                  src={element.src}
+                  priority
+                />
               </Flex>
             )
           })}

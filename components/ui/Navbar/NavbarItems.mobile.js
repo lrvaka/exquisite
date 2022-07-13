@@ -19,6 +19,7 @@ const NavbarItemsMobile = () => {
     <Menu>
       <MenuButton
         as={IconButton}
+        aria-label="menu"
         icon={<AiOutlineMenu />}
         w="43px"
         h="43px"
