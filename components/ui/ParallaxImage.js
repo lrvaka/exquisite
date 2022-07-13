@@ -6,7 +6,7 @@ const ParallaxImage = ({ src, alt, ...props }) => {
     <Box data-speed="auto" pos="absolute" w="100%" h="160%" {...props}>
       <NextImage
         alt={alt}
-        sizes="25vw"
+        sizes="50vw"
         priority="true"
         placeholder="blur"
         layout="fill"
