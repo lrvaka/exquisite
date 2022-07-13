@@ -104,6 +104,7 @@ const AboutUsSectionDesktop = () => {
           flex={1.5}
         >
           <NextImage
+            sizes="50vw"
             alt="beautiful wood floor graphic design"
             priority="true"
             placeholder="blur"
