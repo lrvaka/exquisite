@@ -1,6 +1,6 @@
 import { Box, Flex, Heading } from "@chakra-ui/react"
 import ParallaxImage from "../ui/ParallaxImage"
-import image from "../../public/images/about.png"
+import image from "../../public/images/about.jpeg"
 
 const HeaderSection = () => (
   <Box pt={{ base: "130px", md: "180px" }}>
@@ -14,8 +14,9 @@ const HeaderSection = () => (
     >
       <ParallaxImage src={image} alt="man doing wood flooring msg backdrop" />
       <Heading
-        color="brand.200"
-        fontSize={{ base: "2xl", lg: "6xl" }}
+        p="6"
+        color="brand.100"
+        fontSize={{ base: "4xl", lg: "8xl" }}
         textAlign="center"
         fontWeight="black"
         pos="relative"
