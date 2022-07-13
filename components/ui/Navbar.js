@@ -50,7 +50,7 @@ const Navbar = () => {
               fontWeight="700"
               p="2"
               fontSize={{ base: "lg", "2xl": "2xl" }}
-              color="brand.200"
+              color="white"
               bgColor="brand.400"
               display="flex"
               maxW="max-content"
