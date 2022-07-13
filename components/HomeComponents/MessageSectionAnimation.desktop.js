@@ -75,7 +75,12 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
                 key={index}
                 ref={plankType}
               >
-                <NextImage alt={`The EWF mantra plank ${i}-${index}`} placeholder="blur" src={element.src} priority />
+                <NextImage
+                  alt={`The EWF mantra plank ${i}-${index}`}
+                  placeholder="blur"
+                  src={element.src}
+                  priority
+                />
               </Flex>
             )
           })}

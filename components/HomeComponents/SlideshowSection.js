@@ -84,6 +84,7 @@ const SlideShowSection = (props) => {
                     h={["15rem", "15rem", "15rem", "469.6"]}
                   >
                     <NextImage
+                      sizes="25vw"
                       alt={`carousel image ${i}`}
                       placeholder="blur"
                       layout="fill"

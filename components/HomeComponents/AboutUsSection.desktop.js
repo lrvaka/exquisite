@@ -104,6 +104,7 @@ const AboutUsSectionDesktop = () => {
           flex={1.5}
         >
           <NextImage
+            sizes="25vw"
             alt="beautiful wood floor graphic design"
             priority="true"
             placeholder="blur"
@@ -159,9 +160,7 @@ const AboutUsSectionDesktop = () => {
               w="max-content"
               gap="4"
             >
-              <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>
-                About us
-              </Box>
+              <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>About us</Box>
               <Box alignSelf="center">
                 <SVGArrow fill="#cdcda6" />
               </Box>

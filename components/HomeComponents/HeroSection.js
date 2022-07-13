@@ -192,7 +192,7 @@ const HeroSection = () => {
         >
           <NextImage
             alt="beautiful wood floor home"
-            quality={25}
+            sizes="25vw"
             placeholder="blur"
             layout="fill"
             objectFit="cover"
@@ -208,7 +208,7 @@ const HeroSection = () => {
         >
           <NextImage
             alt="beautiful wood floor home"
-            quality={25}
+            sizes="25vw"
             placeholder="blur"
             layout="fill"
             objectFit="cover"
