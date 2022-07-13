@@ -18,16 +18,19 @@ import {
   PopoverBody,
 } from "@chakra-ui/react"
 import SVGArrow from "../ui/SVGArrow"
-import { IconButton } from "@chakra-ui/react"
 import { AiOutlineMail } from "react-icons/ai"
 import { BsInstagram } from "react-icons/bs"
 import { HiPhone } from "react-icons/hi"
 import { IoLocationOutline } from "react-icons/io5"
 import { useForm, ValidationError } from "@formspree/react"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
-import { useState } from "react"
+import { FaFacebookSquare, FaTiktok } from "react-icons/fa"
 
-const ContactInfoText = ({ children, contactInfoTextColor = "brand.500" }) => (
+const ContactInfoText = ({
+  children,
+  contactInfoTextColor = "brand.500",
+  ...props
+}) => (
   <Heading
     as="h3"
     fontWeight="700"
@@ -35,6 +38,7 @@ const ContactInfoText = ({ children, contactInfoTextColor = "brand.500" }) => (
     color={contactInfoTextColor}
     fontSize="1.5rem"
     textAlign="left"
+    {...props}
   >
     {children}
   </Heading>
@@ -62,29 +66,54 @@ const ContactInfoSection = ({ contactInfoTextColor, logoColor }) => {
           +1 (914) 237 7898
         </ContactInfoText>
       </Flex>
-      <Link href="https://www.google.com/maps/place/941+McLean+Ave+%23472,+Yonkers,+NY+10704/@40.9034428,-73.8675617,19z/data=!3m1!4b1!4m5!3m4!1s0x89c2f2e70ca2a027:0x2a5bc5f5c5d874f9!8m2!3d40.9034428!4d-73.8670145">
-        <Flex justifyContent="left" gap="2" alignItems="center">
-          <Icon
-            alignSelf="center"
-            as={IoLocationOutline}
-            h={4}
-            w={4}
-            color={logoColor}
-          />
-          <ContactInfoText contactInfoTextColor={contactInfoTextColor}>
-            941 Mclean Avenue, Suite 472, Yonkers, NY 10707
-          </ContactInfoText>
-        </Flex>
-      </Link>
       <Link
-        alignSelf="center"
-        aria-label="our instagram page"
-        href="https://www.instagram.com/exquisitewoodfloors/"
-        target="_blank"
-        width="max-content"
+        display="flex"
+        _hover={{ textDecoration: `underline ${logoColor}` }}
+        justifyContent="left"
+        gap="2"
+        alignItems="center"
+        href="https://www.google.com/maps/place/941+McLean+Ave+%23472,+Yonkers,+NY+10704/@40.9034428,-73.8675617,19z/data=!3m1!4b1!4m5!3m4!1s0x89c2f2e70ca2a027:0x2a5bc5f5c5d874f9!8m2!3d40.9034428!4d-73.8670145"
       >
-        <Icon color={logoColor}  as={BsInstagram} w={5} h={5}/>
+        <Icon
+          alignSelf="center"
+          as={IoLocationOutline}
+          h={4}
+          w={4}
+          color={logoColor}
+        />
+        <ContactInfoText contactInfoTextColor={contactInfoTextColor}>
+          941 Mclean Avenue, Suite 472, Yonkers, NY 10707
+        </ContactInfoText>
       </Link>
+      <Flex justifyContent="center" gap="2">
+        <Link
+          alignSelf="center"
+          aria-label="our instagram page"
+          href="https://www.instagram.com/exquisitewoodfloors/"
+          target="_blank"
+          width="max-content"
+        >
+          <Icon color={logoColor} as={BsInstagram} w={5} h={5} />
+        </Link>
+        <Link
+          alignSelf="center"
+          aria-label="our facebook page"
+          href="https://www.facebook.com/exquisitewoodfloors"
+          target="_blank"
+          width="max-content"
+        >
+          <Icon color={logoColor} as={FaFacebookSquare} w={5} h={5} />
+        </Link>
+        <Link
+          alignSelf="center"
+          aria-label="our facebook page"
+          href="https://www.tiktok.com/@exquisitewoodfloors"
+          target="_blank"
+          width="max-content"
+        >
+          <Icon color={logoColor} as={FaTiktok} w={5} h={5} />
+        </Link>
+      </Flex>
     </Flex>
   )
 }
