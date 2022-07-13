@@ -16,13 +16,12 @@ const TestimonialSection = () => {
       </Flex>
       <Flex
         px={{ base: "4", md: "12" }}
-        py={{ base: 20, md: 20 }}
+        py="20"
         flexDir="column"
         justifyContent="center"
         alignItems="center"
         bgColor="brand.400"
         flex={{ base: 0, md: 1.5 }}
-        py={{ base: 20 }}
       >
         <Box pos="relative" maxW="800px">
           <Heading
