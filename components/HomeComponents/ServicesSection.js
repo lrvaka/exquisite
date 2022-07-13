@@ -61,7 +61,7 @@ const ServicesSection = () => {
       y: 0,
       autoAlpha: 1,
       ease: "power4.out",
-      stagger: 0.5,
+      stagger: 0.2,
       scrollTrigger: {
         trigger: containerRef.current,
       },
