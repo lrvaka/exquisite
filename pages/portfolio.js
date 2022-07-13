@@ -47,6 +47,15 @@ import useArrayRef from "../components/hooks/useArrayRef"
 import Marquee from "react-fast-marquee"
 import workSlides from "../lib/work-slides"
 
+const meta = {
+  title: "Portfolio - Exquisite Wood Floors",
+  description: "Display of selected works we've completed over the years.",
+  url: "https://www.exquisitewoodfloors.com/portfolio",
+  twitter: "https://twitter.com/ewfny",
+  imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.png",
+  imageAlt: "Exquisite Wood Floors",
+}
+
 const MarqueeText = ({ children, ...props }) => (
   <Heading
     fontWeight="black"
@@ -79,7 +88,7 @@ const MarqueeSection = ({ text, ...props }) => (
 )
 
 const WorksHeading = () => (
-  <Container pos="relative" maxW="container.xl" px="4" minH="70vh">
+  <Container pos="relative" maxW="container.xl" px="4">
     <Heading
       pb="10"
       color="brand.500"
@@ -105,27 +114,11 @@ const WorksHeading = () => (
         </Text>
       </Flex>
     </Flex>
-    <Flex pos="relative" justifyContent="space-between">
-      {clients.map((e, i) => (
-        <Box w={["50px", "100px"]} h={["25px", "50px"]} key={i} pos="relative">
-          <NextImage src={e} priority />
-        </Box>
-      ))}
-    </Flex>
     <Box pos="absolute" top="0" right="0" h="600px" w="600px">
       <NextImage src="/images/stamp.png" layout="fill" objectFit="cover" />
     </Box>
   </Container>
 )
-
-const meta = {
-  title: "Portfolio - Exquisite Wood Floors",
-  description: "Display of selected works we've completed over the years.",
-  url: "https://www.exquisitewoodfloors.com/portfolio",
-  twitter: "https://twitter.com/ewfny",
-  imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.png",
-  imageAlt: "Exquisite Wood Floors",
-}
 
 const Works = () => {
   const el = useRef()
@@ -441,7 +434,7 @@ const Works = () => {
           <Link
             as="button"
             pos="relative"
-            fontSize={{ base: "xs", sm: "sm", md: "xl", lg: "xl" }}
+            fontSize={{ base: "lg", sm: "lg", md: "xl", lg: "xl" }}
             display="flex"
             alignItems="center"
             maxW="max-content"

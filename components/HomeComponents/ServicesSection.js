@@ -1,5 +1,7 @@
 import { Box, Flex, Heading, Text, Icon } from "@chakra-ui/react"
 import SectionHeading from "../ui/SectionHeading"
+import { useRef, useEffect } from "react"
+import gsap from "gsap"
 import GsapContext from "../../store/gsap-context"
 import { useContext } from "react"
 import { HiArrowNarrowRight } from "react-icons/hi"
@@ -49,6 +51,22 @@ const ServicesItem = ({ heading, children }) => {
 }
 
 const ServicesSection = () => {
+  const containerRef = useRef()
+  useEffect(() => {
+    gsap.set(containerRef.current.children, { autoAlpha: 0, y: 200 })
+    let ani = gsap.to(containerRef.current.children, {
+      y: 0,
+      autoAlpha: 1,
+      ease: "power4.out",
+      stagger: 0.5,
+      scrollTrigger: {
+        trigger: containerRef.current,
+      },
+    })
+    return () => {
+      ani.kill()
+    }
+  }, [])
   return (
     <>
       <Flex flexDir="column" id="services">
@@ -81,6 +99,7 @@ const ServicesSection = () => {
           flexDir={["column", "column", "row"]}
           minW="100%"
           px={[0, 6, 12]}
+          ref={containerRef}
         >
           <ServicesItem heading="Installation">
             We offer professional installation services for all types of wood

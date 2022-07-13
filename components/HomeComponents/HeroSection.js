@@ -129,7 +129,7 @@ const HeroSection = () => {
           visibility="hidden"
           overflow="hidden"
           color="brand.500"
-          fontSize={{ base: "xl", sm: "2xl", md: "3xl", lg: "4xl" }}
+          fontSize={{ base: "2xl", sm: "2xl", md: "3xl", lg: "4xl" }}
           zIndex="1"
           ref={subRef}
         >
@@ -148,7 +148,7 @@ const HeroSection = () => {
             variants={variants}
             initial="initial"
             animate="animate"
-            fontSize={{ base: "xs", sm: "sm", md: "md", lg: "lg" }}
+            fontSize={{ base: "md", sm: "md", md: "md", lg: "lg" }}
             display="flex"
             alignItems="center"
             maxW="max-content"

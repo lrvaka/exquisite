@@ -20,6 +20,8 @@ const NavbarItemsMobile = () => {
       <MenuButton
         as={IconButton}
         icon={<AiOutlineMenu />}
+        w="43px"
+        h="43px"
         color="brand.200"
         bgColor="brand.500"
         borderRadius="none"
