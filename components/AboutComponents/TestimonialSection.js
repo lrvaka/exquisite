@@ -15,7 +15,8 @@ const TestimonialSection = () => {
         <ParallaxImage alt="authentic wood stomp" src={image} />
       </Flex>
       <Flex
-        px="4"
+        px={{ base: "4", md: "12" }}
+        py={{ base: 20, md: 20 }}
         flexDir="column"
         justifyContent="center"
         alignItems="center"
