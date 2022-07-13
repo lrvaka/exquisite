@@ -40,6 +40,7 @@ const InfoSection = () => {
             w={{ base: "300px", lg: "400px", "2xl": "500px" }}
           >
             <NextImage
+              alt="ewf stamp"
               src="/images/stamp.png"
               layout="fill"
               objectFit="cover"
@@ -97,7 +98,7 @@ const InfoSection = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <ParallaxImage src={image} />
+        <ParallaxImage alt="beautiful wood planks" src={image} />
       </Flex>
     </Flex>
   )

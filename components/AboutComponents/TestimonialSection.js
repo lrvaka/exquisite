@@ -12,7 +12,7 @@ const TestimonialSection = () => {
         minH="100%"
         flex={{ base: 1.5, "2xl": 1.25 }}
       >
-        <ParallaxImage src={image} />
+        <ParallaxImage alt="authentic wood stomp" src={image} />
       </Flex>
       <Flex
         px="4"

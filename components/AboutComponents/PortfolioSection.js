@@ -13,7 +13,7 @@ const PortfolioSection = () => (
     mb="24"
     minW="100%"
   >
-    <ParallaxImage src={image} />
+    <ParallaxImage alt="beautiful wood flooring in home backdrop" src={image} />
     <Flex flexDir="column" pos="absolute" top="calc(75% - 142px)" left="10%">
       <Heading
         color="brand.100"
