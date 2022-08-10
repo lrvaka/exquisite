@@ -1,18 +1,18 @@
-import { Box, Flex, Link, Container } from "@chakra-ui/react"
-import NextImage from "next/image"
-import NextLink from "next/link"
-import GsapContext from "../../store/gsap-context"
-import { useContext } from "react"
-import { Icon } from "@chakra-ui/react"
-import { HiPhone } from "react-icons/hi"
-import { AiOutlineMail } from "react-icons/ai"
-import { useRouter } from "next/router"
-import ResponsiveComponent from "../utils/ResponsiveComponent"
-import NavbarItems from "./Navbar/NavbarItems"
+import { Box, Flex, Link, Container } from "@chakra-ui/react";
+import NextImage from "next/image";
+import NextLink from "next/link";
+import GsapContext from "../../store/gsap-context";
+import { useContext } from "react";
+import { Icon } from "@chakra-ui/react";
+import { HiPhone } from "react-icons/hi";
+import { AiOutlineMail } from "react-icons/ai";
+import { useRouter } from "next/router";
+
+import NavbarItems from "./Navbar/NavbarItems";
 
 const Navbar = () => {
-  const { smoother } = useContext(GsapContext)
-  const router = useRouter()
+  const { smoother } = useContext(GsapContext);
+  const router = useRouter();
 
   return (
     <Box
@@ -32,7 +32,12 @@ const Navbar = () => {
               aria-label="home button"
               maxW={{ base: "90px", md: "90px", "2xl": "125px" }}
             >
-              <NextImage alt="ewf logo" src="/images/dark-logo.png" width={312} height={348} />
+              <NextImage
+                alt="ewf logo"
+                src="/images/dark-logo.png"
+                width={312}
+                height={348}
+              />
             </Link>
           </NextLink>
           <Flex
@@ -63,7 +68,7 @@ const Navbar = () => {
         </Flex>
       </Container>
     </Box>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
