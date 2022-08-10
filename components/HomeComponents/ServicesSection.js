@@ -1,13 +1,13 @@
-import { Box, Flex, Heading, Text, Icon } from "@chakra-ui/react"
-import SectionHeading from "../ui/SectionHeading"
-import { useRef, useEffect } from "react"
-import gsap from "gsap"
-import GsapContext from "../../store/gsap-context"
-import { useContext } from "react"
-import { HiArrowNarrowRight } from "react-icons/hi"
+import { Box, Flex, Heading, Text, Icon } from "@chakra-ui/react";
+import SectionHeading from "../ui/SectionHeading";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import GsapContext from "../../store/gsap-context";
+import { useContext } from "react";
+import { HiArrowNarrowRight } from "react-icons/hi";
 
 const ServicesItem = ({ heading, children }) => {
-  const { smoother } = useContext(GsapContext)
+  const { smoother } = useContext(GsapContext);
   return (
     <Flex
       flex={1}
@@ -17,7 +17,7 @@ const ServicesItem = ({ heading, children }) => {
       gap={4}
       p="10"
     >
-      <Box flexGrow={1} maxW="500px" m="0 auto">
+      <Box flex="1" maxW="500px" m="0 auto" display="flex" flexDir="column">
         <Heading
           pb={4}
           color="brand.200"
@@ -25,7 +25,12 @@ const ServicesItem = ({ heading, children }) => {
         >
           {heading}
         </Heading>
-        <Text color="white" fontSize={{ base: "md", md: "lg" }}>
+        <Text
+          alignSelf="center"
+          justifySelf="center"
+          color="white"
+          fontSize={{ base: "md", md: "lg" }}
+        >
           {children}
         </Text>
       </Box>
@@ -37,7 +42,7 @@ const ServicesItem = ({ heading, children }) => {
         justifyContent="center"
         color="brand.200"
         onClick={() => {
-          smoother.scrollTo("#contact", true, "center center")
+          smoother.scrollTo("#contact", true, "center center");
         }}
         gap="2"
       >
@@ -47,15 +52,15 @@ const ServicesItem = ({ heading, children }) => {
         <Icon as={HiArrowNarrowRight} />
       </Flex>
     </Flex>
-  )
-}
+  );
+};
 
 const ServicesSection = () => {
-  const containerRef = useRef()
-  const subHeadRef = useRef()
+  const containerRef = useRef();
+  const subHeadRef = useRef();
   useEffect(() => {
-    gsap.set(containerRef.current.children, { autoAlpha: 0, y: 50 })
-    gsap.set(subHeadRef.current, { autoAlpha: 0 })
+    gsap.set(containerRef.current.children, { autoAlpha: 0, y: 50 });
+    gsap.set(subHeadRef.current, { autoAlpha: 0 });
 
     let ani = gsap.to(containerRef.current.children, {
       y: 0,
@@ -65,7 +70,7 @@ const ServicesSection = () => {
       scrollTrigger: {
         trigger: containerRef.current,
       },
-    })
+    });
 
     let subAni = gsap.to(subHeadRef.current, {
       autoAlpha: 1,
@@ -75,12 +80,12 @@ const ServicesSection = () => {
       scrollTrigger: {
         trigger: subHeadRef.current,
       },
-    })
+    });
     return () => {
-      ani.kill()
-      subAni.kill()
-    }
-  }, [])
+      ani.kill();
+      subAni.kill();
+    };
+  }, []);
   return (
     <>
       <Flex flexDir="column" id="services">
@@ -110,34 +115,38 @@ const ServicesSection = () => {
           justifyContent="space-between"
           gap="4"
           alignSelf="center"
-          flexDir={["column", "column", "row"]}
+          flexDir={["column", "column", "column", "row"]}
           minW="100%"
           px={[0, 6, 12]}
           ref={containerRef}
         >
           <ServicesItem heading="Installation">
             We offer professional installation services for all types of wood
-            flooring, from classic hardwoods to more exotic options. No matter
-            what your style or budget is, we can help you find the perfect
-            flooring solution for your project.
+            flooring. No matter what your style or budget is, we can help you
+            find the perfect flooring solution for your project.
           </ServicesItem>
 
           <ServicesItem heading="Refinishing">
-            We specialize in making all types of floors look brand new, and our
-            work is guaranteed to impress. Whether you have hardwood, laminate,
-            or any other type of flooring, we can make it look like new again.
+            After some wear and tear, a refinishing on your wood floors is
+            needed. We specialize in making your wood floors look brand new, and
+            our work is guaranteed to impress.
           </ServicesItem>
 
           <ServicesItem heading="Repair">
-            There&apos;s nothing like coming home to a beautiful,
-            well-maintained wood floor. It gives your space an instant feeling
-            of luxury and refinement. But what happens when something goes wrong
-            and your wood floor is damaged? That&apos;s where we come in.
+            There&apos;s nothing like seeing a beautiful, well-maintained wood
+            floor. But what happens when something goes wrong and your wood
+            floor is damaged? That&apos;s where we come in.
+          </ServicesItem>
+
+          <ServicesItem heading="Maintenance">
+            Sometimes we need our floors to look brand new at all times. We
+            offer constant upkeep and maintenance to your wood floors, making
+            sure they stay at peak quality year round.
           </ServicesItem>
         </Flex>
       </Flex>
     </>
-  )
-}
+  );
+};
 
-export default ServicesSection
+export default ServicesSection;
