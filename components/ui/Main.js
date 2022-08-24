@@ -1,7 +1,5 @@
-import { Box, keyframes } from "@chakra-ui/react"
-import Head from "./Head"
-import { useContext } from "react"
-import GsapContext from "../../store/gsap-context"
+import { Box, keyframes } from "@chakra-ui/react";
+import Head from "./Head";
 
 const grainAnimation = keyframes`
   0%, 100% { transform:translate(0, 0); }
@@ -14,9 +12,9 @@ const grainAnimation = keyframes`
   70% { transform:translate(0%, 15%); }
   80% { transform:translate(3%, 35%); }
   90% { transform:translate(-10%, 10%); }
-`
+`;
 
-const animation = `${grainAnimation} 8s steps(10) infinite`
+const animation = `${grainAnimation} 8s steps(10) infinite`;
 
 const MainWrapper = ({ children, heading, ...props }) => {
   return (
@@ -44,7 +42,7 @@ const MainWrapper = ({ children, heading, ...props }) => {
         {children}
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default MainWrapper
+export default MainWrapper;
