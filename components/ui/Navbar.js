@@ -7,7 +7,6 @@ import { Icon } from "@chakra-ui/react";
 import { HiPhone } from "react-icons/hi";
 import { AiOutlineMail } from "react-icons/ai";
 import { useRouter } from "next/router";
-
 import NavbarItems from "./Navbar/NavbarItems";
 
 const Navbar = () => {
