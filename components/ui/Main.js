@@ -21,6 +21,7 @@ const MainWrapper = ({ children, heading, ...props }) => {
     <>
       <Head heading={heading} />
       <Box
+        as="main"
         _before={{
           animation: animation,
           backgroundImage: "url(/images/noise.webp)",
