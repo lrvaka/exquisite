@@ -8,7 +8,7 @@ import PageTransitionsDesktop from "./PageTransitions.desktop"
 import PageTransitionsMobile from "./PageTransitions.mobile"
 import PageTransitionsOther from "./PageTransitions.other"
 
-const MainComponent = styled.main`
+const MainComponent = styled.div`
   position: "relative";
 
   &.page-enter-active {
