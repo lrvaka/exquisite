@@ -1,5 +1,5 @@
-import Head from "next/head"
-import PropTypes from "prop-types"
+import Head from "next/head";
+import PropTypes from "prop-types";
 
 const DocHead = (props) => {
   return (
@@ -35,16 +35,7 @@ const DocHead = (props) => {
         )}
       </Head>
     </>
-  )
-}
+  );
+};
 
-DocHead.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string,
-  imageAlt: PropTypes.string,
-  twitter: PropTypes.string,
-}
-
-export default DocHead
+export default DocHead;

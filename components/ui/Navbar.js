@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <Box
       w="100%"
-      as="nav"
+      as="header"
       pos="fixed"
       zIndex="1"
       bgColor={{
@@ -40,6 +40,7 @@ const Navbar = () => {
             </Link>
           </NextLink>
           <Flex
+            as="nav"
             alignSelf="center"
             alignItems="center"
             flexDirection={["row-reverse", "row"]}
