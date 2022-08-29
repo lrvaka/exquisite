@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 
 module.exports = {
-  siteUrl: process.env.SITE_URL || "https://exquisitewoodfloors.com",
+  siteUrl: process.env.SITE_URL || "https://www.exquisitewoodfloors.com/",
   generateRobotsTxt: true, // (optional)
   // ...other options
-}
+};
