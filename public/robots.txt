@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://exquisitewoodfloors.com
+Host: https://www.exquisitewoodfloors.com
 
 # Sitemaps
-Sitemap: https://exquisitewoodfloors.com/sitemap.xml
+Sitemap: https://www.exquisitewoodfloors.com/sitemap.xml
