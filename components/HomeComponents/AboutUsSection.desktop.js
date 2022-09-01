@@ -1,37 +1,37 @@
-import { Box, Flex, Grid, Container, Text, Link } from "@chakra-ui/react"
-import SVGArrow from "../ui/SVGArrow"
-import { useContext, useEffect, useRef } from "react"
-import GsapContext from "../../store/gsap-context"
-import gsap from "gsap"
-import useArrayRef from "../hooks/useArrayRef"
-import SectionHeading from "../ui/SectionHeading"
-import aboutImage from "../../public/images/about.jpg"
-import aboutImage1 from "../../public/images/about-1.png"
-import aboutImage2 from "../../public/images/about-2.jpg"
-import ParallaxImage from "../ui/ParallaxImage"
-import NextImage from "next/image"
-import aboutUsImage from "../../public/images/about-us.png"
-import NextLink from "next/link"
+import { Box, Flex, Grid, Container, Text, Link } from "@chakra-ui/react";
+import SVGArrow from "../ui/SVGArrow";
+import { useContext, useEffect, useRef } from "react";
+import GsapContext from "../../store/gsap-context";
+import gsap from "gsap";
+import useArrayRef from "../hooks/useArrayRef";
+import SectionHeading from "../ui/SectionHeading";
+import aboutImage from "../../public/images/about.jpg";
+import aboutImage1 from "../../public/images/about-1.png";
+import aboutImage2 from "../../public/images/about-2.jpg";
+import ParallaxImage from "../ui/ParallaxImage";
+import NextImage from "next/image";
+import aboutUsImage from "../../public/images/about-us.png";
+import NextLink from "next/link";
 
 const AboutUsSectionDesktop = () => {
-  const [imageRefs, setImageRefs] = useArrayRef()
-  const { smoother } = useContext(GsapContext)
-  const containerRef = useRef()
-  const leftRef = useRef()
-  const rightRef = useRef()
+  const [imageRefs, setImageRefs] = useArrayRef();
+  const { smoother } = useContext(GsapContext);
+  const containerRef = useRef();
+  const leftRef = useRef();
+  const rightRef = useRef();
 
   useEffect(() => {
     if (!containerRef.current) {
-      return
+      return;
     }
 
-    let animation
+    let animation;
 
     gsap.set(imageRefs.current, {
       autoAlpha: 0.1,
       scale: 0.75,
       clipPath: "inset(100% 0 0 0)",
-    })
+    });
 
     imageRefs.current.forEach((image) => {
       animation = gsap.to(image, {
@@ -44,15 +44,15 @@ const AboutUsSectionDesktop = () => {
           end: "bottom bottom",
           onLeave: (self) => self.kill(false, true),
         },
-      })
-    })
+      });
+    });
 
     gsap.set(leftRef.current, {
       x: -50,
       opacity: 0.1,
       scale: 0.75,
       clipPath: "inset(100% 0 0 0)",
-    })
+    });
 
     let leftP = gsap.to(leftRef.current, {
       x: 0,
@@ -62,14 +62,14 @@ const AboutUsSectionDesktop = () => {
       ease: "power4.out",
       scrollTrigger: leftRef.current,
       duration: 1,
-    })
+    });
 
     gsap.set(rightRef.current, {
       x: 50,
       opacity: 0.1,
       scale: 0.75,
       clipPath: "inset(100% 0 0 0)",
-    })
+    });
 
     let rightP = gsap.to(rightRef.current, {
       x: 0,
@@ -79,14 +79,14 @@ const AboutUsSectionDesktop = () => {
       scale: 1,
       scrollTrigger: rightRef.current,
       duration: 1, // this will use the first box as the trigger
-    })
+    });
 
     return () => {
-      rightP.kill()
-      leftP.kill()
-      animation.kill()
-    }
-  }, [imageRefs])
+      rightP.kill();
+      leftP.kill();
+      animation.kill();
+    };
+  }, [imageRefs]);
 
   return (
     <>
@@ -121,8 +121,7 @@ const AboutUsSectionDesktop = () => {
           overflowX="hidden"
         >
           <SectionHeading pb="10" color="brand.200">
-            Your one stop shop for <br />
-            all your flooring needs
+            Your one stop shop for all your wood flooring needs
           </SectionHeading>
 
           <Flex pb="12" flexDir="column" gap="8">
@@ -135,7 +134,7 @@ const AboutUsSectionDesktop = () => {
             >
               Exquisite Wood Floors is a leading wood flooring company in the
               New York Metropolitan area that specializes in a wide range of
-              flooring projects from retail and commercial to residential and
+              wood flooring projects from retail and commercial to residential and
               hospitality, and much more.
             </Text>
             <Text
@@ -204,7 +203,7 @@ const AboutUsSectionDesktop = () => {
         </Box>
       </Grid>
     </>
-  )
-}
+  );
+};
 
-export default AboutUsSectionDesktop
+export default AboutUsSectionDesktop;

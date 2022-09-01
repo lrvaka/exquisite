@@ -101,13 +101,12 @@ const ServicesSection = () => {
           px="4"
         >
           <SectionHeading color="brand.500">
-            Got A Flooring Problem? <br />
-            We Have All The Solutions
+            Got A Wood Flooring Problem? We Have All The Solutions
           </SectionHeading>
 
           <Text ref={subHeadRef} fontSize={{ base: "md", sm: "lg" }}>
-            We cover everything that has to do with flooring, here are some of
-            the services we offer.
+            We cover everything that has to do with wood flooring, here are some
+            of the services we offer.
           </Text>
         </Flex>
 
