@@ -125,7 +125,7 @@ const HeroSection = () => {
         </Heading>
         <Text
           pos="relative"
-          as="h1"
+          as="h2"
           visibility="hidden"
           overflow="hidden"
           color="brand.500"

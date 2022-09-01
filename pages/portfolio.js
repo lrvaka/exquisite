@@ -1,5 +1,5 @@
-import { useRef } from "react"
-import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
+import { useRef } from "react";
+import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect";
 import {
   Box,
   Container,
@@ -9,40 +9,40 @@ import {
   Grid,
   Icon,
   Link,
-} from "@chakra-ui/react"
-import { IoOpen } from "react-icons/io5"
-import WorksModal from "../components/ui/Modal"
-import "keen-slider/keen-slider.min.css"
-import NextImage from "next/image"
-import ContactSection from "../components/HomeComponents/ContactSection"
-import MainWrapper from "../components/ui/Main"
-import Footer from "../components/ui/Footer"
-import gsap from "gsap"
-import GridItem from "../components/WorksComponents/GridItem"
-import ScrollTrigger from "gsap/dist/ScrollTrigger"
-import gridImage1 from "../public/images/works/carolina/8.jpg"
-import gridImage2 from "../public/images/works/carolina/3.jpg"
-import gridImage3 from "../public/images/works/carolina/1.jpg"
-import gridImage4 from "../public/images/works/carolina/4.jpg"
-import gridImage5 from "../public/images/works/orchard/3.jpg"
-import gridImage6 from "../public/images/works/orchard/2.jpg"
-import gridImage7 from "../public/images/works/orchard/7.jpg"
-import gridImage8 from "../public/images/works/orchard/6.jpg"
-import gridImage9 from "../public/images/works/orchard/9.jpg"
-import gridImage10 from "../public/images/works/hearst/1.jpg"
-import gridImage11 from "../public/images/works/hearst/2.jpg"
-import gridImage12 from "../public/images/works/hearst/3.jpg"
-import gridImage13 from "../public/images/works/hearst/4.jpg"
-import gridImage14 from "../public/images/works/hearst/5.jpg"
-import gridImage15 from "../public/images/works/gucci/1.jpg"
-import gridImage16 from "../public/images/works/gucci/2.jpg"
-import gridImage17 from "../public/images/works/gucci/3.jpg"
-import gridImage18 from "../public/images/works/gucci/4.jpg"
-import gridImage20 from "../public/images/works/gucci/6.jpg"
-import gridImage21 from "../public/images/works/gucci/7.jpg"
-import useArrayRef from "../components/hooks/useArrayRef"
-import Marquee from "react-fast-marquee"
-import workSlides from "../lib/work-slides"
+} from "@chakra-ui/react";
+import { IoOpen } from "react-icons/io5";
+import WorksModal from "../components/ui/Modal";
+import "keen-slider/keen-slider.min.css";
+import NextImage from "next/image";
+import ContactSection from "../components/HomeComponents/ContactSection";
+import MainWrapper from "../components/ui/Main";
+import Footer from "../components/ui/Footer";
+import gsap from "gsap";
+import GridItem from "../components/WorksComponents/GridItem";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import gridImage1 from "../public/images/works/carolina/8.jpg";
+import gridImage2 from "../public/images/works/carolina/3.jpg";
+import gridImage3 from "../public/images/works/carolina/1.jpg";
+import gridImage4 from "../public/images/works/carolina/4.jpg";
+import gridImage5 from "../public/images/works/orchard/3.jpg";
+import gridImage6 from "../public/images/works/orchard/2.jpg";
+import gridImage7 from "../public/images/works/orchard/7.jpg";
+import gridImage8 from "../public/images/works/orchard/6.jpg";
+import gridImage9 from "../public/images/works/orchard/9.jpg";
+import gridImage10 from "../public/images/works/hearst/1.jpg";
+import gridImage11 from "../public/images/works/hearst/2.jpg";
+import gridImage12 from "../public/images/works/hearst/3.jpg";
+import gridImage13 from "../public/images/works/hearst/4.jpg";
+import gridImage14 from "../public/images/works/hearst/5.jpg";
+import gridImage15 from "../public/images/works/gucci/1.jpg";
+import gridImage16 from "../public/images/works/gucci/2.jpg";
+import gridImage17 from "../public/images/works/gucci/3.jpg";
+import gridImage18 from "../public/images/works/gucci/4.jpg";
+import gridImage20 from "../public/images/works/gucci/6.jpg";
+import gridImage21 from "../public/images/works/gucci/7.jpg";
+import useArrayRef from "../components/hooks/useArrayRef";
+import Marquee from "react-fast-marquee";
+import workSlides from "../lib/work-slides";
 
 const meta = {
   title: "Portfolio - Exquisite Wood Floors",
@@ -51,7 +51,7 @@ const meta = {
   twitter: "https://twitter.com/ewfny",
   imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.png",
   imageAlt: "Exquisite Wood Floors",
-}
+};
 
 const MarqueeText = ({ children, ...props }) => (
   <Heading
@@ -71,7 +71,7 @@ const MarqueeText = ({ children, ...props }) => (
   >
     {children}
   </Heading>
-)
+);
 
 const MarqueeSection = ({ text, ...props }) => (
   <Marquee gradient={false}>
@@ -82,11 +82,12 @@ const MarqueeSection = ({ text, ...props }) => (
       <MarqueeText>{text}</MarqueeText>
     </Flex>
   </Marquee>
-)
+);
 
 const WorksHeading = () => (
   <Container pos="relative" maxW="container.xl" px="4">
     <Heading
+      as="h1"
       pb="10"
       color="brand.500"
       fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
@@ -120,18 +121,18 @@ const WorksHeading = () => (
       />
     </Box>
   </Container>
-)
+);
 
 const Works = () => {
-  const el = useRef()
-  const [gridItems, setGridItems] = useArrayRef()
+  const el = useRef();
+  const [gridItems, setGridItems] = useArrayRef();
 
   useIsomorphicLayoutEffect(() => {
     if (!gridItems.current) {
-      return
+      return;
     }
 
-    gsap.registerPlugin(ScrollTrigger)
+    gsap.registerPlugin(ScrollTrigger);
 
     gridItems.current.forEach((e, i) => {
       gsap.fromTo(
@@ -148,9 +149,9 @@ const Works = () => {
           duration: 2,
           scrollTrigger: e,
         }
-      )
-    }, [])
-  })
+      );
+    }, []);
+  });
 
   return (
     <MainWrapper pt="20vh" heading={meta}>
@@ -487,7 +488,7 @@ const Works = () => {
         color="brand.100"
       />
     </MainWrapper>
-  )
-}
+  );
+};
 
-export default Works
+export default Works;
