@@ -1,13 +1,13 @@
-import { Flex, Box, Heading, Text } from "@chakra-ui/react"
-import NextImage from "next/image"
-import { useContext } from "react"
-import SVGArrow from "../ui/SVGArrow"
-import GsapContext from "../../store/gsap-context"
-import ParallaxImage from "../ui/ParallaxImage"
-import image from "../../public/images/planks.jpeg"
+import { Flex, Box, Heading, Text } from "@chakra-ui/react";
+import NextImage from "next/image";
+import { useContext } from "react";
+import SVGArrow from "../ui/SVGArrow";
+import GsapContext from "../../store/gsap-context";
+import ParallaxImage from "../ui/ParallaxImage";
+import image from "../../public/images/planks.jpeg";
 
 const InfoSection = () => {
-  const { smoother } = useContext(GsapContext)
+  const { smoother } = useContext(GsapContext);
 
   return (
     <Flex
@@ -50,6 +50,7 @@ const InfoSection = () => {
           <Heading
             mb="10"
             color="brand.100"
+            as="h1"
             fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
             fontWeight="900"
             lineHeight="100%"
@@ -80,7 +81,7 @@ const InfoSection = () => {
             color="brand.200"
             w="max-content"
             onClick={() => {
-              smoother.scrollTo("#contact", true, "center center")
+              smoother.scrollTo("#contact", true, "center center");
             }}
             gap="4"
           >
@@ -102,7 +103,7 @@ const InfoSection = () => {
         <ParallaxImage alt="beautiful wood planks" src={image} />
       </Flex>
     </Flex>
-  )
-}
+  );
+};
 
-export default InfoSection
+export default InfoSection;
