@@ -121,7 +121,7 @@ const AboutUsSectionDesktop = () => {
           overflowX="hidden"
         >
           <SectionHeading pb="10" color="brand.200">
-            Your one stop shop for all your wood flooring needs
+            Your one stop shop for all <br /> your wood flooring needs
           </SectionHeading>
 
           <Flex pb="12" flexDir="column" gap="8">
@@ -134,8 +134,8 @@ const AboutUsSectionDesktop = () => {
             >
               Exquisite Wood Floors is a leading wood flooring company in the
               New York Metropolitan area that specializes in a wide range of
-              wood flooring projects from retail and commercial to residential and
-              hospitality, and much more.
+              wood flooring projects from retail and commercial to residential
+              and hospitality, and much more.
             </Text>
             <Text
               ref={rightRef}
