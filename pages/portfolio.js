@@ -177,48 +177,51 @@ const Works = () => {
             left="50%"
             color="white"
             fontWeight="black"
-            textAlign="center"
             fontSize={["6xl", "9xl"]}
             lineHeight="100%"
+            textAlign="center"
           >
-            Peloton HQ
+            Peleton HQ
           </Heading>
           <GridItem
             alt={`beautiful carolina herrera job flooring 1`}
             ref={setGridItems}
             data-speed="1.1"
-            gridRow="2 / 10"
-            gridColumn="2 / 10"
+            gridRow="1 / 10"
+            gridColumn="1 / 5"
             src={workSlides.peloton[4]}
           />
+
           <GridItem
-            alt={`beautiful carolina herrera job flooring 1`}
+            alt={`beautiful carolina herrera job flooring 3`}
             ref={setGridItems}
-            data-speed="1.1"
-            gridRow="1 / 5"
-            gridColumn="1 / 5"
-            src={workSlides.peloton[3]}
-          />
-          <GridItem
-            alt={`beautiful carolina herrera job flooring 1`}
-            ref={setGridItems}
-            data-speed="1.2"
-            gridRow="7 / 10"
-            gridColumn="7 / 10"
-            src={workSlides.peloton[2]}
-          />
-          <GridItem
-            alt={`beautiful carolina herrera job flooring 1`}
-            ref={setGridItems}
-            data-speed="1"
-            gridRow="1 / 5"
-            gridColumn="8 / 15"
+            data-speed="1.3"
+            gridRow="5 / 10"
+            gridColumn="5 / 11"
             src={workSlides.peloton[1]}
+          />
+
+          <GridItem
+            alt={`beautiful carolina herrera job flooring 3`}
+            ref={setGridItems}
+            data-speed="1.3"
+            gridRow="1 / 6"
+            gridColumn="5 / 11"
+            src={workSlides.peloton[6]}
+          />
+
+          <GridItem
+            alt={`beautiful carolina herrera job flooring 3`}
+            ref={setGridItems}
+            data-speed="1.3"
+            gridRow="1 / 4"
+            gridColumn="1 / 4"
+            src={workSlides.peloton[26]}
           />
         </Grid>
       </WorksModal>
 
-      <MarqueeSection text="Reliable" />
+      <MarqueeSection text="Quality" />
 
       <WorksModal slides={workSlides.carolina}>
         <Grid
