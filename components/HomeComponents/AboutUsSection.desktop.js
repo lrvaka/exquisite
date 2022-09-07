@@ -7,7 +7,9 @@ import useArrayRef from "../hooks/useArrayRef";
 import SectionHeading from "../ui/SectionHeading";
 import aboutImage from "../../public/images/about.jpg";
 import aboutImage1 from "../../public/images/about-1.png";
-import aboutImage2 from "../../public/images/about-2.jpg";
+import aboutImage2 from "../../public/images/works/ferrari/3.jpeg";
+import aboutImage3 from "../../public/images/about-3.jpg";
+import aboutImage4 from "../../public/images/works/peloton/28.jpg";
 import ParallaxImage from "../ui/ParallaxImage";
 import NextImage from "next/image";
 import aboutUsImage from "../../public/images/about-us.png";
@@ -181,7 +183,7 @@ const AboutUsSectionDesktop = () => {
           gridColumn="20 / 26"
           overflow="hidden"
         >
-          <ParallaxImage alt="beautiful wood floor home" src={aboutImage1} />
+          <ParallaxImage alt="beautiful wood floor home" src={aboutImage4} />
         </Box>
         <Box
           ref={setImageRefs}
@@ -190,7 +192,7 @@ const AboutUsSectionDesktop = () => {
           gridColumn="8 / 19"
           overflow="hidden"
         >
-          <ParallaxImage alt="beautiful wood floor home" src={aboutImage2} />
+          <ParallaxImage alt="beautiful wood floor home" src={aboutImage3} />
         </Box>
         <Box
           ref={setImageRefs}
@@ -199,7 +201,7 @@ const AboutUsSectionDesktop = () => {
           gridColumn="1 / 7"
           overflow="hidden"
         >
-          <ParallaxImage alt="beautiful wood floor home" src={aboutImage} />
+          <ParallaxImage alt="beautiful wood floor home" src={aboutImage2} />
         </Box>
       </Grid>
     </>

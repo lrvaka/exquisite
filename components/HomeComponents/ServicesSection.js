@@ -93,7 +93,7 @@ const ServicesSection = () => {
           flexDir="column"
           justifyContent="center"
           alignItems="center"
-          maxW="500px"
+          maxW="600px"
           textAlign="center"
           pb="10"
           alignSelf="center"
@@ -101,7 +101,8 @@ const ServicesSection = () => {
           px="4"
         >
           <SectionHeading color="brand.500">
-            Got A Wood Flooring Problem? We Have All The Solutions
+            Got A Wood Flooring Problem? <br />
+            We Have All The Solutions
           </SectionHeading>
 
           <Text ref={subHeadRef} fontSize={{ base: "md", sm: "lg" }}>

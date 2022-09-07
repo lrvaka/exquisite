@@ -157,7 +157,7 @@ const Works = () => {
     <MainWrapper pt="20vh" heading={meta}>
       <WorksHeading />
 
-      <WorksModal slides={workSlides.carolina}>
+      <WorksModal slides={workSlides.peloton}>
         <Grid
           maxW="container.xl"
           pos="relative"
@@ -166,6 +166,69 @@ const Works = () => {
           templateColumns="repeat(10, 1fr)"
           templateRows="repeat(10,1fr)"
           mb="40"
+          ref={el}
+        >
+          <Heading
+            zIndex="2"
+            mixBlendMode="difference"
+            pos="absolute"
+            transform="translate(-50%,-50%)"
+            top="50%"
+            left="50%"
+            color="white"
+            fontWeight="black"
+            textAlign="center"
+            fontSize={["6xl", "9xl"]}
+            lineHeight="100%"
+          >
+            Peloton HQ
+          </Heading>
+          <GridItem
+            alt={`beautiful carolina herrera job flooring 1`}
+            ref={setGridItems}
+            data-speed="1.1"
+            gridRow="2 / 10"
+            gridColumn="2 / 10"
+            src={workSlides.peloton[4]}
+          />
+          <GridItem
+            alt={`beautiful carolina herrera job flooring 1`}
+            ref={setGridItems}
+            data-speed="1.1"
+            gridRow="1 / 5"
+            gridColumn="1 / 5"
+            src={workSlides.peloton[3]}
+          />
+          <GridItem
+            alt={`beautiful carolina herrera job flooring 1`}
+            ref={setGridItems}
+            data-speed="1.2"
+            gridRow="7 / 10"
+            gridColumn="7 / 10"
+            src={workSlides.peloton[2]}
+          />
+          <GridItem
+            alt={`beautiful carolina herrera job flooring 1`}
+            ref={setGridItems}
+            data-speed="1"
+            gridRow="1 / 5"
+            gridColumn="8 / 15"
+            src={workSlides.peloton[1]}
+          />
+        </Grid>
+      </WorksModal>
+
+      <MarqueeSection text="Reliable" />
+
+      <WorksModal slides={workSlides.carolina}>
+        <Grid
+          maxW="container.xl"
+          pos="relative"
+          m="0 auto"
+          minH={["500px", "800px"]}
+          templateColumns="repeat(10, 1fr)"
+          templateRows="repeat(10,1fr)"
+          my="40"
           ref={el}
         >
           <Heading
