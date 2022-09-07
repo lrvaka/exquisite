@@ -40,6 +40,10 @@ import gridImage17 from "../public/images/works/gucci/3.jpg";
 import gridImage18 from "../public/images/works/gucci/4.jpg";
 import gridImage20 from "../public/images/works/gucci/6.jpg";
 import gridImage21 from "../public/images/works/gucci/7.jpg";
+import peloton30 from "../public/images/works/peloton/30.jpg";
+import peloton27 from "../public/images/works/peloton/27.jpg";
+import peloton32 from "../public/images/works/peloton/32.jpg";
+import peloton20 from "../public/images/works/peloton/20.jpg";
 import useArrayRef from "../components/hooks/useArrayRef";
 import Marquee from "react-fast-marquee";
 import workSlides from "../lib/work-slides";
@@ -124,7 +128,6 @@ const WorksHeading = () => (
 );
 
 const Works = () => {
-  const el = useRef();
   const [gridItems, setGridItems] = useArrayRef();
 
   useIsomorphicLayoutEffect(() => {
@@ -166,7 +169,6 @@ const Works = () => {
           templateColumns="repeat(10, 1fr)"
           templateRows="repeat(10,1fr)"
           mb="40"
-          ref={el}
         >
           <Heading
             zIndex="2"
@@ -184,44 +186,44 @@ const Works = () => {
             Peleton HQ
           </Heading>
           <GridItem
-            alt={`beautiful carolina herrera job flooring 1`}
+            alt={`beautiful peloton flooring 1`}
             ref={setGridItems}
             data-speed="1.1"
             gridRow="1 / 10"
             gridColumn="1 / 5"
-            src={workSlides.peloton[4]}
+            src={peloton30}
           />
 
           <GridItem
-            alt={`beautiful carolina herrera job flooring 3`}
+            alt={`beautiful peloton flooring 2`}
             ref={setGridItems}
             data-speed="1.3"
             gridRow="5 / 10"
             gridColumn="5 / 11"
-            src={workSlides.peloton[1]}
+            src={peloton27}
           />
 
           <GridItem
-            alt={`beautiful carolina herrera job flooring 3`}
+            alt={`beautiful peloton flooring 3`}
             ref={setGridItems}
             data-speed="1.3"
             gridRow="1 / 6"
             gridColumn="5 / 11"
-            src={workSlides.peloton[6]}
+            src={peloton32}
           />
 
           <GridItem
-            alt={`beautiful carolina herrera job flooring 3`}
+            alt={`beautiful peloton flooring 4`}
             ref={setGridItems}
             data-speed="1.3"
             gridRow="1 / 4"
             gridColumn="1 / 4"
-            src={workSlides.peloton[26]}
+            src={peloton20}
           />
         </Grid>
       </WorksModal>
 
-      <MarqueeSection text="Quality" />
+      <MarqueeSection text="Reliable" />
 
       <WorksModal slides={workSlides.carolina}>
         <Grid
@@ -232,7 +234,6 @@ const Works = () => {
           templateColumns="repeat(10, 1fr)"
           templateRows="repeat(10,1fr)"
           my="40"
-          ref={el}
         >
           <Heading
             zIndex="2"
@@ -368,7 +369,6 @@ const Works = () => {
           templateColumns="repeat(10, 1fr)"
           templateRows="repeat(10,1fr)"
           my="40"
-          ref={el}
         >
           <Heading
             zIndex="2"
@@ -439,7 +439,6 @@ const Works = () => {
           templateColumns="repeat(10, 1fr)"
           templateRows="repeat(10,1fr)"
           my="40"
-          ref={el}
         >
           <Heading
             zIndex="2"
@@ -517,7 +516,6 @@ const Works = () => {
         m="0 auto"
         mb="20"
         minH="150px"
-        ref={el}
       >
         <WorksModal slides={workSlides.all}>
           <Link
