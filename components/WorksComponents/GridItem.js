@@ -2,7 +2,7 @@ import GridImage from "./GridImage";
 import { useRef } from "react";
 import { Box } from "@chakra-ui/react";
 import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+
 import gsap from "gsap";
 
 // eslint-disable-next-line react/display-name

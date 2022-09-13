@@ -11,27 +11,26 @@ import {
   ModalFooter,
   Box,
   Flex,
-} from "@chakra-ui/react"
-import { useKeenSlider } from "keen-slider/react"
-import NextImage from "next/image"
-import { useState } from "react"
-import "keen-slider/keen-slider.min.css"
-import GridImage from "../WorksComponents/GridImage"
+} from "@chakra-ui/react";
+import { useKeenSlider } from "keen-slider/react";
+import NextImage from "next/image";
+import { useState } from "react";
+import "keen-slider/keen-slider.min.css";
 
 function PortfolioModal({ slides, children }) {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [loaded, setLoaded] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
     loop: true,
     initial: 0,
     slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel)
+      setCurrentSlide(slider.track.details.rel);
     },
     created() {
-      setLoaded(true)
+      setLoaded(true);
     },
-  })
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  });
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
@@ -49,8 +48,8 @@ function PortfolioModal({ slides, children }) {
             <Flex
               ref={sliderRef}
               className="keen-slider"
-              minW="350px"
-              maxW="50vw"
+              minW="400px"
+              maxW="750px"
             >
               <>
                 <Arrow
@@ -67,10 +66,10 @@ function PortfolioModal({ slides, children }) {
                 />
               </>
 
-              {slides.map((e) => (
+              {slides.map((e, i) => (
                 <Flex
                   className="keen-slider__slide"
-                  key={e}
+                  key={`${e} + ${i}`}
                   justifyContent="center"
                 >
                   <NextImage
@@ -94,7 +93,7 @@ function PortfolioModal({ slides, children }) {
         {children}
       </Box>
     </>
-  )
+  );
 }
 
 function Arrow(props) {
@@ -143,7 +142,7 @@ function Arrow(props) {
         </Box>
       )}
     </>
-  )
+  );
 }
 
-export default PortfolioModal
+export default PortfolioModal;
