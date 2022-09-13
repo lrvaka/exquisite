@@ -13,7 +13,7 @@ import NextImage from "next/image";
 import aboutUsImage from "../../public/images/about-us.png";
 import NextLink from "next/link";
 
-const AboutUsSectionDesktop = () => {
+const AboutUsSection= () => {
   const [imageRefs, setImageRefs] = useArrayRef();
   const { smoother } = useContext(GsapContext);
   const containerRef = useRef();
@@ -206,4 +206,4 @@ const AboutUsSectionDesktop = () => {
   );
 };
 
-export default AboutUsSectionDesktop;
+export default AboutUsSection;

@@ -3,7 +3,7 @@ import NextImage from "next/image"
 const GridImage = ({ alt, ...props }) => (
   <NextImage
     alt={alt}
-    sizes="25vw"
+    sizes="50vw"
     priority="true"
     placeholder="blur"
     layout="fill"
