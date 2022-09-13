@@ -1,20 +1,19 @@
-import Head from "next/head"
-import dynamic from "next/dynamic"
-import SlideShowSection from "../components/HomeComponents/SlideshowSection"
-import ContactSection from "../components/HomeComponents/ContactSection"
-import HeroSection from "../components/HomeComponents/HeroSection"
-import AboutUsSection from "../components/HomeComponents/AboutUsSection"
-import Footer from "../components/ui/Footer"
-import React from "react"
-import MainWrapper from "../components/ui/Main"
-import ServicesSection from "../components/HomeComponents/ServicesSection"
-import AboutUsSectionDesktop from "../components/HomeComponents/AboutUsSection.desktop"
-import TestimonialSection from "../components/HomeComponents/TestimonialSection"
-import MarqueeSection from "../components/HomeComponents/MarqueeSection"
+import Head from "next/head";
+import dynamic from "next/dynamic";
+import SlideShowSection from "../components/HomeComponents/SlideshowSection";
+import ContactSection from "../components/HomeComponents/ContactSection";
+import HeroSection from "../components/HomeComponents/HeroSection";
+import Footer from "../components/ui/Footer";
+import React from "react";
+import MainWrapper from "../components/ui/Main";
+import ServicesSection from "../components/HomeComponents/ServicesSection";
+import AboutUsSection from "../components/HomeComponents/AboutUsSection";
+import TestimonialSection from "../components/HomeComponents/TestimonialSection";
+import MarqueeSection from "../components/HomeComponents/MarqueeSection";
 
 const MessageSection = dynamic(() =>
   import("../components/HomeComponents/MessageSectionAnimation")
-)
+);
 
 const meta = {
   title: "Exquisite Wood Floors: Hardwood Flooring You Can Trust",
@@ -24,7 +23,7 @@ const meta = {
   twitter: "https://twitter.com/exquisitewoodfloors",
   imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.png",
   imageAlt: "Exquisite Wood Floors",
-}
+};
 
 const Home = (props) => {
   return (
@@ -35,7 +34,7 @@ const Home = (props) => {
 
       <HeroSection />
       <MarqueeSection />
-      <AboutUsSectionDesktop />
+      <AboutUsSection />
       <TestimonialSection />
       <ServicesSection />
       <MessageSection />
@@ -43,7 +42,7 @@ const Home = (props) => {
       <ContactSection logoColor="brand.500" />
       <Footer bgColor="brand.100" />
     </MainWrapper>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
