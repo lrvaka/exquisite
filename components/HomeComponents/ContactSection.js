@@ -16,15 +16,15 @@ import {
   useClipboard,
   PopoverContent,
   PopoverBody,
-} from "@chakra-ui/react"
-import SVGArrow from "../ui/SVGArrow"
-import { AiOutlineMail } from "react-icons/ai"
-import { BsInstagram } from "react-icons/bs"
-import { HiPhone } from "react-icons/hi"
-import { IoLocationOutline } from "react-icons/io5"
-import { useForm, ValidationError } from "@formspree/react"
-import ScrollTrigger from "gsap/dist/ScrollTrigger"
-import { FaFacebookSquare, FaTiktok } from "react-icons/fa"
+} from "@chakra-ui/react";
+import SVGArrow from "../ui/SVGArrow";
+import { AiOutlineMail } from "react-icons/ai";
+import { BsInstagram, BsLinkedin } from "react-icons/bs";
+import { HiPhone } from "react-icons/hi";
+import { IoLocationOutline } from "react-icons/io5";
+import { useForm, ValidationError } from "@formspree/react";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { FaFacebookSquare, FaTiktok } from "react-icons/fa";
 
 const ContactInfoText = ({
   children,
@@ -42,10 +42,10 @@ const ContactInfoText = ({
   >
     {children}
   </Heading>
-)
+);
 
 const ContactInfoSection = ({ contactInfoTextColor, logoColor }) => {
-  const { hasCopied, onCopy } = useClipboard("+1 (914)-237-7898")
+  const { hasCopied, onCopy } = useClipboard("+1 (914)-237-7898");
   return (
     <Flex
       maxW={["none", "none", "none", "300px"]}
@@ -88,6 +88,15 @@ const ContactInfoSection = ({ contactInfoTextColor, logoColor }) => {
       <Flex justifyContent="center" gap="2">
         <Link
           alignSelf="center"
+          aria-label="our linkedin page"
+          href="https://www.linkedin.com/company/exquisite-wood-floors/"
+          target="_blank"
+          width="max-content"
+        >
+          <Icon color={logoColor} as={BsLinkedin} w={5} h={5} />
+        </Link>
+        <Link
+          alignSelf="center"
           aria-label="our instagram page"
           href="https://www.instagram.com/exquisitewoodfloors/"
           target="_blank"
@@ -106,7 +115,7 @@ const ContactInfoSection = ({ contactInfoTextColor, logoColor }) => {
         </Link>
         <Link
           alignSelf="center"
-          aria-label="our facebook page"
+          aria-label="our tik-tok page"
           href="https://www.tiktok.com/@exquisitewoodfloors"
           target="_blank"
           width="max-content"
@@ -115,16 +124,16 @@ const ContactInfoSection = ({ contactInfoTextColor, logoColor }) => {
         </Link>
       </Flex>
     </Flex>
-  )
-}
+  );
+};
 
 const ContactForm = ({ contactFormVariant, formLabelColor }) => {
-  const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM)
+  const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM);
 
   if (state.succeeded) {
     setTimeout(() => {
-      ScrollTrigger.refresh()
-    }, 100)
+      ScrollTrigger.refresh();
+    }, 100);
     return (
       <Container
         maxW="sm"
@@ -142,7 +151,7 @@ const ContactForm = ({ contactFormVariant, formLabelColor }) => {
           experience. We will be in touch with you shortly.
         </Text>
       </Container>
-    )
+    );
   }
 
   return (
@@ -228,8 +237,8 @@ const ContactForm = ({ contactFormVariant, formLabelColor }) => {
         </Box>
       </Flex>
     </Stack>
-  )
-}
+  );
+};
 
 const ContactSection = ({
   headingColor = "brand.500",
@@ -274,6 +283,6 @@ const ContactSection = ({
       contactInfoTextColor={contactInfoTextColor}
     />
   </Container>
-)
+);
 
-export default ContactSection
+export default ContactSection;
