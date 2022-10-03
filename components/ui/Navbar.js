@@ -43,10 +43,11 @@ const Navbar = () => {
             as="nav"
             alignSelf="center"
             alignItems="center"
-            flexDirection={["row-reverse", "row"]}
+            flexDirection={["row-reverse", "row-reverse", "row"]}
           >
             <NavbarItems />
             <Link
+              border="1px solid #213a30"
               as="button"
               onClick={() =>
                 smoother.scrollTo("#contact", true, "center center")

@@ -4,7 +4,7 @@ import NavbarItemsMobile from "./NavbarItems.mobile"
 
 const NavbarItems = () => (
   <ResponsiveComponent
-    mobileSize="700"
+    mobileSize="768"
     mobileComponents={<NavbarItemsMobile />}
     desktopComponents={<NavbarItemsDesktop />}
   />

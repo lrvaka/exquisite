@@ -48,7 +48,7 @@ function PortfolioModal({ slides, children }) {
             <Flex
               ref={sliderRef}
               className="keen-slider"
-              minW="400px"
+              minW="375px"
               maxW="750px"
             >
               <>
