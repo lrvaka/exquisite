@@ -1,26 +1,25 @@
-import React, { useState } from "react"
-import testimonials from "../../lib/testimonials"
-import { useKeenSlider } from "keen-slider/react"
-import "keen-slider/keen-slider.min.css"
-import { Box, Flex, Text } from "@chakra-ui/react"
+import React, { useState } from "react";
+import testimonials from "../../lib/testimonials";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 
 const TestimonialSlider = () => {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [loaded, setLoaded] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
     loop: true,
     initial: 0,
     slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel)
+      setCurrentSlide(slider.track.details.rel);
     },
     created() {
-      setLoaded(true)
+      setLoaded(true);
     },
-  })
+  });
 
   return (
     <>
-      <Flex ref={sliderRef} className="keen-slider" pos="relative" maxW="90vw">
+      <div ref={sliderRef} className="keen-slider relative max-w-[90vw]">
         {loaded && instanceRef.current && (
           <>
             <Arrow
@@ -38,55 +37,27 @@ const TestimonialSlider = () => {
           </>
         )}
         {testimonials.map((e, i) => (
-          <Flex
-            justifyContent="center"
-            flexDir="column"
-            key={i}
-            className="keen-slider__slide"
-          >
-            <Flex
-              maxW="850px"
-              flexDir="column"
-              justifyContent="center"
-              px="8"
-              m="0 auto"
-            >
-              <Text
-                as="blockquote"
-                color="white"
-                fontSize={{ base: "sm", md: "xl" }}
-                _css={{ hangingPunctuation: "first last" }}
-              >
+          <div className="keen-slider__slide justify-center flex-col " key={i}>
+            <div className="max-w-[850px] flex-col justify-center px-8 mx-auto ">
+              <blockquote className="text-theme-10 text-sm md:text-xl max-w-prose">
                 {e.test}
-              </Text>
-              <Text
-                fontSize={{ base: "sm", md: "xl" }}
-                color="brand.100"
-                fontStyle="italic"
-                textAlign="right"
-              >
+              </blockquote>
+              <p className="text-sm md:text-xl text-theme-100 italic text-right">
                 {e.author}
-              </Text>
-            </Flex>
-          </Flex>
+              </p>
+            </div>
+          </div>
         ))}
-      </Flex>
+      </div>
     </>
-  )
-}
+  );
+};
 
 function Arrow(props) {
   return (
     <>
       {props.left && (
-        <Box
-          w="20px"
-          position="absolute"
-          top="50%"
-          transform="translateY(-50%)"
-          cursor="pointer"
-          zIndex="2"
-        >
+        <div className="w-[20px] absolute top-1/2 -translate-y-1/2 cursor-pointer z-[2]">
           <svg
             onClick={props.onClick}
             xmlns="http://www.w3.org/2000/svg"
@@ -98,18 +69,10 @@ function Arrow(props) {
               d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"
             />
           </svg>
-        </Box>
+        </div>
       )}
       {!props.left && (
-        <Box
-          w="20px"
-          position="absolute"
-          top="50%"
-          transform="translateY(-50%)"
-          cursor="pointer"
-          left="calc(100% - 20px)"
-          zIndex="2"
-        >
+        <div className="w-[20px] absolute top-1/2 -translate-y-1/2 left-[calc(100%-20px)] cursor-pointer z-[2]">
           <svg
             onClick={props.onClick}
             xmlns="http://www.w3.org/2000/svg"
@@ -118,10 +81,10 @@ function Arrow(props) {
           >
             <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
           </svg>
-        </Box>
+        </div>
       )}
     </>
-  )
+  );
 }
 
-export default TestimonialSlider
+export default TestimonialSlider;

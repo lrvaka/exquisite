@@ -1,47 +1,26 @@
-import { Flex, Heading, Link, Icon } from "@chakra-ui/react"
-import NextLink from "next/link"
-import ParallaxImage from "../ui/ParallaxImage"
-import { BsArrowRight } from "react-icons/bs"
-import image from "../../public/images/view-works.jpeg"
+import NextLink from "next/link";
+import ParallaxImage from "../ui/ParallaxImage";
+import { BsArrowRight } from "react-icons/bs";
+import image from "../../public/images/view-works.jpeg";
 
 const PortfolioSection = () => (
-  <Flex
-    overflowY="hidden"
-    pos="relative"
-    minH="500px"
-    mt="-700px"
-    mb="24"
-    minW="100%"
-  >
+  <div className="flex overflow-y-hidden relative min-h-[500px] mt-[-700px] mb-24 min-w-full">
     <ParallaxImage alt="beautiful wood flooring in home backdrop" src={image} />
-    <Flex flexDir="column" pos="absolute" top="calc(75% - 142px)" left="10%">
-      <Heading
-        color="brand.100"
-        fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
-        fontWeight="900"
-        lineHeight="100%"
+    <div className="flex flex-col absolute top-[calc(75%-142px)] left-[10%]">
+      <h2
+        className="text-theme-100 text-5xl md:text-5xl lg:text-8xl font-black font-heading"
         borderBottom="1px #979a6f solid"
       >
         Portfolio
-      </Heading>
+      </h2>
       <NextLink href="/portfolio" passHref>
-        <Link
-          fontSize={{ base: "md", sm: "md", md: "md", lg: "lg" }}
-          display="flex"
-          alignItems="center"
-          maxW="max-content"
-          py="2"
-          px="4"
-          bgColor="brand.500"
-          color="brand.100"
-          border="1px solid #213a30"
-        >
+        <a className="text-md lg:text-lg flex items-center max-w-max py-2 px-4 bg-theme-500 text-theme-100">
           View Projects
-          <Icon as={BsArrowRight} ml="2" />
-        </Link>
+          <BsArrowRight className="ml-2" />
+        </a>
       </NextLink>
-    </Flex>
-  </Flex>
-)
+    </div>
+  </div>
+);
 
-export default PortfolioSection
+export default PortfolioSection;

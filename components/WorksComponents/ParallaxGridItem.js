@@ -1,12 +1,11 @@
-import { Box } from "@chakra-ui/react"
-import GridImage from "./GridImage"
+import GridImage from "./GridImage";
 
 const ParallaxGridItem = ({ src, ...props }) => (
-  <Box pos="relative" overflow="hidden" {...props}>
-    <Box data-speed="auto" pos="relative" w="100%" h="160%">
+  <div className="relative overflow-hidden" {...props}>
+    <div className="relative w-full h-[160%]" data-speed="auto">
       <GridImage src={src} />
-    </Box>
-  </Box>
-)
+    </div>
+  </div>
+);
 
-export default ParallaxGridItem
+export default ParallaxGridItem;

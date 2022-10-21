@@ -1,44 +1,23 @@
-import { Flex, Box, Heading } from "@chakra-ui/react"
-import TestimonialSlider from "./TestimonialSlider"
-import ParallaxImage from "../ui/ParallaxImage"
-import image from "../../public/images/wood.jpeg"
+import TestimonialSlider from "./TestimonialSlider";
+import ParallaxImage from "../ui/ParallaxImage";
+import image from "../../public/images/wood.jpeg";
 
 const TestimonialSection = () => {
   return (
-    <Flex flexDir={{ base: "column-reverse", md: "row" }} mb="24">
-      <Flex
-        overflowY="hidden"
-        pos="relative"
-        minH="100%"
-        flex={{ base: 1.5, "2xl": 1.25 }}
-      >
+    <div className="flex flex-col-reverse md:flex-row mb-24">
+      <div className="overflow-y-hidden relative min-h-full flex-[1.5] 2xl:flex-[1.25]">
         <ParallaxImage alt="authentic wood stomp" src={image} />
-      </Flex>
-      <Flex
-        px={{ base: "4", md: "12" }}
-        py="20"
-        flexDir="column"
-        justifyContent="center"
-        alignItems="center"
-        bgColor="brand.400"
-        flex={{ base: 0, md: 1.5 }}
-      >
-        <Box pos="relative" maxW="800px">
-          <Heading
-            mb="10"
-            color="brand.100"
-            fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
-            fontWeight="900"
-            lineHeight="100%"
-            borderBottom="1px #979a6f solid"
-          >
+      </div>
+      <div className="px-4 md:px-12 py-20 flex-col justify-center items-center bg-theme-400 md:flex-[1.5]">
+        <div className="relative max-w-[800px]">
+          <h2 className="mb-10 text-theme-100 text-3xl md:text-5xl lg:text-8xl font-heading font-bold">
             Testimonials
-          </Heading>
+          </h2>
           <TestimonialSlider />
-        </Box>
-      </Flex>
-    </Flex>
-  )
-}
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default TestimonialSection
+export default TestimonialSection;

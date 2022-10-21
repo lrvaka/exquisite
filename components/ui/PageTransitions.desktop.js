@@ -1,36 +1,20 @@
-import styled from "@emotion/styled"
-import { Flex } from "@chakra-ui/react"
-import { useRef, useEffect } from "react"
-import gsap from "gsap"
-import transitionPlanks from "../../lib/transition-planks"
-import useArrayRef from "../hooks/useArrayRef"
-
-const Grid = styled.div`
-  flex-direction: column;
-  justify-content: center;
-  display: flex;
-  pointer-events: none;
-  z-index: 5;
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  position: fixed;
-  flex: 1;
-`
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import transitionPlanks from "../../lib/transition-planks";
+import useArrayRef from "../hooks/useArrayRef";
 
 const PageTransitionsDesktop = ({ addAnimation }) => {
-  const tl = useRef()
-  const tl1 = useRef()
-  const transitionRef = useRef()
-  const [leftPlankRefs, setLeftPlankRefs] = useArrayRef()
-  const [rightPlankRefs, setRightPlankRefs] = useArrayRef()
+  const tl = useRef();
+  const tl1 = useRef();
+  const transitionRef = useRef();
+  const [leftPlankRefs, setLeftPlankRefs] = useArrayRef();
+  const [rightPlankRefs, setRightPlankRefs] = useArrayRef();
 
-  let plankType
+  let plankType;
 
   useEffect(() => {
     if (!transitionRef.current) {
-      return
+      return;
     }
 
     tl.current = gsap.fromTo(
@@ -46,7 +30,7 @@ const PageTransitionsDesktop = ({ addAnimation }) => {
           from: "random",
         },
       }
-    )
+    );
 
     tl1.current = gsap.fromTo(
       rightPlankRefs.current,
@@ -61,56 +45,55 @@ const PageTransitionsDesktop = ({ addAnimation }) => {
           from: "random",
         },
       }
-    )
+    );
 
-    addAnimation(tl.current, tl1.current)
+    addAnimation(tl.current, tl1.current);
 
     return () => {
-      tl.current.kill()
-      tl1.current.kill()
-    }
-  }, [])
+      tl.current.kill();
+      tl1.current.kill();
+    };
+  }, []);
 
   return (
     <>
-      <Grid ref={transitionRef}>
+      <div
+        className="flex flex-col justify-center pointer-events-none z-20 w-full h-screen top-0 left-0 fixed flex-1 flex-direction: column"
+        ref={transitionRef}
+      >
         {transitionPlanks.desktop.map((e, i) => (
-          <Flex
-            alignItems="stretch"
-            pos="relative"
-            flexDir="row"
-            justifyContent="center"
-            zIndex="1"
+          <div
+            className="flex items-stretch relative flex-row justify-center z-[1] flex-1"
             key={i}
-            flex="1"
           >
             {e.map((element, index) => {
               if (element.ref === "setRightPlankRefs") {
-                plankType = setRightPlankRefs
+                plankType = setRightPlankRefs;
               }
               if (element.ref === "setLeftPlankRefs") {
-                plankType = setLeftPlankRefs
+                plankType = setLeftPlankRefs;
               }
+
               return (
-                <Flex
-                  pos="relative"
-                  height="auto"
+                <div
+                  className="flex relative h-auto items-stretch invisible bg-[#705d56] border-[1px] border-solid border-[#a1938e]"
                   key={index}
                   ref={plankType}
-                  alignItems="stretch"
-                  bgColor="#705d56"
-                  border="1px solid #a1938e"
-                  visibility="hidden"
                 >
-                  <Flex minW={element.w} minH={element.h} />
-                </Flex>
-              )
+                  <div
+                    style={{
+                      minHeight: `${element.h}px`,
+                      minWidth: `${element.w}px`,
+                    }}
+                  />
+                </div>
+              );
             })}
-          </Flex>
+          </div>
         ))}
-      </Grid>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default PageTransitionsDesktop
+export default PageTransitionsDesktop;

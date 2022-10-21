@@ -1,17 +1,23 @@
-import { Flex, Text } from "@chakra-ui/react"
-
-const Footer = ({ ...props }) => (
-  <Flex
-    py="2rem"
-    borderTop="1px solid #cdcda6"
-    color="brand.500"
-    justifyContent="center"
-    fontSize={{base: "xs", md: "md"}}
-    {...props}
+const Footer = ({
+  bgColor = "bg-theme-100",
+  borderColor = "border-t-theme-200",
+  textColor = "text-black",
+}) => (
+  <div
+    className={
+      "z-10 relative flex py-8 justify-center text-xs md:text-md border-t-[1px] border-t-solid " +
+      bgColor +
+      " " +
+      borderColor +
+      " " +
+      textColor
+    }
   >
-    <Text>© 2022 Exquisite Wood Floors NY. |</Text>
-    <Text>&nbsp;Website by Blockhead Digital</Text>
-  </Flex>
-)
+    <span>© 2022 Exquisite Wood Floors NY. |</span>
+    <a href="https://blockhead.digital/" target="_blank" rel="noreferrer">
+      &nbsp;Website by Blockhead Digital
+    </a>
+  </div>
+);
 
-export default Footer
+export default Footer;

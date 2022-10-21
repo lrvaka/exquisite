@@ -1,78 +1,70 @@
-import {
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-} from "@chakra-ui/react"
-import NextLink from "next/link"
-import { AiOutlineMenu } from "react-icons/ai"
-import { useRouter } from "next/router"
-import { useContext } from "react"
-import GsapContext from "../../../store/gsap-context"
+import { Menu } from "@headlessui/react";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import { forwardRef, useContext } from "react";
+import GsapContext from "../../../store/gsap-context";
+
+// eslint-disable-next-line react/display-name
+const Link = forwardRef((props, ref) => {
+  let { href, children, ...rest } = props;
+  return (
+    <NextLink href={href}>
+      <a className="text-theme-10" ref={ref} {...rest}>
+        {children}
+      </a>
+    </NextLink>
+  );
+});
 
 const NavbarItemsMobile = () => {
-  const router = useRouter()
-  const { smoother } = useContext(GsapContext)
+  const { smoother } = useContext(GsapContext);
+  const router = useRouter();
 
   return (
-    <Menu>
-      <MenuButton
-        as={IconButton}
-        aria-label="menu"
-        icon={<AiOutlineMenu />}
-        w="43px"
-        h="43px"
-        color="brand.200"
-        bgColor="brand.500"
-        borderRadius="none"
-        ml="4"
-        border="1px solid #3a6061"
-        _active={{ bgColor: "#2a4a3d" }}
-        _selected={{ bgColor: "#2a4a3d" }}
-        _focus={{ bgColor: "#2a4a3d" }}
-        _hover={{ bgColor: "#2a4a3d" }}
-      />
-      <MenuList
-        bgColor="brand.500"
-        color="brand.100"
-        fontSize="xl"
-        borderRadius="none"
-      >
-        <NextLink href="/" passHref>
-          <MenuItem _focus={{ bgColor: "brand.500" }} py="4">
-            Home
-          </MenuItem>
-        </NextLink>
-        <NextLink href="/portfolio" passHref>
-          <MenuItem _focus={{ bgColor: "brand.500" }} py="4">
-            Portfolio
-          </MenuItem>
-        </NextLink>
-        <MenuItem
-          _focus={{ bgColor: "brand.500" }}
-          onClick={() => {
-            if (router.asPath === "/") {
-              smoother.scrollTo("#services", true, "center center")
-            } else {
-              router.push("/")
-              setTimeout(() => {
-                smoother.scrollTo("#services", true, "center center")
-              }, 2000)
-            }
-          }}
-          py="4"
+    <Menu as="div" className="relative inline-block text-left">
+      <Menu.Button className="bg-theme-500 text-theme-10 p-4 border-[1px] border-theme-400 border-solid">
+        <svg
+          stroke="currentColor"
+          fill="currentColor"
+          strokeWidth="0"
+          viewBox="0 0 1024 1024"
+          height="1em"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          Services
-        </MenuItem>
-        <NextLink href="/about" passHref>
-          <MenuItem _focus={{ bgColor: "brand.500" }} py="4">
-            About
-          </MenuItem>
-        </NextLink>
-      </MenuList>
+          <path d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"></path>
+        </svg>
+      </Menu.Button>
+      <Menu.Items className="absolute bottom-0 right-0 translate-y-[105%] p-4 bg-theme-500 focus:outline-none flex flex-col gap-5 w-32  border-[1px] border-theme-100 border-solid">
+        <Menu.Item>
+          <Link href="/">Home</Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link href="/portfolio">Portfolio</Link>
+        </Menu.Item>
+        <Menu.Item>
+          <button
+            className="text-left text-theme-10"
+            onClick={() => {
+              if (router.asPath === "/") {
+                smoother.scrollTo("#services", true, "center center");
+              } else {
+                router.push("/");
+                setTimeout(() => {
+                  smoother.scrollTo("#services", true, "center center");
+                }, 2000);
+              }
+            }}
+          >
+            Services
+          </button>
+        </Menu.Item>
+        <Menu.Item>
+          <Link href="/about">About</Link>
+        </Menu.Item>
+      </Menu.Items>
     </Menu>
-  )
-}
+  );
+};
 
-export default NavbarItemsMobile
+export default NavbarItemsMobile;

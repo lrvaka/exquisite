@@ -1,4 +1,4 @@
-import NextImage from "next/image"
+import NextImage from "next/image";
 
 const GridImage = ({ alt, ...props }) => (
   <NextImage
@@ -10,6 +10,6 @@ const GridImage = ({ alt, ...props }) => (
     objectFit="cover"
     {...props}
   />
-)
+);
 
-export default GridImage
+export default GridImage;

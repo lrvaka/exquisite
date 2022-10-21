@@ -1,7 +1,5 @@
-import { Box, Flex, Grid, Container, Text, Link } from "@chakra-ui/react";
 import SVGArrow from "../ui/SVGArrow";
-import { useContext, useEffect, useRef } from "react";
-import GsapContext from "../../store/gsap-context";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import useArrayRef from "../hooks/useArrayRef";
 import SectionHeading from "../ui/SectionHeading";
@@ -13,9 +11,9 @@ import NextImage from "next/image";
 import aboutUsImage from "../../public/images/about-us.png";
 import NextLink from "next/link";
 
-const AboutUsSection= () => {
+const AboutUsSection = () => {
   const [imageRefs, setImageRefs] = useArrayRef();
-  const { smoother } = useContext(GsapContext);
+
   const containerRef = useRef();
   const leftRef = useRef();
   const rightRef = useRef();
@@ -90,19 +88,11 @@ const AboutUsSection= () => {
 
   return (
     <>
-      <Flex
-        maxW="1800px"
-        m="0 auto"
-        mb="24"
-        mt="24"
+      <div
+        className="relative z-10 flex max-w-[1800px] mx-auto my-24 flex-col md:flex-row "
         flexDir={{ base: "column", md: "row" }}
       >
-        <Box
-          pos="relative"
-          w="100%"
-          minH={{ base: "400px", "2xl": "600px" }}
-          flex={1.5}
-        >
+        <div className="relative w-full h-[100vw] md:h-auto ">
           <NextImage
             sizes="50vw"
             alt="beautiful wood floor graphic design"
@@ -112,96 +102,65 @@ const AboutUsSection= () => {
             objectFit="contain"
             src={aboutUsImage}
           />
-        </Box>
-        <Box
-          flex={{ base: 1, sm: 1 }}
-          px={["4", "8", "12"]}
-          py="20"
-          bgColor="brand.500"
-          overflowX="hidden"
-        >
-          <SectionHeading pb="10" color="brand.200">
-            Your one stop shop for all <br /> your wood flooring needs
+        </div>
+        <div className="max-h-full px-4 sm:px-8 md:px-16 py-20 bg-theme-500 overflow-x-hidden self-center">
+          <SectionHeading className="pb-10 text-theme-100">
+            Your one stop shop for all your wood flooring needs
           </SectionHeading>
 
-          <Flex pb="12" flexDir="column" gap="8">
-            <Text
+          <div className="pb-10 flex flex-col gap-8">
+            <p
               ref={leftRef}
-              fontSize={{ base: "md", sm: "lg" }}
-              color="white"
-              fontWeight="400"
-              lineHeight="normal"
+              className="text-md sm:text-lg text-theme-10 font-normal max-w-prose"
             >
               Exquisite Wood Floors is a leading wood flooring company in the
               New York Metropolitan area that specializes in a wide range of
               wood flooring projects from retail and commercial to residential
               and hospitality, and much more.
-            </Text>
-            <Text
+            </p>
+            <p
               ref={rightRef}
-              fontSize={{ base: "md", sm: "lg" }}
-              color="white"
-              fontWeight="400"
-              lineHeight="normal"
+              className="text-md sm:text-lg text-theme-10 font-normal max-w-prose"
             >
               We are able to provide our clients with quality services and
               products that meet their specific needs. Our team is dedicated to
               providing professional service and support, so you can be assured
               your project will be handled with the utmost care.
-            </Text>
-          </Flex>
+            </p>
+          </div>
           <NextLink href="/about" passHref>
-            <Link
-              display="flex"
-              textAlign="left"
-              fontWeight="700"
-              color="brand.200"
-              w="max-content"
-              gap="4"
-            >
-              <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>About us</Box>
-              <Box alignSelf="center">
+            <a className="flex text-left font-bold text-theme-200 w-max gap-4">
+              <div className="text-md md:text-xl font-semibold">About us</div>
+              <div className="self-center">
                 <SVGArrow fill="#cdcda6" />
-              </Box>
-            </Link>
+              </div>
+            </a>
           </NextLink>
-        </Box>
-      </Flex>
-      <Grid
-        minH={{ base: "500px", md: "1000px", "2xl": "1250px" }}
-        templateRows="repeat(10, 1fr)"
-        templateColumns="repeat(25, 1fr)"
-        flex={1}
+        </div>
+      </div>
+      <div
+        className="grid min-h-[500px] md:min-h-[1000px] 2xl:min-h-[1250px] grid-rows-[repeat(10,1fr)] grid-cols-[repeat(25, 1fr)] flex-grow"
         ref={containerRef}
       >
-        <Box
+        <div
           ref={setImageRefs}
-          pos="relative"
-          gridRow="5 / 11"
-          gridColumn="20 / 26"
-          overflow="hidden"
+          className="relative row-[5/11] col-[20/26] overflow-hidden"
         >
           <ParallaxImage alt="beautiful wood floor home" src={aboutImage4} />
-        </Box>
-        <Box
+        </div>
+        <div
           ref={setImageRefs}
-          pos="relative"
-          gridRow="2 / 9"
-          gridColumn="8 / 19"
-          overflow="hidden"
+          className="relative row-[2/9] col-[8/19] overflow-hidden"
         >
           <ParallaxImage alt="beautiful wood floor home" src={aboutImage3} />
-        </Box>
-        <Box
+        </div>
+        <div
           ref={setImageRefs}
-          pos="relative"
-          gridRow="1 / 6"
-          gridColumn="1 / 7"
-          overflow="hidden"
+          className="relative row-[1/6] col-[1/7] overflow-hidden"
         >
           <ParallaxImage alt="beautiful wood floor home" src={aboutImage2} />
-        </Box>
-      </Grid>
+        </div>
+      </div>
     </>
   );
 };

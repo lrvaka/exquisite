@@ -1,4 +1,3 @@
-import { Flex, Box, Heading, Text } from "@chakra-ui/react";
 import NextImage from "next/image";
 import { useContext } from "react";
 import SVGArrow from "../ui/SVGArrow";
@@ -10,35 +9,10 @@ const InfoSection = () => {
   const { smoother } = useContext(GsapContext);
 
   return (
-    <Flex
-      m="0 auto"
-      pos="relative"
-      mt="24"
-      mb="24"
-      gap={{ base: 12, sm: 0 }}
-      minH={{ base: "1000px", md: "500px" }}
-      flexDir={{ base: "column", md: "row" }}
-    >
-      <Flex
-        flexDir="column"
-        justifyContent="center"
-        flex={{ base: "0", md: "1" }}
-        bgColor="brand.500"
-      >
-        <Box
-          maxW="800px"
-          alignSelf="center"
-          px={{ base: "4", md: "12" }}
-          py="20"
-          pos="relative"
-        >
-          <Box
-            pos="absolute"
-            top="0"
-            right="0"
-            h={{ base: "300px", lg: "400px", "2xl": "500px" }}
-            w={{ base: "300px", lg: "400px", "2xl": "500px" }}
-          >
+    <div className="flex my-24 mx-auto relative gap-12 sm:gap-0 flex-col md:flex-row min-h-[1000px] md:min-h-[500px]">
+      <div className="flex flex-col justify-center flex-0 md:flex-1 bg-theme-500">
+        <div className="max-w-[800px] self-center px-4 md:px-12 py-20 relative">
+          <div className="absolute top-0 right-0 h-[300px] lg:h-[400px] 2xl:h-[500px] w-[300px] lg:w-[400px] 2xl:w-[500px] opacity-20">
             <NextImage
               sizes="25vw"
               alt="ewf stamp"
@@ -46,26 +20,15 @@ const InfoSection = () => {
               layout="fill"
               objectFit="cover"
             />
-          </Box>
-          <Heading
-            mb="10"
-            color="brand.100"
-            as="h1"
-            fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
-            fontWeight="900"
-            lineHeight="100%"
+          </div>
+          <h2
+            className="mb-10 text-theme-100 text-3xl md:text-5xl lg:text-8xl font-heading font-bold"
             borderBottom="1px #979a6f solid"
           >
             About Us
-          </Heading>
+          </h2>
 
-          <Text
-            fontSize={{ base: "md", md: "xl" }}
-            color="white"
-            fontWeight="400"
-            lineHeight="normal"
-            mb="12"
-          >
+          <p className="mb-12 text-md md:text-xl text-theme-10 max-w-prose">
             Exquisite Wood Floors is a family-owned and operated flooring
             company with over 25 years of experience. We love what we do, and it
             shows in our work. From refinishing to repair to installation, we
@@ -73,26 +36,22 @@ const InfoSection = () => {
             professionalism and attention to detail sets us apart and makes us
             the perfect choice for your flooring needs. Contact us today to
             schedule a consultation!
-          </Text>
-          <Flex
-            as="button"
-            textAlign="left"
-            fontWeight="700"
-            color="brand.200"
-            w="max-content"
+          </p>
+          <button
+            className="flex text-left font-bold text-theme-200 w-max gap-4"
             onClick={() => {
               smoother.scrollTo("#contact", true, "center center");
             }}
-            gap="4"
           >
-            <Box fontSize={["1rem", "1rem", "1rem", "1.25rem"]}>Contact us</Box>
-            <Box alignSelf="center">
+            <div className="text-md lg:text-xl">Contact us</div>
+            <div className="self-center">
               <SVGArrow fill="#cdcda6" />
-            </Box>
-          </Flex>
-        </Box>
-      </Flex>
-      <Flex
+            </div>
+          </button>
+        </div>
+      </div>
+      <div
+        className="flex min-h-full overflow-y-hidden relative justify-center items-center flex-1 2xl:flex-[1.5]"
         minH="100%"
         flex={{ base: 1, "2xl": 1.5 }}
         overflowY="hidden"
@@ -101,8 +60,8 @@ const InfoSection = () => {
         alignItems="center"
       >
         <ParallaxImage alt="beautiful wood planks" src={image} />
-      </Flex>
-    </Flex>
+      </div>
+    </div>
   );
 };
 

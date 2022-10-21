@@ -1,9 +1,8 @@
-import NextImage from "next/image"
-import { Box } from "@chakra-ui/react"
+import NextImage from "next/image";
 
 const ParallaxImage = ({ src, alt, ...props }) => {
   return (
-    <Box data-speed="auto" pos="absolute" w="100%" h="160%" {...props}>
+    <div className="absolute w-full h-[160%]" data-speed="auto" {...props}>
       <NextImage
         alt={alt}
         sizes="50vw"
@@ -13,8 +12,8 @@ const ParallaxImage = ({ src, alt, ...props }) => {
         objectFit="cover"
         src={src}
       />
-    </Box>
-  )
-}
+    </div>
+  );
+};
 
-export default ParallaxImage
+export default ParallaxImage;

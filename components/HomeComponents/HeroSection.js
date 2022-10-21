@@ -1,15 +1,11 @@
-import { Box, Heading, Grid, Flex, Link, Text, Icon } from "@chakra-ui/react";
 import NextImage from "next/image";
 import { motion } from "framer-motion";
 import { useRef, useContext } from "react";
-import SVGArrow from "./SVGArrow";
 import gsap from "gsap";
 import SplitText from "gsap/dist/SplitText";
 import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect";
 import heroImage1 from "../../public/images/hero-1.webp";
 import heroImage3 from "../../public/images/hero-3.jpg";
-import { BsArrowRight } from "react-icons/bs";
-import { GiWoodBeam } from "react-icons/gi";
 import GsapContext from "../../store/gsap-context";
 
 const variants = {
@@ -99,95 +95,56 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <Box pos="relative">
-      <Box
-        top="50%"
-        left="50%"
-        zIndex="1"
-        transform="translate(-50%,-50%)"
-        pos="absolute"
-        textAlign="center"
-        width="90vw"
-      >
-        <Heading
-          pos="relative"
-          lineHeight="100%"
-          as="h1"
-          visibility="hidden"
-          color="brand.500"
-          fontSize={{ base: "5xl", sm: "7xl", md: "8xl", lg: "9xl" }}
-          fontWeight="900"
-          zIndex="1"
+    <div className="relative">
+      <div className="top-1/2 left-1/2 z-[1] -translate-x-1/2 -translate-y-1/2 absolute text-center w-full">
+        <h1
+          className="relative invisible text-theme-500 text-5xl sm:text-7xl md:text-8xl lg:text-9xl z-[1] font-heading font-black"
           ref={headingRef}
         >
           Exquisite <br />
           Wood Floors
-        </Heading>
-        <Text
-          pos="relative"
-          as="h2"
-          visibility="hidden"
-          overflow="hidden"
-          color="brand.500"
-          fontSize={{ base: "2xl", sm: "2xl", md: "3xl", lg: "4xl" }}
-          zIndex="1"
+        </h1>
+        <h2
+          className="relative invisible overflow-hidden text-theme-500 text-2xl sm:text-2xl md:text-3xl lg:text-4xl z-[1]"
           ref={subRef}
         >
           We make living spaces Exquisite
-        </Text>
+        </h2>
 
-        <Flex
-          justifyContent="center"
-          alignItems="center"
-          mt={{ base: 2, sm: 2, md: 4, lg: 6 }}
-        >
-          <Link
-            as={motion.button}
+        <div className="flex justify-center items-center mt-2 sm:mt-2 md:mt-4 lg:mt-6">
+          <motion.button
+            className="flex relative text-md items-center max-w-max py-2 px-4 bg-theme-500 text-theme-100 sm:text-md lg:text-lg hover:underline"
             onClick={() => smoother.scrollTo("#contact", true, "center center")}
-            pos="relative"
             variants={variants}
             initial="initial"
             animate="animate"
-            fontSize={{ base: "md", sm: "md", md: "md", lg: "lg" }}
-            display="flex"
-            alignItems="center"
-            maxW="max-content"
-            py="2"
-            px="4"
-            bgColor="brand.500"
-            color="brand.100"
-            border="1px solid #213a30"
           >
             Schedule your free consultation now!
-            <Icon as={BsArrowRight} ml="2" />
-          </Link>
-        </Flex>
-      </Box>
+            <svg
+              className="ml-2"
+              stroke="currentColor"
+              fill="currentColor"
+              strokeWidth="0"
+              viewBox="0 0 16 16"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+              ></path>
+            </svg>
+          </motion.button>
+        </div>
+      </div>
 
-      <Grid
-        minH="97.5vh"
-        maxW="1920px"
-        m="0 auto"
-        templateRows={[
-          "repeat(15, 1fr)",
-          "repeat(15, 1fr)",
-          "repeat(15, 1fr)",
-          "repeat(25, 1fr)",
-        ]}
-        templateColumns={[
-          "repeat(15, 1fr)",
-          "repeat(15, 1fr)",
-          "repeat(15, 1fr)",
-          "repeat(25, 1fr)",
-        ]}
-        pos="relative"
+      <div
+        className="min-h-[97.5vh] grid relative max-w-[1920px] mx-auto my-0 grid-rows-[repeat(15, 1fr)] xl:grid-row-[25, 1fr] grid-cols-[repeat(15, 1fr)] xl:grid-cols-[25, 1fr]"
         ref={containerRef}
       >
-        <Box
-          visibility="hidden"
-          pos="relative"
-          gridRow={["11 / 15", "11 / 15", "11 / 15", "17 / 25"]}
-          gridColumn={["5 / 16", "5 / 16", "5 / 16", "18 / 26"]}
+        <div
+          className="invisible relative row-[11/15] xl:row-[17/25] col-[5/16] xl:col-[18/26]"
           data-speed="1.2"
         >
           <NextImage
@@ -198,12 +155,9 @@ const HeroSection = () => {
             objectFit="cover"
             src={heroImage1}
           />
-        </Box>
-        <Box
-          visibility="hidden"
-          pos="relative"
-          gridRow={["4 / 6", "4 / 6", "4 / 6", "6 / 12"]}
-          gridColumn={["2 / 9", "2 / 9", "2 / 9", "2 / 8"]}
+        </div>
+        <div
+          className="invisible relative row-[4/6] xl:row-[6/12] col-[2/9] xl:col-[2/8]"
           data-speed="1.1"
         >
           <NextImage
@@ -214,9 +168,9 @@ const HeroSection = () => {
             objectFit="cover"
             src={heroImage3}
           />
-        </Box>
-      </Grid>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 };
 

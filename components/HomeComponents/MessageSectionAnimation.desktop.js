@@ -1,26 +1,24 @@
-import { useState, useRef, useEffect } from "react"
-import { Flex, Box, Heading, Grid, useMediaQuery } from "@chakra-ui/react"
-import gsap from "gsap"
-import planks from "../../lib/planks"
-import NextImage from "next/image"
-import ScrollTrigger from "gsap/dist/ScrollTrigger"
-import useArrayRef from "../hooks/useArrayRef"
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import planks from "../../lib/planks";
+import NextImage from "next/image";
+import useArrayRef from "../hooks/useArrayRef";
 
 const MessageSectionAnimationDesktop = ({ children, ...props }) => {
-  const containerRef = useRef()
-  const [leftPlankRefs, setLeftPlankRefs] = useArrayRef()
-  const [rightPlankRefs, setRightPlankRefs] = useArrayRef()
-  let plankType
+  const containerRef = useRef();
+  const [leftPlankRefs, setLeftPlankRefs] = useArrayRef();
+  const [rightPlankRefs, setRightPlankRefs] = useArrayRef();
+  let plankType;
 
   useEffect(() => {
-    let leftAni
-    let rightAni
+    let leftAni;
+    let rightAni;
 
     gsap.set(leftPlankRefs.current, {
       autoAlpha: 1,
       x: window.innerWidth * -1,
-    })
-    gsap.set(rightPlankRefs.current, { autoAlpha: 1, x: window.innerWidth })
+    });
+    gsap.set(rightPlankRefs.current, { autoAlpha: 1, x: window.innerWidth });
 
     leftAni = gsap.to(leftPlankRefs.current, {
       x: 0,
@@ -31,7 +29,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
         trigger: containerRef.current,
         start: "center-=25% bottom",
       },
-    })
+    });
 
     rightAni = gsap.to(rightPlankRefs.current, {
       x: 0,
@@ -42,36 +40,31 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
         trigger: containerRef.current,
         start: "center-=25% bottom",
       },
-    })
+    });
 
     return () => {
-      leftAni.kill()
-      rightAni.kill()
-    }
-  }, [])
+      leftAni.kill();
+      rightAni.kill();
+    };
+  }, []);
 
   return (
-    <Flex
-      pos="relative"
-      justifyContent="center"
-      flexDir="column"
-      w="100vw"
-      alignItems="center"
+    <div
+      className="flex relative justify-center flex-col w-screen items-center"
       ref={containerRef}
     >
       {planks.desktop.map((e, i) => (
-        <Flex pos="relative" flexDir="row" zIndex="1" key={i}>
+        <div className="flex backdrop:relative flex-row z-[1]" key={i}>
           {e.map((element, index) => {
             if (element.ref === "setRightPlankRefs") {
-              plankType = setRightPlankRefs
+              plankType = setRightPlankRefs;
             }
             if (element.ref === "setLeftPlankRefs") {
-              plankType = setLeftPlankRefs
+              plankType = setLeftPlankRefs;
             }
             return (
-              <Flex
-                visibility="hidden"
-                pos="relative"
+              <div
+                className="flex invisible relative"
                 key={index}
                 ref={plankType}
               >
@@ -81,13 +74,13 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
                   src={element.src}
                   priority
                 />
-              </Flex>
-            )
+              </div>
+            );
           })}
-        </Flex>
+        </div>
       ))}
-    </Flex>
-  )
-}
+    </div>
+  );
+};
 
-export default MessageSectionAnimationDesktop
+export default MessageSectionAnimationDesktop;

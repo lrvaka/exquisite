@@ -1,31 +1,16 @@
-import { Box, Flex, Heading } from "@chakra-ui/react"
-import ParallaxImage from "../ui/ParallaxImage"
-import image from "../../public/images/about.jpeg"
+import ParallaxImage from "../ui/ParallaxImage";
+import image from "../../public/images/about.jpeg";
 
 const HeaderSection = () => (
-  <Box pt={{ base: "130px", md: "180px" }}>
-    <Flex
-      minH={{ base: "200px", lg: "400px" }}
-      overflowY="hidden"
-      pos="relative"
-      m="0 auto"
-      justifyContent="center"
-      alignItems="center"
-    >
+  <div className="pt-32 md:pt-44">
+    <div className="flex overflow-y-hidden relative mx-auto justify-center items-center min-h-[200px] lg:min-h-[400px]">
       <ParallaxImage src={image} alt="man doing wood flooring msg backdrop" />
-      <Heading
-        p="6"
-        color="brand.100"
-        fontSize={{ base: "4xl", lg: "8xl" }}
-        textAlign="center"
-        fontWeight="black"
-        pos="relative"
-      >
+      <h1 className="p-6 text-theme-100 text-4xl lg:text-8xl relative text-center font-heading font-extrabold">
         Flooring services
         <br /> with a peace of mind
-      </Heading>
-    </Flex>
-  </Box>
-)
+      </h1>
+    </div>
+  </div>
+);
 
-export default HeaderSection
+export default HeaderSection;

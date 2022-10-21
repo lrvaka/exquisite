@@ -1,44 +1,15 @@
-import NavItem from "./NavItems"
-import Link from "next/link"
-import { Button, LinkBox } from "@chakra-ui/react"
-import { useRouter } from "next/router"
-import { useContext } from "react"
-import GsapContext from "../../../store/gsap-context"
+import NavItem from "./NavbarItem";
+import { ServicesItem } from "./NavbarItem";
 
 const NavbarItemsDesktop = () => {
-  const router = useRouter()
-  const { smoother } = useContext(GsapContext)
-
   return (
     <>
       <NavItem href="/" title="Home" />
       <NavItem href="/about" title="About" />
-      <Button
-        display="flex"
-        _hover={{ textDecoration: "underline" }}
-        _focus={{ boxShadow: "none" }}
-        alignItems="center"
-        fontFamily="quincy-cf"
-        fontWeight="700"
-        color="black"
-        lineHeight="100%"
-        fontSize={{ base: "xl", "2xl": "2xl" }}
-        onClick={() => {
-          if (router.asPath === "/") {
-            smoother.scrollTo("#services", true, "center center")
-          } else {
-            router.push("/")
-            setTimeout(() => {
-              smoother.scrollTo("#services", true, "center center")
-            }, 2000)
-          }
-        }}
-      >
-        Services
-      </Button>
-      <NavItem href="/portfolio" title="Portfolio" mr="4" />
+      <ServicesItem />
+      <NavItem href="/portfolio" title="Portfolio" />
     </>
-  )
-}
+  );
+};
 
-export default NavbarItemsDesktop
+export default NavbarItemsDesktop;
