@@ -1,25 +1,24 @@
-import { useState, useRef, useEffect } from "react"
-import { Flex, Box } from "@chakra-ui/react"
-import gsap from "gsap"
-import planks from "../../lib/planks"
-import NextImage from "next/image"
-import useArrayRef from "../hooks/useArrayRef"
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import planks from "../../lib/planks";
+import NextImage from "next/image";
+import useArrayRef from "../hooks/useArrayRef";
 
 const MessageSectionAnimationMobile = ({ children, ...props }) => {
-  const containerRef = useRef()
-  const [leftPlankRefs, setLeftPlankRefs] = useArrayRef()
-  const [rightPlankRefs, setRightPlankRefs] = useArrayRef()
-  let plankType
+  const containerRef = useRef();
+  const [leftPlankRefs, setLeftPlankRefs] = useArrayRef();
+  const [rightPlankRefs, setRightPlankRefs] = useArrayRef();
+  let plankType;
 
   useEffect(() => {
-    let leftAni
-    let rightAni
+    let leftAni;
+    let rightAni;
 
     gsap.set(leftPlankRefs.current, {
       autoAlpha: 1,
       x: window.innerWidth * -1,
-    })
-    gsap.set(rightPlankRefs.current, { autoAlpha: 1, x: window.innerWidth })
+    });
+    gsap.set(rightPlankRefs.current, { autoAlpha: 1, x: window.innerWidth });
 
     leftPlankRefs.current.forEach((plank, i) => {
       leftAni = gsap.to(plank, {
@@ -31,8 +30,8 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
           end: "bottom center",
           onLeave: (self) => self.kill(false, true),
         },
-      })
-    })
+      });
+    });
 
     rightPlankRefs.current.forEach((plank, i) => {
       rightAni = gsap.to(plank, {
@@ -44,53 +43,48 @@ const MessageSectionAnimationMobile = ({ children, ...props }) => {
           end: "bottom center",
           onLeave: (self) => self.kill(false, true),
         },
-      })
-    })
+      });
+    });
 
     return () => {
-      leftAni.kill()
-      rightAni.kill()
-    }
-  }, [])
+      leftAni.kill();
+      rightAni.kill();
+    };
+  }, []);
 
   return (
-    <Flex
-      pos="relative"
-      justifyContent="center"
-      flexDir="column"
-      w="100vw"
-      alignItems="center"
+    <div
+      className="flex relative justify-center flex-col w-screen items-center"
       ref={containerRef}
     >
       {planks.mobile.map((e, i) => (
-        <Flex pos="relative" flexDir="row" zIndex="1" key={i}>
+        <div className="flex backdrop:relative flex-row z-[1]" key={i}>
           {e.map((element, index) => {
             if (element.ref === "setRightPlankRefs") {
-              plankType = setRightPlankRefs
+              plankType = setRightPlankRefs;
             }
             if (element.ref === "setLeftPlankRefs") {
-              plankType = setLeftPlankRefs
+              plankType = setLeftPlankRefs;
             }
             return (
-              <Flex
-                visibility="hidden"
-                pos="relative"
+              <div
+                className="flex invisible relative"
                 key={index}
                 ref={plankType}
               >
                 <NextImage
-                  placeholder="blur"
                   alt={`The EWF mantra plank ${i}-${index}`}
+                  placeholder="blur"
                   src={element.src}
                   priority
                 />
-              </Flex>
-            )
+              </div>
+            );
           })}
-        </Flex>
+        </div>
       ))}
-    </Flex>
-  )
-}
+    </div>
+  );
+};
 
-export default MessageSectionAnimationMobile
+export default MessageSectionAnimationMobile;

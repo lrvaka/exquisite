@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #dbe2bb;
+  color: black;
+  font-family: questa-sans;
+}

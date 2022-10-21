@@ -1,19 +1,14 @@
-import Marquee from "react-fast-marquee"
-import { Heading } from "@chakra-ui/react"
+import Marquee from "react-fast-marquee";
 
 const MarqueeSection = () => (
   <Marquee gradient={false}>
-    <Heading
-      fontWeight="black"
-      color="brand.300"
-      fontSize={["5rem", "10rem"]}
-      mr="3rem"
-      opacity="0.25"
-      overflowY="hidden"
+    <h3
+      aria-hidden
+      className="text-theme-300 font-heading font-black text-[5rem] md:text-[10rem] mr-[3rem] opacity-25 overflow-y-hidden"
     >
       EXQUISITE WOOD FLOORS
-    </Heading>
+    </h3>
   </Marquee>
-)
+);
 
-export default MarqueeSection
+export default MarqueeSection;

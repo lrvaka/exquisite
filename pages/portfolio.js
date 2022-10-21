@@ -1,15 +1,4 @@
-import { useRef } from "react";
 import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect";
-import {
-  Box,
-  Container,
-  Heading,
-  Flex,
-  Text,
-  Grid,
-  Icon,
-  Link,
-} from "@chakra-ui/react";
 import { IoOpen } from "react-icons/io5";
 import WorksModal from "../components/ui/Modal";
 import "keen-slider/keen-slider.min.css";
@@ -58,73 +47,46 @@ const meta = {
 };
 
 const MarqueeText = ({ children, ...props }) => (
-  <Heading
-    fontWeight="black"
-    color="brand.400"
-    fontSize={{
-      base: "4rem",
-      sm: "5rem",
-      md: "6rem",
-      xl: "7rem",
-      "2xl": "12rem",
-    }}
-    opacity="0.25"
-    mr={["32", "60"]}
-    overflowY="hidden"
-    {...props}
-  >
+  <span className="font-black font-heading text-theme-400 text-[4rem] sm:text-[5rem] md:text-[6rem] xl:text-[7rem] 2xl:text-[12rem] opacity-25 mr-32 sm:mr-60 overflow-y-hidden">
     {children}
-  </Heading>
+  </span>
 );
 
 const MarqueeSection = ({ text, ...props }) => (
   <Marquee gradient={false}>
-    <Flex {...props}>
+    <div className="flex" {...props}>
       <MarqueeText>{text}</MarqueeText>
       <MarqueeText>{text}</MarqueeText>
       <MarqueeText>{text}</MarqueeText>
       <MarqueeText>{text}</MarqueeText>
-    </Flex>
+    </div>
   </Marquee>
 );
 
 const WorksHeading = () => (
-  <Container pos="relative" maxW="container.xl" px="4">
-    <Heading
-      as="h1"
-      pb="10"
-      color="brand.500"
-      fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
-      fontWeight="900"
-      lineHeight="100%"
-    >
+  <div className="mx-auto relative max-w-screen-xl px-4">
+    <h1 className="pb-10 text-theme-500 text-3xl md:text-5xl lg:text-8xl font-extrabold font-heading">
       Featured Works
-    </Heading>
-    <Flex pb="20">
-      <Flex flexDir="column" maxW={{ base: "100%", md: "50%" }}>
-        <Text
-          fontSize={{ base: "md", md: "xl" }}
-          color="black"
-          fontWeight="400"
-          lineHeight="normal"
-          pb="9"
-        >
+    </h1>
+    <div className="pb-20">
+      <div className="flex flex-col max-w-full md:max-w-[50%]">
+        <p className="text-md md:text-xl text-theme-black font-normal">
           Below is a display of selected works from over the years. From
           commercial to residential, installation to restoration, we&apos;ve had
           the pleasure of working on various projects from a wide array of
           clientele.
-        </Text>
-      </Flex>
-    </Flex>
-    <Box pos="absolute" top="0" right="0" h="600px" w="600px">
+        </p>
+      </div>
+    </div>
+    <div className="absolute top-0 right-0 h-[600px] w-[600px]">
       <NextImage
         alt="ewf emblem"
         src="/images/stamp.png"
         layout="fill"
         objectFit="cover"
       />
-    </Box>
-  </Container>
+    </div>
+  </div>
 );
 
 const Works = () => {
@@ -156,40 +118,20 @@ const Works = () => {
   });
 
   return (
-    <MainWrapper pt="20vh" heading={meta}>
+    <MainWrapper styling="pt-[20vh]" heading={meta}>
       <WorksHeading />
 
       <WorksModal slides={workSlides.carolina}>
-        <Grid
-          maxW="container.xl"
-          pos="relative"
-          m="0 auto"
-          minH={["500px", "800px"]}
-          templateColumns="repeat(10, 1fr)"
-          templateRows="repeat(10,1fr)"
-          my="40"
-        >
-          <Heading
-            zIndex="2"
-            mixBlendMode="difference"
-            pos="absolute"
-            transform="translate(-50%,-50%)"
-            top="50%"
-            left="50%"
-            color="white"
-            fontWeight="black"
-            fontSize={["6xl", "9xl"]}
-            lineHeight="100%"
-          >
+        <div className="grid grid-cols-[repeat(10,1fr)] grid-rows-[repeat(10,1fr)] max-w-screen-xl relative mx-auto min-h-[500px] sm:min-h-[800px] my-40">
+          <h2 className="font-heading absolute z-[2] mix-blend-difference text-6xl sm:text-9xl text-theme-10 font-black left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2">
             Carolina <br />
             Herrera
-          </Heading>
+          </h2>
           <GridItem
             ref={setGridItems}
             alt={`beautiful carolina herrera job flooring 1`}
             data-speed="1.1"
-            gridRow="1 / 10"
-            gridColumn="1 / 6"
+            className="row-[1/10] col-[1/6]"
             src={gridImage1}
           />
 
@@ -197,8 +139,7 @@ const Works = () => {
             ref={setGridItems}
             alt={`beautiful carolina herrera job flooring 2`}
             data-speed="1.2"
-            gridRow="1 / 11"
-            gridColumn="6 / 11"
+            className="row-[1/11] col-[6/11]"
             src={gridImage3}
           />
 
@@ -206,54 +147,31 @@ const Works = () => {
             ref={setGridItems}
             alt={`beautiful carolina herrera job flooring 3`}
             data-speed="1.3"
-            gridRow="5 / 10"
-            gridColumn="3 / 8"
+            className="row-[5/10] col-[3/8]"
             src={gridImage4}
           />
 
           <GridItem
             ref={setGridItems}
             alt={`beautiful carolina herrera job flooring 4`}
-            gridRow="6 / 10"
-            gridColumn="1 / 5"
+            className="row-[6/10] col-[1/5]"
             src={gridImage2}
           />
-        </Grid>
+        </div>
       </WorksModal>
 
       <MarqueeSection text="Quality" />
 
       <WorksModal slides={workSlides.peloton}>
-        <Grid
-          maxW="container.xl"
-          pos="relative"
-          m="0 auto"
-          minH={["500px", "800px"]}
-          templateColumns="repeat(10, 1fr)"
-          templateRows="repeat(10,1fr)"
-          my="40"
-        >
-          <Heading
-            zIndex="2"
-            mixBlendMode="difference"
-            pos="absolute"
-            transform="translate(-50%,-50%)"
-            top="50%"
-            left="50%"
-            color="white"
-            fontWeight="black"
-            fontSize={["6xl", "9xl"]}
-            lineHeight="100%"
-            textAlign="center"
-          >
+        <div className="grid grid-cols-[repeat(10,1fr)] grid-rows-[repeat(10,1fr)] max-w-screen-xl relative mx-auto min-h-[500px] sm:min-h-[800px] my-40">
+          <h2 className="font-heading absolute z-[2] mix-blend-difference text-6xl sm:text-9xl text-theme-10 font-black left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2">
             Peloton HQ
-          </Heading>
+          </h2>
           <GridItem
             alt={`beautiful peloton flooring 1`}
             ref={setGridItems}
             data-speed="1.1"
-            gridRow="1 / 10"
-            gridColumn="1 / 5"
+            className="row-[1/10] col-[1/5]"
             src={peloton1}
           />
 
@@ -261,8 +179,7 @@ const Works = () => {
             alt={`beautiful peloton flooring 2`}
             ref={setGridItems}
             data-speed="1.3"
-            gridRow="5 / 10"
-            gridColumn="5 / 11"
+            className="row-[5/10] col-[5/11]"
             src={peloton2}
           />
 
@@ -270,8 +187,7 @@ const Works = () => {
             alt={`beautiful peloton flooring 3`}
             ref={setGridItems}
             data-speed="1.3"
-            gridRow="1 / 6"
-            gridColumn="5 / 11"
+            className="row-[1/6] col-[5/11]"
             src={peloton7}
           />
 
@@ -279,46 +195,25 @@ const Works = () => {
             alt={`beautiful peloton flooring 4`}
             ref={setGridItems}
             data-speed="1.3"
-            gridRow="1 / 4"
-            gridColumn="1 / 4"
+            className="row-[1/4] col-[1/4]"
             src={peloton10}
           />
-        </Grid>
+        </div>
       </WorksModal>
 
       <MarqueeSection text="Reliable" />
 
       <WorksModal slides={workSlides.orchard}>
-        <Grid
-          pos="relative"
-          maxW="container.xl"
-          m="0 auto"
-          minH={["500px", "800px"]}
-          templateColumns="repeat(10, 1fr)"
-          templateRows="repeat(10,1fr)"
-          my="40"
-        >
-          <Heading
-            zIndex="2"
-            mixBlendMode="difference"
-            pos="absolute"
-            transform="translate(-50%,-50%)"
-            top="50%"
-            left="50%"
-            color="white"
-            fontWeight="black"
-            lineHeight="100%"
-            fontSize={["6xl", "9xl"]}
-          >
+        <div className="grid grid-cols-[repeat(10,1fr)] grid-rows-[repeat(10,1fr)] max-w-screen-xl relative mx-auto min-h-[500px] sm:min-h-[800px] my-40">
+          <h2 className="font-heading absolute z-[2] mix-blend-difference text-6xl sm:text-9xl text-theme-10 font-black left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2">
             196 <br />
             Orchard
-          </Heading>
+          </h2>
           <GridItem
             alt={`beautiful 196 Orchard job flooring 1`}
             ref={setGridItems}
             data-speed="1.2"
-            gridRow="1 / 6"
-            gridColumn="1 / 5"
+            className="row-[1/6] col-[1/5]"
             src={gridImage8}
           />
 
@@ -326,23 +221,20 @@ const Works = () => {
             alt={`beautiful 196 Orchard job flooring 2`}
             ref={setGridItems}
             data-speed="1.1"
-            gridRow="3 / 11"
-            gridColumn="4 / 8"
+            className="row-[3/11] col-[4/8]"
             src={gridImage6}
           />
 
           <GridItem
             alt={`beautiful 196 Orchard job flooring 3`}
             ref={setGridItems}
-            gridRow="1 / 5"
-            gridColumn="8 / 11"
+            className="row-[1/5] col-[8/11]"
             src={gridImage9}
           />
           <GridItem
             alt={`beautiful 196 Orchard job flooring 4`}
             ref={setGridItems}
-            gridRow="6 / 11"
-            gridColumn="8 / 11"
+            className="row-[6/11] col-[8/11]"
             src={gridImage5}
           />
 
@@ -350,115 +242,70 @@ const Works = () => {
             alt={`beautiful 196 Orchard job flooring 5`}
             ref={setGridItems}
             data-speed="1.3"
-            gridRow="6 / 10"
-            gridColumn="1 / 5"
+            className="row-[6/10] col-[1/5]"
             src={gridImage7}
           />
-        </Grid>
+        </div>
       </WorksModal>
 
       <MarqueeSection text="Craftsmanship" />
 
       <WorksModal slides={workSlides.hearst}>
-        <Grid
-          pos="relative"
-          maxW="container.xl"
-          m="0 auto"
-          minH={["500px", "800px"]}
-          templateColumns="repeat(10, 1fr)"
-          templateRows="repeat(10,1fr)"
-          my="40"
-        >
-          <Heading
-            zIndex="2"
-            mixBlendMode="difference"
-            pos="absolute"
-            transform="translate(-50%,-50%)"
-            top="50%"
-            left="50%"
-            color="white"
-            fontWeight="black"
-            lineHeight="100%"
-            fontSize={["6xl", "9xl"]}
-          >
+        <div className="grid grid-cols-[repeat(10,1fr)] grid-rows-[repeat(10,1fr)] max-w-screen-xl relative mx-auto min-h-[500px] sm:min-h-[800px] my-40">
+          <h2 className="font-heading absolute z-[2] mix-blend-difference text-6xl sm:text-9xl text-theme-10 font-black left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2">
             Gabriela <br /> Hearst
-          </Heading>
+          </h2>
           <GridItem
             ref={setGridItems}
             alt={`beautiful Gabriela Hearst job flooring 1`}
             data-speed="1.1"
-            gridRow="1 / 10"
-            gridColumn="1 / 6"
+            className="row-[1/10] col-[1/6]"
             src={gridImage10}
           />
 
           <GridItem
             ref={setGridItems}
             alt={`beautiful Gabriela Hearst job flooring 2`}
-            gridRow="1 / 11"
-            gridColumn="6 / 11"
+            className="row-[1/11] col-[6/11]"
             src={gridImage11}
           />
 
           <GridItem
             alt={`beautiful Gabriela Hearst job flooring 3`}
             data-speed="1.3"
-            gridRow="1 / 4"
-            gridColumn="8 / 11"
+            className="row-[1/4] col-[8/11]"
             src={gridImage12}
           />
 
           <GridItem
             ref={setGridItems}
             alt={`beautiful Gabriela Hearst job flooring 4`}
-            gridRow="8 / 11"
-            gridColumn="2 / 4"
+            className="row-[8/11] col-[2/4]"
             src={gridImage13}
           />
           <GridItem
             ref={setGridItems}
             alt={`beautiful Gabriela Hearst job flooring 5`}
             data-speed="1.2"
-            gridRow="1 / 4"
-            gridColumn="3 / 7"
+            className="row-[1/4] col-[3/7]"
             src={gridImage14}
           />
-        </Grid>
+        </div>
       </WorksModal>
 
       <MarqueeSection text="Pristine" />
 
       <WorksModal slides={workSlides.gucci}>
-        <Grid
-          pos="relative"
-          maxW="container.xl"
-          m="0 auto"
-          minH={["500px", "800px"]}
-          templateColumns="repeat(10, 1fr)"
-          templateRows="repeat(10,1fr)"
-          my="40"
-        >
-          <Heading
-            zIndex="2"
-            mixBlendMode="difference"
-            pos="absolute"
-            transform="translate(-50%,-50%)"
-            top="50%"
-            left="50%"
-            color="white"
-            fontWeight="black"
-            lineHeight="100%"
-            fontSize={["6xl", "9xl"]}
-          >
+        <div className="grid grid-cols-[repeat(10,1fr)] grid-rows-[repeat(10,1fr)] max-w-screen-xl relative mx-auto min-h-[500px] sm:min-h-[800px] my-40">
+          <h2 className="font-heading absolute z-[2] mix-blend-difference text-6xl sm:text-9xl text-theme-10 font-black left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2">
             Gucci
-          </Heading>
+          </h2>
 
           <GridItem
             ref={setGridItems}
             alt={`beautiful gucci job flooring 1`}
             data-speed="1.3"
-            gridRow="1 / 7"
-            gridColumn="6 / 11"
+            className="row-[1/7] col-[6/11]"
             src={gridImage17}
           />
 
@@ -466,89 +313,61 @@ const Works = () => {
             ref={setGridItems}
             alt={`beautiful gucci job flooring 2`}
             data-speed="0.9"
-            gridRow="4 / 11"
-            gridColumn="2 / 7"
+            className="row-[4/11] col-[2/7]"
             src={gridImage18}
           />
 
           <GridItem
             ref={setGridItems}
             alt={`beautiful gucci job flooring 3`}
-            gridRow="5 / 11"
-            gridColumn="8 / 11"
+            className="row-[5/11] col-[8/11]"
             src={gridImage20}
           />
           <GridItem
             ref={setGridItems}
             alt={`beautiful gucci job flooring 4`}
-            gridRow="7 / 10"
-            gridColumn="1 / 3"
+            className="row-[7/10] col-[1/3]"
             src={gridImage21}
           />
           <GridItem
             ref={setGridItems}
             alt={`beautiful gucci job flooring 5`}
             data-speed="1.2"
-            gridRow="9 / 11"
-            gridColumn="5 / 8"
+            className="row-[9/11] col-[5/8]"
             src={gridImage16}
           />
           <GridItem
             ref={setGridItems}
             alt={`beautiful gucci job flooring 6`}
             data-speed="1.1"
-            gridRow="2 / 5"
-            gridColumn="1 / 5"
+            className="row-[2/5] col-[1/5]"
             src={gridImage15}
           />
-        </Grid>
+        </div>
       </WorksModal>
 
       <MarqueeSection text="Exquisite" mb="16" />
 
-      <Flex
-        justifyContent="center"
-        alignItems="center"
-        pos="relative"
-        maxW="container.xl"
-        m="0 auto"
-        mb="20"
-        minH="150px"
-      >
+      <div className="flex justify-center items-center relative max-w-screen-xl mx-auto mb-20 min-h-[150px]">
         <WorksModal slides={workSlides.all}>
-          <Link
-            as="button"
-            pos="relative"
-            fontSize={{ base: "lg", sm: "lg", md: "xl", lg: "xl" }}
-            display="flex"
-            alignItems="center"
-            maxW="max-content"
-            py="2"
-            px="4"
-            bgColor="brand.500"
-            color="brand.100"
-            border="1px solid #213a30"
-          >
+          <button className="relative text-lg md:text-xl flex items-center max-w-max py-2 px-4 bg-theme-500 text-theme-100 border-solid border-theme-400 border-[1px]">
             More Works
-            <Icon as={IoOpen} ml="2" />
-          </Link>
+            <IoOpen className="ml-2" />
+          </button>
         </WorksModal>
-      </Flex>
+      </div>
 
       <ContactSection
-        bgColor="brand.500"
-        contactFormVariant="work"
-        contactInfoTextColor="brand.200"
-        headingColor="brand.200"
-        formLabelColor="white"
-        logoColor="white"
+        bgColor="bg-theme-500"
+        infoSectionColor="text-theme-100"
+        headingColor="text-theme-100"
+        formLabelColor="text-theme-10"
+        inputBorderColor="border-b-theme-100"
+        inputTextColor="text-theme-10"
+        iconColor="text-theme-10"
       />
 
-      <Footer
-        bgColor="brand.500"
-        borderTop="1px solid #3a6061"
-        color="brand.100"
-      />
+      <Footer bgColor="bg-theme-500" textColor="text-theme-100" />
     </MainWrapper>
   );
 };

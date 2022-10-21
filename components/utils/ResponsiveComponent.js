@@ -1,6 +1,23 @@
-import { useState } from "react"
-import { useMediaQuery } from "@chakra-ui/react"
-import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect"
+import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect";
+
+import { useEffect, useState } from "react";
+
+function useMediaQuery(query) {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const matchQueryList = window.matchMedia(query);
+    function handleChange(e) {
+      setMatches(e.matches);
+    }
+    matchQueryList.addEventListener("change", handleChange);
+    return () => {
+      matchQueryList.removeEventListener("change", handleChange);
+    };
+  }, [query]);
+
+  return matches;
+}
 
 const ResponsiveComponent = ({
   mobileSize,
@@ -9,25 +26,25 @@ const ResponsiveComponent = ({
   desktopComponents,
   otherComponents,
 }) => {
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(false);
 
   useIsomorphicLayoutEffect(() => {
-    if (!loaded) setLoaded(true)
-  }, [loaded])
+    if (!loaded) setLoaded(true);
+  }, [loaded]);
 
-  const [isMobile] = useMediaQuery(`(max-width: ${mobileSize}px)`)
-  const [isOther] = useMediaQuery(`(min-width: ${otherSize}px)`)
+  const isMobile = useMediaQuery(`(max-width: ${mobileSize}px)`);
+  const isOther = useMediaQuery(`(min-width: ${otherSize}px)`);
 
   if (loaded) {
     if (isMobile) {
-      return mobileComponents
+      return mobileComponents;
     } else if (isOther) {
-      return otherComponents
+      return otherComponents;
     }
-    return desktopComponents
+    return desktopComponents;
   }
 
-  return null
-}
+  return null;
+};
 
-export default ResponsiveComponent
+export default ResponsiveComponent;

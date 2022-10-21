@@ -39,8 +39,8 @@ const Home = (props) => {
       <ServicesSection />
       <MessageSection />
       <SlideShowSection />
-      <ContactSection logoColor="brand.500" />
-      <Footer bgColor="brand.100" />
+      <ContactSection bgColor="bg-theme-100" />
+      <Footer />
     </MainWrapper>
   );
 };

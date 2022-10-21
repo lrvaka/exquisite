@@ -1,28 +1,20 @@
-import { Flex, Text } from "@chakra-ui/react"
-import { forwardRef } from "react"
-
-const WhyUsSectionItem = (props) => {
+const WhyUsSectionItem = ({ bgColor, color, children }) => {
   return (
-    <Flex
-      pos="absolute"
-      w="100%"
-      h="100%"
-      justifyContent="center"
-      alignItems="center"
-      lineHeight="normal"
-      bgColor={props.bgColor}
-      px="4"
+    <div
+      className={
+        "flex absolute w-full h-full justify-center items-center px-4 " +
+        bgColor
+      }
     >
-      <Text
-        fontSize={{ base: "4xl", xl: "5xl", "2xl": "7xl" }}
-        fontWeight="500"
-        textAlign="center"
-        color={props.color}
+      <p
+        className={
+          "text-4xl xl:text-5xl 2xl:text-7xl font-medium text-center " + color
+        }
       >
-        {props.children}
-      </Text>
-    </Flex>
-  )
-}
+        {children}
+      </p>
+    </div>
+  );
+};
 
-export default WhyUsSectionItem
+export default WhyUsSectionItem;

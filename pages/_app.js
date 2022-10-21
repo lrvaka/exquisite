@@ -1,34 +1,33 @@
-import { ChakraProvider, Box } from "@chakra-ui/react"
-import { theme } from "../lib/theme"
-import { useState, useRef } from "react"
-import { gsap } from "gsap"
-import ScrollTrigger from "gsap/dist/ScrollTrigger"
-import ScrollSmoother from "gsap/dist/ScrollSmoother"
-import GsapContext from "../store/gsap-context"
-import Navbar from "../components/ui/Navbar"
-import { useRouter } from "next/router"
-import PageTransitions from "../components/ui/PageTransitions"
-import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect"
-import SplitText from "gsap/dist/SplitText"
-import CustomEase from "gsap/dist/CustomEase"
-import Script from "next/script"
+import { useState, useRef } from "react";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import ScrollSmoother from "gsap/dist/ScrollSmoother";
+import GsapContext from "../store/gsap-context";
+import Navbar from "../components/ui/Navbar/Navbar";
+import { useRouter } from "next/router";
+import PageTransitions from "../components/ui/PageTransitions";
+import useIsomorphicLayoutEffect from "../components/hooks/useIsomorphicLayoutEffect";
+import SplitText from "gsap/dist/SplitText";
+import CustomEase from "gsap/dist/CustomEase";
+import Script from "next/script";
+import "../styles/globals.css";
 
 if (typeof window !== "undefined") {
-  window.history.scrollRestoration = "manual"
+  window.history.scrollRestoration = "manual";
 }
 
 function MyApp({ Component, pageProps }) {
-  const [routingPageOffset, setRoutingPageOffset] = useState(0)
-  const [smoother, setSmoother] = useState(null)
-  const contentRef = useRef()
-  const wrapperRef = useRef()
-  const router = useRouter()
+  const [routingPageOffset, setRoutingPageOffset] = useState(0);
+  const [smoother, setSmoother] = useState(null);
+  const contentRef = useRef();
+  const wrapperRef = useRef();
+  const router = useRouter();
 
   useIsomorphicLayoutEffect(() => {
     if (smoother) {
-      ScrollTrigger.getAll().forEach((t) => t.kill())
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     }
-    gsap.registerPlugin(ScrollSmoother, ScrollTrigger, SplitText)
+    gsap.registerPlugin(ScrollSmoother, ScrollTrigger, SplitText);
 
     let scroller = ScrollSmoother.create({
       ignoreMobileResize: true,
@@ -36,30 +35,30 @@ function MyApp({ Component, pageProps }) {
       content: contentRef.current,
       effects: true,
       smooth: 3, // how long (in seconds) it takes to "catch up" to the native scroll position
-    })
+    });
 
     setTimeout(() => {
-      ScrollTrigger.refresh()
-    }, 500)
+      ScrollTrigger.refresh();
+    }, 500);
 
-    setSmoother(scroller)
+    setSmoother(scroller);
 
-    return () => {}
-  }, [router.asPath])
+    return () => {};
+  }, [router.asPath]);
 
   useIsomorphicLayoutEffect(() => {
     const pageChange = () => {
-      setRoutingPageOffset(window.scrollY)
-    }
+      setRoutingPageOffset(window.scrollY);
+    };
 
-    router.events.on("routeChangeStart", pageChange)
-  }, [router.events])
+    router.events.on("routeChangeStart", pageChange);
+  }, [router.events]);
 
   useIsomorphicLayoutEffect(() => {
     //register custom easing functions
-    gsap.registerPlugin(CustomEase)
-    CustomEase.create("a1", "0.6, 0.01, -0.05, 0.95")
-  }, [])
+    gsap.registerPlugin(CustomEase);
+    CustomEase.create("a1", "0.6, 0.01, -0.05, 0.95");
+  }, []);
 
   return (
     <>
@@ -76,27 +75,25 @@ function MyApp({ Component, pageProps }) {
         `}
       </Script>
 
-      <ChakraProvider theme={theme}>
-        <GsapContext.Provider
-          value={{
-            smoother,
-            setSmoother,
-            contentRef,
-          }}
-        >
-          <Box ref={wrapperRef}>
-            <Navbar />
-            <PageTransitions
-              route={router.asPath}
-              routingPageOffset={routingPageOffset}
-            >
-              <Component {...pageProps} />
-            </PageTransitions>
-          </Box>
-        </GsapContext.Provider>
-      </ChakraProvider>
+      <GsapContext.Provider
+        value={{
+          smoother,
+          setSmoother,
+          contentRef,
+        }}
+      >
+        <div ref={wrapperRef}>
+          <Navbar />
+          <PageTransitions
+            route={router.asPath}
+            routingPageOffset={routingPageOffset}
+          >
+            <Component {...pageProps} />
+          </PageTransitions>
+        </div>
+      </GsapContext.Provider>
     </>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

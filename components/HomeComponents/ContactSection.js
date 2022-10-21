@@ -1,22 +1,3 @@
-import {
-  Box,
-  Flex,
-  FormControl,
-  Container,
-  FormLabel,
-  Input,
-  Stack,
-  Link,
-  Textarea,
-  Heading,
-  Icon,
-  Text,
-  Popover,
-  PopoverTrigger,
-  useClipboard,
-  PopoverContent,
-  PopoverBody,
-} from "@chakra-ui/react";
 import SVGArrow from "../ui/SVGArrow";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsInstagram, BsLinkedin } from "react-icons/bs";
@@ -26,108 +7,80 @@ import { useForm, ValidationError } from "@formspree/react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { FaFacebookSquare, FaTiktok } from "react-icons/fa";
 
-const ContactInfoText = ({
-  children,
-  contactInfoTextColor = "brand.500",
-  ...props
-}) => (
-  <Heading
-    as="h3"
-    fontWeight="700"
-    lineHeight="none"
-    color={contactInfoTextColor}
-    fontSize="1.5rem"
-    textAlign="left"
-    {...props}
-  >
+const ContactInfoText = ({ children }) => (
+  <h3 className="font-bold text-2xl text-left font-heading leading-none">
     {children}
-  </Heading>
+  </h3>
 );
 
-const ContactInfoSection = ({ contactInfoTextColor, logoColor }) => {
-  const { hasCopied, onCopy } = useClipboard("+1 (914)-237-7898");
+const ContactInfoSection = ({ infoSectionColor, iconColor }) => {
   return (
-    <Flex
-      maxW={["none", "none", "none", "300px"]}
-      alignSelf="center"
-      flexDir="column"
-      textAlign="center"
-      gap="4"
+    <div
+      className={
+        "flex lg:max-w-[300px] self-center flex-col text-center gap-4 " +
+        infoSectionColor
+      }
     >
-      <Flex justifyContent="left" gap="2" alignItems="center">
-        <Icon as={AiOutlineMail} h={4} w={4} color={logoColor} />
-        <ContactInfoText contactInfoTextColor={contactInfoTextColor}>
-          info@ewfny.com
-        </ContactInfoText>
-      </Flex>
-      <Flex justifyContent="left" gap="2" alignItems="center">
-        <Icon as={HiPhone} h={4} w={4} color={logoColor} />
-        <ContactInfoText contactInfoTextColor={contactInfoTextColor}>
-          +1 (914) 237 7898
-        </ContactInfoText>
-      </Flex>
-      <Link
-        display="flex"
-        _hover={{ textDecoration: `underline ${logoColor}` }}
-        justifyContent="left"
-        gap="2"
-        alignItems="center"
+      <div className="flex justify-left gap-2 items-center">
+        <AiOutlineMail className={"h-4 w-4 " + iconColor} />
+        <ContactInfoText>info@ewfny.com</ContactInfoText>
+      </div>
+      <div className="flex justify-left gap-2 items-center">
+        <HiPhone className={"h-4 w-4 " + iconColor} />
+        <ContactInfoText>+1 (914) 237 7898</ContactInfoText>
+      </div>
+      <a
+        className="flex justify-left gap-2 items-center"
         href="https://www.google.com/maps/place/941+McLean+Ave+%23472,+Yonkers,+NY+10704/@40.9034428,-73.8675617,19z/data=!3m1!4b1!4m5!3m4!1s0x89c2f2e70ca2a027:0x2a5bc5f5c5d874f9!8m2!3d40.9034428!4d-73.8670145"
       >
-        <Icon
-          alignSelf="center"
-          as={IoLocationOutline}
-          h={4}
-          w={4}
-          color={logoColor}
-        />
-        <ContactInfoText contactInfoTextColor={contactInfoTextColor}>
+        <IoLocationOutline className={"self-center w-8 h-8 " + iconColor} />
+        <ContactInfoText>
           941 Mclean Avenue, Suite 472, Yonkers, NY 10707
         </ContactInfoText>
-      </Link>
-      <Flex justifyContent="center" gap="2">
-        <Link
-          alignSelf="center"
+      </a>
+      <div className="flex justify-center gap-2 ">
+        <a
+          className="self-center w-max"
           aria-label="our linkedin page"
           href="https://www.linkedin.com/company/exquisite-wood-floors/"
           target="_blank"
-          width="max-content"
+          rel="noreferrer"
         >
-          <Icon color={logoColor} as={BsLinkedin} w={5} h={5} />
-        </Link>
-        <Link
-          alignSelf="center"
+          <BsLinkedin className={"w-5 h-5 " + iconColor} />
+        </a>
+        <a
+          className="self-center w-max"
           aria-label="our instagram page"
           href="https://www.instagram.com/exquisitewoodfloors/"
           target="_blank"
-          width="max-content"
+          rel="noreferrer"
         >
-          <Icon color={logoColor} as={BsInstagram} w={5} h={5} />
-        </Link>
-        <Link
-          alignSelf="center"
+          <BsInstagram className={"w-5 h-5 " + iconColor} />
+        </a>
+        <a
+          className="self-center w-max"
           aria-label="our facebook page"
           href="https://www.facebook.com/exquisitewoodfloors"
           target="_blank"
-          width="max-content"
+          rel="noreferrer"
         >
-          <Icon color={logoColor} as={FaFacebookSquare} w={5} h={5} />
-        </Link>
-        <Link
-          alignSelf="center"
+          <FaFacebookSquare className={"w-5 h-5 " + iconColor} />
+        </a>
+        <a
+          className="self-center w-max"
           aria-label="our tik-tok page"
           href="https://www.tiktok.com/@exquisitewoodfloors"
           target="_blank"
-          width="max-content"
+          rel="noreferrer"
         >
-          <Icon color={logoColor} as={FaTiktok} w={5} h={5} />
-        </Link>
-      </Flex>
-    </Flex>
+          <FaTiktok className={"w-5 h-5 " + iconColor} />
+        </a>
+      </div>
+    </div>
   );
 };
 
-const ContactForm = ({ contactFormVariant, formLabelColor }) => {
+const ContactForm = ({ formLabelColor, inputBorderColor, inputTextColor }) => {
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM);
 
   if (state.succeeded) {
@@ -135,83 +88,89 @@ const ContactForm = ({ contactFormVariant, formLabelColor }) => {
       ScrollTrigger.refresh();
     }, 100);
     return (
-      <Container
-        maxW="sm"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        textAlign="center"
-        mb={["12", "0"]}
-        pb={["0", "36"]}
-        pt={["0", "10"]}
-        color={formLabelColor}
-      >
-        <Text fontSize="xl" lineHeight="100%">
+      <div className="mx-auto max-w-sm flex justify-center items-center text-center mb-12 sm:mb-0 sm:pb-36 sm:pt-10">
+        <p className="text-xl">
           Thank you for taking the first steps towards a more Exquisite living
           experience. We will be in touch with you shortly.
-        </Text>
-      </Container>
+        </p>
+      </div>
     );
   }
 
   return (
-    <Stack
-      as="form"
+    <form
+      className="flex flex-col relative pb-14 z-[2] gap-12"
       onSubmit={handleSubmit}
-      spacing={12}
-      pos="relative"
-      zIndex="2"
-      pb="14"
     >
-      <FormControl isRequired>
-        <FormLabel color={formLabelColor} htmlFor="name">
+      <div className="flex flex-col">
+        <label className={"font-medium mb-2 " + formLabelColor} htmlFor="name">
           Name
-        </FormLabel>
-        <Input
-          color={formLabelColor}
-          variant={contactFormVariant}
+        </label>
+        <input
+          className={
+            "py-2 bg-theme-100 bg-opacity-0 text-md border-b " +
+            inputBorderColor +
+            " " +
+            inputTextColor
+          }
           id="name"
           name="name"
           type="text"
         />
         <ValidationError prefix="Name" field="name" errors={state.errors} />
-      </FormControl>
-      <FormControl isRequired>
-        <FormLabel color={formLabelColor} htmlFor="email">
-          Email
-        </FormLabel>
-        <Input
-          color={formLabelColor}
-          variant={contactFormVariant}
+      </div>
+      <div className="flex flex-col">
+        <label className={"font-medium mb-2 " + formLabelColor} htmlFor="email">
+          Email <span className="text-[red]">*</span>
+        </label>
+        <input
+          required
+          className={
+            "py-2 bg-theme-100 bg-opacity-0 text-md border-b " +
+            inputBorderColor +
+            " " +
+            inputTextColor
+          }
           id="email"
           type="email"
           name="email"
         />
         <ValidationError prefix="Email" field="email" errors={state.errors} />
-      </FormControl>
-      <FormControl>
-        <FormLabel color={formLabelColor} htmlFor="phone">
+      </div>
+      <div className="flex flex-col">
+        <label className={"font-medium mb-2 " + formLabelColor} htmlFor="phone">
           Phone
-        </FormLabel>
-        <Input
-          color={formLabelColor}
-          variant={contactFormVariant}
+        </label>
+        <input
+          className={
+            "py-2 bg-theme-100 bg-opacity-0 text-md border-b " +
+            inputBorderColor +
+            " " +
+            inputTextColor
+          }
           id="phone"
           name="phone"
           type="tel"
         />
         <ValidationError prefix="Phone" field="phone" errors={state.errors} />
-      </FormControl>
-      <FormControl isRequired>
-        <FormLabel color={formLabelColor} htmlFor="message">
-          Enquiry
-        </FormLabel>
-        <Textarea
-          variant={contactFormVariant}
-          color={formLabelColor}
+      </div>
+      <div className="flex flex-col">
+        <label
+          className={"font-medium mb-2 " + formLabelColor}
+          htmlFor="message"
+        >
+          Enquiry <span className="text-[red]">*</span>
+        </label>
+        <textarea
+          required
+          className={
+            "py-2 bg-theme-100 bg-opacity-0 text-md border-b resize-none w-full " +
+            inputBorderColor +
+            " " +
+            inputTextColor
+          }
           id="message"
           name="message"
-          resize="none"
           type="text"
           maxLength="1500"
         />
@@ -220,69 +179,60 @@ const ContactForm = ({ contactFormVariant, formLabelColor }) => {
           field="message"
           errors={state.errors}
         />
-      </FormControl>
-      <Flex
-        as="button"
+      </div>
+      <button
+        className="flex text-left font-bold text-theme-300 gap-4 max-w-max "
         type="submit"
-        textAlign="left"
-        fontWeight="700"
-        color="brand.300"
-        gap="4"
-        w="max-content"
         disabled={state.submitting}
       >
-        <Box>Send now</Box>
-        <Box alignSelf="center">
+        <div>Send now</div>
+        <div className="self-center">
           <SVGArrow fill="#979a6f" />
-        </Box>
-      </Flex>
-    </Stack>
+        </div>
+      </button>
+    </form>
   );
 };
 
 const ContactSection = ({
-  headingColor = "brand.500",
-  contactFormVariant,
-  contactInfoTextColor,
-  bgColor = "brand.100",
-  formLabelColor = "black",
-  logoColor,
+  bgColor = "bg-theme-100",
+  infoSectionColor = "text-theme-500",
+  headingColor = "text-theme-500",
+  formLabelColor = "text-black",
+  inputBorderColor = "border-b-theme-black",
+  inputTextColor = "text-black",
+  iconColor,
   ...props
 }) => (
-  <Container
+  <div
+    className={
+      "relative z-10 flex max-w-5xl mx-auto justify-center flex-col lg:flex-row px-4 pt-20 pb-10 lg:gap-24 " +
+      bgColor
+    }
     id="contact"
-    bgColor={bgColor}
-    display="flex"
-    maxW="container.xl"
-    justifyContent="center"
-    flexDir={["column", "column", "column", "row"]}
-    px="4"
-    pt="20"
-    pb="10"
-    gap={[0, 0, 0, 24]}
     {...props}
   >
-    <Box>
-      <Heading
-        fontSize={["2rem", "2rem", "2rem", "2.5rem"]}
-        as="h2"
-        fontWeight="700"
-        lineHeight="none"
-        color={headingColor}
+    <div>
+      <h2
+        className={
+          "text-3xl lg:text-4xl font-bold leading-none pb-10 font-heading " +
+          headingColor
+        }
         pb="10"
       >
         Let&apos;s build together
-      </Heading>
+      </h2>
       <ContactForm
         formLabelColor={formLabelColor}
-        contactFormVariant={contactFormVariant}
+        inputBorderColor={inputBorderColor}
+        inputTextColor={inputTextColor}
       />
-    </Box>
+    </div>
     <ContactInfoSection
-      logoColor={logoColor}
-      contactInfoTextColor={contactInfoTextColor}
+      infoSectionColor={infoSectionColor}
+      iconColor={iconColor}
     />
-  </Container>
+  </div>
 );
 
 export default ContactSection;
