@@ -8,7 +8,7 @@ const Navbar = () => {
   const { smoother } = useContext(GsapContext);
 
   return (
-    <header className="w-full fixed z-[1] md:bg-[#dbe2bb]/50">
+    <header className="w-full fixed z-20 md:bg-[#dbe2bb]/50">
       <div className="mx-auto relative max-w-[2300px]">
         <div className="flex justify-between p-4">
           <NextLink href="/" passHref>

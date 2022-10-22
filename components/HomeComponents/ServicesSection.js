@@ -9,9 +9,9 @@ const ServicesItem = ({ heading, children }) => {
   return (
     <div className="flex flex-grow text-center flex-col bg-theme-400 gap-4 p-10">
       <div className="flex flex-grow max-w-[500px] mx-auto flex-col">
-        <h3 className="pb-2 text-theme-200 text-2xl md:text-3xl 2xl:text-5xl font-heading font-bold">
+        <h2 className="pb-2 text-theme-200 text-2xl md:text-3xl 2xl:text-5xl font-heading font-bold leading-none">
           {heading}
-        </h3>
+        </h2>
         <p className="self-center justify-self-center text-theme-10 text-md md:text-lg">
           {children}
         </p>
