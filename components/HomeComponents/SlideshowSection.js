@@ -105,7 +105,7 @@ const SlideShowSection = (props) => {
               <NextLink href="/portfolio" passHref>
                 <a className="flex text-left font-bold text-theme-200 w-max gap-4">
                   <div className="lg:text-xl">View portfolio</div>
-                  <div className="self-center" alignSelf="center">
+                  <div className="self-center">
                     <SVGArrow fill="#cdcda6" />
                   </div>
                 </a>

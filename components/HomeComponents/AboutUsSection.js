@@ -88,10 +88,7 @@ const AboutUsSection = () => {
 
   return (
     <>
-      <div
-        className="relative z-10 flex max-w-[1800px] mx-auto my-24 flex-col md:flex-row "
-        flexDir={{ base: "column", md: "row" }}
-      >
+      <div className="relative z-10 flex max-w-[1800px] mx-auto my-24 flex-col md:flex-row ">
         <div className="relative w-full h-[100vw] md:h-auto ">
           <NextImage
             sizes="50vw"
