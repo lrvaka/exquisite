@@ -23,7 +23,7 @@ function PortfolioModal({ slides, children }) {
   return (
     <>
       <Dialog
-        className="p-1 pb-3 md:p-5 w-[98vw] h-[98vh] md:h-[90vh] md:w-[90vw] 2xl:h-[80vh] 2xl:w-[80vw] z-10 fixed bg-theme-10 rounded-md top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="p-1 pb-5 md:p-5 w-[98vw] h-[98vh] md:h-[90vh] md:w-[90vw] 2xl:h-[80vh] 2xl:w-[80vw] z-10 fixed bg-theme-10 rounded-md top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         as="div"
         open={isOpen}
         onClose={() => setIsOpen(false)}
