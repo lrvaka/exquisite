@@ -108,7 +108,7 @@ const ContactForm = ({ formLabelColor, inputBorderColor, inputTextColor }) => {
         </label>
         <input
           className={
-            "py-2 bg-theme-100 bg-opacity-0 text-md border-b " +
+            "py-2 bg-theme-100 bg-opacity-0 text-md border-b rounded-none " +
             inputBorderColor +
             " " +
             inputTextColor
@@ -120,13 +120,16 @@ const ContactForm = ({ formLabelColor, inputBorderColor, inputTextColor }) => {
         <ValidationError prefix="Name" field="name" errors={state.errors} />
       </div>
       <div className="flex flex-col">
-        <label className={"font-medium mb-2 " + formLabelColor} htmlFor="email">
+        <label
+          className={"font-medium mb-2 rounded-none " + formLabelColor}
+          htmlFor="email"
+        >
           Email <span className="text-[red]">*</span>
         </label>
         <input
           required
           className={
-            "py-2 bg-theme-100 bg-opacity-0 text-md border-b " +
+            "py-2 bg-theme-100 bg-opacity-0 text-md border-b rounded-none " +
             inputBorderColor +
             " " +
             inputTextColor
@@ -143,7 +146,7 @@ const ContactForm = ({ formLabelColor, inputBorderColor, inputTextColor }) => {
         </label>
         <input
           className={
-            "py-2 bg-theme-100 bg-opacity-0 text-md border-b " +
+            "py-2 bg-theme-100 bg-opacity-0 text-md border-b rounded-none " +
             inputBorderColor +
             " " +
             inputTextColor
@@ -164,7 +167,7 @@ const ContactForm = ({ formLabelColor, inputBorderColor, inputTextColor }) => {
         <textarea
           required
           className={
-            "py-2 bg-theme-100 bg-opacity-0 text-md border-b resize-none w-full " +
+            "py-2 bg-theme-100 bg-opacity-0 text-md border-b resize-none w-full rounded-none " +
             inputBorderColor +
             " " +
             inputTextColor
