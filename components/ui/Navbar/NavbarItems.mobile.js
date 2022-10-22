@@ -22,7 +22,7 @@ const NavbarItemsMobile = () => {
 
   return (
     <Menu as="div" className="relative inline-block text-left">
-      <Menu.Button className="bg-theme-500 text-theme-10 p-4 border-[1px] border-theme-400 border-solid">
+      <Menu.Button aria-label="navigation button" className="bg-theme-500 text-theme-10 p-4 border-[1px] border-theme-400 border-solid">
         <svg
           stroke="currentColor"
           fill="currentColor"

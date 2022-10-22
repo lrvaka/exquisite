@@ -47,7 +47,10 @@ const meta = {
 };
 
 const MarqueeText = ({ children, ...props }) => (
-  <span className="font-black font-heading text-theme-400 text-[4rem] sm:text-[5rem] md:text-[6rem] xl:text-[7rem] 2xl:text-[12rem] opacity-25 mr-32 sm:mr-60 overflow-y-hidden">
+  <span
+    aria-hidden="true"
+    className="font-black font-heading text-theme-400 text-[4rem] sm:text-[5rem] md:text-[6rem] xl:text-[7rem] 2xl:text-[12rem] opacity-25 mr-32 sm:mr-60 overflow-y-hidden"
+  >
     {children}
   </span>
 );
