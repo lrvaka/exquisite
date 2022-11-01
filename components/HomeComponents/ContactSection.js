@@ -6,6 +6,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { useForm, ValidationError } from "@formspree/react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { FaFacebookSquare, FaTiktok } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 const ContactInfoText = ({ children }) => (
   <h3 className="font-bold text-2xl text-left font-heading leading-none">
@@ -82,20 +83,25 @@ const ContactInfoSection = ({ infoSectionColor, iconColor }) => {
 
 const ContactForm = ({ formLabelColor, inputBorderColor, inputTextColor }) => {
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM);
+  const router = useRouter();
 
   if (state.succeeded) {
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
-    return (
-      <div className="mx-auto max-w-sm flex justify-center items-center text-center mb-12 sm:mb-0 sm:pb-36 sm:pt-10">
-        <p className="text-xl">
-          Thank you for taking the first steps towards a more Exquisite living
-          experience. We will be in touch with you shortly.
-        </p>
-      </div>
-    );
+    router.push("thank-you");
   }
+
+  // if (state.succeeded) {
+  //   setTimeout(() => {
+  //     ScrollTrigger.refresh();
+  //   }, 100);
+  //   return (
+  //     <div className="mx-auto max-w-sm flex justify-center items-center text-center mb-12 sm:mb-0 sm:pb-36 sm:pt-10">
+  //       <p className="text-xl">
+  //         Thank you for taking the first steps towards a more Exquisite living
+  //         experience. We will be in touch with you shortly.
+  //       </p>
+  //     </div>
+  //   );
+  // }
 
   return (
     <form
