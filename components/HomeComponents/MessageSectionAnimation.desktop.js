@@ -46,7 +46,7 @@ const MessageSectionAnimationDesktop = ({ children, ...props }) => {
       leftAni.kill();
       rightAni.kill();
     };
-  }, []);
+  }, [leftPlankRefs, rightPlankRefs]);
 
   return (
     <div
