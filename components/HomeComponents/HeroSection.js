@@ -105,10 +105,10 @@ const HeroSection = () => {
           Wood Floors
         </h1>
         <h2
-          className="relative invisible overflow-hidden text-theme-500 text-2xl sm:text-2xl md:text-3xl lg:text-4xl z-[1]"
+          className="relative invisible overflow-hidden text-theme-500 text-lg sm:text-2xl md:text-3xl lg:text-4xl z-[1]"
           ref={subRef}
         >
-          We make living spaces Exquisite
+          NYC&apos;s Leading Wood Flooring Company
         </h2>
 
         <div className="flex justify-center items-center mt-2 sm:mt-2 md:mt-4 lg:mt-6">
