@@ -31,7 +31,7 @@ const Navbar = () => {
               <NavbarItems />
               <NextLink href="/contact" passHref>
                 <a className="flex p-2 text-theme-10 border-[1px] border-theme-500 border-solid font-heading bg-theme-400 items-center max-w-max text-lg 2xl:text-2xl font-bold">
-                  Get A Quote
+                  Get In Touch
                   {/* <svg
                     className="ml-2"
                     stroke="currentColor"
