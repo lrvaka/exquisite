@@ -1,10 +1,10 @@
-import SVGArrow from "../ui/SVGArrow";
+import SVGArrow from "./SVGArrow";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsInstagram, BsLinkedin } from "react-icons/bs";
 import { HiPhone } from "react-icons/hi";
 import { IoLocationOutline } from "react-icons/io5";
 import { useForm, ValidationError } from "@formspree/react";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+
 import { FaFacebookSquare, FaTiktok } from "react-icons/fa";
 import { useRouter } from "next/router";
 
@@ -215,7 +215,7 @@ const ContactSection = ({
 }) => (
   <div
     className={
-      "relative z-10 flex max-w-5xl mx-auto justify-center flex-col lg:flex-row px-4 pt-20 pb-10 lg:gap-24 " +
+      "relative z-10 flex max-w-5xl mx-auto justify-center flex-col lg:flex-row px-4 py-40  lg:gap-24 " +
       bgColor
     }
     id="contact"

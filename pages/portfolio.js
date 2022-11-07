@@ -3,7 +3,7 @@ import { IoOpen } from "react-icons/io5";
 import WorksModal from "../components/ui/Modal";
 import "keen-slider/keen-slider.min.css";
 import NextImage from "next/image";
-import ContactSection from "../components/HomeComponents/ContactSection";
+import ContactMessage from "../components/ui/ContactMessage";
 import MainWrapper from "../components/ui/Main";
 import Footer from "../components/ui/Footer";
 import gsap from "gsap";
@@ -360,15 +360,8 @@ const Works = () => {
         </WorksModal>
       </div>
 
-      <ContactSection
-        bgColor="bg-theme-500"
-        infoSectionColor="text-theme-100"
-        headingColor="text-theme-100"
-        formLabelColor="text-theme-10"
-        inputBorderColor="border-b-theme-100"
-        inputTextColor="text-theme-10"
-        iconColor="text-theme-10"
-      />
+      <ContactMessage bgColor="bg-theme-500" headingColor="text-theme-100" textColor="text-theme-10" fillColor="fill-theme-100"/>
+
 
       <Footer bgColor="bg-theme-500" textColor="text-theme-100" />
     </MainWrapper>
