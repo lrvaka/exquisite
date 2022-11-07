@@ -1,7 +1,7 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import SlideShowSection from "../components/HomeComponents/SlideshowSection";
-import ContactSection from "../components/HomeComponents/ContactSection";
+import ContactSection from "../components/ui/ContactSection";
 import HeroSection from "../components/HomeComponents/HeroSection";
 import Footer from "../components/ui/Footer";
 import React from "react";
@@ -10,6 +10,7 @@ import ServicesSection from "../components/HomeComponents/ServicesSection";
 import AboutUsSection from "../components/HomeComponents/AboutUsSection";
 import TestimonialSection from "../components/HomeComponents/TestimonialSection";
 import MarqueeSection from "../components/HomeComponents/MarqueeSection";
+import ContactMessage from "../components/ui/ContactMessage";
 
 const MessageSection = dynamic(() =>
   import("../components/HomeComponents/MessageSectionAnimation")
@@ -39,7 +40,7 @@ const Home = (props) => {
       <ServicesSection />
       <MessageSection />
       <SlideShowSection />
-      <ContactSection bgColor="bg-theme-100" />
+      <ContactMessage />
       <Footer />
     </MainWrapper>
   );

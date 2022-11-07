@@ -1,5 +1,5 @@
 import "keen-slider/keen-slider.min.css";
-import ContactSection from "../components/HomeComponents/ContactSection";
+import ContactSection from "../components/ui/ContactSection";
 import MainWrapper from "../components/ui/Main";
 import Footer from "../components/ui/Footer";
 import InfoSection from "../components/AboutComponents/InfoSection";
@@ -7,6 +7,7 @@ import WhyUsSection from "../components/AboutComponents/WhyUsSection";
 import TestimonialSection from "../components/AboutComponents/TestimonialSection";
 import HeaderSection from "../components/AboutComponents/HeaderSection";
 import PortfolioSection from "../components/AboutComponents/PortfolioSection";
+import ContactMessage from "../components/ui/ContactMessage";
 
 const meta = {
   title: "About - Exquisite Wood Floors",
@@ -30,17 +31,9 @@ const About = () => {
 
       <TestimonialSection />
 
-      <ContactSection
-        bgColor="bg-theme-500"
-        infoSectionColor="text-theme-100"
-        headingColor="text-theme-100"
-        formLabelColor="text-theme-10"
-        inputBorderColor="border-b-theme-100"
-        inputTextColor="text-theme-10"
-        iconColor="text-theme-10"
-      />
+      <ContactMessage bgColor="bg-theme-500" headingColor="text-theme-100" textColor="text-theme-10" fillColor="fill-theme-100"/>
 
-      <Footer bgColor="bg-theme-500" textColor="text-theme-100" />
+      <Footer bgColor="bg-theme-500" textColor="text-theme-100"/>
     </MainWrapper>
   );
 };
