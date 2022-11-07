@@ -1,7 +1,6 @@
 # *
 User-agent: *
 Allow: /
-disallow: /thank-you
 
 # Host
 Host: https://www.exquisitewoodfloors.com
