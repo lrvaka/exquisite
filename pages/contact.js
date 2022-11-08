@@ -14,7 +14,7 @@ const meta = {
 const Contact = () => {
   return (
     <MainWrapper heading={meta}>
-      <div className="lg:pt-40">
+      <div className="lg:pt-40 2xl:pt-48">
         <ContactSection
           bgColor="bg-theme-500"
           infoSectionColor="text-theme-100"
