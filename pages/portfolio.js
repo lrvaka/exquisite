@@ -42,7 +42,7 @@ const meta = {
   description: "Display of selected works we've completed over the years.",
   url: "https://www.exquisitewoodfloors.com/portfolio",
   twitter: "https://twitter.com/ewfny",
-  imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.png",
+  imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.jpeg",
   imageAlt: "Exquisite Wood Floors",
 };
 

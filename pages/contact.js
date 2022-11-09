@@ -7,7 +7,7 @@ const meta = {
   description: "Get A Quote Today!",
   url: "https://www.exquisitewoodfloors.com/contact",
   twitter: "https://twitter.com/ewfny",
-  imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.png",
+  imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.jpeg",
   imageAlt: "Exquisite Wood Floors",
 };
 
