@@ -215,7 +215,7 @@ const ContactSection = ({
 }) => (
   <div
     className={
-      "relative z-10 flex max-w-5xl mx-auto justify-center flex-col lg:flex-row px-4 py-40  lg:gap-24 " +
+      "relative z-10 flex max-w-5xl mx-auto justify-center flex-col-reverse gap-20 lg:flex-row px-4 py-40  lg:gap-24 " +
       bgColor
     }
     id="contact"
@@ -224,7 +224,7 @@ const ContactSection = ({
     <div>
       <h2
         className={
-          "text-3xl lg:text-4xl font-bold leading-none pb-10 font-heading " +
+          "text-3xl lg:text-4xl font-bold leading-none font-heading pb-10 " +
           headingColor
         }
         pb="10"
