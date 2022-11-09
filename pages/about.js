@@ -14,7 +14,7 @@ const meta = {
   description: "Learn more about the Exquisite Wood Floors family",
   url: "https://www.exquisitewoodfloors.com/about",
   twitter: "https://twitter.com/ewfny",
-  imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.png",
+  imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.jpeg",
   imageAlt: "Exquisite Wood Floors",
 };
 

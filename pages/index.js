@@ -22,7 +22,7 @@ const meta = {
     "We make any living space exquisite with our reliable and appealing hardwood flooring",
   url: "https://www.exquisitewoodfloors.com",
   twitter: "https://twitter.com/ewfny",
-  imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.png",
+  imageUrl: "https://www.exquisitewoodfloors.com/images/twitter.jpeg",
   imageAlt: "Exquisite Wood Floors",
 };
 
