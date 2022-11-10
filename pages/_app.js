@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }) {
     return () => {};
   }, [router.asPath]);
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     // This pageview only triggers the first time (it's important for Pixel to have real information)
     fbq.pageview();
 
@@ -56,16 +56,23 @@ function MyApp({ Component, pageProps }) {
       fbq.pageview();
     };
 
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
+  useIsomorphicLayoutEffect(() => {
+    // This pageview only triggers the first time (it's important for Pixel to have real information)
+
     const pageChange = () => {
       setRoutingPageOffset(window.scrollY);
     };
 
     router.events.on("routeChangeStart", pageChange);
-    router.events.on("routeChangeComplete", handleRouteChange);
 
     return () => {
       router.events.off("routeChangeStart", pageChange);
-      router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
 
