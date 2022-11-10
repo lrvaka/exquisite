@@ -16,6 +16,10 @@ export default function Document() {
             src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
           />
         </noscript>
+        <meta
+          name="facebook-domain-verification"
+          content="vwsubju4h0mv6in420qeln9yhkfnqj"
+        />
       </Head>
       <body>
         <Main />
