@@ -24,7 +24,7 @@ const Contact = () => {
           inputTextColor="text-theme-10"
           iconColor="text-theme-10"
         />
-        <Footer bgColor="bg-theme-500" textColor="text-theme-100" />
+        <Footer bgColor="bg-theme-500" />
       </div>
     </MainWrapper>
   );

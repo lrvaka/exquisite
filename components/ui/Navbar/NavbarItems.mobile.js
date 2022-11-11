@@ -62,6 +62,9 @@ const NavbarItemsMobile = () => {
         <Menu.Item>
           <Link href="/about">About</Link>
         </Menu.Item>
+        <Menu.Item>
+          <Link href="/contact">Contact</Link>
+        </Menu.Item>
       </Menu.Items>
     </Menu>
   );

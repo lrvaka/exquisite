@@ -33,7 +33,7 @@ const About = () => {
 
       <ContactMessage bgColor="bg-theme-500" headingColor="text-theme-100" textColor="text-theme-10" fillColor="fill-theme-100"/>
 
-      <Footer bgColor="bg-theme-500" textColor="text-theme-100"/>
+      <Footer bgColor="bg-theme-500" />
     </MainWrapper>
   );
 };
