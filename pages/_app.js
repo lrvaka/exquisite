@@ -35,8 +35,8 @@ function MyApp({ Component, pageProps }) {
       ignoreMobileResize: true,
       wrapper: wrapperRef.current,
       content: contentRef.current,
-      effects: true,
-      smooth: 3, // how long (in seconds) it takes to "catch up" to the native scroll position
+      effects: false,
+      // smooth: 3, // how long (in seconds) it takes to "catch up" to the native scroll position
     });
 
     setTimeout(() => {

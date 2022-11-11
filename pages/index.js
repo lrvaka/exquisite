@@ -41,7 +41,7 @@ const Home = (props) => {
       <MessageSection />
       <SlideShowSection />
       <ContactMessage />
-      <Footer />
+      <Footer bgColor="bg-theme-500" />
     </MainWrapper>
   );
 };

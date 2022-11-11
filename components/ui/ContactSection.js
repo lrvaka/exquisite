@@ -6,6 +6,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { useForm, ValidationError } from "@formspree/react";
 
 import { FaFacebookSquare, FaTiktok } from "react-icons/fa";
+import { BiTimeFive } from "react-icons/bi";
 import { useRouter } from "next/router";
 
 const ContactInfoText = ({ children }) => (
@@ -22,24 +23,33 @@ const ContactInfoSection = ({ infoSectionColor, iconColor }) => {
         infoSectionColor
       }
     >
-      <div className="flex justify-left gap-2 items-center">
+      <a
+        href="mailto:info@ewfny.com"
+        className="flex justify-left gap-2 items-center"
+      >
         <AiOutlineMail className={"h-4 w-4 " + iconColor} />
         <ContactInfoText>info@ewfny.com</ContactInfoText>
-      </div>
-      <div className="flex justify-left gap-2 items-center">
+      </a>
+      <a href="tel:9142377898" className="flex justify-left gap-2 items-center">
         <HiPhone className={"h-4 w-4 " + iconColor} />
         <ContactInfoText>+1 (914) 237 7898</ContactInfoText>
-      </div>
+      </a>
       <a
         className="flex justify-left gap-2 items-center"
-        href="https://www.google.com/maps/place/941+McLean+Ave+%23472,+Yonkers,+NY+10704/@40.9034428,-73.8675617,19z/data=!3m1!4b1!4m5!3m4!1s0x89c2f2e70ca2a027:0x2a5bc5f5c5d874f9!8m2!3d40.9034428!4d-73.8670145"
+        href="https://goo.gl/maps/cPdqN6SX3SnL1qtg6"
+        target="_blank"
+        rel="noreferrer"
       >
         <IoLocationOutline className={"self-center w-8 h-8 " + iconColor} />
         <ContactInfoText>
-          941 Mclean Avenue, Suite 472, Yonkers, NY 10707
+          941 Mclean Avenue, Suite 472, Yonkers, NY 10704
         </ContactInfoText>
       </a>
-      <div className="flex justify-center gap-2 ">
+      <div className="flex justify-left gap-2 items-center">
+        <BiTimeFive className={"h-4 w-4 " + iconColor} />
+        <ContactInfoText>7:00AM - 5:00PM</ContactInfoText>
+      </div>
+      <div className="flex justify-center gap-5 ">
         <a
           className="self-center w-max"
           aria-label="our linkedin page"
@@ -88,20 +98,6 @@ const ContactForm = ({ formLabelColor, inputBorderColor, inputTextColor }) => {
   if (state.succeeded) {
     router.push("thank-you");
   }
-
-  // if (state.succeeded) {
-  //   setTimeout(() => {
-  //     ScrollTrigger.refresh();
-  //   }, 100);
-  //   return (
-  //     <div className="mx-auto max-w-sm flex justify-center items-center text-center mb-12 sm:mb-0 sm:pb-36 sm:pt-10">
-  //       <p className="text-xl">
-  //         Thank you for taking the first steps towards a more Exquisite living
-  //         experience. We will be in touch with you shortly.
-  //       </p>
-  //     </div>
-  //   );
-  // }
 
   return (
     <form
