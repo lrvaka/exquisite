@@ -73,6 +73,7 @@ const Footer = ({
             </button>
             <NextLink href="/portfolio">Portfolio</NextLink>
             <NextLink href="/contact">Contact</NextLink>
+            <NextLink href="/privacy">Privacy Policy</NextLink>
           </ul>
         </div>
         <div
