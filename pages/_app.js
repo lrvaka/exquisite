@@ -102,7 +102,6 @@ function MyApp({ Component, pageProps }) {
         prompt-avatar="https://widgets.leadconnectorhq.com/chat-widget/assets/defaultAvatar.png"
       ></chat-widget>
       <Script
-        strategy="afterInteractive"
         src="https://widgets.leadconnectorhq.com/loader.js"
         data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
       ></Script>

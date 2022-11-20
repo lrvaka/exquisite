@@ -101,114 +101,103 @@ const ContactForm = ({ formLabelColor, inputBorderColor, inputTextColor }) => {
   }
 
   return (
-    // <form
-    //   className="flex flex-col relative pb-14 z-[2] gap-12"
-    //   onSubmit={handleSubmit}
-    // >
-    //   <div className="flex flex-col">
-    //     <label className={"font-medium mb-2 " + formLabelColor} htmlFor="name">
-    //       Name
-    //     </label>
-    //     <input
-    //       className={
-    //         "py-2 bg-theme-100 bg-opacity-0 text-md border-b rounded-none " +
-    //         inputBorderColor +
-    //         " " +
-    //         inputTextColor
-    //       }
-    //       id="name"
-    //       name="name"
-    //       type="text"
-    //     />
-    //     <ValidationError prefix="Name" field="name" errors={state.errors} />
-    //   </div>
-    //   <div className="flex flex-col">
-    //     <label
-    //       className={"font-medium mb-2 rounded-none " + formLabelColor}
-    //       htmlFor="email"
-    //     >
-    //       Email <span className="text-[red]">*</span>
-    //     </label>
-    //     <input
-    //       required
-    //       className={
-    //         "py-2 bg-theme-100 bg-opacity-0 text-md border-b rounded-none " +
-    //         inputBorderColor +
-    //         " " +
-    //         inputTextColor
-    //       }
-    //       id="email"
-    //       type="email"
-    //       name="email"
-    //     />
-    //     <ValidationError prefix="Email" field="email" errors={state.errors} />
-    //   </div>
-    //   <div className="flex flex-col">
-    //     <label className={"font-medium mb-2 " + formLabelColor} htmlFor="phone">
-    //       Phone
-    //     </label>
-    //     <input
-    //       className={
-    //         "py-2 bg-theme-100 bg-opacity-0 text-md border-b rounded-none " +
-    //         inputBorderColor +
-    //         " " +
-    //         inputTextColor
-    //       }
-    //       id="phone"
-    //       name="phone"
-    //       type="tel"
-    //     />
-    //     <ValidationError prefix="Phone" field="phone" errors={state.errors} />
-    //   </div>
-    //   <div className="flex flex-col">
-    //     <label
-    //       className={"font-medium mb-2 " + formLabelColor}
-    //       htmlFor="message"
-    //     >
-    //       Enquiry <span className="text-[red]">*</span>
-    //     </label>
-    //     <textarea
-    //       required
-    //       className={
-    //         "py-2 bg-theme-100 bg-opacity-0 text-md border-b resize-none w-full rounded-none " +
-    //         inputBorderColor +
-    //         " " +
-    //         inputTextColor
-    //       }
-    //       id="message"
-    //       name="message"
-    //       type="text"
-    //       maxLength="1500"
-    //     />
-    //     <ValidationError
-    //       prefix="Message"
-    //       field="message"
-    //       errors={state.errors}
-    //     />
-    //   </div>
-    //   <button
-    //     className="flex text-left font-bold text-theme-300 gap-4 max-w-max "
-    //     type="submit"
-    //     disabled={state.submitting}
-    //   >
-    //     <div>Send now</div>
-    //     <div className="self-center">
-    //       <SVGArrow fill="#979a6f" />
-    //     </div>
-    //   </button>
-    // </form>
-    <>
-      <iframe
-        src="https://api.leadconnectorhq.com/widget/form/e7VrVxbaVXdFdMok9M6y"
-        style={{ border: "none", width: "100%" }}
-        scrolling="no"
-        id="e7VrVxbaVXdFdMok9M6y"
-      ></iframe>
-      <Script
-        src="https://api.leadconnectorhq.com/js/form_embed.js"
-        strategy="afterInteractive"
-      ></Script>
-    </>
+    <form
+      className="flex flex-col relative pb-14 z-[2] gap-12"
+      onSubmit={handleSubmit}
+    >
+      <div className="flex flex-col">
+        <label className={"font-medium mb-2 " + formLabelColor} htmlFor="name">
+          Name <span className="text-[red]">*</span>
+        </label>
+        <input
+          required
+          className={
+            "py-2 bg-theme-100 bg-opacity-0 text-md border-b rounded-none " +
+            inputBorderColor +
+            " " +
+            inputTextColor
+          }
+          id="name"
+          name="name"
+          type="text"
+        />
+        <ValidationError prefix="Name" field="name" errors={state.errors} />
+      </div>
+      <div className="flex flex-col">
+        <label
+          className={"font-medium mb-2 rounded-none " + formLabelColor}
+          htmlFor="email"
+        >
+          Email <span className="text-[red]">*</span>
+        </label>
+        <input
+          required
+          className={
+            "py-2 bg-theme-100 bg-opacity-0 text-md border-b rounded-none " +
+            inputBorderColor +
+            " " +
+            inputTextColor
+          }
+          id="email"
+          type="email"
+          name="email"
+        />
+        <ValidationError prefix="Email" field="email" errors={state.errors} />
+      </div>
+      <div className="flex flex-col">
+        <label className={"font-medium mb-2 " + formLabelColor} htmlFor="phone">
+          Phone <span className="text-[red]">*</span>
+        </label>
+        <input
+          required
+          className={
+            "py-2 bg-theme-100 bg-opacity-0 text-md border-b rounded-none " +
+            inputBorderColor +
+            " " +
+            inputTextColor
+          }
+          id="phone"
+          name="phone"
+          type="tel"
+        />
+        <ValidationError prefix="Phone" field="phone" errors={state.errors} />
+      </div>
+      <div className="flex flex-col">
+        <label
+          className={"font-medium mb-2 " + formLabelColor}
+          htmlFor="message"
+        >
+          Message
+        </label>
+        <textarea
+          className={
+            "py-2 bg-theme-100 bg-opacity-0 text-md border-b resize-none w-full rounded-none " +
+            inputBorderColor +
+            " " +
+            inputTextColor
+          }
+          id="message"
+          name="message"
+          type="text"
+          maxLength="1500"
+        />
+        <ValidationError
+          prefix="Message"
+          field="message"
+          errors={state.errors}
+        />
+      </div>
+      <button
+        className="flex text-left font-bold text-theme-300 gap-4 max-w-max "
+        type="submit"
+        disabled={state.submitting}
+      >
+        <div>Send now</div>
+        <div className="self-center">
+          <SVGArrow fill="#979a6f" />
+        </div>
+      </button>
+    </form>
   );
 };
 
