@@ -188,13 +188,13 @@ const ContactForm = ({ formLabelColor, inputBorderColor, inputTextColor }) => {
         />
       </div>
       <button
-        className="flex text-left font-bold text-theme-300 gap-4 max-w-max "
+        className="flex text-left font-bold text-theme-100 gap-4 max-w-max "
         type="submit"
         disabled={state.submitting}
       >
         <div>Send now</div>
         <div className="self-center">
-          <SVGArrow fill="#979a6f" />
+          <SVGArrow fill="#dbe2bb" />
         </div>
       </button>
     </form>
