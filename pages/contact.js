@@ -1,6 +1,7 @@
 import ContactSection from "../components/ui/ContactSection";
 import Footer from "../components/ui/Footer";
 import MainWrapper from "../components/ui/Main";
+import Script from "next/script";
 
 const meta = {
   title: "Contact - Exquisite Wood Floors",
