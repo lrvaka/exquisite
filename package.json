@@ -16,6 +16,7 @@
     "@formspree/react": "^2.2.5",
     "@gsap/business": "^3.10.4",
     "@headlessui/react": "^1.7.3",
+    "animated-number-react": "^0.1.2",
     "framer-motion": "^6.3.11",
     "gsap": "npm:@gsap/business@^3.10.4",
     "keen-slider": "^6.7.0",

@@ -25,6 +25,13 @@ function MyApp({ Component, pageProps }) {
   const wrapperRef = useRef();
   const router = useRouter();
 
+  const DynamicNavbar = () => {
+    if (router.asPath === "/landing-page") {
+      return null;
+    }
+    return <Navbar />;
+  };
+
   useIsomorphicLayoutEffect(() => {
     if (smoother) {
       ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -97,14 +104,14 @@ function MyApp({ Component, pageProps }) {
         `}
       </Script>
 
-      <chat-widget
+      {/* <chat-widget
         location-id="64GQAeTjiq54aOTurnYG"
         prompt-avatar="https://widgets.leadconnectorhq.com/chat-widget/assets/defaultAvatar.png"
       ></chat-widget>
       <Script
         src="https://widgets.leadconnectorhq.com/loader.js"
         data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-      ></Script>
+      ></Script> */}
 
       <Script
         id="fb-pixel"
@@ -133,7 +140,7 @@ function MyApp({ Component, pageProps }) {
         }}
       >
         <div ref={wrapperRef}>
-          <Navbar />
+          <DynamicNavbar />
           <PageTransitions
             route={router.asPath}
             routingPageOffset={routingPageOffset}
