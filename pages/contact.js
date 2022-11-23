@@ -26,6 +26,7 @@ const Contact = () => {
             inputBorderColor="border-b-theme-100"
             inputTextColor="text-theme-10"
             iconColor="text-theme-10"
+            submitColor="#dbe2bb"
           />
 
           <Footer bgColor="bg-theme-500" />

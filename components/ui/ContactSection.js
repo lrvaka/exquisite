@@ -92,7 +92,13 @@ const ContactInfoSection = ({ infoSectionColor, iconColor }) => {
   );
 };
 
-const ContactForm = ({ formLabelColor, inputBorderColor, inputTextColor }) => {
+const ContactForm = ({
+  formLabelColor,
+  inputBorderColor,
+  inputTextColor,
+  infoSectionColor,
+  submitColor = "#dbe2bb",
+}) => {
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM);
   const router = useRouter();
 
@@ -188,13 +194,15 @@ const ContactForm = ({ formLabelColor, inputBorderColor, inputTextColor }) => {
         />
       </div>
       <button
-        className="flex text-left font-bold text-theme-100 gap-4 max-w-max "
+        className={
+          "flex text-left font-bold gap-4 max-w-max " + infoSectionColor
+        }
         type="submit"
         disabled={state.submitting}
       >
-        <div>Send now</div>
+        <div>Book now</div>
         <div className="self-center">
-          <SVGArrow fill="#dbe2bb" />
+          <SVGArrow fill={submitColor} />
         </div>
       </button>
     </form>
@@ -209,6 +217,7 @@ const ContactSection = ({
   inputBorderColor = "border-b-theme-black",
   inputTextColor = "text-black",
   iconColor,
+  submitColor,
   ...props
 }) => (
   <div
@@ -233,6 +242,8 @@ const ContactSection = ({
         formLabelColor={formLabelColor}
         inputBorderColor={inputBorderColor}
         inputTextColor={inputTextColor}
+        infoSectionColor={infoSectionColor}
+        submitColor="#dbe2bb"
       />
     </div>
     <ContactInfoSection
@@ -243,3 +254,4 @@ const ContactSection = ({
 );
 
 export default ContactSection;
+export { ContactForm };
