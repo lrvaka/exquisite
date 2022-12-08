@@ -64,26 +64,26 @@ const LandingPage = () => {
           </div>
         </WorksModal>
       </div>
-      <div className="py-10 px-4 lg:px-10 mx-auto flex flex-col-reverse lg:flex-row lg:gap-32 justify-between max-w-7xl">
+      <div className="py-10 px-4 lg:px-10 mx-auto flex flex-col-reverse gap-16 lg:flex-row lg:gap-32 justify-between lg:max-w-7xl">
         <div className=" max-w-xl h-full self-center flex flex-col flex-grow">
           <div className="max-w-[100px]  self-center">
             <NextImage alt="ewf logo" src={logo} />
           </div>
-          <h2 className="font-heading font-bold leading-none text-2xl md:text-5xl text-theme-200 text-center">
+          <h2 className="font-heading font-bold leading-none text-lg md:text-5xl text-theme-200 text-center">
             NYC&apos;s Leading Wood Flooring Company
           </h2>
-          <h2 className="font-heading mt-8 mb-2 leading-none text-2xl md:text-3xl text-theme-200 text-center">
+          <h2 className="font-heading mt-8 mb-2 leading-none text-lg md:text-3xl text-theme-200 text-center">
             Any Project, Any Service
           </h2>
           <div className="mb-10">
-            <Marquee gradient={false}>
+            {/* <Marquee gradient={false}>
               <div className=" overflow-hidden text-theme-100 opacity-25 text-xl flex justify-around min-w-full">
                 <p>Installation</p>
                 <p>Refinishing</p>
                 <p>Maintenance</p>
                 <p>Repair</p>
               </div>
-            </Marquee>
+            </Marquee> */}
             <div className=" max-w-prose mx-auto text-center ">
               <p className="text-theme-10 text-xl my-5 ">
                 No matter the service and no matter the project, Exquisite Wood
@@ -91,7 +91,7 @@ const LandingPage = () => {
                 your next project!
               </p>
             </div>
-            <Marquee gradient={false}>
+            {/* <Marquee gradient={false}>
               <div className=" overflow-hidden text-theme-100 opacity-25 text-xl flex gap-6">
                 <p>Residential</p>
                 <p>Multi-Family</p>
@@ -99,7 +99,7 @@ const LandingPage = () => {
                 <p>Hospitality</p>
                 <p className="mr-6">Institutional</p>
               </div>
-            </Marquee>
+            </Marquee> */}
           </div>
           <div className="flex justify-around text-3xl text-theme-200 text-center">
             <div>
