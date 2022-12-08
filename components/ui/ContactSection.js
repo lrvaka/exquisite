@@ -229,7 +229,7 @@ const ContactSection = ({
     {...props}
   >
     <div>
-      <h2
+      <h1
         className={
           "text-3xl lg:text-4xl font-bold leading-none font-heading pb-10 " +
           headingColor
@@ -237,7 +237,7 @@ const ContactSection = ({
         pb="10"
       >
         Let&apos;s build together
-      </h2>
+      </h1>
       <ContactForm
         formLabelColor={formLabelColor}
         inputBorderColor={inputBorderColor}
