@@ -7,10 +7,7 @@ const PortfolioSection = () => (
   <div className="flex overflow-y-hidden relative min-h-[500px] mt-[-700px] mb-24 min-w-full">
     <ParallaxImage alt="beautiful wood flooring in home backdrop" src={image} />
     <div className="flex flex-col absolute top-[calc(75%-142px)] left-[10%]">
-      <h2
-        className="text-theme-100 text-5xl md:text-5xl lg:text-8xl font-black font-heading"
-        borderBottom="1px #979a6f solid"
-      >
+      <h2 className="text-theme-100 text-5xl md:text-5xl lg:text-8xl font-black font-heading">
         Portfolio
       </h2>
       <NextLink href="/portfolio" passHref>

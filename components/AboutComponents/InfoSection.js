@@ -21,10 +21,7 @@ const InfoSection = () => {
               objectFit="cover"
             />
           </div>
-          <h2
-            className="mb-10 text-theme-100 text-3xl md:text-5xl lg:text-8xl font-heading font-bold"
-            borderBottom="1px #979a6f solid"
-          >
+          <h2 className="mb-10 text-theme-100 text-3xl md:text-5xl lg:text-8xl font-heading font-bold">
             About Us
           </h2>
 
@@ -50,15 +47,7 @@ const InfoSection = () => {
           </button>
         </div>
       </div>
-      <div
-        className="flex min-h-full overflow-y-hidden relative justify-center items-center flex-1 2xl:flex-[1.5]"
-        minH="100%"
-        flex={{ base: 1, "2xl": 1.5 }}
-        overflowY="hidden"
-        pos="relative"
-        justifyContent="center"
-        alignItems="center"
-      >
+      <div className="flex min-h-full overflow-y-hidden relative justify-center items-center flex-1 2xl:flex-[1.5]">
         <ParallaxImage alt="beautiful wood planks" src={image} />
       </div>
     </div>
