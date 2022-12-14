@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   const DynamicNavbar = () => {
-    if (router.asPath === "/landing-page") {
+    if (router.asPath.includes("/landing-page")) {
       return null;
     }
     return <Navbar />;
