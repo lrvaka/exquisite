@@ -1,7 +1,6 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import SlideShowSection from "../components/HomeComponents/SlideshowSection";
-import ContactSection from "../components/ui/ContactSection";
 import HeroSection from "../components/HomeComponents/HeroSection";
 import Footer from "../components/ui/Footer";
 import React from "react";

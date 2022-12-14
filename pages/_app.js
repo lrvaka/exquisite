@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import * as fbq from "../lib/fpixel";
 
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import ScrollSmoother from "gsap/dist/ScrollSmoother";
@@ -55,20 +54,6 @@ function MyApp({ Component, pageProps }) {
     return () => {};
   }, [router.asPath]);
 
-  useEffect(() => {
-    // This pageview only triggers the first time (it's important for Pixel to have real information)
-    fbq.pageview();
-
-    const handleRouteChange = () => {
-      fbq.pageview();
-    };
-
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
-
   useIsomorphicLayoutEffect(() => {
     // This pageview only triggers the first time (it's important for Pixel to have real information)
 
@@ -104,15 +89,6 @@ function MyApp({ Component, pageProps }) {
         `}
       </Script>
 
-      {/* <chat-widget
-        location-id="64GQAeTjiq54aOTurnYG"
-        prompt-avatar="https://widgets.leadconnectorhq.com/chat-widget/assets/defaultAvatar.png"
-      ></chat-widget>
-      <Script
-        src="https://widgets.leadconnectorhq.com/loader.js"
-        data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-      ></Script> */}
-
       <Script
         id="fb-pixel"
         strategy="afterInteractive"
@@ -127,7 +103,6 @@ function MyApp({ Component, pageProps }) {
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', ${process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID});
-            fbq('track', 'PageView');
           `,
         }}
       />
