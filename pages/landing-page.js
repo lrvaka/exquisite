@@ -105,7 +105,7 @@ const LandingPage = () => {
                 <div>
                   <div className="font-bold text-theme-100">
                     <AnimatedNumber
-                      value={100}
+                      value={300}
                       formatValue={(value) => value.toFixed(0)}
                       duration={3000}
                     />
