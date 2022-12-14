@@ -3,7 +3,7 @@ import gsap from "gsap";
 import transitionPlanks from "../../lib/transition-planks";
 import useArrayRef from "../hooks/useArrayRef";
 
-const PageTransitionsOther = ({ addAnimation }) => {
+const PageTransitionsOther = ({ addAnimation, reverse }) => {
   const tl = useRef();
   const tl1 = useRef();
   const transitionRef = useRef();
@@ -17,35 +17,71 @@ const PageTransitionsOther = ({ addAnimation }) => {
       return;
     }
 
-    tl.current = gsap.fromTo(
-      leftPlankRefs.current,
-      { x: window.innerWidth * -1, autoAlpha: 0 },
-      {
-        x: 0,
-        autoAlpha: 1,
-        ease: "power4.out",
-        stagger: {
-          ease: "sine",
-          amount: 0.5,
-          from: "random",
-        },
-      }
-    );
+    if (reverse) {
+      tl.current = gsap
+        .fromTo(
+          leftPlankRefs.current,
+          { x: window.innerWidth * -1, autoAlpha: 0 },
+          {
+            x: 0,
+            autoAlpha: 1,
+            ease: "power4.out",
+            stagger: {
+              ease: "sine",
+              amount: 1,
+              from: "random",
+            },
+          }
+        )
+        .reverse();
 
-    tl1.current = gsap.fromTo(
-      rightPlankRefs.current,
-      { x: window.innerWidth, autoAlpha: 0 },
-      {
-        x: 0,
-        autoAlpha: 1,
-        ease: "power4.out",
-        stagger: {
-          ease: "sine",
-          amount: 0.5,
-          from: "random",
-        },
-      }
-    );
+      tl1.current = gsap
+        .fromTo(
+          rightPlankRefs.current,
+          { x: window.innerWidth, autoAlpha: 0 },
+          {
+            x: 0,
+            autoAlpha: 1,
+            ease: "power4.out",
+            stagger: {
+              ease: "sine",
+              amount: 1,
+              from: "random",
+            },
+          }
+        )
+        .reverse();
+    } else {
+      tl.current = gsap.fromTo(
+        leftPlankRefs.current,
+        { x: window.innerWidth * -1, autoAlpha: 0 },
+        {
+          x: 0,
+          autoAlpha: 1,
+          ease: "power4.out",
+          stagger: {
+            ease: "sine",
+            amount: 0.5,
+            from: "random",
+          },
+        }
+      );
+
+      tl1.current = gsap.fromTo(
+        rightPlankRefs.current,
+        { x: window.innerWidth, autoAlpha: 0 },
+        {
+          x: 0,
+          autoAlpha: 1,
+          ease: "power4.out",
+          stagger: {
+            ease: "sine",
+            amount: 0.5,
+            from: "random",
+          },
+        }
+      );
+    }
 
     addAnimation(tl.current, tl1.current);
 
@@ -76,7 +112,7 @@ const PageTransitionsOther = ({ addAnimation }) => {
 
               return (
                 <div
-                  className="flex relative h-auto items-stretch invisible bg-[#705d56] border-[1px] border-solid border-[#a1938e]"
+                  className="flex relative h-auto items-stretch  bg-[#705d56] border-[1px] border-solid border-[#a1938e]"
                   key={index}
                   ref={plankType}
                 >

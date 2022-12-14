@@ -1,5 +1,4 @@
 import "keen-slider/keen-slider.min.css";
-import ContactSection from "../components/ui/ContactSection";
 import MainWrapper from "../components/ui/Main";
 import Footer from "../components/ui/Footer";
 import InfoSection from "../components/AboutComponents/InfoSection";

@@ -71,7 +71,10 @@ function PortfolioModal({ slides, children }) {
         </Dialog.Panel>
       </Dialog>
 
-      <div className="cursor-pointer" onClick={() => setIsOpen(true)}>
+      <div
+        className="cursor-pointer max-w-full"
+        onClick={() => setIsOpen(true)}
+      >
         {children}
       </div>
     </>

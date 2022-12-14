@@ -1,3 +1,5 @@
+const colors = require("tailwindcss/colors");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -19,9 +21,26 @@ module.exports = {
           "80%": { transform: "translate(3%, 35%)" },
           "90%": { transform: "translate(-10%, 10%)" },
         },
+        colorBg: {
+          "0%": { background: "#33CCCC" },
+          "20%": { background: "#33CC36" },
+          "40%": { background: "#B8CC33" },
+          "60%": { background: "#FCCA00" },
+          "80%": { background: "#33CC36" },
+          "100%": { background: "#33CCCC" },
+        },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg) scale(1)" },
+          "50%": { transform: "rotate(3deg) scale(0.9)" },
+        },
       },
       animation: {
         grain: "grain 8s steps(10) infinite",
+        colorBg: "colorBg 9s ease-in-out infinite",
+        wiggle: "wiggle 3s ease-in-out infinite"
+      },
+      transitionTimingFunction: {
+        "ease-in-expo": "cubic-bezier(0.7, 0, 0.84, 0)",
       },
       gridRowStart: {
         1: "1",
@@ -81,8 +100,17 @@ module.exports = {
       body: ["questa-sans", "Arial"],
     },
     colors: {
+      transparent: "transparent",
+      current: "currentColor",
+      black: colors.black,
+      white: colors.white,
+      slate: colors.slate,
+      gray: colors.gray,
+      emerald: colors.emerald,
+      indigo: colors.indigo,
+      yellow: colors.yellow,
+      stone: colors.stone,
       theme: {
-        black: "#000000",
         10: "#FFFFFF",
         100: "#dbe2bb",
         200: "#cdcda6",
