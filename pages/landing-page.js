@@ -10,6 +10,7 @@ import workSlides from "../lib/work-slides";
 import MainWrapper from "../components/ui/Main";
 import OpeningTransition from "../components/ui/OpeningTransition";
 import Form from "../components/ui/Form/Form";
+import NWFAImage from "../public/images/NWFA-light.png";
 
 const animation = { duration: 100000, easing: (t) => t };
 
@@ -116,7 +117,14 @@ const LandingPage = () => {
                 </div>
               </div>
             </div>
-
+            <a
+              href="https://nwfa.org/"
+              target="_blank"
+              rel="noreferrer"
+              className="w-20 lg:w-32 mb-10 -mt-5 self-center"
+            >
+              <NextImage src={NWFAImage} />
+            </a>
             <WorksModal slides={workSlides.all}>
               <div className="flex justify-center relative">
                 <div
