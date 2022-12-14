@@ -4,7 +4,6 @@ const ServiceInfo = ({ formData, setFormData, page, setPage, x, setX }) => {
 
     setPage(page + 1);
     setX(1000);
-    console.log(formData);
   };
 
   return (
