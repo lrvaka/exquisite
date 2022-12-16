@@ -2,13 +2,13 @@ const TellUsMoreInfo = ({ formData, setFormData, page, setPage, x, setX }) => {
   return (
     <div className="flex flex-col justify-center items-center w-full  h-full absolute top-0 left-0 p-5 lg:p-10">
       <div className="text-xl lg:text-2xl mb-4 text-center">
-        Tell us about your project and what you&apos;re looking for...
+        Got any other details we should know about?
       </div>
       <div className="flex flex-col gap-2 w-full">
         <input
           className="w-full bg-emerald-100 rounded-sm p-2 text-xl text-black"
           type="input"
-          placeholder="Tell us about your project and what you're looking for..."
+          placeholder="Got any other details we should know about?"
           value={formData.tellUsMore}
           onChange={(e) =>
             setFormData({ ...formData, tellUsMore: e.target.value })
