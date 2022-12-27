@@ -157,9 +157,14 @@ const Footer = ({
           <NextImage src={NWFAImage} />
         </a>
       </div>
-      <div className="text-center">
+      <div className="text-center text-xs lg:text-sm">
         <span>© 2022 Exquisite Wood Floors NY. |</span>
-        <a href="https://blockhead.digital/" target="_blank" rel="noreferrer">
+        <a
+          className="underline"
+          href="https://blockhead.digital/"
+          target="_blank"
+          rel="noreferrer"
+        >
           &nbsp;Website by Blockhead Digital
         </a>
       </div>
