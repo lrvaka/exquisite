@@ -141,11 +141,11 @@ const HeroSection = () => {
       </div>
 
       <div
-        className="min-h-[97.5vh] grid relative max-w-[1920px] mx-auto my-0 grid-rows-[repeat(15, 1fr)] xl:grid-row-[25, 1fr] grid-cols-[repeat(15, 1fr)] xl:grid-cols-[25, 1fr]"
+        className="pt-[139px] 2xl:pt-[179px] min-h-[95vh] grid relative max-w-[1920px] mx-auto my-0 grid-rows-[repeat(15, 1fr)] xl:grid-row-[25, 1fr] grid-cols-[repeat(15, 1fr)] xl:grid-cols-[25, 1fr]"
         ref={containerRef}
       >
         <div
-          className="invisible relative row-[11/15] xl:row-[17/25] col-[5/16] xl:col-[18/26]"
+          className="invisible relative row-[11/15] xl:row-[17/25] col-[5/16] sm:col-[10/16] xl:col-[18/26]"
           data-speed="1.2"
         >
           <NextImage
@@ -158,7 +158,7 @@ const HeroSection = () => {
           />
         </div>
         <div
-          className="invisible relative row-[4/6] xl:row-[6/12] col-[2/9] xl:col-[2/8]"
+          className="invisible relative row-[2/5] xl:row-[2/9] col-[2/9]  sm:col-[1/5] xl:col-[2/8]"
           data-speed="1.1"
         >
           <NextImage

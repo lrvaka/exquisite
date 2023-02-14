@@ -10,20 +10,20 @@ const ContactMessage = ({
   return (
     <div
       className={
-        "relative z-10 flex max-w-7xl mx-auto justify-center flex-col px-4 xl:px-40 py-40 " +
+        "relative z-10 flex max-w-5xl mx-auto justify-center flex-col px-4 xl:px-40 py-40 " +
         bgColor +
         " "
       }
     >
       <h2
         className={
-          "text-5xl md:text-9xl font-bold leading-none font-heading text-left pb-5 " +
+          "text-5xl md:text-8xl font-bold leading-none font-heading text-left pb-5 " +
           headingColor
         }
       >
         Ready to work with us?
       </h2>
-      <p className={"text-xl lg:text-3xl max-w-prose " + textColor}>
+      <p className={"text-xl lg:text-2xl max-w-prose " + textColor}>
         Let us help you make your next project Exquisite!{" "}
         <br className=" hidden lg:flex" /> Tell us about your project and
         we&apos;ll be in touch.
