@@ -112,7 +112,7 @@ const PageTransitionsMobile = ({ addAnimation, reverse }) => {
 
               return (
                 <div
-                  className="flex relative h-auto items-stretch bg-[#705d56] border-[1px] border-solid border-[#a1938e]"
+                  className="invisible flex relative h-auto items-stretch bg-[#705d56] border-[1px] border-solid border-[#a1938e]"
                   key={index}
                   ref={plankType}
                 >
