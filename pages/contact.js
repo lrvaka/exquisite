@@ -106,19 +106,12 @@ const Contact = () => {
     <>
       <MainWrapper heading={meta}>
         <div className="pt-40 2xl:pt-48">
-          <div className="bg-theme-400">
-            <div className="flex flex-col lg:flex-row max-w-5xl gap-20 mx-auto pt-20 pb-10 px-4">
-              <div className="flex-grow">
-                <p className="text-center lg:text-2xl max-w-lg mx-auto mb-10 text-theme-10">
-                  Tell us what you&apos;re looking for & we&apos;ll get back to
-                  you with a FREE consultation within 24 hours!
-                </p>
-                <Form from="contact-page" />
-              </div>
-
+          <div className="">
+            <div className="flex flex-col  max-w-5xl gap-12 lg:gap-20 mx-auto py-20 lg:py-40 px-4">
+              <h2 className="text-center text-3xl font-heading font-bold text-theme-500">Reach out at one of the contacts below</h2>
               <ContactInfoSection
-                infoSectionColor="text-theme-100"
-                iconColor="text-white"
+                infoSectionColor="text-black"
+                iconColor="text-theme-500"
               />
             </div>
           </div>
