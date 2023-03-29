@@ -20,7 +20,7 @@ const meta = {
 };
 
 const ContactInfoText = ({ children }) => (
-  <h3 className="font-bold text-2xl text-left font-heading leading-none">
+  <h3 className=" font-medium text-2xl text-left leading-none">
     {children}
   </h3>
 );
