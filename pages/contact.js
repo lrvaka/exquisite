@@ -1,8 +1,6 @@
 import Footer from "../components/ui/Footer";
 import MainWrapper from "../components/ui/Main";
 
-import Form from "../components/ui/Form/Form";
-
 import { FaFacebookSquare, FaTiktok } from "react-icons/fa";
 import { BiTimeFive } from "react-icons/bi";
 import { AiOutlineMail } from "react-icons/ai";
