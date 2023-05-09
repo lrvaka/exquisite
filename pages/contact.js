@@ -9,6 +9,7 @@ import { AiOutlineMail } from "react-icons/ai";
 import { BsInstagram, BsLinkedin } from "react-icons/bs";
 import { HiPhone } from "react-icons/hi";
 import { IoLocationOutline } from "react-icons/io5";
+import ContactSection from "../components/ui/ContactSection";
 
 const meta = {
   title: "Contact - Exquisite Wood Floors",
@@ -20,9 +21,7 @@ const meta = {
 };
 
 const ContactInfoText = ({ children }) => (
-  <h3 className=" font-medium text-2xl text-left leading-none">
-    {children}
-  </h3>
+  <h3 className=" font-medium text-2xl text-left leading-none">{children}</h3>
 );
 
 const ContactInfoSection = ({ infoSectionColor, iconColor }) => {
@@ -105,17 +104,8 @@ const Contact = () => {
   return (
     <>
       <MainWrapper heading={meta}>
-        <div className="pt-40 2xl:pt-48">
-          <div className="">
-            <div className="flex flex-col  max-w-5xl gap-12 lg:gap-20 mx-auto py-20 lg:py-40 px-4">
-              <h2 className="text-center text-3xl font-heading font-bold text-theme-500">Reach out at one of the contacts below</h2>
-              <ContactInfoSection
-                infoSectionColor="text-black"
-                iconColor="text-theme-500"
-              />
-            </div>
-          </div>
-
+        <div className="pt-40 2xl:pt-48 ">
+          <ContactSection />
           <Footer bgColor="bg-theme-500" />
         </div>
       </MainWrapper>
