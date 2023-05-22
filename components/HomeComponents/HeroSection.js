@@ -32,6 +32,7 @@ const HeroSection = () => {
   const subRef = useRef();
 
   useIsomorphicLayoutEffect(() => {
+    gsap.registerPlugin(SplitText);
     if (!containerRef.current) {
       return;
     }
