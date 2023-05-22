@@ -109,7 +109,7 @@ const HeroSection = () => {
           className="relative invisible overflow-hidden text-theme-500 text-lg sm:text-2xl md:text-3xl lg:text-4xl z-[1]"
           ref={subRef}
         >
-          NYC&apos;s Leading Wood Flooring Company
+          NYC&apos;s Premier Wood Flooring Experts
         </h2>
         <NextLink href="/contact" passHref>
           <a className="flex justify-center items-center mt-2 sm:mt-2 md:mt-4 lg:mt-6">
@@ -119,7 +119,7 @@ const HeroSection = () => {
               initial="initial"
               animate="animate"
             >
-              Schedule your free consultation now!
+              Schedule your Free Consultation Today!{" "}
               <svg
                 className="ml-2"
                 stroke="currentColor"

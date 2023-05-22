@@ -102,7 +102,7 @@ const AboutUsSection = () => {
         </div>
         <div className="max-h-full px-4 sm:px-8 md:px-16 py-20 bg-theme-500 overflow-x-hidden self-center">
           <SectionHeading className="pb-10 text-theme-100">
-            Your one stop shop for all your wood flooring needs
+            Your One-Stop Shop for Wood Flooring Solutions
           </SectionHeading>
 
           <div className="pb-10 flex flex-col gap-8">
@@ -111,23 +111,25 @@ const AboutUsSection = () => {
               className="text-md sm:text-lg text-theme-10 font-normal max-w-prose"
             >
               Exquisite Wood Floors is a leading wood flooring company in the
-              New York Metropolitan area that specializes in a wide range of
-              wood flooring projects from retail and commercial to residential
-              and hospitality, and much more.
+              New York Metropolitan area. We specialize in a wide range of wood
+              flooring projects, catering to retail, commercial, residential,
+              hospitality, and more.
             </p>
             <p
               ref={rightRef}
               className="text-md sm:text-lg text-theme-10 font-normal max-w-prose"
             >
-              We are able to provide our clients with quality services and
-              products that meet their specific needs. Our team is dedicated to
-              providing professional service and support, so you can be assured
-              your project will be handled with the utmost care.
+              Our mission is to deliver quality services and products that
+              fulfill the unique needs of our clients. With our dedicated team,
+              you can trust that your project will be handled with utmost care
+              and professionalism.
             </p>
           </div>
           <NextLink href="/about" passHref>
             <a className="flex text-left font-bold text-theme-200 w-max gap-4">
-              <div className="text-md md:text-xl font-semibold">About us</div>
+              <div className="text-md md:text-xl font-semibold">
+                Learn More About Us
+              </div>
               <div className="self-center">
                 <SVGArrow fill="#cdcda6" />
               </div>
