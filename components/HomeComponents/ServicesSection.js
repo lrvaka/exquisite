@@ -103,9 +103,9 @@ const ServicesSection = () => {
         </ServicesItem>
 
         <ServicesItem heading="Repair">
-          Accidents happen, and when your wood floor gets damaged, we're here to
-          help. Our experts specialize in wood floor repairs, ensuring that your
-          floor is restored to its original beauty.
+          Accidents happen, and when your wood floor gets damaged, we&apos;re
+          here to help. Our experts specialize in wood floor repairs, ensuring
+          that your floor is restored to its original beauty.
         </ServicesItem>
 
         <ServicesItem heading="Maintenance">
