@@ -29,7 +29,7 @@ const InfoSection = () => {
           <p className="mb-12 text-base md:text-lg lg:text-xl text-theme-10 max-w-prose">
             Exquisite Wood Floors is a family-owned and operated flooring
             company with over 25 years of experience. Our passion for wood
-            flooring is evident in every project we undertake. Whether it's
+            flooring is evident in every project we undertake. Whether it&apos;s
             refinishing, repair, or installation, we approach each job with
             meticulous care and attention to detail. We take pride in our
             professionalism and craftsmanship, making us the perfect choice for
