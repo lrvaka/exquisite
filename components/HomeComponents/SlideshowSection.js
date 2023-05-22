@@ -89,22 +89,20 @@ const SlideShowSection = (props) => {
 
           <div className="px-4 sm:px-8 md:px-16 py-20 md:py-40">
             <SectionHeading className="pb-10 text-theme-100">
-              Team of seasoned
-              <br />
-              flooring experts
+              Experience the Difference
             </SectionHeading>
 
             <div className="flex flex-col lg:pr-20 invisible" ref={textRef}>
               <p className="text-md sm:text-lg text-theme-10 font-normal pb-10 max-w-prose">
-                Every member of the Exquisite Wood Floors team is a wooden floor
-                expert with extensive knowledge of their sector and years of
-                flooring experience, delivering projects across all markets to
-                the highest of standards, ensuring unique, durable floors of
-                quality.
+                At Exquisite Wood Floors, our team consists of seasoned flooring
+                experts who possess extensive knowledge and years of experience
+                in the industry. We have successfully delivered projects across
+                various markets, consistently meeting the highest standards and
+                creating unique, durable, and high-quality floors.
               </p>
               <NextLink href="/portfolio" passHref>
                 <a className="flex text-left font-bold text-theme-200 w-max gap-4">
-                  <div className="lg:text-xl">View portfolio</div>
+                  <div className="lg:text-xl">Explore Our Portfolio</div>
                   <div className="self-center">
                     <SVGArrow fill="#cdcda6" />
                   </div>

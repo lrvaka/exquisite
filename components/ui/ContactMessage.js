@@ -11,27 +11,30 @@ const ContactMessage = ({
     <div
       className={
         "relative z-10 flex max-w-5xl mx-auto justify-center flex-col px-4 xl:px-40 py-40 " +
-        bgColor +
-        " "
+        bgColor
       }
     >
       <h2
         className={
-          "text-5xl md:text-8xl font-bold leading-none font-heading text-left pb-5 " +
+          "text-3xl md:text-5xl lg:text-6xl xl:text-8xl font-bold leading-none font-heading text-left pb-5 " +
           headingColor
         }
       >
-        Ready to work with us?
+        Ready to Collaborate?
       </h2>
-      <p className={"text-xl lg:text-2xl max-w-prose " + textColor}>
-        Let us help you make your next project Exquisite!{" "}
-        <br className=" hidden lg:flex" /> Tell us about your project and
-        we&apos;ll be in touch.
+      <p className={"text-base md:text-lg lg:text-xl max-w-prose " + textColor}>
+        Let us help you bring your next project to life with our Exquisite
+        touch! <br className="hidden lg:flex" /> Share your project details, and
+        we&apos;ll get in touch with you.
       </p>
       <NextLink href="/contact" passHref>
         <a className="flex text-left font-bold w-max gap-4 mt-10">
-          <div className={"text-md lg:text-xl " + headingColor}>
-            Let&apos;s work together
+          <div
+            className={
+              "text-base md:text-lg lg:text-xl xl:text-2xl " + headingColor
+            }
+          >
+            Let&apos;s Get Started
           </div>
           <div className="self-center">
             <SVGArrow className={fillColor} />

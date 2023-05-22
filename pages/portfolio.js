@@ -68,16 +68,16 @@ const MarqueeSection = ({ text, ...props }) => (
 
 const WorksHeading = () => (
   <div className="mx-auto relative max-w-screen-xl px-4">
-    <h1 className="pb-10 text-theme-500 text-3xl md:text-5xl lg:text-8xl font-extrabold font-heading">
+    <h1 className="mb-10 text-3xl md:text-5xl lg:text-6xl xl:text-8xl text-theme-500 font-heading font-bold">
       Featured Works
     </h1>
     <div className="pb-20">
       <div className="flex flex-col max-w-full md:max-w-[50%]">
-        <p className="text-md md:text-xl text-theme-black font-normal">
-          Below is a display of selected works from over the years. From
-          commercial to residential, installation to restoration, we&apos;ve had
-          the pleasure of working on various projects from a wide array of
-          clientele.
+        <p className="text-xl text-theme-black font-normal">
+          Discover our exceptional projects spanning across various sectors and
+          styles. From commercial installations to residential restorations,
+          we&apos;ve delighted a diverse clientele with our craftsmanship and
+          attention to detail.
         </p>
       </div>
     </div>
